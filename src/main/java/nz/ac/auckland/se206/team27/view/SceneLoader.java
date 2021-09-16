@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import nz.ac.auckland.se206.team27.resource.Screen;
+import nz.ac.auckland.se206.team27.resource.ScreenResource;
 
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
@@ -22,11 +22,11 @@ public class SceneLoader {
     }
 
     /**
-     * Loads a JavaFX {@link Scene} associated with the {@link Screen}.
+     * Loads a JavaFX {@link Scene} associated with the {@link ScreenResource}.
      */
-    public void loadScreen(Screen screen) {
+    public void loadScreen(ScreenResource screen) {
         try {
-            Parent root = FXMLLoader.load(screen.resourceUrl);
+            Parent root = FXMLLoader.load(screen.getResourceUrl());
             Scene scene = new Scene(root, stage.getWidth(), stage.getHeight());
             stage.setScene(scene);
         } catch (Exception e) {

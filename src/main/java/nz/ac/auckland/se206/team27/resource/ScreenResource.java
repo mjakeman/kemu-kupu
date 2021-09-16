@@ -5,7 +5,7 @@ import java.net.URL;
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
-public enum Screen {
+public enum ScreenResource implements Resource {
 
     /**
      * The Home page with the main menu.
@@ -33,14 +33,16 @@ public enum Screen {
     PREFERENCES("preferences.fxml");
 
 
-    /**
-     * The {@link URL} pointing to the FXML file of the corresponding view/screen.
-     */
-    public URL resourceUrl;
+    private final URL resourceUrl;
 
 
-    Screen(String fileName) {
+    ScreenResource(String fileName) {
         this.resourceUrl = ResourceUtil.getResourceUrl("view/" + fileName);
+    }
+
+    @Override
+    public URL getResourceUrl() {
+        return resourceUrl;
     }
 
 }

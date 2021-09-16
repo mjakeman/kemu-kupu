@@ -1,8 +1,12 @@
 package nz.ac.auckland.se206.team27;
 
+import java.util.Arrays;
+
 import javafx.application.Application;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import nz.ac.auckland.se206.team27.resource.Screen;
+import nz.ac.auckland.se206.team27.resource.FontResource;
+import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 
 import static nz.ac.auckland.se206.team27.view.ViewConfig.HEIGHT;
@@ -34,22 +38,22 @@ public class Main extends Application {
         primaryStage.setMinHeight(HEIGHT);
         primaryStage.setResizable(false);
 
-        loadResources();
+        loadFonts();
 
         Main.stage = primaryStage;
 
         SceneLoader loader = new SceneLoader(stage);
-        loader.loadScreen(Screen.HOME);
+        loader.loadScreen(ScreenResource.HOME);
 
         stage.show();
     }
 
     /**
-     * Loads resources that are used throughout the application (i.e. fonts).
+     * Loads fonts that are used throughout the application.
      */
-    // TODO: Load any CSS
-    private void loadResources() {
-
+    private void loadFonts() {
+        FontResource[] fonts = {};
+        Arrays.stream(fonts).forEach((font) -> Font.loadFont(font.getResourceUrl().toExternalForm(), 10));
     }
 
     public static void main(String[] args) {

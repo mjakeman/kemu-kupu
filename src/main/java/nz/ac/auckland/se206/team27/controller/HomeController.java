@@ -1,6 +1,6 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import nz.ac.auckland.se206.team27.resource.Screen;
+import nz.ac.auckland.se206.team27.resource.ScreenResource;
 
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
@@ -12,7 +12,7 @@ public class HomeController extends BaseController {
      */
     public void clickNewGame() {
         System.out.println("New game!");
-        sceneLoader.loadScreen(Screen.GAME);
+        sceneLoader.loadScreen(ScreenResource.GAME);
     }
 
     /**
@@ -20,7 +20,7 @@ public class HomeController extends BaseController {
      */
     public void clickPractice() {
         System.out.println("Practice!");
-        sceneLoader.loadScreen(Screen.GAME);
+        sceneLoader.loadScreen(ScreenResource.GAME);
     }
 
     /**
@@ -28,7 +28,7 @@ public class HomeController extends BaseController {
      */
     public void clickPreferences() {
         System.out.println("Preferences");
-        sceneLoader.loadScreen(Screen.PREFERENCES);
+        sceneLoader.loadScreen(ScreenResource.PREFERENCES);
     }
 
     /**
