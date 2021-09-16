@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.team27;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,9 +36,12 @@ public class Main extends Application {
 
         TextField textField = new TextField();
         Button button = new Button("Play");
-        button.setOnAction(event -> {
+
+        EventHandler<ActionEvent> handler = event -> {
             speechManager.talk(textField.getText(), 1.0f);
-        });
+        };
+        button.setOnAction(handler);
+        textField.setOnAction(handler);
 
         vbox.getChildren().addAll(label, textField, button);
         Scene scene = new Scene(vbox);

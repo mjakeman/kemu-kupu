@@ -9,6 +9,16 @@ public class SpeechManager {
      */
     public void talk(String text, float speed) {
         System.out.println("Saying [" + text + "] at speed " + speed);
+
+        String args = "(SayText \"" + text + "\")";
+
+        try {
+            ProcessBuilder builder = new ProcessBuilder("festival", args);
+            Process proc = builder.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
