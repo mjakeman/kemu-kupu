@@ -1,6 +1,6 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import nz.ac.auckland.se206.team27.Main;
+import nz.ac.auckland.se206.team27.App;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 
 /**
@@ -12,7 +12,7 @@ public class BaseController {
 
 
     public BaseController() {
-        this.sceneLoader = new SceneLoader(Main.getMainStage());
+        this.sceneLoader = new SceneLoader(App.getMainStage());
     }
 
     /**

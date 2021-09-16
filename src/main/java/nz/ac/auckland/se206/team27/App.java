@@ -20,7 +20,7 @@ import static nz.ac.auckland.se206.team27.view.ViewConfig.WIDTH;
 /**
  * Main class.
  */
-public class Main extends Application {
+public class App extends Application {
 
     private static Stage stage;
 
@@ -74,7 +74,10 @@ public class Main extends Application {
         Arrays.stream(fonts).forEach((font) -> Font.loadFont(font.getResourceUrl().toExternalForm(), 10));
     }
 
-    public static void main(String[] args) {
+    /**
+     * Starts the application.
+     */
+    public static void startApplication(String[] args) {
         launch(args);
     }
 

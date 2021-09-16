@@ -5,7 +5,6 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.10'
 }
 
-def packageName = 'nz.ac.auckland.se206.team27';
 
 repositories {
     mavenCentral()
@@ -21,11 +20,21 @@ javafx {
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
-mainClassName = "${packageName}.Main"
+dependencies {
+    ['javafx-controls', 'javafx-fxml'].forEach { javafxPath ->
+        ['win', 'linux', 'mac'].forEach { platformId ->
+            runtimeOnly "org.openjfx:$javafxPath:$javafx.version:$platformId"
+        }
+    }
+}
+
+def packageName = 'nz.ac.auckland.se206.team27';
+
+mainClassName = "${packageName}.Launcher"
 
 application {
     mainModule = "kemu.kupu.main"
-    mainClass = "${packageName}.Main"
+    mainClass = "${packageName}.Launcher"
 }
 
 
@@ -33,7 +42,6 @@ application {
  * Special function to build a standalone and executable jar file.
  */
 task standaloneJar(type: Jar) {
-    name
     manifest {
         attributes 'Main-Class': "${packageName}.Launcher"
     }

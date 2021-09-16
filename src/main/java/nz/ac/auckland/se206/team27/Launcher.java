@@ -1,14 +1,17 @@
 package nz.ac.auckland.se206.team27;
 
 /**
- * Default launcher for creating an executable jar file.
- *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public class Launcher {
 
     public static void main(String[] args) {
-        Main.main(args);
+        App.startApplication(args);
+
+        // Add GTK version 2 flag if we are on a Linux distribution
+        if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+            System.setProperty("jdk.gtk.version", "2");
+        }
     }
 
 }
