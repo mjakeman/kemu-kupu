@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+			xmlns:fx="http://javafx.com/fxml"
+			fx:controller="nz.ac.auckland.se206.team27.controller.HomeController"
+			prefHeight="400.0" prefWidth="600.0">
+	<VBox>
+		<Button onAction="#clickNewGame">New Game</Button>
+		<Button onAction="#clickPractice" disable="true">Practice Mode</Button>
+		<Button onAction="#clickPreferences">Preferences</Button>
+		<Button onAction="#clickQuit">Quit</Button>
+	</VBox>
+</AnchorPane>
