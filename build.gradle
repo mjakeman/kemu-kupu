@@ -1,19 +1,49 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.beryx.jlink' version '2.24.1'
     id 'org.openjfx.javafxplugin' version '0.0.10'
 }
+
+def packageName = 'nz.ac.auckland.se206.team27';
 
 repositories {
     mavenCentral()
 }
 
+compileJava {
+    sourceCompatibility = "11"
+    targetCompatibility = "11"
+}
 
 javafx {
     version = "11.0.2"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    modules = ['javafx.controls', 'javafx.fxml']
 }
 
+mainClassName = "${packageName}.Main"
+
 application {
-    mainClass = 'nz.ac.auckland.se206.team27.Main'
+    mainModule = "kemu.kupu.main"
+    mainClass = "${packageName}.Main"
+}
+
+
+/**
+ * Special function to build a standalone and executable jar file.
+ */
+task standaloneJar(type: Jar) {
+    name
+    manifest {
+        attributes 'Main-Class': "${packageName}.Launcher"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    from sourceSets.main.allSource
+
+    with jar
 }
