@@ -27,8 +27,7 @@ public class SceneLoader {
     public void loadScreen(ScreenResource screen) {
         try {
             Parent root = FXMLLoader.load(screen.getResourceUrl());
-            Scene scene = new Scene(root, stage.getWidth(), stage.getHeight());
-            stage.setScene(scene);
+            stage.getScene().setRoot(root);
         } catch (Exception e) {
             System.err.println("[Error] Could not load screen: " + screen.name() + ", caused by: " + e);
         }

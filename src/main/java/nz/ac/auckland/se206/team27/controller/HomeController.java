@@ -8,7 +8,7 @@ import nz.ac.auckland.se206.team27.resource.ScreenResource;
 public class HomeController extends BaseController {
 
     /**
-     * Corresponding action executed when the "New Game" button is clicked.
+     * Action executed when the "New Game" button is clicked.
      */
     public void clickNewGame() {
         System.out.println("New game!");
@@ -16,7 +16,7 @@ public class HomeController extends BaseController {
     }
 
     /**
-     * Corresponding action executed when the "Practice" button is clicked.
+     * Action executed when the "Practice" button is clicked.
      */
     public void clickPractice() {
         System.out.println("Practice!");
@@ -24,7 +24,7 @@ public class HomeController extends BaseController {
     }
 
     /**
-     * Corresponding action executed when the "Preferences" button is clicked.
+     * Action executed when the "Preferences" button is clicked.
      */
     public void clickPreferences() {
         System.out.println("Preferences");
@@ -32,7 +32,7 @@ public class HomeController extends BaseController {
     }
 
     /**
-     * Corresponding action executed when the "Quit" button is clicked.
+     * Action executed when the "Quit" button is clicked.
      */
     public void clickQuit() {
         closeApplication();

@@ -19,7 +19,7 @@ public class BaseController {
      * Closes the application.
      */
     protected void closeApplication() {
-        Main.getMainStage().close();
+
     }
 
 }
