@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Button?>
 <AnchorPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
-			stylesheets="/style/theme.css"
+			stylesheets="@../style/theme.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.PreferencesController">
 	<VBox styleClass="root">
 		<Label>Preferences</Label>
