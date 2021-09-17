@@ -20,14 +20,6 @@ javafx {
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
-dependencies {
-    ['javafx-controls', 'javafx-fxml'].forEach { javafxPath ->
-        ['win', 'linux', 'mac'].forEach { platformId ->
-            runtimeOnly "org.openjfx:$javafxPath:$javafx.version:$platformId"
-        }
-    }
-}
-
 def packageName = 'nz.ac.auckland.se206.team27';
 
 mainClassName = "${packageName}.Launcher"
