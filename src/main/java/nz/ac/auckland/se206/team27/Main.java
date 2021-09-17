@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javafx.concurrent.Task;
+
 /**
  * Main class.
  */
@@ -32,18 +34,23 @@ public class Main extends Application {
         SpeechManager speechManager = new SpeechManager();
 
         VBox vbox = new VBox();
-        Label label = new Label ("Kēmu Kupu");
+        Label label = new Label("Kēmu Kupu");
 
         TextField textField = new TextField();
-        Button button = new Button("Play");
+        Button playButton = new Button("Play");
+        Button cancelButton = new Button("Cancel");
+        Label status = new Label("Waiting");
 
         EventHandler<ActionEvent> handler = event -> {
-            speechManager.talk(textField.getText(), 1.0f);
+            Task<Void> task = new FestivalTask(textField.getText(), 1.0f);
+            new Thread(task).start();
+            status.textProperty().bind(task.messageProperty());
         };
-        button.setOnAction(handler);
+        playButton.setOnAction(handler);
         textField.setOnAction(handler);
+        // cancelButton.setOnAction(e -> speechManager.stop());
 
-        vbox.getChildren().addAll(label, textField, button);
+        vbox.getChildren().addAll(label, textField, playButton, status, cancelButton);
         Scene scene = new Scene(vbox);
         primaryStage.setScene(scene);
 
