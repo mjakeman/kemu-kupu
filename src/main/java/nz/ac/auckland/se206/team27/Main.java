@@ -52,7 +52,7 @@ public class Main extends Application {
         };
         playButton.setOnAction(handler);
         textField.setOnAction(handler);
-        cancelButton.setOnAction(e -> speechManager.finishCurrent());
+        cancelButton.setOnAction(e -> speechManager.silence());
 
         vbox.getChildren().addAll(label, textField, speed, playButton, status, statusDesc, cancelButton);
         Scene scene = new Scene(vbox);

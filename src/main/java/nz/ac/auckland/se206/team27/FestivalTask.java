@@ -50,7 +50,8 @@ public class FestivalTask extends Task<Void> {
 
         // Interpolate text and the duration multiplier into the command string
         String command = "(begin (Parameter.set 'Duration_Stretch' " + multiplier + ") (SayText \"" + text + "\"))";
-        
+
+        // Run with '-b' = batch mode (non-interactive)
         ProcessBuilder builder = new ProcessBuilder("festival", "-b", command);
 
         // We need to consume output/error from the process in order

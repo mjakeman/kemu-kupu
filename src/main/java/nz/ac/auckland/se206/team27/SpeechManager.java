@@ -68,7 +68,7 @@ public class SpeechManager {
      * Clears all queued phrases but allows the current text-to-speech
      * task to complete.
      */
-    public void finishCurrent() {
+    public void silence() {
         queue.clear();
     }
 }
