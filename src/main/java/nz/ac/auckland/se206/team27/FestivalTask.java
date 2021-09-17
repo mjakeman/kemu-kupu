@@ -23,7 +23,7 @@ public class FestivalTask extends Task<Void> {
     /**
      * Create a new background task that runs the festival
      * text-to-speech engine.
-     * 
+     *
      * @param text The text to be spoken
      * @param speed Speed multiplier (1.0 is normal speed)
      */
@@ -51,43 +51,28 @@ public class FestivalTask extends Task<Void> {
         // > (begin (Parameter.set 'Duration_Stretch' 2) (SayText "Boo!"))
 
         // Interpolate text and the duration multiplier into the command string
-        String command = "(begin (Parameter.set 'Duration_Stretch' " + multiplier + ") (SayText \"" + text + "\"))";
+        String command = String.format("(begin (Parameter.set 'Duration_Stretch' %f) (SayText \"%s\"))", multiplier, text);
 
         // Run with '-b' = batch mode (non-interactive)
         ProcessBuilder builder = new ProcessBuilder("festival", "-b", command);
-
-        // We need to consume output/error from the process in order
-        // for proc.waitFor() to work correctly. We first redirect
-        // the error stream to output here, then consume stdout below.
-        builder.redirectErrorStream(true);
         Process proc = builder.start();
-
-        // Consume stdout
-        BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-        while (reader.readLine() != null) {}
 
         // Wait for festival to complete
         try {
             // Set a timeout of one minute in case festival does not return
             proc.waitFor(1, TimeUnit.MINUTES);
 
-            // Handle failure case (err code not 0)
-            if (proc.exitValue() != 0) {
-                updateMessage("Failed");
-                return null;
-            }
+            String response = proc.exitValue() == 0 ? "Success" : "Failed";
+            updateMessage(response);
 
         } catch (InterruptedException e) {
             // Handle cancellation case
             if (isCancelled()) {
                 proc.destroy();
                 updateMessage("Cancelled");
-                return null;
             }
         }
 
-        // Task succeeded
-        updateMessage("Success");
         return null;
     }
 }

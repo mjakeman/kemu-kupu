@@ -73,7 +73,10 @@ public class SpeechTest extends Application {
     private void loadResources() {
     }
 
-    public static void main(String[] args) {
+    /**
+     * Starts the application.
+     */
+    public static void startApplication(String[] args) {
         launch(args);
     }
 
