@@ -7,7 +7,14 @@ public class ViewConfig {
 
     public static final String TITLE = "Kēmu Kupu";
 
-    public static final String VERSION = "0.1.0";
+    /**
+     * The version from the build implementation (set in gradle.properties), or 'DEV' if in development.
+     */
+    public static final String VERSION = getVersion();
+    private static String getVersion() {
+        String version = ViewConfig.class.getPackage().getImplementationVersion();
+        return version != null ? version : "DEV";
+    }
 
     public static final int WIDTH = 640;
 
