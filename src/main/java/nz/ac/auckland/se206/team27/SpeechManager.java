@@ -4,6 +4,9 @@ import java.util.concurrent.*;
 
 import javafx.concurrent.Task;
 
+/**
+ * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
+ */
 public class SpeechManager {
 
     /**

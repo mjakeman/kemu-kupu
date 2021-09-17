@@ -36,26 +36,8 @@ public class Main extends Application {
         // Create SpeechManager
         speechManager = new SpeechManager();
 
-        VBox vbox = new VBox();
         Label label = new Label("Kēmu Kupu");
-
-        TextField textField = new TextField();
-        Button playButton = new Button("Play");
-        Button cancelButton = new Button("Cancel");
-        Label status = new Label("Status of most recent Festival Task:");
-        Label statusDesc = new Label("Waiting");
-        Spinner<Double> speed = new Spinner<Double>(0.0, 2.0, 1.0, 0.1);
-
-        EventHandler<ActionEvent> handler = event -> {
-            Task<Void> task = speechManager.talk(textField.getText(), speed.getValue().floatValue());
-            statusDesc.textProperty().bind(task.messageProperty());
-        };
-        playButton.setOnAction(handler);
-        textField.setOnAction(handler);
-        cancelButton.setOnAction(e -> speechManager.silence());
-
-        vbox.getChildren().addAll(label, textField, speed, playButton, status, statusDesc, cancelButton);
-        Scene scene = new Scene(vbox);
+        Scene scene = new Scene(label);
         primaryStage.setScene(scene);
 
         Main.stage = primaryStage;

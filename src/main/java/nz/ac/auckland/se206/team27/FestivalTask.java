@@ -12,6 +12,8 @@ import javafx.concurrent.Task;
  * engine asynchronously as to not freeze the GUI. It can
  * be polled and cancelled midway through using the standard
  * JavaFX Task API.
+ *
+ * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
 public class FestivalTask extends Task<Void> {
 
