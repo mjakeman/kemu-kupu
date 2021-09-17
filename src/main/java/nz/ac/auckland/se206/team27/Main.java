@@ -19,6 +19,8 @@ public class Main extends Application {
 
     private static Stage stage;
 
+    private SpeechManager speechManager;
+
     /**
      * Function that is run to star the application.
      */
@@ -31,7 +33,7 @@ public class Main extends Application {
         primaryStage.setResizable(false);
 
         // Create SpeechManager
-        SpeechManager speechManager = new SpeechManager();
+        speechManager = new SpeechManager();
 
         VBox vbox = new VBox();
         Label label = new Label("Kēmu Kupu");
@@ -39,18 +41,18 @@ public class Main extends Application {
         TextField textField = new TextField();
         Button playButton = new Button("Play");
         Button cancelButton = new Button("Cancel");
-        Label status = new Label("Waiting");
+        Label status = new Label("Status of most recent Festival Task:");
+        Label statusDesc = new Label("Waiting");
 
         EventHandler<ActionEvent> handler = event -> {
-            Task<Void> task = new FestivalTask(textField.getText(), 1.0f);
-            new Thread(task).start();
-            status.textProperty().bind(task.messageProperty());
+            Task<Void> task = speechManager.talk(textField.getText(), 1.0f);
+            statusDesc.textProperty().bind(task.messageProperty());
         };
         playButton.setOnAction(handler);
         textField.setOnAction(handler);
-        // cancelButton.setOnAction(e -> speechManager.stop());
+        cancelButton.setOnAction(e -> speechManager.finishCurrent());
 
-        vbox.getChildren().addAll(label, textField, playButton, status, cancelButton);
+        vbox.getChildren().addAll(label, textField, playButton, status, statusDesc, cancelButton);
         Scene scene = new Scene(vbox);
         primaryStage.setScene(scene);
 
@@ -59,6 +61,11 @@ public class Main extends Application {
         loadResources();
 
         stage.show();
+    }
+
+    @Override
+    public void stop() {
+        speechManager.shutdown();
     }
 
     /**
