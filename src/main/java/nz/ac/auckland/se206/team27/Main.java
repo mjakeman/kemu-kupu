@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -43,16 +44,17 @@ public class Main extends Application {
         Button cancelButton = new Button("Cancel");
         Label status = new Label("Status of most recent Festival Task:");
         Label statusDesc = new Label("Waiting");
+        Spinner<Double> speed = new Spinner<Double>(0.0, 2.0, 1.0, 0.1);
 
         EventHandler<ActionEvent> handler = event -> {
-            Task<Void> task = speechManager.talk(textField.getText(), 1.0f);
+            Task<Void> task = speechManager.talk(textField.getText(), speed.getValue().floatValue());
             statusDesc.textProperty().bind(task.messageProperty());
         };
         playButton.setOnAction(handler);
         textField.setOnAction(handler);
         cancelButton.setOnAction(e -> speechManager.finishCurrent());
 
-        vbox.getChildren().addAll(label, textField, playButton, status, statusDesc, cancelButton);
+        vbox.getChildren().addAll(label, textField, speed, playButton, status, statusDesc, cancelButton);
         Scene scene = new Scene(vbox);
         primaryStage.setScene(scene);
 

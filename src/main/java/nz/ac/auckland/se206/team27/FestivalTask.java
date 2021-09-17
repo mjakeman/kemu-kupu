@@ -15,8 +15,8 @@ import javafx.concurrent.Task;
  */
 public class FestivalTask extends Task<Void> {
 
-    private String text;
-    private float speed;
+    private final String text;
+    private final float speed;
 
     /**
      * Create a new background task that runs the festival
@@ -43,9 +43,13 @@ public class FestivalTask extends Task<Void> {
 
         updateMessage("Running");
 
-        // TODO: Add speed multiplier support
+        float multiplier = 1 / speed;
 
-        String command = "(SayText \"" + text + "\")";
+        // Festival uses Scheme for commands. To say 'Boo!' at half the speed, we can write:
+        // > (begin (Parameter.set 'Duration_Stretch' 2) (SayText "Boo!"))
+
+        // Interpolate text and the duration multiplier into the command string
+        String command = "(begin (Parameter.set 'Duration_Stretch' " + multiplier + ") (SayText \"" + text + "\"))";
         
         ProcessBuilder builder = new ProcessBuilder("festival", "-b", command);
 
