@@ -20,6 +20,7 @@
 *.rar
 
 # Custom ones we made (Team 27)
+!gradle-wrapper.jar
 .gradle
 .idea
 build
