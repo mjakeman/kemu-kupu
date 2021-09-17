@@ -35,7 +35,7 @@ application {
  */
 task standaloneJar(type: Jar) {
     manifest {
-        attributes 'Main-Class': "${packageName}.Launcher"
+        attributes 'Main-Class': "${packageName}.Launcher", 'Implementation-Version': archiveVersion
     }
 
     from {
