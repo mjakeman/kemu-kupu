@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27;
+package nz.ac.auckland.se206.team27.wordlist;
 
 import java.io.File;
 import java.io.FileNotFoundException;
