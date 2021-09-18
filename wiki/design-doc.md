@@ -74,3 +74,12 @@ Play!
 If we use a collection vs String[]
 we can use shuffle to randomise word order
 ```
+
+## Animations & Transitions
+Inter-Scene Transitions
+ * Transition between one scene and another scene
+ * Sliding/cross-fading/etc
+
+Animations
+ * Subtle control transformations (one place to another)
+ * These will play when a scene "enters" (i.e. is navigated to)
