@@ -66,7 +66,7 @@ Assignee: Jordan
  * If the word is wrong, can we show the user the correct spelling once they skip?
 
 ## Next Meeting
-Next Meeting Wednesday @ ABC
+Next Meeting Wednesday @ 5PM-6PM
 
 Aim to have done by meeting:
  * Jordan: Get reasonably final views done
