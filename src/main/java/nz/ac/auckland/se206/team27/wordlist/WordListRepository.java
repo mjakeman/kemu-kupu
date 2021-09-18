@@ -1,10 +1,12 @@
 package nz.ac.auckland.se206.team27.wordlist;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -22,7 +24,14 @@ public class WordListRepository {
     public Map<String, WordList> getWordLists() {
         return getAllWordListFileNames().stream()
                 // Create a wordlist from every wordlist file name
-                .map(WordList::new)
+                .map((name) -> {
+                    try {
+                        return new WordList(name);
+                    } catch (FileNotFoundException e) {
+                        System.err.println("[Error] No word list file exists with name: " + name);
+                        return null;
+                    }
+                }).filter(Objects::nonNull)
                 // Map each WordList object to a HashMap with key as title and content as the WordList object
                 .collect(Collectors.toMap(WordList::getTitle, Function.identity()));
     }

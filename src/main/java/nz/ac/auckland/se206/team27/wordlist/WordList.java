@@ -15,7 +15,7 @@ public class WordList {
     private String description;
     private ArrayList<String> wordList;
 
-    public WordList(String fileName) {
+    public WordList(String fileName) throws FileNotFoundException {
         //Locate file of topic
         String filePath = new File("").getAbsolutePath() + "/words/" + fileName;
         File topicFile = new File(filePath);
@@ -26,27 +26,23 @@ public class WordList {
         //Create string to hold each word in the list
         String wordForLoop;
 
-        try {
-            //Create new scanner to start reading the file
-            Scanner fileScanner = new Scanner(topicFile);
+        //Create new scanner to start reading the file
+        Scanner fileScanner = new Scanner(topicFile);
 
-            //First line in file is topic so read it and assign to title field
-            title = fileScanner.nextLine();
+        //First line in file is topic so read it and assign to title field
+        title = fileScanner.nextLine();
 
-            //Second line in file is description so read it and assign to description field
-            description = fileScanner.nextLine();
+        //Second line in file is description so read it and assign to description field
+        description = fileScanner.nextLine();
 
-            //The remaining lines in file are words to be spelt. Read all of these and add them to wordlist field
-            while (fileScanner.hasNext()) {
-                wordForLoop = fileScanner.nextLine();
-                wordList.add(wordForLoop);
-            }
-
-            //Stop reading file
-            fileScanner.close();
-        } catch (FileNotFoundException e) {
-            System.err.println("[Error] File \"" + fileName + "\" was not found!");
+        //The remaining lines in file are words to be spelt. Read all of these and add them to wordlist field
+        while (fileScanner.hasNext()) {
+            wordForLoop = fileScanner.nextLine();
+            wordList.add(wordForLoop);
         }
+
+        //Stop reading file
+        fileScanner.close();
     }
 
     public ArrayList<String> getWordList() {
@@ -58,4 +54,5 @@ public class WordList {
     public String getTitle() {
         return title;
     }
+
 }
