@@ -40,9 +40,7 @@ public class WordListRepository {
      * Returns a list of all topics.
      */
     private List<String> getAllWordListFileNames() {
-        File wordsDir = new File(WORDS_DIRECTORY);
-
-        File[] wordListFiles = wordsDir.listFiles();
+        File[] wordListFiles = new File(WORDS_DIRECTORY).listFiles();
 
         // Is null when the directory does not exist or is not a directory
         if (wordListFiles == null) {
