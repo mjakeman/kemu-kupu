@@ -5,6 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * @author Jordan York (jyor212@aucklanduni.ac.nz)
+ */
+
 public class WordList {
     //Create fields to hold topic title, description and wordlist
     private String title;
@@ -32,7 +36,7 @@ public class WordList {
         description = fileScanner.nextLine();
 
         //The remaining lines in file are words to be spelt. Read all of these and add them to wordlist field
-        while(fileScanner.hasNext()) {
+        while (fileScanner.hasNext()) {
             wordForLoop = fileScanner.nextLine();
             wordList.add(wordForLoop);
         }
@@ -41,7 +45,7 @@ public class WordList {
         fileScanner.close();
     }
 
-    public ArrayList<String> getWordLists() {
+    public ArrayList<String> getWordList() {
 
         //Retrieve wordlist
         return wordList;
