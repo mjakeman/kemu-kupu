@@ -15,6 +15,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 // TODO: Extend some kind of shared 'MenuController'
+
+/**
+ * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
+ */
 public class ChooseTopicController extends BaseController implements Initializable {
     @FXML
     public Label title;

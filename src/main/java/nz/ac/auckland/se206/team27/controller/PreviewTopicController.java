@@ -9,6 +9,9 @@ import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
+ */
 public class PreviewTopicController extends BaseController implements Initializable {
 
     @FXML
