@@ -53,7 +53,7 @@ public class App extends Application {
         loadFonts();
 
         // Add temporary scene
-        stage.setScene(new Scene(new AnchorPane()));
+        stage.setScene(new Scene(new AnchorPane(), WIDTH, HEIGHT));
 
         SceneLoader loader = new SceneLoader(primaryStage);
         loader.loadScreen(ScreenResource.HOME);

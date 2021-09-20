@@ -9,12 +9,12 @@
 <?import javafx.scene.control.Label?>
 <AnchorPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
-			stylesheets="@../style/theme.css"
+			stylesheets="@../style/common.css,@../style/menu.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.HomeController">
-	<HBox styleClass="root,main-menu">
+	<HBox styleClass="container">
+		<!-- TODO: Only this part changes between menu views - Share logic somehow? -->
 		<VBox>
-			<!-- Can we avoid hardcoding the title? -->
-			<Label fx:id="title" styleClass="title">Kēmu Kupu</Label>
+			<Label fx:id="title" styleClass="title" />
 			<Button styleClass="menu-btn" onAction="#clickNewGame">New Game</Button>
 			<Button styleClass="menu-btn" onAction="#clickPractice" disable="true">Practice Mode</Button>
 			<Button styleClass="menu-btn" onAction="#clickPreferences">Preferences</Button>

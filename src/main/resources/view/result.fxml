@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
-			stylesheets="@../style/theme.css"
+			stylesheets="@../style/common.css,@../style/temp.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
-	<VBox styleClass="root">
+	<VBox styleClass="container">
 		<Label>If at times you don't succeed, try and try again</Label>
 		<VBox>
 			<Label>Current score:</Label>

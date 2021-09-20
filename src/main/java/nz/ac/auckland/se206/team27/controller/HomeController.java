@@ -1,24 +1,34 @@
 package nz.ac.auckland.se206.team27.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
-public class HomeController extends BaseController {
+public class HomeController extends BaseController implements Initializable {
 
     @FXML
     public Label title;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        title.textProperty().set(ViewConfig.TITLE);
+    }
 
     /**
      * Action executed when the "New Game" button is clicked.
      */
     public void clickNewGame() {
         System.out.println("New game!");
-        sceneLoader.loadScreen(ScreenResource.GAME);
+        sceneLoader.loadScreen(ScreenResource.CHOOSE_TOPIC);
     }
 
     /**
@@ -43,5 +53,4 @@ public class HomeController extends BaseController {
     public void clickQuit() {
         closeApplication();
     }
-
 }
