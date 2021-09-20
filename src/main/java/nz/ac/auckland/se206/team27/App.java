@@ -70,7 +70,7 @@ public class App extends Application {
      * Loads fonts that are used throughout the application.
      */
     private void loadFonts() {
-        FontResource[] fonts = {};
+        FontResource[] fonts = { FontResource.INTER_REGULAR, FontResource.INTER_BOLD };
         Arrays.stream(fonts).forEach((font) -> Font.loadFont(font.getResourceUrl().toExternalForm(), 10));
     }
 

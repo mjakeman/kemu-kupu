@@ -44,3 +44,18 @@ I am quite happy with the result overall. The SpeechManager class is robust and
 very fast, and meets the required goals of supporting task queuing and the clearing
 of said queue. Additionally, I was able to implement speed variability in a fairly
 unobtrusive manner.
+
+## 18 September
+Fixed some minor issues (primarily related to code style) after feedback from teammates. Had
+a team meeting and delegated the next round of tasks (see [minutes](minutes-18-09-21.md)).
+
+## 20 September
+Add support for Inter font family. The font 'Inter' is a sans-serif font focused on user-interfaces,
+emphasising readability. It is a good fit for Kemu Kupu. The font is added using the FontResource
+system designed by Raymond - my teammate. The default font is set to 'Inter 11' using CSS. I have added
+all 19 styles of Inter for the meantime, but this can be reduced when we are confident certain styles will
+not be used.
+
+I also added some simple styling to the main menu, colouring it a turquoise blue and adding
+white-outlined buttons that mostly reflect the initial design. There are no animations, transitions,
+or hover/focus states implemented at this time.
