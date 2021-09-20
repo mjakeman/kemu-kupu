@@ -1,9 +1,16 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
 
@@ -18,9 +25,30 @@ public class HomeController extends BaseController implements Initializable {
     @FXML
     public Label title;
 
+    @FXML
+    public AnchorPane root;
+
+    @FXML
+    public HBox container;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         title.textProperty().set(ViewConfig.TITLE);
+
+        // Transition Experiment
+        FadeTransition fade = new FadeTransition(Duration.seconds(1.0), root);
+        fade.setFromValue(0);
+        fade.setToValue(1.0);
+        fade.setCycleCount(1);
+
+        ScaleTransition scale = new ScaleTransition(Duration.seconds(0.5), container);
+        scale.setFromX(1.05);
+        scale.setFromY(1.05);
+        scale.setToX(1.0);
+        scale.setToY(1.0);
+
+        ParallelTransition parallel = new ParallelTransition(fade, scale);
+        parallel.play();
     }
 
     /**

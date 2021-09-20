@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.team27.resource.FontResource;
@@ -53,7 +54,9 @@ public class App extends Application {
         loadFonts();
 
         // Add temporary scene
-        stage.setScene(new Scene(new AnchorPane(), WIDTH, HEIGHT));
+        Scene scene = new Scene(new AnchorPane(), WIDTH, HEIGHT);
+        scene.setFill(Color.BLACK);
+        stage.setScene(scene);
 
         SceneLoader loader = new SceneLoader(primaryStage);
         loader.loadScreen(ScreenResource.HOME);
