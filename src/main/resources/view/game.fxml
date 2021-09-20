@@ -9,10 +9,10 @@
 <?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
-			stylesheets="@../style/theme.css"
+			stylesheets="@../style/gameTheme.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.GameController">
 	<VBox styleClass="root">
-		<Label>Question 1 of 5</Label>
+		<Label styleClass="title">Question 1 of 5</Label>
 		<TextField promptText="Enter guess here" />
 		<HBox>
 			<Button>ā</Button>

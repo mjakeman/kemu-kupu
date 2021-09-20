@@ -9,6 +9,16 @@
     -fx-spacing: 10px;
 }
 
+* {
+    -fx-text-fill: white;
+}
+
+.title {
+    -fx-font: 24px Arial;
+    -fx-text-fill: White;
+    -fx-text-alignment: center;
+}
+
 Button {
     -fx-padding: 5px 30px;
     -fx-text-fill: black;

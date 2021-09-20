@@ -12,3 +12,10 @@ Jordan York (jyor212)
 ## 18 September
 
 - Meet with team and implemented recommended changes.
+
+## 20 September
+
+- Started to styling the Game, End Game and Results views by:
+
+    - Creating css files for each view
+    - Adjusting FXML files to fit vision

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
-			stylesheets="@../style/theme.css"
+			stylesheets="@../style/endgameTheme.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
 	<VBox styleClass="root">
 		<Label>Good work!</Label>

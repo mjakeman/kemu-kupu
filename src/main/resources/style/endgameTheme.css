@@ -9,6 +9,10 @@
     -fx-spacing: 10px;
 }
 
+* {
+    -fx-text-fill: white;
+}
+
 Button {
     -fx-padding: 5px 30px;
     -fx-text-fill: black;
