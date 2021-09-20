@@ -59,3 +59,12 @@ not be used.
 I also added some simple styling to the main menu, colouring it a turquoise blue and adding
 white-outlined buttons that mostly reflect the initial design. There are no animations, transitions,
 or hover/focus states implemented at this time.
+
+Next, I created two new views for topic selection and topic previewing. I added some basic styling but quickly
+ran into problems with namespacing css selectors, and having breakages in other parts of the application.
+After discussing with Jordan, I decided to split the CSS files into one master stylesheet plus several view
+stylesheets (representing one view, or a few related views).
+
+I also had to rework how stylesheets apply styles regarding the "root" style class. I opted to remove all manual
+mentions of this class and just style the scene root. One consequence was that padding was broken. I added
+a "container" style class to rectify this.
