@@ -1,11 +1,17 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.view.ViewConfig;
 
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public class HomeController extends BaseController {
+
+    @FXML
+    public Label title;
 
     /**
      * Action executed when the "New Game" button is clicked.

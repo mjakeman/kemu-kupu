@@ -7,11 +7,17 @@ import java.net.URL;
  */
 public enum FontResource implements Resource {
 
-    // TODO: Add fonts
-    ;
+    /**
+     * Inter font family.
+     */
+    INTER_REGULAR("Inter-Regular.otf"),
+    INTER_BOLD("Inter-Bold.otf");
 
+    private final URL resourceUrl;
 
-    private URL resourceUrl;
+    FontResource(String fileName) {
+        this.resourceUrl = ResourceUtil.getResourceUrl("font/" + fileName);
+    }
 
 
     @Override
