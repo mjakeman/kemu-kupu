@@ -9,19 +9,36 @@
     -fx-spacing: 10px;
 }
 
-.title {
-    -fx-font: 24px Arial;
+.topic {
+    -fx-font: 40px Inter;
     -fx-text-fill: White;
-    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+}
+
+.title {
+    -fx-font: 24px Inter;
+    -fx-text-fill: White;
 }
 
 * {
     -fx-text-fill: white;
 }
 
+.central {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+}
+
+Slider {
+    -fx-scale-x: 0.9px;
+}
+
 Button {
     -fx-padding: 5px 30px;
     -fx-text-fill: black;
+    -fx-font: 12px Inter;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
 }
 
 .spacer {

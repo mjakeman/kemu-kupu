@@ -12,29 +12,30 @@
 			stylesheets="@../style/gameTheme.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.GameController">
 	<VBox styleClass="root">
-		<Label styleClass="title">Question 1 of 5</Label>
-		<TextField promptText="Enter guess here" />
-		<HBox>
+		<Label styleClass="topic">Topic</Label>
+		<VBox styleClass="central">
+			<HBox alignment="CENTER">
+				<Label styleClass="title">Question 1 of 5</Label>
+				<Button alignment="CENTER_RIGHT">Play word again</Button>
+				<Label>1x</Label>
+				<Label>0.2x speed</Label>
+				<Slider min="0.2" max="2"/>
+				<Label>2x speed</Label>
+			</HBox>
+		</VBox>
+		<VBox styleClass="central">
+		<TextField promptText="Enter guess here" alignment="CENTER"/>
+		<HBox alignment="CENTER">
 			<Button>ā</Button>
 			<Button>ē</Button>
 			<Button>ī</Button>
 			<Button>ō</Button>
 			<Button>ū</Button>
 		</HBox>
-		<Button onAction="#clickSubmit">Submit</Button>
 
+		<Button onAction="#clickSubmit">Submit</Button>
 		<Button onAction="#clickSkip">(skip)</Button>
 
-		<VBox>
-			<Button>Play word again</Button>
-			<VBox>
-				<Label>1x</Label>
-				<HBox>
-				<Label>0.2x speed</Label>
-				<Slider min="0.2" max="2" />
-				<Label>2x speed</Label>
-				</HBox>
-			</VBox>
 		</VBox>
 	</VBox>
 </AnchorPane>
