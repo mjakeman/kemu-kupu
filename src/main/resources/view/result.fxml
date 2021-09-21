@@ -4,17 +4,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.MenuBar?>
 <AnchorPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
 			stylesheets="@../style/resultTheme.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
 	<VBox styleClass="root">
-		<Label>If at times you don't succeed, try and try again</Label>
-		<VBox>
-			<Label>Current score:</Label>
-			<Label>5</Label>
-		</VBox>
-		<Button onAction="#clickTryAgain">Try again</Button>
-		<Button onAction="#clickSkip">(skip)</Button>
+		<Label styleClass="title">Correct</Label>
+			<Label styleClass="scoreLabel">Current score:</Label>
+			<Label styleClass="scoreLabel">5</Label>
+		<HBox styleClass="HBoxSpacing">
+			<Button onAction="#clickTryAgain">Try again</Button>
+			<Button onAction="#clickSkip">(skip)</Button>
+		</HBox>
 	</VBox>
 </AnchorPane>
