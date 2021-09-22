@@ -31,8 +31,14 @@ Button.menu-btn:pressed {
 
 .title {
     -fx-font-size: 28pt;
-    -fx-padding: 35px 0 25px 0;
+    -fx-padding: 35px 0 5px 0;
     -fx-text-fill: white;
+}
+
+.subtitle {
+    -fx-padding: 0 0 25px 0;
+    -fx-text-fill: rgba(255,255,255,0.9);
+    -fx-font-size: 10pt;
 }
 
 .blurb {
