@@ -8,7 +8,7 @@ Button {
 }
 
 .spacer {
-    -fx-min-width: 400px;
+    /*-fx-min-width: 50%;*/
 }
 
 .shadow {
