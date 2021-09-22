@@ -73,6 +73,7 @@ a "container" style class to rectify this.
 Took the day off!
 
 ## 22 September
+### Views and Styling
 Added hover and focus states to the menu buttons. They now have a translucent black fill when the user hovers,
 which darkens when the user presses the button. I chose to use a dark tint (vs white) as this will play better
 with a dynamic/animated background if or when I get around to implementing that. I also felt the white tint
@@ -95,3 +96,19 @@ decided to rework the split view using `GridPane` instead of `TilePane` to make 
 up being far cleaner and more reliable to work with.
 
 Lastly, I removed the temporary logo we had been using from the menu and topic selection screen.
+
+### Transitions
+I began working on transitions, which is my long-term goal for beyond A3. I wanted to try implement a subset of
+the final transition and complex layout system for A3 as a proof-of-concept.
+
+The transition framework architecture I came up with is as follows:
+
+Views (which must use a `BaseController`-derived class as their FX Controller) can specify what happens when
+the view is loaded. By overriding the `defaultOnEnter()` method, views can define their own transitions and
+specify what the default transition should be.
+
+SceneLoader now optionally expects a callback method which can override this default behaviour. This allows
+for different transition types such as the home screen zooming on startup, but sliding on subsequent visits.
+
+All transition code is now encapsulated inside a TransitionBuilder class which can generate some preset
+transitions with limited configurability.
