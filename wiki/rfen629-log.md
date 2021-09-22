@@ -29,3 +29,8 @@ Raymond Feng (rfen629)
 - Restructured controllers to load data dynamically on screen load.
 - Created game logic inside `Game` class.
 - Created `GameViewModel` to abstract away changes between views/controllers and the model.
+
+## 23 September
+
+- Integrated topic selection with ViewModel and repository.
+- Created more ViewModel methods in preparation for integrating the game section.
