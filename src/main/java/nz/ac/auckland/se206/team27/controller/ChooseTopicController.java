@@ -22,12 +22,15 @@ public class ChooseTopicController extends MenuController {
 
 
     public void clickBack() {
+        // Reset the topic selection to null then go back home
         wordListViewModel.selectTopic(null);
         sceneLoader.loadScreen(ScreenResource.HOME);
     }
 
     public void clickContinue() {
         String selected = listview.getSelectionModel().getSelectedItem();
+
+        // Do nothing if no topic is selected
         if (selected == null) return;
 
         wordListViewModel.selectTopic(selected);

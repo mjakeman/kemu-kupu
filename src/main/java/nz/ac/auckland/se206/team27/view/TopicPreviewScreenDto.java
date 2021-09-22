@@ -5,11 +5,12 @@ package nz.ac.auckland.se206.team27.view;
  *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
-public class TopicPreviewScreenDto {
+public class TopicPreviewScreenDto implements ViewDto {
 
     public final String name;
     public final String description;
     public final ImageDto image;
+
 
     public TopicPreviewScreenDto(String name, String description, ImageDto image) {
         this.name = name;
@@ -24,12 +25,13 @@ public class TopicPreviewScreenDto {
     /**
      * Data object for modelling an image for the topic preview screen.
      */
-    public static class ImageDto {
+    public static class ImageDto implements ViewDto {
 
         public final String creator;
         public final String copyright;
         public final String imgUrl;
         public final String externalLink;
+
 
         public ImageDto(String creator, String copyright, String imgUrl, String externalLink) {
             this.creator = creator;
@@ -37,6 +39,7 @@ public class TopicPreviewScreenDto {
             this.imgUrl = imgUrl;
             this.externalLink = externalLink;
         }
+
     }
 
 }

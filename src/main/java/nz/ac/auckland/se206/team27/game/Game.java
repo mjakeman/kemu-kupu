@@ -7,6 +7,11 @@ import java.util.List;
 
 import static nz.ac.auckland.se206.team27.game.Game.GuessResult.*;
 
+/**
+ * A data model for managing the state of a game.
+ *
+ * @author Raymond Feng (rf.raymondfeng@gmail.com)
+ */
 public class Game {
 
 	/**
@@ -37,24 +42,20 @@ public class Game {
 	// TODO: Move this into the words map once scoring system is complete
 	private int guessCounter = 0;
 
-
 	private static Game _instance = null;
+
 
 	/**
 	 * Returns the current active instance of the game class.
 	 */
 	public static Game getInstance() {
-		if (_instance != null) {
-			return _instance;
-		}
+		if (_instance != null) return _instance;
 
 		throw new IllegalCallerException("No instance of \"game\" has been created yet!");
 	}
 
-	public static Game createInstance(WordList wordList) {
-		Game game = new Game(wordList, 5, 2);
-		_instance = game;
-		return game;
+	public static void createInstance(WordList wordList) {
+		_instance = new Game(wordList, 5, 2);;
 	}
 
 	/**
@@ -98,7 +99,6 @@ public class Game {
 			return REDO;
 		}
 	}
-
 
 	/**
 	 * Checks if there is another word after the current word.
@@ -154,6 +154,9 @@ public class Game {
 	 * Inner types
 	 */
 
+	/**
+	 * A list of results that can be returned at the end of a guess.
+	 */
 	public enum GuessResult {
 
 		REDO,

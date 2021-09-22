@@ -9,9 +9,10 @@ import java.util.Map;
  */
 public class EndGameScreenDto implements ViewDto {
 
-    final int totalScore;
-    final String topic;
-    final Map<String, Integer> wordScores;
+    public final int totalScore;
+    public final String topic;
+    public final Map<String, Integer> wordScores;
+
 
     public EndGameScreenDto(String topic, Map<String, Integer> wordScores) {
         this.topic = topic;

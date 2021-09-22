@@ -27,7 +27,14 @@ public class GameViewModel {
     }
 
     public ResultScreenDto getResultScreenData() {
-        return new ResultScreenDto(currentGame.hasNextWord(), currentGame.getTopic(), currentGame.getCurrentWord());
+        return new ResultScreenDto(currentGame.hasNextWord(),
+                                   currentGame.getTopic(),
+                                   currentGame.getCurrentWord(),
+                                   0,
+                                   0,
+                                   "Good work!",
+                                   null,
+                                   null);
     }
 
     public GameScreenDto getGameScreenData() {

@@ -7,27 +7,17 @@ package nz.ac.auckland.se206.team27.view;
  */
 public class ResultScreenDto implements ViewDto {
 
-    final boolean hasNextWord;
-    final String topic;
-    final String word;
+    public final boolean hasNextWord;
+    public final String topic;
+    public final String word;
 
-    final int currentScore;
-    final int scoreAddedFromLastRound;
+    public final int currentScore;
+    public final int scoreAddedFromLastRound;
 
-    final String encouragingMsg;
-    final String definition;
-    final String imgUrl;
+    public final String encouragingMsg;
+    public final String definition;
+    public final String imgUrl;
 
-
-    /**
-     * Constructor with only basic information needed.
-     *
-     * NB: Use this for assignment 3.
-     */
-    // TODO: Change to initiate score
-    public ResultScreenDto(boolean hasNextWord, String topic, String word) {
-        this(hasNextWord, topic, word, 10, 1, null, null, null);
-    }
 
     /**
      * Constructor with all nice-to-have elements.

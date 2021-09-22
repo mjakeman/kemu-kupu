@@ -31,8 +31,10 @@ public class PreviewTopicController extends MenuController {
     @FXML
     public Hyperlink credit;
 
+
     public void clickBack() {
-        System.out.println("Back to Topic Selection");
+        // Reset topic selection
+        wordListViewModel.selectTopic(null);
         sceneLoader.loadScreen(ScreenResource.CHOOSE_TOPIC);
     }
 

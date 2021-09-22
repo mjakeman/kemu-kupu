@@ -17,8 +17,8 @@ public abstract class BaseController {
     }
 
     /**
-     * Derived classes should override this to specify a default transition to
-     * be played when the view is loaded.
+     * Derived classes should override this to specify a default
+     * transition to be played when the view is loaded.
      */
     public void transitionOnEnter() {}
 
