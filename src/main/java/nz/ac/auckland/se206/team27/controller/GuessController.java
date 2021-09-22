@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import javafx.fxml.FXML;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.game.Game.GuessResult;
 import nz.ac.auckland.se206.team27.view.GameScreenDto;
@@ -41,11 +40,6 @@ public class GuessController extends GameController {
         GameScreenDto data = gameViewModel.getGameScreenData();
         System.out.println("Loaded data: ");
         System.out.println(data);
-    }
-
-    @Override
-    public void transitionOnEnter() {
-
     }
 
 }

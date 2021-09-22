@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
  * Class to manage displaying the {@link Game} model for different screens, as
  * well as manipulating the model for varying view inputs.
  *
- * @author Raymond Feng (rf.raymondfeng)
+ * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public class GameViewModel {
 
