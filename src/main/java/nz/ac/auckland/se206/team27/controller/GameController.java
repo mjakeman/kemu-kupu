@@ -1,7 +1,10 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.game.GameManager;
+import nz.ac.auckland.se206.team27.game.GameManager.SubmitResult;
+import nz.ac.auckland.se206.team27.view.GameScreenDto;
 
+import static nz.ac.auckland.se206.team27.game.GameManager.SubmitResult.REDO;
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
 
 /**
@@ -9,23 +12,46 @@ import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
  */
 public class GameController extends BaseController {
 
+    private final GameManager gameManager = GameManager.getInstance();
+
+
     /**
      * Action executed when "Submit" button is clicked.
      */
     public void clickSubmit() {
-        getNext();
+        SubmitResult result = gameManager.submitWord("test");
+
+        if (result == REDO) {
+            populateViewData();
+            return;
+        }
+
+        sceneLoader.loadScreen(RESULT);
     }
 
     /**
-     * Action executed when "Skip" button is clicked.
+     * Action executed when "Give Up" button is clicked.
      */
     public void clickSkip() {
-        // TODO: Do something to get the next word displayed.
+        gameManager.giveUpOnWord();
+        sceneLoader.loadScreen(RESULT);
     }
 
 
-    private void getNext() {
-        sceneLoader.loadScreen(RESULT);
+    /**
+     * Initialise screen data on load.
+     */
+    public GameController() {
+        populateViewData();
+    }
+
+    /**
+     * Loads the screen data to be used in the view.
+     */
+    private void populateViewData() {
+        GameScreenDto data = gameManager.getGameScreenData();
+        System.out.println("Loaded data: ");
+        System.out.println(data);
     }
 
 }
