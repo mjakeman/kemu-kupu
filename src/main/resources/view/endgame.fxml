@@ -4,16 +4,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
 			stylesheets="@../style/endgameTheme.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
 	<VBox styleClass="root">
 		<Label styleClass="title">Results</Label>
-		<VBox>
+		<HBox styleClass="HBoxSpacing">
 			<Label styleClass="scoreLabel">Words Correct</Label>
 			<Label styleClass="scoreLabel">2 / 5</Label>
-		</VBox>
-		<Button>Back to Home</Button>
+		</HBox>
+		<HBox styleClass="HBoxSpacing">
+			<Button>Back to Home</Button>
+		</HBox>
 	</VBox>
 </AnchorPane>

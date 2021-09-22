@@ -19,3 +19,11 @@ Jordan York (jyor212)
 
     - Creating css files for each view
     - Adjusting FXML files to fit vision
+  
+## 21 September
+
+- Edited styling for Game View and Result View
+
+##22 September
+
+- Edited styling for End Game View to try match mock up images from previous meeting
