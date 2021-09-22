@@ -10,3 +10,13 @@ Button {
 .spacer {
     -fx-min-width: 400px;
 }
+
+.shadow {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
+
+.aside {
+    -fx-background-color: blue;
+    -fx-background-image: url('../media/temp_logo.png');
+    -fx-background-size: cover;
+}
