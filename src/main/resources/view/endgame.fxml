@@ -2,14 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-			xmlns:fx="http://javafx.com/fxml"
-			stylesheets="@../style/endgameTheme.css"
-			fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
-	<VBox styleClass="root">
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns="http://javafx.com/javafx"
+	  xmlns:fx="http://javafx.com/fxml"
+	  stylesheets="@../style/endgameTheme.css"
+	  fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
+	<VBox styleClass="container">
 		<Label styleClass="title">Results</Label>
 		<HBox styleClass="HBoxSpacing">
 			<Label styleClass="scoreLabel">Words Correct</Label>
@@ -19,4 +19,4 @@
 			<Button>Back to Home</Button>
 		</HBox>
 	</VBox>
-</AnchorPane>
+</Pane>
