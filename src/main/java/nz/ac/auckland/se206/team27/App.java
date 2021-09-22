@@ -66,11 +66,7 @@ public class App extends Application {
 
         loadFonts();
 
-        // Add temporary scene
-        Scene scene = new Scene(new AnchorPane(), WIDTH, HEIGHT);
-        scene.setFill(Color.BLACK);
-        stage.setScene(scene);
-
+        stage.setOpacity(0);
         SceneLoader loader = new SceneLoader(primaryStage);
         loader.loadScreen(ScreenResource.HOME, c -> {
             // Normally, home plays a slide and fade transition. On first load,
@@ -82,10 +78,7 @@ public class App extends Application {
 
         stage.show();
 
-        stage.setOpacity(0);
-
-        // Set the stage back to visible after 350 milliseconds to avoid white flash on startup
-        runAfter(() -> stage.setOpacity(1), 350);
+        runAfter(() -> stage.setOpacity(1), 100);
     }
 
     /**
