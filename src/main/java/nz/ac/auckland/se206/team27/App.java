@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.team27;
 
 import java.util.Arrays;
 
+import javafx.animation.Transition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -9,9 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.team27.controller.HomeController;
 import nz.ac.auckland.se206.team27.resource.FontResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
+import nz.ac.auckland.se206.team27.view.TransitionBuilder;
 
 import static nz.ac.auckland.se206.team27.view.ViewConfig.HEIGHT;
 import static nz.ac.auckland.se206.team27.view.ViewConfig.TITLE;
@@ -59,7 +62,13 @@ public class App extends Application {
         stage.setScene(scene);
 
         SceneLoader loader = new SceneLoader(primaryStage);
-        loader.loadScreen(ScreenResource.HOME);
+        loader.loadScreen(ScreenResource.HOME, c -> {
+            // Normally, home plays a slide and fade transition. On first load,
+            // we want to instead play a 'Zoom and Fade' transition.
+            HomeController controller = (HomeController)c;
+            Transition anim = TransitionBuilder.buildZoomAndFadeTransition(controller.root, controller.container);
+            anim.play();
+        });
 
         stage.show();
 

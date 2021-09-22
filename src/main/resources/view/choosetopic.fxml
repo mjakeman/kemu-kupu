@@ -11,7 +11,7 @@
       xmlns:fx="http://javafx.com/fxml"
       stylesheets="@../style/common.css,@../style/menu.css"
       fx:controller="nz.ac.auckland.se206.team27.controller.ChooseTopicController">
-    <VBox styleClass="container">
+    <VBox fx:id="container" styleClass="container">
         <Label styleClass="title,shadow" >Choose Topic</Label>
         <ListView fx:id="listview" prefWidth="400" prefHeight="200" />
         <Label styleClass="spacer" />

@@ -23,7 +23,7 @@
     </rowConstraints>
 
     <!-- Actual content -->
-    <VBox styleClass="container" HBox.hgrow="ALWAYS">
+    <VBox fx:id="container" styleClass="container" HBox.hgrow="ALWAYS">
         <GridPane.columnIndex>0</GridPane.columnIndex>
         <Label>Preferences</Label>
         <Button onAction="#clickBack">Back</Button>
