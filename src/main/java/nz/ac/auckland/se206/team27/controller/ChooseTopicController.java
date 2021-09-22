@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
+import nz.ac.auckland.se206.team27.controller.base.BaseController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.TransitionBuilder;
 
@@ -29,7 +30,7 @@ public class ChooseTopicController extends BaseController {
     }
 
     @Override
-    public void defaultOnEnter() {
+    public void transitionOnEnter() {
         TransitionBuilder.buildSlideAndFadeTransition(container).play();
     }
 

@@ -9,9 +9,15 @@
 <?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
+<<<<<<< HEAD
 			stylesheets="@../style/common.css,@../style/temp.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.GameController">
 	<VBox styleClass="container">
+=======
+			stylesheets="@../style/theme.css"
+			fx:controller="nz.ac.auckland.se206.team27.controller.GuessController">
+	<VBox styleClass="root">
+>>>>>>> Change GameManager.java to GameViewModel.java and restructured Controllers (#12)
 		<Label>Question 1 of 5</Label>
 		<TextField promptText="Enter guess here" />
 		<HBox>

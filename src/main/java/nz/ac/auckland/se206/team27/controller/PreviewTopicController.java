@@ -1,19 +1,17 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.App;
+import nz.ac.auckland.se206.team27.controller.base.BaseController;
 import nz.ac.auckland.se206.team27.resource.ResourceUtil;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.TransitionBuilder;
 
 import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
@@ -50,7 +48,7 @@ public class PreviewTopicController extends BaseController {
     }
 
     @Override
-    public void defaultOnEnter() {
+    public void transitionOnEnter() {
         TransitionBuilder.buildSlideAndFadeTransition(container).play();
     }
 

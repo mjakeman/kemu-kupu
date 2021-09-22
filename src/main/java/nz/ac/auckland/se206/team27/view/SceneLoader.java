@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import nz.ac.auckland.se206.team27.controller.BaseController;
+import nz.ac.auckland.se206.team27.controller.base.BaseController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 
 /**
@@ -21,7 +21,7 @@ public class SceneLoader {
      * A callback method that is called by {@link SceneLoader} once
      * a new view is loaded. This can be used to play 'entry'
      * animations/transitions. Note, this overrides the behaviour
-     * defined in {@link BaseController#defaultOnEnter()}.
+     * defined in {@link BaseController#transitionOnEnter()}.
      */
     @FunctionalInterface
     public interface ScreenLoadCallback {
@@ -52,7 +52,7 @@ public class SceneLoader {
             if (callback != null) {
                 callback.onEnter(controller);
             } else {
-                controller.defaultOnEnter();
+                controller.transitionOnEnter();
             }
 
         } catch (Exception e) {

@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import nz.ac.auckland.se206.team27.game.GameManager;
-import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.view.GameScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.GAME;
@@ -9,10 +8,7 @@ import static nz.ac.auckland.se206.team27.resource.ScreenResource.GAME;
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
-public class ResultController extends BaseController {
-
-    private final GameManager gameManager = GameManager.getInstance();
-
+public class ResultController extends GameController {
 
     /**
      * Action executed when the "Skip" button is clicked.
@@ -29,14 +25,16 @@ public class ResultController extends BaseController {
     }
 
 
-    public ResultController() {
-        populateViewData();
-    }
-
-    private void populateViewData() {
-        GameScreenDto data = gameManager.getGameScreenData();
+    // TODO: Implement this
+    @Override
+    protected void populateViewData() {
+        GameScreenDto data = gameViewModel.getGameScreenData();
         System.out.println("Loaded data: ");
         System.out.println(data);
     }
 
+    @Override
+    public void transitionOnEnter() {
+
+    }
 }
