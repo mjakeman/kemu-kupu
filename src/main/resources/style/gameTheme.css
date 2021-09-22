@@ -4,12 +4,14 @@
  */
 
 .root {
-    -fx-background-color: linear-gradient(to bottom right, #1A2980, #26D0CE);
+    -fx-background-color: #1e2b36;
+    -fx-text-fill: white;
 }
 
 .container {
     -fx-padding: 20px 28px;
     -fx-spacing: 10px;
+    -fx-text-fill: white;
 }
 
 .topic {
@@ -23,10 +25,6 @@
     -fx-text-fill: White;
 }
 
-* {
-    -fx-text-fill: white;
-}
-
 .central {
     -fx-alignment: center;
     -fx-spacing: 10px;
@@ -34,6 +32,10 @@
 
 Slider {
     -fx-scale-x: 0.9px;
+}
+
+* {
+    -fx-text-fill: white;
 }
 
 .rightshift {
