@@ -9,10 +9,10 @@
 			stylesheets="@../style/endgameTheme.css"
 			fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
 	<VBox styleClass="root">
-		<Label>Good work!</Label>
+		<Label styleClass="title">Results</Label>
 		<VBox>
-			<Label>Words Correct</Label>
-			<Label>2 / 5</Label>
+			<Label styleClass="scoreLabel">Words Correct</Label>
+			<Label styleClass="scoreLabel">2 / 5</Label>
 		</VBox>
 		<Button>Back to Home</Button>
 	</VBox>

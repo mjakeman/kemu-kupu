@@ -29,10 +29,6 @@ Button {
     -fx-font-weight: bold;
 }
 
-MenuBar {
-    -fx-background-color: red;
-}
-
 .spacer {
     -fx-min-width: 400px;
 }
