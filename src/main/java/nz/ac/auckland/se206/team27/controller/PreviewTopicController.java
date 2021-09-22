@@ -54,12 +54,12 @@ public class PreviewTopicController extends BaseController {
         TransitionBuilder.buildSlideAndFadeTransition(container).play();
     }
 
-    public void clickBack(ActionEvent actionEvent) {
+    public void clickBack() {
         System.out.println("Back to Topic Selection");
         sceneLoader.loadScreen(ScreenResource.CHOOSE_TOPIC);
     }
 
-    public void clickPlay(ActionEvent actionEvent) {
+    public void clickPlay() {
         System.out.println("Play Game");
         sceneLoader.loadScreen(ScreenResource.GAME);
     }

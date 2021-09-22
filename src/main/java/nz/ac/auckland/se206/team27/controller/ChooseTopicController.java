@@ -43,13 +43,13 @@ public class ChooseTopicController extends BaseController {
         TransitionBuilder.buildSlideAndFadeTransition(container).play();
     }
 
-    public void clickBack(ActionEvent actionEvent) {
+    public void clickBack() {
         System.out.println("Back to Menu");
 
         sceneLoader.loadScreen(ScreenResource.HOME);
     }
 
-    public void clickContinue(ActionEvent actionEvent) {
+    public void clickContinue() {
         System.out.println("Continue");
         sceneLoader.loadScreen(ScreenResource.PREVIEW_TOPIC);
     }
