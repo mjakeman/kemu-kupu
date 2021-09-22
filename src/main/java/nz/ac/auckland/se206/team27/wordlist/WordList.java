@@ -11,17 +11,15 @@ import java.util.Scanner;
 public class WordList {
 
     //Create fields to hold topic title, description and wordlist
-    private String title;
-    private String description;
-    private ArrayList<String> wordList;
+    private final String title;
+    private final String description;
+    private final ArrayList<String> wordList = new ArrayList<>();
+
 
     public WordList(String fileName) throws FileNotFoundException {
         //Locate file of topic
         String filePath = new File("").getAbsolutePath() + "/words/" + fileName;
         File topicFile = new File(filePath);
-
-        //Set wordlist to be new
-        wordList = new ArrayList<String>();
 
         //Create string to hold each word in the list
         String wordForLoop;
@@ -53,6 +51,10 @@ public class WordList {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
 }
