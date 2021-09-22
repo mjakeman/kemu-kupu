@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.team27.controller.base;
 
+import javafx.fxml.FXML;
 import nz.ac.auckland.se206.team27.game.Game;
 import nz.ac.auckland.se206.team27.game.GameViewModel;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
@@ -8,9 +9,11 @@ public abstract class GameController extends BaseController {
 
     protected final GameViewModel gameViewModel = new GameViewModel(Game.getInstance());
 
-    public GameController() {
-
-        // Populate any dynamic data required for the corresponding view
+    /**
+     * Initialize the application with the dynamic view data.
+     */
+    @FXML
+    public void initialize() {
         populateViewData();
     }
 

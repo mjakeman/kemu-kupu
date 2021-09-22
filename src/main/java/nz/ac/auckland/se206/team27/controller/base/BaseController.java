@@ -11,6 +11,7 @@ public abstract class BaseController {
 
     protected final SceneLoader sceneLoader;
 
+
     public BaseController() {
         this.sceneLoader = new SceneLoader(App.getMainStage());
     }
@@ -19,7 +20,7 @@ public abstract class BaseController {
      * Derived classes should override this to specify a default transition to
      * be played when the view is loaded.
      */
-    public abstract void transitionOnEnter();
+    public void transitionOnEnter() {}
 
     /**
      * Closes the application.

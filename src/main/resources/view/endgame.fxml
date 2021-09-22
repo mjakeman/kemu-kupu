@@ -6,15 +6,9 @@
 <?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
-<<<<<<< HEAD
 			stylesheets="@../style/common.css,@../style/temp.css"
-			fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
+			fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
 	<VBox styleClass="container">
-=======
-			stylesheets="@../style/theme.css"
-			fx:controller="nz.ac.auckland.se206.team27.controller.base.BaseController">
-	<VBox styleClass="root">
->>>>>>> Change GameManager.java to GameViewModel.java and restructured Controllers (#12)
 		<Label>Good work!</Label>
 		<VBox>
 			<Label>Words Correct</Label>

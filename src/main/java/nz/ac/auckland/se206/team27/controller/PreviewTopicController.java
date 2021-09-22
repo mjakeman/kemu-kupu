@@ -47,11 +47,6 @@ public class PreviewTopicController extends BaseController {
         credit.setOnAction(event -> App.openWebPage("https://commons.wikimedia.org/wiki/File:University_of_Auckland_Clock_Tower.jpg"));
     }
 
-    @Override
-    public void transitionOnEnter() {
-        TransitionBuilder.buildSlideAndFadeTransition(container).play();
-    }
-
     public void clickBack() {
         System.out.println("Back to Topic Selection");
         sceneLoader.loadScreen(ScreenResource.CHOOSE_TOPIC);
@@ -61,4 +56,10 @@ public class PreviewTopicController extends BaseController {
         System.out.println("Play Game");
         sceneLoader.loadScreen(ScreenResource.GAME);
     }
+
+    @Override
+    public void transitionOnEnter() {
+        TransitionBuilder.buildSlideAndFadeTransition(container).play();
+    }
+
 }

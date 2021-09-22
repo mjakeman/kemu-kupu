@@ -12,8 +12,4 @@ public class EndGameController extends GameController {
         System.out.println("Load data");
     }
 
-    @Override
-    public void transitionOnEnter() {
-
-    }
 }

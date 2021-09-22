@@ -33,8 +33,4 @@ public class ResultController extends GameController {
         System.out.println(data);
     }
 
-    @Override
-    public void transitionOnEnter() {
-
-    }
 }
