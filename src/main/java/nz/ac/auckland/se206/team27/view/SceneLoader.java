@@ -49,10 +49,11 @@ public class SceneLoader {
 
             // Configure controller
             BaseController controller = loader.getController();
-            if (callback != null)
+            if (callback != null) {
                 callback.onEnter(controller);
-            else
+            } else {
                 controller.defaultOnEnter();
+            }
 
         } catch (Exception e) {
             System.err.println("[Error] Could not load screen: " + screen.name() + ", caused by: " + e);
