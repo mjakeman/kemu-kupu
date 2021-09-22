@@ -6,10 +6,8 @@ import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
@@ -26,10 +24,10 @@ public class HomeController extends BaseController implements Initializable {
     public Label title;
 
     @FXML
-    public AnchorPane root;
+    public Pane root;
 
     @FXML
-    public HBox container;
+    public VBox container;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

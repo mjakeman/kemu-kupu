@@ -20,8 +20,6 @@ import java.util.ResourceBundle;
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
 public class ChooseTopicController extends BaseController implements Initializable {
-    @FXML
-    public Label title;
 
     @FXML
     public ListView<String> listview;
@@ -30,7 +28,6 @@ public class ChooseTopicController extends BaseController implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        title.textProperty().set(ViewConfig.TITLE);
         listview.setItems(model);
     }
 
