@@ -2,9 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 
@@ -12,21 +9,12 @@
 	  xmlns:fx="http://javafx.com/fxml"
 	  stylesheets="@../style/common.css,@../style/menu.css"
 	  fx:controller="nz.ac.auckland.se206.team27.controller.HomeController">
-	<HBox styleClass="container">
-		<!-- TODO: Only this part changes between menu views - Share logic somehow? -->
-		<VBox>
-			<Label fx:id="title" styleClass="title,shadow" />
-			<Button styleClass="menu-btn" onAction="#clickNewGame">New Game</Button>
-			<Button styleClass="menu-btn" onAction="#clickPractice" disable="true">Practice Mode</Button>
-			<Button styleClass="menu-btn" onAction="#clickPreferences">Preferences</Button>
-			<Button styleClass="menu-btn" onAction="#clickQuit">Quit</Button>
-			<Label styleClass="spacer" />
-		</VBox>
-		<VBox>
-			<ImageView>
-				<Image url="@../media/temp_logo.png" requestedWidth="300" requestedHeight="500" />
-			</ImageView>
-		</VBox>
-	</HBox>
-
+	<VBox styleClass="container">
+		<Label fx:id="title" styleClass="title,shadow" />
+		<Button styleClass="menu-btn" onAction="#clickNewGame">New Game</Button>
+		<Button styleClass="menu-btn" onAction="#clickPractice" disable="true">Practice Mode</Button>
+		<Button styleClass="menu-btn" onAction="#clickPreferences">Preferences</Button>
+		<Button styleClass="menu-btn" onAction="#clickQuit">Quit</Button>
+		<Label styleClass="spacer" />
+	</VBox>
 </Pane>
