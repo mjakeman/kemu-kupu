@@ -112,3 +112,7 @@ for different transition types such as the home screen zooming on startup, but s
 
 All transition code is now encapsulated inside a TransitionBuilder class which can generate some preset
 transitions with limited configurability.
+
+### Meeting
+Second team meeting [(minutes)](minutes-22-09-21.md). We made a list of oustanding tasks and action points, as well as some design decisions after
+Tuesday's design lecture. I was able to get my transitions PR reviewed and merged it after a few changes.
