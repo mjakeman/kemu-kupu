@@ -57,6 +57,7 @@ public class SceneLoader {
 
         } catch (Exception e) {
             System.err.println("[Error] Could not load screen: " + screen.name() + ", caused by: " + e);
+            e.printStackTrace();
         }
     }
 
