@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.application.Platform;
 import nz.ac.auckland.se206.team27.App;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 
@@ -9,7 +10,6 @@ import nz.ac.auckland.se206.team27.view.SceneLoader;
 public class BaseController {
 
     protected final SceneLoader sceneLoader;
-
 
     public BaseController() {
         this.sceneLoader = new SceneLoader(App.getMainStage());
@@ -25,7 +25,7 @@ public class BaseController {
      * Closes the application.
      */
     protected void closeApplication() {
-
+        Platform.exit();
     }
 
 }
