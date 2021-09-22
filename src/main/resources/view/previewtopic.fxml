@@ -9,10 +9,11 @@
 
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Hyperlink?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          stylesheets="@../style/common.css,@../style/temp.css"
-          fx:controller="nz.ac.auckland.se206.team27.controller.PreferencesController">
+          stylesheets="@../style/common.css,@../style/menu.css"
+          fx:controller="nz.ac.auckland.se206.team27.controller.PreviewTopicController">
     <!-- Create a 2-column, 1-row layout to show two panes side by side-->
     <columnConstraints>
         <ColumnConstraints hgrow="ALWAYS" percentWidth="50"/>
@@ -23,13 +24,18 @@
     </rowConstraints>
 
     <!-- Actual content -->
-    <VBox fx:id="container" styleClass="container" HBox.hgrow="ALWAYS">
+    <VBox fx:id="container" styleClass="container">
         <GridPane.columnIndex>0</GridPane.columnIndex>
-        <Label>Preferences</Label>
-        <Button onAction="#clickBack">Back</Button>
+        <Label fx:id="title" styleClass="title,shadow"/>
+        <Label fx:id="blurb" styleClass="blurb,shadow" wrapText="true" maxWidth="350"/>
+        <Label styleClass="spacer"/>
+        <HBox spacing="10">
+            <Button onAction="#clickBack">Back</Button>
+            <Button onAction="#clickPlay">Play</Button>
+        </HBox>
     </VBox>
-    <AnchorPane styleClass="aside">
+    <AnchorPane fx:id="image" styleClass="aside">
         <GridPane.columnIndex>1</GridPane.columnIndex>
-        <Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit</Label>
+        <Hyperlink fx:id="credit" styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit</Hyperlink>
     </AnchorPane>
 </GridPane>

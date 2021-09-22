@@ -13,6 +13,18 @@ public enum ScreenResource implements Resource {
     HOME("home.fxml"),
 
     /**
+     * Allows the user to select a topic from a list of topics,
+     * or pick a random topic to play with.
+     */
+    CHOOSE_TOPIC("choosetopic.fxml"),
+
+    /**
+     * Shows the topic title, description (blurb), and allows the
+     * user to confirm or go back to the selection screen.
+     */
+    PREVIEW_TOPIC("previewtopic.fxml"),
+
+    /**
      * Displayed when a user is prompted to enter the spelling of a word.
      */
     GAME("game.fxml"),

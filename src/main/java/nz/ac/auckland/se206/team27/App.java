@@ -2,15 +2,20 @@ package nz.ac.auckland.se206.team27;
 
 import java.util.Arrays;
 
+import javafx.animation.Transition;
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.team27.controller.HomeController;
 import nz.ac.auckland.se206.team27.resource.FontResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
+import nz.ac.auckland.se206.team27.view.TransitionBuilder;
 
 import static nz.ac.auckland.se206.team27.view.ViewConfig.HEIGHT;
 import static nz.ac.auckland.se206.team27.view.ViewConfig.TITLE;
@@ -23,7 +28,7 @@ import static nz.ac.auckland.se206.team27.view.ViewConfig.WIDTH;
 public class App extends Application {
 
     private static Stage stage;
-
+    private static HostServices hostServices;
 
     /**
      * Returns the main stage.
@@ -33,11 +38,20 @@ public class App extends Application {
     }
 
     /**
+     * Opens a web page in the system web browser
+     * @param url The website to open
+     */
+    public static void openWebPage(String url) {
+        hostServices.showDocument(url);
+    }
+
+    /**
      * Function that is run to start the application.
      */
     @Override
     public void start(Stage primaryStage) {
         stage = primaryStage;
+        hostServices = getHostServices();
 
         primaryStage.setTitle(String.format("%s (%s)", TITLE, VERSION));
 
@@ -53,10 +67,18 @@ public class App extends Application {
         loadFonts();
 
         // Add temporary scene
-        stage.setScene(new Scene(new AnchorPane()));
+        Scene scene = new Scene(new AnchorPane(), WIDTH, HEIGHT);
+        scene.setFill(Color.BLACK);
+        stage.setScene(scene);
 
         SceneLoader loader = new SceneLoader(primaryStage);
-        loader.loadScreen(ScreenResource.HOME);
+        loader.loadScreen(ScreenResource.HOME, c -> {
+            // Normally, home plays a slide and fade transition. On first load,
+            // we want to instead play a 'Zoom and Fade' transition.
+            HomeController controller = (HomeController)c;
+            Transition anim = TransitionBuilder.buildZoomAndFadeTransition(controller.root, controller.container);
+            anim.play();
+        });
 
         stage.show();
 
