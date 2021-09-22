@@ -24,3 +24,8 @@ Raymond Feng (rfen629)
 - Put in practice nifty Java 8 feature of using streams to do list processing
 - Built this functionality of top of Jordan's `WordList` class.
 
+## 22 September
+
+- Restructured controllers to load data dynamically on screen load.
+- Created game logic inside `Game` class.
+- Created `GameViewModel` to abstract away changes between views/controllers and the model.
