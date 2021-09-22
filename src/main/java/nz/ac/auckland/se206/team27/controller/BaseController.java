@@ -16,6 +16,12 @@ public class BaseController {
     }
 
     /**
+     * Derived classes should override this to specify a default
+     * transition to be played when the view is loaded.
+     */
+    public void defaultOnEnter() {}
+
+    /**
      * Closes the application.
      */
     protected void closeApplication() {

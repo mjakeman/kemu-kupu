@@ -23,7 +23,7 @@
     </rowConstraints>
 
     <!-- Actual content -->
-    <VBox styleClass="container">
+    <VBox fx:id="container" styleClass="container">
         <GridPane.columnIndex>0</GridPane.columnIndex>
         <Label fx:id="title" styleClass="title,shadow"/>
         <Label fx:id="blurb" styleClass="blurb,shadow" wrapText="true" maxWidth="350"/>
