@@ -8,8 +8,14 @@
 }
 
 .container {
-    -fx-padding: 120px 200px;
+    -fx-padding: 100px 200px;
     -fx-alignment: center;
+}
+
+.encouragement {
+    -fx-font: 14px Inter;
+    -fx-text-fill: White;
+    -fx-font-weight: bold;
 }
 
 .title {
@@ -33,6 +39,12 @@ Button {
 
 .spacer {
     -fx-min-width: 400px;
+}
+
+.centralPadding {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+    -fx-padding: 0px 70px;
 }
 
 .HBoxSpacing {

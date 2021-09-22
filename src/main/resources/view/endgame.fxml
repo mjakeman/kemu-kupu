@@ -16,6 +16,7 @@
 			<Label styleClass="scoreLabel">2 / 5</Label>
 		</HBox>
 		<HBox styleClass="HBoxSpacing">
+			<Button onAction="#clickAgain">Play Again</Button>
 			<Button>Back to Home</Button>
 		</HBox>
 	</VBox>

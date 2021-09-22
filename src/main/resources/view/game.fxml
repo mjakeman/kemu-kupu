@@ -2,14 +2,12 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.geometry.Insets?>
 <Pane xmlns="http://javafx.com/javafx"
 	  xmlns:fx="http://javafx.com/fxml"
 	  stylesheets="@../style/gameTheme.css"
@@ -19,7 +17,7 @@
 		<VBox styleClass="central">
 			<HBox alignment="CENTER_LEFT">
 				<Label styleClass="title">Question 1 of 5: </Label>
-				<VBox styleClass="central">
+				<VBox styleClass="centralPadding">
 				<Button alignment="CENTER_RIGHT">Play word again</Button>
 				<HBox styleClass="rightshift">
 					<fx:define>
@@ -36,7 +34,7 @@
 				</VBox>
 			</HBox>
 		</VBox>
-		<VBox styleClass="central">
+		<VBox styleClass="centralGap">
 		<TextField promptText="Enter guess here" alignment="CENTER"/>
 		<HBox alignment="CENTER">
 			<Button>ā</Button>

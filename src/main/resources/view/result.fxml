@@ -11,8 +11,11 @@
 	  fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
 	<VBox styleClass="container">
 		<Label styleClass="title">Correct</Label>
+		<Label styleClass="encouragement">Keep up the good work!</Label>
 			<Label styleClass="scoreLabel">Current score:</Label>
 			<Label styleClass="scoreLabel">5</Label>
+			<Label styleClass="scoreLabel">Total Round Score:</Label>
+			<Label styleClass="scoreLabel">42</Label>
 		<HBox styleClass="HBoxSpacing">
 			<Button onAction="#clickTryAgain">Try again</Button>
 			<Button onAction="#clickSkip">(skip)</Button>

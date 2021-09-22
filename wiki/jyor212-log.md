@@ -26,4 +26,9 @@ Jordan York (jyor212)
 
 ##22 September
 
-- Edited styling for End Game View to try match mock up images from previous meeting
+- Edited styling for End Game View to try match mock up images from previous meeting.
+- Had another meeting with team and further tasks were delegated and completed including:
+  - Adding 'Play Again' button in End Game View
+  - Adding encouragement message to Results View
+  - Altering spacing of buttons and labels in Game View
+  - Switch speed slider to toggle buttons

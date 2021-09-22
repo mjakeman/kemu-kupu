@@ -9,7 +9,7 @@
 }
 
 .container {
-    -fx-padding: 20px 28px;
+    -fx-padding: 20px 24px;
     -fx-spacing: 10px;
     -fx-text-fill: white;
 }
@@ -30,12 +30,32 @@
     -fx-spacing: 10px;
 }
 
+.centralPadding {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+    -fx-padding: 0px 70px;
+}
+
+.centralGap {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+    -fx-padding: 50px 0px;
+}
+
 Slider {
     -fx-scale-x: 0.9px;
 }
 
 * {
     -fx-text-fill: white;
+}
+
+ToggleButton {
+    -fx-padding: 5px 30px;
+    -fx-text-fill: black;
+    -fx-font: 12px Inter;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
 }
 
 .rightshift {
