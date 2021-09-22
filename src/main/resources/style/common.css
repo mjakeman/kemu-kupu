@@ -16,8 +16,7 @@ Button {
 }
 
 .aside {
-    -fx-background-color: blue;
-    -fx-background-image: url('../media/temp_logo.png');
+    -fx-background-color: #444d8d;
     -fx-background-size: cover;
 }
 
@@ -25,4 +24,8 @@ Button {
     -fx-background-color: rgba(0,0,0,0.8);
     -fx-text-fill: white;
     -fx-padding: 5px;
+}
+
+Hyperlink.image-credit {
+    -fx-underline: true;
 }

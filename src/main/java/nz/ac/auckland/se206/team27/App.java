@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import javafx.animation.Transition;
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -27,7 +28,7 @@ import static nz.ac.auckland.se206.team27.view.ViewConfig.WIDTH;
 public class App extends Application {
 
     private static Stage stage;
-
+    private static HostServices hostServices;
 
     /**
      * Returns the main stage.
@@ -37,11 +38,20 @@ public class App extends Application {
     }
 
     /**
+     * Opens a web page in the system web browser
+     * @param url The website to open
+     */
+    public static void openWebPage(String url) {
+        hostServices.showDocument(url);
+    }
+
+    /**
      * Function that is run to start the application.
      */
     @Override
     public void start(Stage primaryStage) {
         stage = primaryStage;
+        hostServices = getHostServices();
 
         primaryStage.setTitle(String.format("%s (%s)", TITLE, VERSION));
 
