@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
-public class HomeController extends BaseController implements Initializable {
+public class HomeController extends BaseController {
 
     @FXML
     public Label title;
@@ -30,8 +30,8 @@ public class HomeController extends BaseController implements Initializable {
     @FXML
     public VBox container;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         title.textProperty().set(ViewConfig.TITLE);
     }
 

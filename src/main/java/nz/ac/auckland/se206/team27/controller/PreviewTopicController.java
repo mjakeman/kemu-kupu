@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
-public class PreviewTopicController extends BaseController implements Initializable {
+public class PreviewTopicController extends BaseController {
 
     @FXML
     public Label title;
@@ -35,8 +35,8 @@ public class PreviewTopicController extends BaseController implements Initializa
     @FXML
     public Hyperlink credit;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         String topicName = "Topic: Engineering";
         String topicDescription = "The application of scientific and mathematical principles to practical ends such as the design, manufacture, and operation of efficient and economical structures, machines, processes, and systems.";
 

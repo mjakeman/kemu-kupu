@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
-public class ChooseTopicController extends BaseController implements Initializable {
+public class ChooseTopicController extends BaseController {
 
     @FXML
     public ListView<String> listview;
@@ -33,8 +33,8 @@ public class ChooseTopicController extends BaseController implements Initializab
 
     private final ObservableList<String> model = FXCollections.observableArrayList("Random Topic");
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         listview.setItems(model);
     }
 
