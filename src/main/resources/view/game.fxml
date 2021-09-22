@@ -7,6 +7,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.geometry.Insets?>
 <Pane xmlns="http://javafx.com/javafx"
 	  xmlns:fx="http://javafx.com/fxml"
 	  stylesheets="@../style/gameTheme.css"
@@ -16,13 +19,21 @@
 		<VBox styleClass="central">
 			<HBox alignment="CENTER_LEFT">
 				<Label styleClass="title">Question 1 of 5: </Label>
-				<HBox styleClass="rightshift">
+				<VBox styleClass="central">
 				<Button alignment="CENTER_RIGHT">Play word again</Button>
-				<Label>1x</Label>
-				<Label>0.2x speed</Label>
-				<Slider min="0.2" max="2"/>
-				<Label>2x speed</Label>
+				<HBox styleClass="rightshift">
+					<fx:define>
+						<ToggleGroup fx:id="group" />
+					</fx:define>
+
+					<ToggleButton fx:id="radioButton" text="Slow" toggleGroup="$group">
+					</ToggleButton>
+					<ToggleButton fx:id="radioButton2" text="Normal" toggleGroup="$group" selected="true">
+					</ToggleButton>
+					<ToggleButton fx:id="radioButton3" text="Fast" toggleGroup="$group">
+					</ToggleButton>
 				</HBox>
+				</VBox>
 			</HBox>
 		</VBox>
 		<VBox styleClass="central">
