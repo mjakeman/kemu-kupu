@@ -1,0 +1,30 @@
+package nz.ac.auckland.se206.team27.controller.base;
+
+import javafx.fxml.FXML;
+import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.wordlist.WordListViewModel;
+
+/**
+ * @author Raymond Feng (rf.raymondfeng@gmail.com)
+ */
+public abstract class MenuController extends BaseController {
+
+    protected WordListViewModel wordListViewModel = WordListViewModel.getInstance();
+
+
+    /**
+     * Initialize the application with the dynamic view data.
+     */
+    // TODO: Do something about this both `MenuController` and `GameController` having this duplicated code fragment
+    @FXML
+    public void initialize() {
+        populateViewData();
+    }
+
+    /**
+     * populates the {@link ScreenResource} associated with the current
+     * Controller with any dynamic data it may need.
+     */
+    protected abstract void populateViewData();
+
+}

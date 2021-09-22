@@ -5,16 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-import nz.ac.auckland.se206.team27.controller.base.BaseController;
+import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.TransitionBuilder;
-
-// TODO: Extend some kind of shared 'MenuController'
 
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
-public class ChooseTopicController extends BaseController {
+public class ChooseTopicController extends MenuController {
 
     @FXML
     public ListView<String> listview;
@@ -22,11 +20,18 @@ public class ChooseTopicController extends BaseController {
     @FXML
     public VBox container;
 
-    private final ObservableList<String> topicList = FXCollections.observableArrayList("Random Topic");
 
-    @FXML
-    public void initialize() {
-        listview.setItems(topicList);
+    public void clickBack() {
+        wordListViewModel.selectTopic(null);
+        sceneLoader.loadScreen(ScreenResource.HOME);
+    }
+
+    public void clickContinue() {
+        String selected = listview.getSelectionModel().getSelectedItem();
+        if (selected == null) return;
+
+        wordListViewModel.selectTopic(selected);
+        sceneLoader.loadScreen(ScreenResource.PREVIEW_TOPIC);
     }
 
     @Override
@@ -34,14 +39,10 @@ public class ChooseTopicController extends BaseController {
         TransitionBuilder.buildSlideAndFadeTransition(container).play();
     }
 
-    public void clickBack() {
-        System.out.println("Back to Menu");
-
-        sceneLoader.loadScreen(ScreenResource.HOME);
+    @Override
+    protected void populateViewData() {
+        ObservableList<String> topicList = FXCollections.observableArrayList(wordListViewModel.getTopics());
+        listview.setItems(topicList);
     }
 
-    public void clickContinue() {
-        System.out.println("Continue");
-        sceneLoader.loadScreen(ScreenResource.PREVIEW_TOPIC);
-    }
 }
