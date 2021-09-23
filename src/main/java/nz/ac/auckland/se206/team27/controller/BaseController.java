@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.team27.controller;
 
 import javafx.application.Platform;
 import nz.ac.auckland.se206.team27.App;
+import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 
 /**
@@ -26,6 +27,10 @@ public class BaseController {
      */
     protected void closeApplication() {
         Platform.exit();
+    }
+
+    public void clickAgain() {
+        sceneLoader.loadScreen(ScreenResource.GAME);
     }
 
 }

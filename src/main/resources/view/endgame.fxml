@@ -2,18 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-			xmlns:fx="http://javafx.com/fxml"
-			stylesheets="@../style/common.css,@../style/temp.css"
-			fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns="http://javafx.com/javafx"
+	  xmlns:fx="http://javafx.com/fxml"
+	  stylesheets="@../style/endgameTheme.css"
+	  fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
 	<VBox styleClass="container">
-		<Label>Good work!</Label>
-		<VBox>
-			<Label>Words Correct</Label>
-			<Label>2 / 5</Label>
-		</VBox>
-		<Button>Back to Home</Button>
+		<Label styleClass="title">Results</Label>
+		<HBox styleClass="hbox-spacing">
+			<Label styleClass="score-label">Words Correct</Label>
+			<Label styleClass="score-label">2 / 5</Label>
+		</HBox>
+		<HBox styleClass="hbox-spacing">
+			<Button onAction="#clickAgain">Play Again</Button>
+			<Button>Back to Home</Button>
+		</HBox>
 	</VBox>
-</AnchorPane>
+</Pane>
