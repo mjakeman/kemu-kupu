@@ -6,9 +6,6 @@ import javafx.animation.Transition;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.team27.controller.HomeController;
@@ -66,11 +63,7 @@ public class App extends Application {
 
         loadFonts();
 
-        // Add temporary scene
-        Scene scene = new Scene(new AnchorPane(), WIDTH, HEIGHT);
-        scene.setFill(Color.BLACK);
-        stage.setScene(scene);
-
+        stage.setOpacity(0);
         SceneLoader loader = new SceneLoader(primaryStage);
         loader.loadScreen(ScreenResource.HOME, c -> {
             // Normally, home plays a slide and fade transition. On first load,
@@ -82,10 +75,7 @@ public class App extends Application {
 
         stage.show();
 
-        stage.setOpacity(0);
-
-        // Set the stage back to visible after 350 milliseconds to avoid white flash on startup
-        runAfter(() -> stage.setOpacity(1), 350);
+        runAfter(() -> stage.setOpacity(1), 100);
     }
 
     /**

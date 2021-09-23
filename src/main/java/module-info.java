@@ -7,4 +7,5 @@ module kemu.kupu.main {
 
     exports nz.ac.auckland.se206.team27;
     exports nz.ac.auckland.se206.team27.controller;
+    exports nz.ac.auckland.se206.team27.controller.base;
 }

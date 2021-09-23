@@ -3,9 +3,14 @@ package nz.ac.auckland.se206.team27.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import nz.ac.auckland.se206.team27.controller.BaseController;
+import nz.ac.auckland.se206.team27.controller.base.BaseController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
+
+import static nz.ac.auckland.se206.team27.view.ViewConfig.HEIGHT;
+import static nz.ac.auckland.se206.team27.view.ViewConfig.WIDTH;
 
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
@@ -21,7 +26,7 @@ public class SceneLoader {
      * A callback method that is called by {@link SceneLoader} once
      * a new view is loaded. This can be used to play 'entry'
      * animations/transitions. Note, this overrides the behaviour
-     * defined in {@link BaseController#defaultOnEnter()}.
+     * defined in {@link BaseController#transitionOnEnter()}.
      */
     @FunctionalInterface
     public interface ScreenLoadCallback {
@@ -31,6 +36,13 @@ public class SceneLoader {
 
     public SceneLoader(Stage stage) {
         this.stage = stage;
+
+        // Add root scene if no scene was previously set
+        if (stage.getScene() == null) {
+            Scene scene = new Scene(new AnchorPane(), WIDTH, HEIGHT);
+            scene.setFill(Color.BLACK);
+            stage.setScene(scene);
+        }
     }
 
     /**
@@ -52,11 +64,12 @@ public class SceneLoader {
             if (callback != null) {
                 callback.onEnter(controller);
             } else {
-                controller.defaultOnEnter();
+                controller.transitionOnEnter();
             }
 
         } catch (Exception e) {
             System.err.println("[Error] Could not load screen: " + screen.name() + ", caused by: " + e);
+            e.printStackTrace();
         }
     }
 

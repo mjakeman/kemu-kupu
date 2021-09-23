@@ -5,15 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
+import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.TransitionBuilder;
-
-// TODO: Extend some kind of shared 'MenuController'
 
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
-public class ChooseTopicController extends BaseController {
+public class ChooseTopicController extends MenuController {
 
     @FXML
     public ListView<String> listview;
@@ -21,26 +20,32 @@ public class ChooseTopicController extends BaseController {
     @FXML
     public VBox container;
 
-    private final ObservableList<String> topicList = FXCollections.observableArrayList("Random Topic");
-
-    @FXML
-    public void initialize() {
-        listview.setItems(topicList);
-    }
-
-    @Override
-    public void defaultOnEnter() {
-        TransitionBuilder.buildSlideAndFadeTransition(container).play();
-    }
 
     public void clickBack() {
-        System.out.println("Back to Menu");
-
+        // Reset the topic selection to null then go back home
+        wordListViewModel.selectTopic(null);
         sceneLoader.loadScreen(ScreenResource.HOME);
     }
 
     public void clickContinue() {
-        System.out.println("Continue");
+        String selected = listview.getSelectionModel().getSelectedItem();
+
+        // Do nothing if no topic is selected
+        if (selected == null) return;
+
+        wordListViewModel.selectTopic(selected);
         sceneLoader.loadScreen(ScreenResource.PREVIEW_TOPIC);
     }
+
+    @Override
+    public void transitionOnEnter() {
+        TransitionBuilder.buildSlideAndFadeTransition(container).play();
+    }
+
+    @Override
+    protected void populateViewData() {
+        ObservableList<String> topicList = FXCollections.observableArrayList(wordListViewModel.getTopics());
+        listview.setItems(topicList);
+    }
+
 }

@@ -8,7 +8,7 @@
 <Pane xmlns="http://javafx.com/javafx"
 	  xmlns:fx="http://javafx.com/fxml"
 	  stylesheets="@../style/endgameTheme.css"
-	  fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
+	  fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
 	<VBox styleClass="container">
 		<Label styleClass="title">Results</Label>
 		<HBox styleClass="hbox-spacing">
