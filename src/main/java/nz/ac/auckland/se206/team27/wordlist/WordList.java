@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27;
+package nz.ac.auckland.se206.team27.wordlist;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,16 +8,16 @@ import java.util.Scanner;
 /**
  * @author Jordan York (jyor212@aucklanduni.ac.nz)
  */
-
 public class WordList {
+
     //Create fields to hold topic title, description and wordlist
     private String title;
     private String description;
     private ArrayList<String> wordList;
 
-    public WordList(String topic) throws FileNotFoundException {
+    public WordList(String fileName) throws FileNotFoundException {
         //Locate file of topic
-        String filePath = new File("").getAbsolutePath() + "/words/" + topic + ".txt";
+        String filePath = new File("").getAbsolutePath() + "/words/" + fileName;
         File topicFile = new File(filePath);
 
         //Set wordlist to be new
@@ -50,4 +50,9 @@ public class WordList {
         //Retrieve wordlist
         return wordList;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
 }

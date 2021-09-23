@@ -17,3 +17,10 @@ Raymond Feng (rfen629)
 ## 18 September
 
 - Brainstormed with team on implementing the view and next steps
+
+## 19 September
+
+- Added functionality to retrieve multiple topics and wordlists from a `words` directory.
+- Put in practice nifty Java 8 feature of using streams to do list processing
+- Built this functionality of top of Jordan's `WordList` class.
+
