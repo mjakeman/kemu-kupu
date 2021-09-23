@@ -24,7 +24,7 @@ Jordan York (jyor212)
 
 - Edited styling for Game View and Result View
 
-##22 September
+## 22 September
 
 - Edited styling for End Game View to try match mock up images from previous meeting.
 - Had another meeting with team and further tasks were delegated and completed including:
@@ -32,3 +32,8 @@ Jordan York (jyor212)
   - Adding encouragement message to Results View
   - Altering spacing of buttons and labels in Game View
   - Switch speed slider to toggle buttons
+  
+## 23 Septemeber
+
+- Sent code for other developers to review and have altered code to any changes they recommend.
+- Created wordlist text files for topics

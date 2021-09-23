@@ -14,19 +14,19 @@
 
 .encouragement {
     -fx-font: 14px Inter;
-    -fx-text-fill: White;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
 .title {
     -fx-font: 40px Inter;
-    -fx-text-fill: White;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
-.scoreLabel {
+.score-label {
     -fx-font: 18px Inter;
-    -fx-text-fill: White;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
@@ -41,13 +41,13 @@ Button {
     -fx-min-width: 400px;
 }
 
-.centralPadding {
+.central-padding {
     -fx-alignment: center;
     -fx-spacing: 10px;
     -fx-padding: 0px 70px;
 }
 
-.HBoxSpacing {
+.hbox-spacing {
     -fx-spacing: 10px;
     -fx-alignment: center;
 }

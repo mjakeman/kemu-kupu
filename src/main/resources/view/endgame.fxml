@@ -11,11 +11,11 @@
 	  fx:controller="nz.ac.auckland.se206.team27.controller.BaseController">
 	<VBox styleClass="container">
 		<Label styleClass="title">Results</Label>
-		<HBox styleClass="HBoxSpacing">
-			<Label styleClass="scoreLabel">Words Correct</Label>
-			<Label styleClass="scoreLabel">2 / 5</Label>
+		<HBox styleClass="hbox-spacing">
+			<Label styleClass="score-label">Words Correct</Label>
+			<Label styleClass="score-label">2 / 5</Label>
 		</HBox>
-		<HBox styleClass="HBoxSpacing">
+		<HBox styleClass="hbox-spacing">
 			<Button onAction="#clickAgain">Play Again</Button>
 			<Button>Back to Home</Button>
 		</HBox>

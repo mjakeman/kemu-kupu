@@ -17,7 +17,7 @@
 		<VBox styleClass="central">
 			<HBox alignment="CENTER_LEFT">
 				<Label styleClass="title">Question 1 of 5: </Label>
-				<VBox styleClass="centralPadding">
+				<VBox styleClass="central-padding">
 				<Button alignment="CENTER_RIGHT">Play word again</Button>
 				<HBox styleClass="rightshift">
 					<fx:define>
@@ -34,7 +34,7 @@
 				</VBox>
 			</HBox>
 		</VBox>
-		<VBox styleClass="centralGap">
+		<VBox styleClass="central-gap">
 		<TextField promptText="Enter guess here" alignment="CENTER"/>
 		<HBox alignment="CENTER">
 			<Button>ā</Button>

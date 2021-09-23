@@ -16,13 +16,13 @@
 
 .topic {
     -fx-font: 40px Inter;
-    -fx-text-fill: White;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
 .title {
     -fx-font: 24px Inter;
-    -fx-text-fill: White;
+    -fx-text-fill: white;
 }
 
 .central {
@@ -30,13 +30,13 @@
     -fx-spacing: 10px;
 }
 
-.centralPadding {
+.central-padding {
     -fx-alignment: center;
     -fx-spacing: 10px;
     -fx-padding: 0px 70px;
 }
 
-.centralGap {
+.central-gap {
     -fx-alignment: center;
     -fx-spacing: 10px;
     -fx-padding: 50px 0px;

@@ -14,13 +14,13 @@
 
 .title {
     -fx-font: 40px Inter;
-    -fx-text-fill: White;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
 .scoreLabel {
     -fx-font: 18px Inter;
-    -fx-text-fill: White;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
@@ -35,7 +35,7 @@ Button {
     -fx-min-width: 400px;
 }
 
-.HBoxSpacing {
+.hbox-spacing {
     -fx-spacing: 10px;
     -fx-alignment: center;
 }
