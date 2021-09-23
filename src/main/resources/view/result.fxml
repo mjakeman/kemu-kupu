@@ -18,7 +18,7 @@
 			<Label styleClass="score-label">42</Label>
 		<HBox styleClass="hbox-spacing">
 			<Button onAction="#clickTryAgain">Try again</Button>
-			<Button onAction="#clickSkip">(skip)</Button>
+			<Button onAction="#clickNext">(skip)</Button>
 		</HBox>
 	</VBox>
 </Pane>
