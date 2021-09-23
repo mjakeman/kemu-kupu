@@ -2,19 +2,23 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-			xmlns:fx="http://javafx.com/fxml"
-			stylesheets="@../style/common.css,@../style/temp.css"
-			fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns="http://javafx.com/javafx"
+	  xmlns:fx="http://javafx.com/fxml"
+	  stylesheets="@../style/resultTheme.css"
+	  fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
 	<VBox styleClass="container">
-		<Label>If at times you don't succeed, try and try again</Label>
-		<VBox>
-			<Label>Current score:</Label>
-			<Label>5</Label>
-		</VBox>
-		<Button onAction="#clickTryAgain">Try again</Button>
-		<Button onAction="#clickSkip">(skip)</Button>
+		<Label styleClass="title">Correct</Label>
+		<Label styleClass="encouragement">Keep up the good work!</Label>
+			<Label styleClass="score-label">Current score:</Label>
+			<Label styleClass="score-label">5</Label>
+			<Label styleClass="score-label">Total Round Score:</Label>
+			<Label styleClass="score-label">42</Label>
+		<HBox styleClass="hbox-spacing">
+			<Button onAction="#clickTryAgain">Try again</Button>
+			<Button onAction="#clickSkip">(skip)</Button>
+		</HBox>
 	</VBox>
-</AnchorPane>
+</Pane>
