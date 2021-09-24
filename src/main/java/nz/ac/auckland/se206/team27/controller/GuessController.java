@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -13,10 +12,10 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
-import nz.ac.auckland.se206.team27.speech.SpeedUtil;
 import nz.ac.auckland.se206.team27.view.GameScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
+import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
@@ -91,29 +90,36 @@ public class GuessController extends GameController {
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
 
-        new Thread(() -> {
-            try {
-                Thread.sleep(1000L);
-                Platform.runLater(() -> sayWord(data.word));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
+        runAfterDelay(() -> sayWord(data.word), 1000L);
     }
 
     /**
      * Says a word while disabling the "Play again" button.
      */
     private void sayWord(String word) {
-        float currentSpeed = SpeedUtil.getSpeedFromString(((ToggleButton) toggleGroupSpeed.getSelectedToggle()).getText());
+        ToggleButton selectedToggle = (ToggleButton) toggleGroupSpeed.getSelectedToggle();
+        float currentSpeed = getSpeedFromString(selectedToggle.getText());
 
         buttonPlayWord.setDisable(true);
 
         Task<Void> task = SpeechManager.getInstance().talk(word, currentSpeed);
 
-        EventHandler<WorkerStateEvent> setEnabled = (T) -> Platform.runLater(() -> buttonPlayWord.setDisable(false));
+        EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> buttonPlayWord.setDisable(false), 200L);
         task.setOnSucceeded(setEnabled);
         task.setOnFailed(setEnabled);
+    }
+
+    /**
+     * @return the corresponding numeric speed value based on its string value.
+     */
+    // TODO: Rethink this
+    private static float getSpeedFromString(String speed) {
+        switch (speed.toUpperCase()) {
+            case "SLOW": return 0.5f;
+            case "FAST": return 1.5f;
+            case "NORMAL":
+            default: return 1f;
+        }
     }
 
 }
