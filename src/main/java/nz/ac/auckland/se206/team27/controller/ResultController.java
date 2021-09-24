@@ -27,6 +27,9 @@ public class ResultController extends GameController {
     @FXML
     public Button btnNext;
 
+    @FXML
+    public Label labelEncouragement;
+
 
     /**
      * Action executed when the "Skip" button is clicked.
@@ -44,15 +47,56 @@ public class ResultController extends GameController {
     protected void populateViewData() {
         ResultScreenDto data = gameViewModel.getResultScreenData();
 
-        String resultText = (data.resultFromLastRound == RoundResult.PASSED || data.resultFromLastRound == RoundResult.FAULTED) ?
-                "Correct!" : (data.resultFromLastRound == RoundResult.SKIPPED) ? "Skipped" : "Incorrect :(";
-        labelResult.setText(resultText);
+        ResultText resultText = new ResultText(data.resultFromLastRound);
+        labelResult.setText(resultText.resultMsg);
+        labelEncouragement.setText(resultText.encouragingMsg);
 
         labelTotalScore.setText("" + data.currentScore);
-        labelPlusScore.setText("" + data.scoreAddedFromLastRound);
+        labelPlusScore.setText(String.format("(+%d from last round)", data.scoreAddedFromLastRound));
 
         String btnText = (data.hasNextWord) ? "Next Word" : "See Results";
         btnNext.setText(btnText);
+    }
+
+    /*
+     * Inner types
+     */
+
+    /**
+     * Data class for representing the text displayed from a {@link RoundResult}.
+     */
+    private static final class ResultText {
+
+        final public String resultMsg;
+        final public String encouragingMsg;
+
+
+        /**
+         * Returns the corresponding encouraging message and result.
+         */
+        public ResultText(RoundResult result) {
+            switch (result) {
+                case PASSED:
+                    resultMsg = "Correct!";
+                    encouragingMsg = "Ka pai! On the first try";
+                    break;
+                case FAULTED:
+                    resultMsg = "Correct!";
+                    encouragingMsg = "Not bad, keep it up!";
+                    break;
+                case FAILED:
+                    resultMsg = "Incorrect :(";
+                    encouragingMsg = "Keep putting in the mahi, you'll get it one day!";
+                    break;
+                case SKIPPED:
+                    resultMsg = "Skipped";
+                    encouragingMsg = "You can always come back to it later :)";
+                    break;
+                default:
+                    throw new IllegalArgumentException();
+            }
+        }
+
     }
 
 }

@@ -10,7 +10,7 @@
 	  stylesheets="@../style/endgameTheme.css"
 	  fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
 	<VBox styleClass="container">
-		<Label styleClass="title">Results</Label>
+		<Label fx:id="labelTitle" styleClass="title" />
 		<HBox styleClass="hbox-spacing">
 			<Label styleClass="score-label">Total Score: </Label>
 			<Label styleClass="score-label" fx:id="labelTotalScore" />

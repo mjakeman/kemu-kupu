@@ -18,7 +18,6 @@ public class ResultScreenDto implements ViewDto {
     public final int currentScore;
     public final int scoreAddedFromLastRound;
 
-    public final String encouragingMsg;
     public final String definition;
     public final String imgUrl;
 
@@ -34,14 +33,12 @@ public class ResultScreenDto implements ViewDto {
                            RoundResult resultFromLastRound,
                            int currentScore,
                            int scoreAddedFromLastRound,
-                           String encouragingMsg,
                            String definition,
                            String imgUrl) {
         this.hasNextWord = hasNextWord;
         this.topic = topic;
         this.word = word;
         this.resultFromLastRound = resultFromLastRound;
-        this.encouragingMsg = encouragingMsg;
         this.definition = definition;
         this.imgUrl = imgUrl;
         this.currentScore = currentScore;

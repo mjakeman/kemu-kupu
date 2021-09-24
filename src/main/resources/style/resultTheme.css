@@ -24,7 +24,7 @@
     -fx-font-weight: bold;
 }
 
-.score-container * {
+.score-container > HBox > Label {
     -fx-font: 18px Inter;
     -fx-text-fill: white;
 }
@@ -34,14 +34,12 @@
 }
 
 .score-label-total {
-    -fx-font-weight: bold;
-    -fx-padding: 0 10px 0 0;
+    -fx-font-weight: bold !important;
     -fx-alignment: baseline-center;
 }
 
 .score-label-current {
-    -fx-font-size: 14px;
-    -fx-text-fill: white;
+    -fx-font-size: 12px;
     -fx-alignment: baseline-center;
 }
 

@@ -11,6 +11,9 @@ public class EndGameController extends GameController {
     @FXML
     public Label labelTotalScore;
 
+    @FXML
+    public Label labelTitle;
+
 
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
@@ -24,6 +27,7 @@ public class EndGameController extends GameController {
     @Override
     protected void populateViewData() {
         EndGameScreenDto data = gameViewModel.getEndGameScreenData();
+        labelTitle.setText("Results for: " + data.topic);
         labelTotalScore.setText("" + data.totalScore);
     }
 

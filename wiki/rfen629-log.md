@@ -38,3 +38,4 @@ Raymond Feng (rfen629)
 ## 24 September
 
 - Merged Jordan's changes into a new branch and started work on integrating game logic and game views
+- Implemented a scoring feature and encouraging messages

@@ -13,7 +13,7 @@
 }
 
 .title {
-    -fx-font: 40px Inter;
+    -fx-font: 30px Inter;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }

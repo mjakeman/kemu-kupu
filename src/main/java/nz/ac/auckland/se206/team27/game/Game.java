@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.team27.game;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import nz.ac.auckland.se206.team27.wordlist.WordList;
 
@@ -18,38 +19,20 @@ public class Game {
     private final String topic;
 
     /**
-     * List of words to be tested in this game.
-     */
-    private final List<String> words;
-
-    /**
-     * Original wordlist used to start the game.
+     * The word list that was used to generate this game.
      */
     private final WordList wordList;
+
+    /**
+     * List of rounds to be tested in this game.
+     */
+    private final List<Round> rounds;
 
     /**
      * The index value of the current word (if counter is -1, the game has not
      * started yet).
      */
-    private int wordIndex = 0;
-
-    /**
-     * The maximum number of guesses allowed per word, before the word is marked
-     * as failed.
-     */
-    private final int maxGuesses;
-
-    /**
-     * The number of guesses that have currently been made.
-     */
-    // TODO: Move this into the words map once scoring system is complete
-    private int guessCounter = 0;
-
-    /**
-     * The result of the last round.
-     */
-    // TODO: Move this into the words map once scoring system is complete
-    private RoundResult lastRoundResult = null;
+    private int roundIndex = 0;
 
     private static Game _instance = null;
 
@@ -75,42 +58,36 @@ public class Game {
      * this side effect rather than consuming more memory.
      */
     private Game(WordList wordList, int wordCount, int maxGuesses) {
-        this.maxGuesses = maxGuesses;
         topic = wordList.getTitle();
-
         this.wordList = wordList;
 
         // Shuffle the wordlist to randomise word selection
         List<String> allWords = wordList.getWordList();
         Collections.shuffle(allWords);
-        words = allWords.subList(0, Math.min(wordCount, allWords.size()));
+        rounds = allWords.subList(0, Math.min(wordCount, allWords.size())).stream()
+                .map((word) -> new Round(word, maxGuesses))
+                .collect(Collectors.toList());
 
         _instance = this;
     }
 
     /**
-     * Returns the current word.
+     * @return The currently active round.
      */
-    public String getCurrentWord() {
-        if (wordIndex >= words.size()) return null;
-
-        return words.get(wordIndex);
+    public Round getCurrentRound() {
+        return rounds.get(roundIndex);
     }
 
-    public int getWordCount() {
-        return words.size();
+    public int getNumberOfRounds() {
+        return rounds.size();
     }
 
-    public int getCurrentWordIndex() {
-        return wordIndex;
+    public int getCurrentRoundIndex() {
+        return roundIndex;
     }
 
     public String getTopic() {
         return topic;
-    }
-
-    public RoundResult getLastRoundResult() {
-        return lastRoundResult;
     }
 
     public WordList getWordList() {
@@ -118,43 +95,17 @@ public class Game {
     }
 
     /**
-     * @return The number of guesses remaining for the current word.
+     * @return The score collected up to this current round.
      */
-    public int getGuessesRemaining() {
-        return maxGuesses - guessCounter;
-    }
-
-    /**
-     * Returns whether a word is the same as the previous word, and if there is
-     * another turn remaining after the guess.
-     *
-     * @return if there is another guess available.
-     */
-    public boolean makeGuess(String word) {
-        guessCounter++;
-        if (getCurrentWord().equalsIgnoreCase(word)) {
-            lastRoundResult = (guessCounter == 1) ? RoundResult.PASSED : RoundResult.FAULTED;
-            return false;
-        } else if (guessCounter >= maxGuesses) {
-            lastRoundResult = RoundResult.FAILED;
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Sets the current word to {@link RoundResult#SKIPPED}.
-     */
-    public void markCurrentWordSkipped() {
-        lastRoundResult = RoundResult.SKIPPED;
+    public int getCumulativeScore() {
+        return rounds.subList(0, roundIndex + 1).stream().mapToInt(Round::getScoreContribution).sum();
     }
 
     /**
      * Checks if there is another word after the current word.
      */
     public Boolean hasNextWord() {
-        return wordIndex + 1 < words.size();
+        return roundIndex + 1 < rounds.size();
     }
 
     /**
@@ -163,10 +114,8 @@ public class Game {
      * @throws IllegalCallerException If no next word exists.
      */
     public void toNextWord() {
-        // Reset guess counter
-        guessCounter = 0;
         if (hasNextWord()) {
-            wordIndex++;
+            roundIndex++;
         } else {
             throw new IllegalCallerException("Could not go to next word, no such word exists!");
         }

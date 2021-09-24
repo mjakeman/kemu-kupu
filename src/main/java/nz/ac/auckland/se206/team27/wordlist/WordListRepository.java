@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.team27.wordlist;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +30,10 @@ public class WordListRepository {
                         return new WordList(name);
                     } catch (FileNotFoundException e) {
                         System.err.println("[Error] No word list file exists with name: " + name);
+                        return null;
+                    } catch (IOException e) {
+                        System.err.println("[Error] An unknown IO error occurred");
+                        e.printStackTrace();
                         return null;
                     }
                 }).filter(Objects::nonNull)
