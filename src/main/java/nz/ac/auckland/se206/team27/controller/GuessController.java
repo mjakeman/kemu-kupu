@@ -1,5 +1,11 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import nz.ac.auckland.se206.team27.SpeechManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.game.Game.GuessResult;
 import nz.ac.auckland.se206.team27.view.GameScreenDto;
@@ -12,11 +18,31 @@ import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
  */
 public class GuessController extends GameController {
 
+    @FXML
+    public TextField inputGuess;
+
+    @FXML
+    public Label labelNumbering;
+
+    @FXML
+    public Label labelGuessesRemaining;
+
+
+    /**
+     * Action executed when the "Play Word" button is clicked.
+     */
+    public void clickPlayWord() {
+        String currentWord = gameViewModel.getGameScreenData().word;
+        SpeechManager.getInstance().talk(currentWord);
+    }
+
+
     /**
      * Action executed when "Submit" button is clicked.
      */
     public void clickSubmit() {
-        GuessResult result = gameViewModel.submitWord("test");
+        String guess = inputGuess.getText();
+        GuessResult result = gameViewModel.submitWord(guess);
 
         if (result == REDO) {
             populateViewData();
@@ -24,6 +50,16 @@ public class GuessController extends GameController {
         }
 
         sceneLoader.loadScreen(RESULT);
+    }
+
+    /**
+     * Action executed when a button for a macron input is entered.
+     */
+    public void clickMacronButton(ActionEvent event) {
+        String macronisedChar = ((Button) event.getSource()).getText();
+
+        // TODO: Make macron input anywhere in text field based on current cursor location
+        inputGuess.setText(inputGuess.getText() + macronisedChar);
     }
 
     /**
@@ -38,8 +74,8 @@ public class GuessController extends GameController {
     @Override
     protected void populateViewData() {
         GameScreenDto data = gameViewModel.getGameScreenData();
-        System.out.println("Loaded data: ");
-        System.out.println(data);
+        labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
+        labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
     }
 
 }

@@ -1,6 +1,10 @@
 package nz.ac.auckland.se206.team27;
 
-import java.util.concurrent.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import javafx.concurrent.Task;
 
@@ -21,6 +25,18 @@ public class SpeechManager {
      * any time to be executed, and manipulate/clear the queue as necessary.
      */
     private final ExecutorService executor = new ThreadPoolExecutor(1, 1, 0, TimeUnit.MILLISECONDS, queue);
+
+
+    /**
+     * Returns a single instance of Speech Manager to be used throughout the application.
+     */
+    private static SpeechManager _instance;
+    public static SpeechManager getInstance() {
+        _instance = _instance == null ? new SpeechManager() : _instance;
+        return _instance;
+    }
+
+    private SpeechManager() {}
 
     /**
      * Shutdown the SpeechManager and free the thread pool. Submitting

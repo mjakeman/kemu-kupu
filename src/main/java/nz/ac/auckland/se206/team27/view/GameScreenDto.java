@@ -10,7 +10,7 @@ public class GameScreenDto implements ViewDto {
     public final String topic;
     public final String word;
     public final int wordCount;
-    public final int wordIndex;
+    public final int wordIndexStarting1;
     public final int guessesRemaining;
 
 
@@ -18,7 +18,8 @@ public class GameScreenDto implements ViewDto {
         this.topic = topic;
         this.word = word;
         this.wordCount = wordCount;
-        this.wordIndex = wordIndex;
+        // Incrementing wordIndex by 1 to have this ready for display (1 indexed)
+        this.wordIndexStarting1 = wordIndex + 1;
         this.guessesRemaining = guessesRemaining;
     }
 

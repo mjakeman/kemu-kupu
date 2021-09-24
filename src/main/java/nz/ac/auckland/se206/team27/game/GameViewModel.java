@@ -1,11 +1,11 @@
 package nz.ac.auckland.se206.team27.game;
 
+import java.util.LinkedHashMap;
+
 import nz.ac.auckland.se206.team27.game.Game.GuessResult;
 import nz.ac.auckland.se206.team27.view.EndGameScreenDto;
 import nz.ac.auckland.se206.team27.view.GameScreenDto;
 import nz.ac.auckland.se206.team27.view.ResultScreenDto;
-
-import java.util.LinkedHashMap;
 
 /**
  * Class to manage displaying the {@link Game} model for different screens, as
@@ -54,11 +54,11 @@ public class GameViewModel {
     }
 
     public void giveUpOnWord() {
-        currentGame.getNextWord();
+        currentGame.toNextWord();
     }
 
     public void loadNextWord() {
-        currentGame.getNextWord();
+        currentGame.toNextWord();
     }
 
 }

@@ -1,11 +1,13 @@
 package nz.ac.auckland.se206.team27.game;
 
-import nz.ac.auckland.se206.team27.wordlist.WordList;
-
 import java.util.Collections;
 import java.util.List;
 
-import static nz.ac.auckland.se206.team27.game.Game.GuessResult.*;
+import nz.ac.auckland.se206.team27.wordlist.WordList;
+
+import static nz.ac.auckland.se206.team27.game.Game.GuessResult.CORRECT;
+import static nz.ac.auckland.se206.team27.game.Game.GuessResult.INCORRECT;
+import static nz.ac.auckland.se206.team27.game.Game.GuessResult.REDO;
 
 /**
  * A data model for managing the state of a game.
@@ -91,9 +93,10 @@ public class Game {
 	 * another turn remaining after the guess.
 	 */
 	public GuessResult makeGuess(String word) {
+        guessCounter++;
 		if (getCurrentWord().equalsIgnoreCase(word)) {
 			return CORRECT;
-		} else if (guessCounter > maxGuesses) {
+		} else if (guessCounter >= maxGuesses) {
 			return INCORRECT;
 		} else {
 			return REDO;
@@ -108,17 +111,18 @@ public class Game {
 	}
 
 	/**
-	 * Returns the next word or {@code null} if no more words exist.
+	 * Skips to the next word.
+     *
+     * @throws IllegalCallerException If no next word exists.
 	 */
-	public String getNextWord() {
+	public void toNextWord() {
 		// Reset guess counter
 		guessCounter = 0;
 		if (hasNextWord()) {
 			wordIndex++;
-			return getCurrentWord();
-		}
-
-		return null;
+		} else {
+            throw new IllegalCallerException("Could not go to next word, no such word exists!");
+        }
 	}
 
 	/**
@@ -130,7 +134,7 @@ public class Game {
 
 	/**
 	 *
-	 * @return The current index (1-indexed) of the word.
+	 * @return The current index (0-indexed) of the word.
 	 */
 	public int getCurrentWordIndex() {
 		return wordIndex;

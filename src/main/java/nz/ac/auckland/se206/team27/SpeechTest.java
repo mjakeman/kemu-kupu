@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.team27;
 
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,8 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import javafx.concurrent.Task;
-
 /**
  * Small test program for testing SpeechManager.
  *
@@ -20,7 +19,7 @@ import javafx.concurrent.Task;
  */
 public class SpeechTest extends Application {
 
-    private final SpeechManager speechManager = new SpeechManager();
+    private final SpeechManager speechManager = SpeechManager.getInstance();
 
     /**
      * Function that is run to star the application.
