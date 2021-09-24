@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.game.RoundResult;
-import nz.ac.auckland.se206.team27.view.ResultScreenDto;
+import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.END_GAME;
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.GUESS;

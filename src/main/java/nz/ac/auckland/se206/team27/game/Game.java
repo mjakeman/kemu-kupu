@@ -146,7 +146,7 @@ public class Game {
     /**
      * Sets the current word to {@link RoundResult#SKIPPED}.
      */
-    public void skipCurrentWord() {
+    public void markCurrentWordSkipped() {
         lastRoundResult = RoundResult.SKIPPED;
     }
 

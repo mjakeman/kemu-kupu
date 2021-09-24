@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
-import nz.ac.auckland.se206.team27.view.EndGameScreenDto;
+import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
 
 public class EndGameController extends GameController {
 

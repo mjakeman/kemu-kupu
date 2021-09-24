@@ -12,7 +12,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
-import nz.ac.auckland.se206.team27.view.GameScreenDto;
+import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
 import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
@@ -45,7 +45,7 @@ public class GuessController extends GameController {
      * Action executed when the "Play Word" button is clicked.
      */
     public void clickPlayWord() {
-        String currentWord = gameViewModel.getGameScreenData().word;
+        String currentWord = gameViewModel.getGuessScreenData().word;
         sayWord(currentWord);
     }
 
@@ -54,7 +54,7 @@ public class GuessController extends GameController {
      */
     public void clickSubmit() {
         String guess = inputGuess.getText();
-        boolean redo = gameViewModel.submitWord(guess);
+        boolean redo = gameViewModel.makeGuess(guess);
 
         if (redo) {
             clickPlayWord();
@@ -79,13 +79,13 @@ public class GuessController extends GameController {
      * Action executed when "Give Up" button is clicked.
      */
     public void clickSkip() {
-        gameViewModel.giveUpOnWord();
+        gameViewModel.skipCurrentWord();
         sceneLoader.loadScreen(RESULT);
     }
 
     @Override
     protected void populateViewData() {
-        GameScreenDto data = gameViewModel.getGameScreenData();
+        GuessScreenDto data = gameViewModel.getGuessScreenData();
         labelTopic.setText(data.topic);
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
