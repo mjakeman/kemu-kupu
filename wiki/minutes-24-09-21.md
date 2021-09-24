@@ -38,9 +38,14 @@
 
 # Things Still to Do
 
-* To show the right spelling, after that word round
-* Decide on how presentation will be done - Sunday / Monday
-* Add simple transitions to the other views
-* Find out how to get the jar to read `words` directory when double clicking and make executable
+* @MATT Make Festival say word in Maori
+* @MATT View textbox / button / cursor / keyboard input accessibility improvements
+* @MATT To show the right spelling, after that word round
+* @MATT Add simple transitions to the other views
 * @DELAYED TO PROJECTS: Randomisation of topics
-* Add timer between result screen and next guess screen
+* @RAY Find out how to get the jar to read `words` directory when double clicking and make executable
+* @JORDAN Add timer between result screen and next guess screen
+
+* @EVERYONE Write your report! - Start tomorrow (if you haven't already)
+* @EVERYONE Peer evaluation / team agreement attached in your report
+* @EVERYONE Decide on how presentation will be done - Sunday / Monday
