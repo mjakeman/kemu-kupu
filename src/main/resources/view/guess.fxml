@@ -47,7 +47,8 @@
     <!-- Body -->
     <VBox fx:id="body" styleClass="central" VBox.vgrow="ALWAYS">
         <Label fx:id="labelGuessesRemaining"/>
-        <TextField fx:id="inputGuess" styleClass="text-field" onAction="#clickSubmit" promptText="Enter guess here" alignment="CENTER"/>
+        <TextField fx:id="inputGuess" styleClass="text-field" onAction="#clickSubmit" promptText="Enter guess here"
+                   alignment="CENTER"/>
         <HBox styleClass="macron-button-box" alignment="CENTER">
             <Button styleClass="outline-button" focusTraversable="false" onAction="#clickMacronButton">ā</Button>
             <Button styleClass="outline-button" focusTraversable="false" onAction="#clickMacronButton">ē</Button>
@@ -56,7 +57,11 @@
             <Button styleClass="outline-button" focusTraversable="false" onAction="#clickMacronButton">ū</Button>
         </HBox>
 
-        <Button styleClass="raised-button,submit-button" onAction="#clickSubmit">Submit</Button>
-        <Button styleClass="outline-button,skip-button" onAction="#clickSkip">(skip)</Button>
+        <Button styleClass="raised-button,submit-button" fx:id="buttonSubmit" onAction="#clickSubmit" disable="true">
+            Submit
+        </Button>
+        <Button styleClass="outline-button,skip-button" fx:id="buttonSkip" onAction="#clickSkip" disable="true">
+            (skip)
+        </Button>
     </VBox>
 </VBox>

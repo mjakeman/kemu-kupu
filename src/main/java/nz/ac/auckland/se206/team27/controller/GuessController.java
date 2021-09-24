@@ -50,6 +50,12 @@ public class GuessController extends GameController {
     @FXML
     public VBox body;
 
+    @FXML
+    public Button buttonSubmit;
+
+    @FXML
+    public Button buttonSkip;
+
     /**
      * Action executed when the "Play Word" button is clicked.
      */
@@ -125,12 +131,16 @@ public class GuessController extends GameController {
         float currentSpeed = getSpeedFromString(selectedToggle.getText());
 
         buttonPlayWord.setDisable(true);
+        buttonSubmit.setDisable(true);
+        buttonSkip.setDisable(true);
 
         Task<Void> task = SpeechManager.getInstance().talk(word, currentSpeed);
         buttonPlayWord.setText("Playing...");
 
         EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> {
             buttonPlayWord.setDisable(false);
+            buttonSubmit.setDisable(false);
+            buttonSkip.setDisable(false);
             buttonPlayWord.setText("Play word again");
         }, 200L);
         task.setOnSucceeded(setEnabled);
