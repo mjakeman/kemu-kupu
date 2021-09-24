@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27;
+package nz.ac.auckland.se206.team27.speech;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;

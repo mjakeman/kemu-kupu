@@ -21,14 +21,14 @@
 					<Button alignment="CENTER_RIGHT" onAction="#clickPlayWord">Play word again</Button>
 					<HBox styleClass="rightshift">
 						<fx:define>
-							<ToggleGroup fx:id="group" />
+							<ToggleGroup fx:id="toggleGroupSpeed" />
 						</fx:define>
 
-						<ToggleButton fx:id="radioButton" text="Slow" toggleGroup="$group">
+						<ToggleButton text="Slow" toggleGroup="$toggleGroupSpeed">
 						</ToggleButton>
-						<ToggleButton fx:id="radioButton2" text="Normal" toggleGroup="$group" selected="true">
+						<ToggleButton text="Normal" toggleGroup="$toggleGroupSpeed" selected="true">
 						</ToggleButton>
-						<ToggleButton fx:id="radioButton3" text="Fast" toggleGroup="$group">
+						<ToggleButton text="Fast" toggleGroup="$toggleGroupSpeed">
 						</ToggleButton>
 					</HBox>
 				</VBox>

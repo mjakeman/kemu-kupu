@@ -5,9 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import nz.ac.auckland.se206.team27.SpeechManager;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.game.Game.GuessResult;
+import nz.ac.auckland.se206.team27.speech.SpeechManager;
+import nz.ac.auckland.se206.team27.speech.SpeedUtil;
 import nz.ac.auckland.se206.team27.view.GameScreenDto;
 
 import static nz.ac.auckland.se206.team27.game.Game.GuessResult.REDO;
@@ -27,15 +30,19 @@ public class GuessController extends GameController {
     @FXML
     public Label labelGuessesRemaining;
 
+    @FXML
+    public ToggleGroup toggleGroupSpeed;
+
 
     /**
      * Action executed when the "Play Word" button is clicked.
      */
     public void clickPlayWord() {
         String currentWord = gameViewModel.getGameScreenData().word;
-        SpeechManager.getInstance().talk(currentWord);
-    }
+        float currentSpeed = SpeedUtil.getSpeedFromString(((ToggleButton) toggleGroupSpeed.getSelectedToggle()).getText());
 
+        SpeechManager.getInstance().talk(currentWord, currentSpeed);
+    }
 
     /**
      * Action executed when "Submit" button is clicked.

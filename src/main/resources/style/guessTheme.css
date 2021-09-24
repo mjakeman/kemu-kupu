@@ -65,6 +65,10 @@ Button {
     -fx-alignment: center;
 }
 
+Label {
+    -fx-text-fill: white;
+}
+
 .spacer {
     -fx-min-width: 400px;
 }
