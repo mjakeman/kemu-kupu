@@ -91,6 +91,7 @@ public class ResultController extends GameController {
                 case SKIPPED:
                     resultMsg = "Skipped";
                     encouragingMsg = "You can always come back to it later :)";
+                    break;
                 default:
                     throw new IllegalArgumentException();
             }
