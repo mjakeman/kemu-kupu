@@ -77,7 +77,8 @@ public class GameViewModel implements ViewModel {
      */
 
     public EndGameScreenDto getEndGameScreenData() {
-        return new EndGameScreenDto(currentGame.getTopic(), new LinkedHashMap<>());
+        return new EndGameScreenDto(currentGame.getTopic(),
+                                    currentGame.getCumulativeScore());
     }
 
     public void playAgain() {
