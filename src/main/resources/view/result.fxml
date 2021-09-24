@@ -14,11 +14,11 @@
 		<Label fx:id="labelEncouragement" styleClass="encouragement" />
 
 		<VBox styleClass="score-container">
-			<HBox>
-				<Label styleClass="score-label">Current score: </Label>
-				<Label fx:id="labelTotalScore" styleClass="score-label-total">42</Label>
+			<HBox styleClass="hbox-spacing">
+				<Label styleClass="score-label">Current score:</Label>
+				<Label fx:id="labelTotalScore" styleClass="score-label-total" />
+				<Label fx:id="labelPlusScore" styleClass="score-label-current" />
 			</HBox>
-			<Label fx:id="labelPlusScore" styleClass="score-label-current">(+5 from this word)</Label>
 		</VBox>
 		<HBox styleClass="hbox-spacing">
 			<Button fx:id="btnNext" onAction="#clickNext">(skip)</Button>

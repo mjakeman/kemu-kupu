@@ -52,7 +52,7 @@ public class ResultController extends GameController {
         labelEncouragement.setText(resultText.encouragingMsg);
 
         labelTotalScore.setText("" + data.currentScore);
-        labelPlusScore.setText("" + data.scoreAddedFromLastRound);
+        labelPlusScore.setText(String.format("(+%d from last round)", data.scoreAddedFromLastRound));
 
         String btnText = (data.hasNextWord) ? "Next Word" : "See Results";
         btnNext.setText(btnText);
