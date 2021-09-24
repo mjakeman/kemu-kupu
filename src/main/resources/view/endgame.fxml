@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<Pane xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
 	  xmlns:fx="http://javafx.com/fxml"
-	  stylesheets="@../style/endgameTheme.css"
+	  stylesheets="@../style/common.css,@../style/endgame.css"
 	  fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
 	<VBox styleClass="container">
 		<Label styleClass="title">Results</Label>
@@ -20,4 +20,4 @@
 			<Button onAction="#clickHome">Back to Home</Button>
 		</HBox>
 	</VBox>
-</Pane>
+</VBox>

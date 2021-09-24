@@ -5,23 +5,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<Pane xmlns="http://javafx.com/javafx"
-	  xmlns:fx="http://javafx.com/fxml"
-	  stylesheets="@../style/resultTheme.css"
-	  fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
-	<VBox styleClass="container">
-		<Label fx:id="labelResult" styleClass="title">Correct</Label>
-		<Label styleClass="encouragement">Keep up the good work!</Label>
-
-		<VBox styleClass="score-container">
-			<HBox>
-				<Label styleClass="score-label">Current score: </Label>
-				<Label fx:id="labelTotalScore" styleClass="score-label-total">42</Label>
-			</HBox>
-			<Label fx:id="labelPlusScore" styleClass="score-label-current">(+5 from this word)</Label>
-		</VBox>
-		<HBox styleClass="hbox-spacing">
-			<Button fx:id="btnNext" onAction="#clickNext">(skip)</Button>
-		</HBox>
-	</VBox>
-</Pane>
+<?import javafx.scene.layout.BorderPane?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      stylesheets="@../style/common.css, @../style/result.css"
+      fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
+    <VBox styleClass="container">
+        <Label fx:id="labelResult" styleClass="title">Correct</Label>
+        <Label styleClass="encouragement">Keep up the good work!</Label>
+        <HBox alignment="CENTER">
+            <Label styleClass="score-label">Current score:</Label>
+            <Label fx:id="labelTotalScore" styleClass="score-label-total">42</Label>
+        </HBox>
+        <Label fx:id="labelPlusScore" styleClass="score-label-current">(+5 from this word)</Label>
+        <Button fx:id="btnNext" onAction="#clickNext">(skip)</Button>
+    </VBox>
+</VBox>

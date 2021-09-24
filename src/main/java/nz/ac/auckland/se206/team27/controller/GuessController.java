@@ -71,9 +71,7 @@ public class GuessController extends GameController {
      */
     public void clickMacronButton(ActionEvent event) {
         String macronisedChar = ((Button) event.getSource()).getText();
-
-        // TODO: Make macron input anywhere in text field based on current cursor location
-        inputGuess.setText(inputGuess.getText() + macronisedChar);
+        inputGuess.insertText(inputGuess.getCaretPosition(), macronisedChar);
     }
 
     /**
@@ -101,6 +99,7 @@ public class GuessController extends GameController {
             }
         });
 
+        runAfterDelay(() -> inputGuess.requestFocus(), 50L);
         runAfterDelay(() -> sayWord(data.word), 1000L);
     }
 

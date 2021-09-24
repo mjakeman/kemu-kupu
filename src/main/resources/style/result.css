@@ -13,28 +13,29 @@
 }
 
 .encouragement {
-    -fx-font: 14px Inter;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
 .title {
-    -fx-font: 40px Inter;
+    -fx-font-size: 24pt;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
 .score-container * {
-    -fx-font: 18px Inter;
+    -fx-font-size: 14pt;
     -fx-text-fill: white;
 }
 
 .score-label {
     -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
 .score-label-total {
     -fx-font-weight: bold;
+    -fx-text-fill: white;
     -fx-padding: 0 10px 0 0;
     -fx-alignment: baseline-center;
 }
@@ -48,7 +49,6 @@
 Button {
     -fx-padding: 5px 30px;
     -fx-text-fill: black;
-    -fx-font: 12px Inter;
     -fx-font-weight: bold;
 }
 
@@ -60,9 +60,4 @@ Button {
     -fx-alignment: center;
     -fx-spacing: 10px;
     -fx-padding: 0px 70px;
-}
-
-.hbox-spacing {
-    -fx-spacing: 10px;
-    -fx-alignment: center;
 }
