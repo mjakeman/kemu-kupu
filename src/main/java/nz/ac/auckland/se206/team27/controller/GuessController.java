@@ -103,8 +103,12 @@ public class GuessController extends GameController {
         buttonPlayWord.setDisable(true);
 
         Task<Void> task = SpeechManager.getInstance().talk(word, currentSpeed);
+        buttonPlayWord.setText("Playing...");
 
-        EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> buttonPlayWord.setDisable(false), 200L);
+        EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> {
+            buttonPlayWord.setDisable(false);
+            buttonPlayWord.setText("Play word again");
+        }, 200L);
         task.setOnSucceeded(setEnabled);
         task.setOnFailed(setEnabled);
     }

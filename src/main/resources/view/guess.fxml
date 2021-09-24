@@ -25,8 +25,9 @@
                     alignment="CENTER_RIGHT"
                     onAction="#clickPlayWord"
                     styleClass="raised-button,play-button"
+                    maxWidth="Infinity"
                     disable="true">
-                Play word again
+                Playing...
             </Button>
             <HBox styleClass="speed-button-box">
                 <fx:define>
