@@ -62,6 +62,7 @@ public class GuessController extends GameController {
             return;
         }
 
+        SpeechManager.getInstance().silence();
         sceneLoader.loadScreen(RESULT);
     }
 
@@ -80,6 +81,7 @@ public class GuessController extends GameController {
      */
     public void clickSkip() {
         gameViewModel.skipCurrentWord();
+        SpeechManager.getInstance().silence();
         sceneLoader.loadScreen(RESULT);
     }
 
