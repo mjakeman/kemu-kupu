@@ -45,6 +45,7 @@
 * @DELAYED TO PROJECTS: Randomisation of topics
 * @RAY Find out how to get the jar to read `words` directory when double clicking and make executable
 * @JORDAN Add timer between result screen and next guess screen
+* @JORDAN Make sure our current product is fit for the criteria and brief
 
 * @EVERYONE Write your report! - Start tomorrow (if you haven't already)
 * @EVERYONE Peer evaluation / team agreement attached in your report
