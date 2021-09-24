@@ -28,7 +28,7 @@
                     disable="true">
                 Play word again
             </Button>
-            <HBox>
+            <HBox styleClass="speed-button-box">
                 <fx:define>
                     <ToggleGroup fx:id="toggleGroupSpeed"/>
                 </fx:define>
@@ -46,16 +46,16 @@
     <!-- Body -->
     <VBox styleClass="central" VBox.vgrow="ALWAYS">
         <Label fx:id="labelGuessesRemaining"/>
-        <TextField fx:id="inputGuess" promptText="Enter guess here" alignment="CENTER"/>
+        <TextField fx:id="inputGuess" styleClass="text-field" promptText="Enter guess here" alignment="CENTER"/>
         <HBox styleClass="macron-button-box" alignment="CENTER">
-            <Button styleClass="macron-button" onAction="#clickMacronButton">ā</Button>
-            <Button styleClass="macron-button" onAction="#clickMacronButton">ē</Button>
-            <Button styleClass="macron-button" onAction="#clickMacronButton">ī</Button>
-            <Button styleClass="macron-button" onAction="#clickMacronButton">ō</Button>
-            <Button styleClass="macron-button" onAction="#clickMacronButton">ū</Button>
+            <Button styleClass="outline-button" onAction="#clickMacronButton">ā</Button>
+            <Button styleClass="outline-button" onAction="#clickMacronButton">ē</Button>
+            <Button styleClass="outline-button" onAction="#clickMacronButton">ī</Button>
+            <Button styleClass="outline-button" onAction="#clickMacronButton">ō</Button>
+            <Button styleClass="outline-button" onAction="#clickMacronButton">ū</Button>
         </HBox>
 
         <Button styleClass="raised-button,submit-button" onAction="#clickSubmit">Submit</Button>
-        <Button styleClass="skip-button" onAction="#clickSkip">(skip)</Button>
+        <Button styleClass="outline-button,skip-button" onAction="#clickSkip">(skip)</Button>
     </VBox>
 </VBox>
