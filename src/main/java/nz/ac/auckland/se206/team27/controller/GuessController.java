@@ -90,6 +90,15 @@ public class GuessController extends GameController {
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
 
+        // By default, toggle buttons can be deselected. We want them to behave
+        // more like radio buttons. Thanks to:
+        // https://stackoverflow.com/questions/23629181/making-togglebuttons-behave-like-radiobuttons
+        toggleGroupSpeed.selectedToggleProperty().addListener((value, oldToggle, newToggle) -> {
+            if (newToggle == null) {
+                toggleGroupSpeed.selectToggle(oldToggle);
+            }
+        });
+
         runAfterDelay(() -> sayWord(data.word), 1000L);
     }
 
