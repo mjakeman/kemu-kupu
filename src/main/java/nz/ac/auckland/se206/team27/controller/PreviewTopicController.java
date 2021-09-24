@@ -40,7 +40,7 @@ public class PreviewTopicController extends MenuController {
 
     public void clickPlay() {
         wordListViewModel.startGameWithCurrentTopic();
-        sceneLoader.loadScreen(ScreenResource.GAME);
+        sceneLoader.loadScreen(ScreenResource.GUESS);
     }
 
     @Override

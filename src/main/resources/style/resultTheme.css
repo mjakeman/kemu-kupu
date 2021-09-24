@@ -24,10 +24,25 @@
     -fx-font-weight: bold;
 }
 
-.score-label {
+.score-container * {
     -fx-font: 18px Inter;
     -fx-text-fill: white;
+}
+
+.score-label {
     -fx-font-weight: bold;
+}
+
+.score-label-total {
+    -fx-font-weight: bold;
+    -fx-padding: 0 10px 0 0;
+    -fx-alignment: baseline-center;
+}
+
+.score-label-current {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-alignment: baseline-center;
 }
 
 Button {

@@ -27,7 +27,7 @@ public enum ScreenResource implements Resource {
     /**
      * Displayed when a user is prompted to enter the spelling of a word.
      */
-    GAME("guess.fxml"),
+    GUESS("guess.fxml"),
 
     /**
      * Displayed when the user finishes spelling a word and moves to the next word.

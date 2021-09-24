@@ -13,12 +13,17 @@
 	  stylesheets="@../style/guessTheme.css"
 	  fx:controller="nz.ac.auckland.se206.team27.controller.GuessController">
 	<VBox styleClass="container">
-		<Label styleClass="topic">Topic</Label>
+		<Label styleClass="topic" fx:id="labelTopic" />
 		<VBox styleClass="central">
 			<HBox alignment="CENTER_LEFT">
 				<Label fx:id="labelNumbering" styleClass="title" />
 				<VBox styleClass="central-padding">
-					<Button alignment="CENTER_RIGHT" onAction="#clickPlayWord">Play word again</Button>
+					<Button fx:id="buttonPlayWord"
+							alignment="CENTER_RIGHT"
+							onAction="#clickPlayWord"
+							disable="true">
+						Play word again
+					</Button>
 					<HBox styleClass="rightshift">
 						<fx:define>
 							<ToggleGroup fx:id="toggleGroupSpeed" />

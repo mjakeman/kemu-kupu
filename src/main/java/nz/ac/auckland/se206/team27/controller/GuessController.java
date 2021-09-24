@@ -1,6 +1,10 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,12 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
-import nz.ac.auckland.se206.team27.game.Game.GuessResult;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.speech.SpeedUtil;
 import nz.ac.auckland.se206.team27.view.GameScreenDto;
 
-import static nz.ac.auckland.se206.team27.game.Game.GuessResult.REDO;
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
 
 /**
@@ -33,15 +35,19 @@ public class GuessController extends GameController {
     @FXML
     public ToggleGroup toggleGroupSpeed;
 
+    @FXML
+    public Button buttonPlayWord;
+
+    @FXML
+    public Label labelTopic;
+
 
     /**
      * Action executed when the "Play Word" button is clicked.
      */
     public void clickPlayWord() {
         String currentWord = gameViewModel.getGameScreenData().word;
-        float currentSpeed = SpeedUtil.getSpeedFromString(((ToggleButton) toggleGroupSpeed.getSelectedToggle()).getText());
-
-        SpeechManager.getInstance().talk(currentWord, currentSpeed);
+        sayWord(currentWord);
     }
 
     /**
@@ -49,9 +55,10 @@ public class GuessController extends GameController {
      */
     public void clickSubmit() {
         String guess = inputGuess.getText();
-        GuessResult result = gameViewModel.submitWord(guess);
+        boolean redo = gameViewModel.submitWord(guess);
 
-        if (result == REDO) {
+        if (redo) {
+            clickPlayWord();
             populateViewData();
             return;
         }
@@ -77,12 +84,36 @@ public class GuessController extends GameController {
         sceneLoader.loadScreen(RESULT);
     }
 
-    // TODO: Implement this
     @Override
     protected void populateViewData() {
         GameScreenDto data = gameViewModel.getGameScreenData();
+        labelTopic.setText(data.topic);
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000L);
+                Platform.runLater(() -> sayWord(data.word));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    /**
+     * Says a word while disabling the "Play again" button.
+     */
+    private void sayWord(String word) {
+        float currentSpeed = SpeedUtil.getSpeedFromString(((ToggleButton) toggleGroupSpeed.getSelectedToggle()).getText());
+
+        buttonPlayWord.setDisable(true);
+
+        Task<Void> task = SpeechManager.getInstance().talk(word, currentSpeed);
+
+        EventHandler<WorkerStateEvent> setEnabled = (T) -> Platform.runLater(() -> buttonPlayWord.setDisable(false));
+        task.setOnSucceeded(setEnabled);
+        task.setOnFailed(setEnabled);
     }
 
 }
