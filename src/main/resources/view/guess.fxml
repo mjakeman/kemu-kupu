@@ -47,7 +47,7 @@
     <!-- Body -->
     <VBox styleClass="central" VBox.vgrow="ALWAYS">
         <Label fx:id="labelGuessesRemaining"/>
-        <TextField fx:id="inputGuess" styleClass="text-field" promptText="Enter guess here" alignment="CENTER"/>
+        <TextField fx:id="inputGuess" styleClass="text-field" onAction="#clickSubmit" promptText="Enter guess here" alignment="CENTER"/>
         <HBox styleClass="macron-button-box" alignment="CENTER">
             <Button styleClass="outline-button" focusTraversable="false" onAction="#clickMacronButton">ā</Button>
             <Button styleClass="outline-button" focusTraversable="false" onAction="#clickMacronButton">ē</Button>
