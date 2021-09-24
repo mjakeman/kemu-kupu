@@ -11,7 +11,7 @@
 	  fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
 	<VBox styleClass="container">
 		<Label fx:id="labelResult" styleClass="title">Correct</Label>
-		<Label styleClass="encouragement">Keep up the good work!</Label>
+		<Label fx:id="labelEncouragement" styleClass="encouragement" />
 
 		<VBox styleClass="score-container">
 			<HBox>
