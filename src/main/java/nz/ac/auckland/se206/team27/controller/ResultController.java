@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.team27.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.game.RoundResult;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
@@ -27,6 +28,14 @@ public class ResultController extends GameController {
     @FXML
     public Button btnNext;
 
+    @FXML
+    public Label answer;
+
+    @FXML
+    public VBox answerContainer;
+
+    @FXML
+    public Label encouragement;
 
     /**
      * Action executed when the "Skip" button is clicked.
@@ -44,12 +53,36 @@ public class ResultController extends GameController {
     protected void populateViewData() {
         ResultScreenDto data = gameViewModel.getResultScreenData();
 
-        String resultText = (data.resultFromLastRound == RoundResult.PASSED || data.resultFromLastRound == RoundResult.FAULTED) ?
-                "Correct!" : (data.resultFromLastRound == RoundResult.SKIPPED) ? "Skipped" : "Incorrect :(";
-        labelResult.setText(resultText);
+        switch (data.resultFromLastRound)
+        {
+            case FAULTED:
+            case PASSED:
+            {
+                labelResult.setText("Correct!");
+                answerContainer.getStyleClass().add("answer-correct");
+                encouragement.setText("Keep up the good work!");
+                break;
+            }
+
+            case SKIPPED:
+            {
+                labelResult.setText("Skipped");
+                answerContainer.getStyleClass().add("answer-skipped");
+                encouragement.setText("Give it a go next time!");
+                break;
+            }
+
+            case FAILED:
+            {
+                labelResult.setText("Incorrect :(");
+                encouragement.setText("If at first you don't succeed... try, try, try again.");
+                answerContainer.getStyleClass().add("answer-incorrect");
+            }
+        }
 
         labelTotalScore.setText("" + data.currentScore);
-        labelPlusScore.setText("" + data.scoreAddedFromLastRound);
+        labelPlusScore.setText(String.format("(+%d points from this round)", data.scoreAddedFromLastRound));
+        answer.setText(data.word);
 
         String btnText = (data.hasNextWord) ? "Next Word" : "See Results";
         btnNext.setText(btnText);

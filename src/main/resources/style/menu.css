@@ -6,11 +6,6 @@
     -fx-padding: 20px 40px;
 }
 
-Button {
-    -fx-padding: 5px 30px;
-    -fx-text-fill: black;
-}
-
 Button.menu-btn {
     -fx-font-weight: bold;
     -fx-padding: 10px 15px;
@@ -35,9 +30,7 @@ Button.menu-btn:pressed {
 }
 
 .title {
-    -fx-font-size: 28pt;
     -fx-padding: 35px 0 5px 0;
-    -fx-text-fill: white;
 }
 
 .subtitle {

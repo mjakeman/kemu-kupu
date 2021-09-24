@@ -1,8 +1,3 @@
-/*
- * TODO: Change this file
- * TEMPORARY STYLING
- */
-
 .root {
     -fx-background-color: #1e2b36;
 }
@@ -10,29 +5,13 @@
 .container {
     -fx-padding: 140px 175px;
     -fx-alignment: center;
-}
-
-.title {
-    -fx-font: 40px Inter;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+    -fx-spacing: 20px;
 }
 
 .score-label {
     -fx-font: 18px Inter;
     -fx-text-fill: white;
     -fx-font-weight: bold;
-}
-
-Button {
-    -fx-padding: 5px 30px;
-    -fx-text-fill: black;
-    -fx-font: 12px Inter;
-    -fx-font-weight: bold;
-}
-
-.spacer {
-    -fx-min-width: 400px;
 }
 
 .hbox-spacing {

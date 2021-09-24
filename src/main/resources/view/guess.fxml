@@ -18,7 +18,7 @@
     <HBox styleClass="header">
         <VBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
             <Label styleClass="topic" fx:id="labelTopic"/>
-            <Label fx:id="labelNumbering" styleClass="title"/>
+            <Label fx:id="labelNumbering" styleClass="question"/>
         </VBox>
         <VBox alignment="CENTER_RIGHT">
             <Button fx:id="buttonPlayWord"

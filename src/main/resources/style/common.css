@@ -2,8 +2,14 @@
     -fx-font: 11pt "Inter";
 }
 
-.spacer {
-    /*-fx-min-width: 50%;*/
+Button {
+    -fx-padding: 5px 30px;
+    -fx-text-fill: black;
+}
+
+.title {
+    -fx-font-size: 28pt;
+    -fx-text-fill: white;
 }
 
 .shadow {
