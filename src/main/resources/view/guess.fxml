@@ -8,51 +8,54 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<Pane xmlns="http://javafx.com/javafx"
-	  xmlns:fx="http://javafx.com/fxml"
-	  stylesheets="@../style/guessTheme.css"
-	  fx:controller="nz.ac.auckland.se206.team27.controller.GuessController">
-	<VBox styleClass="container">
-		<Label styleClass="topic" fx:id="labelTopic" />
-		<VBox styleClass="central">
-			<HBox alignment="CENTER_LEFT">
-				<Label fx:id="labelNumbering" styleClass="title" />
-				<VBox styleClass="central-padding">
-					<Button fx:id="buttonPlayWord"
-							alignment="CENTER_RIGHT"
-							onAction="#clickPlayWord"
-							disable="true">
-						Play word again
-					</Button>
-					<HBox styleClass="rightshift">
-						<fx:define>
-							<ToggleGroup fx:id="toggleGroupSpeed" />
-						</fx:define>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      stylesheets="@../style/common.css,@../style/game.css"
+      fx:controller="nz.ac.auckland.se206.team27.controller.GuessController">
+    <!-- Header -->
+    <HBox styleClass="header">
+        <VBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+            <Label styleClass="topic" fx:id="labelTopic"/>
+            <Label fx:id="labelNumbering" styleClass="title"/>
+        </VBox>
+        <VBox alignment="CENTER_RIGHT">
+            <Button fx:id="buttonPlayWord"
+                    alignment="CENTER_RIGHT"
+                    onAction="#clickPlayWord"
+                    styleClass="raised-button,play-button"
+                    disable="true">
+                Play word again
+            </Button>
+            <HBox>
+                <fx:define>
+                    <ToggleGroup fx:id="toggleGroupSpeed"/>
+                </fx:define>
 
-						<ToggleButton text="Slow" toggleGroup="$toggleGroupSpeed">
-						</ToggleButton>
-						<ToggleButton text="Normal" toggleGroup="$toggleGroupSpeed" selected="true">
-						</ToggleButton>
-						<ToggleButton text="Fast" toggleGroup="$toggleGroupSpeed">
-						</ToggleButton>
-					</HBox>
-				</VBox>
-			</HBox>
-		</VBox>
-		<VBox styleClass="central-gap">
-			<Label fx:id="labelGuessesRemaining" />
-			<TextField fx:id="inputGuess" promptText="Enter guess here" alignment="CENTER" />
-			<HBox alignment="CENTER">
-				<Button onAction="#clickMacronButton">ā</Button>
-				<Button onAction="#clickMacronButton">ē</Button>
-				<Button onAction="#clickMacronButton">ī</Button>
-				<Button onAction="#clickMacronButton">ō</Button>
-				<Button onAction="#clickMacronButton">ū</Button>
-			</HBox>
+                <ToggleButton text="Slow" toggleGroup="$toggleGroupSpeed">
+                </ToggleButton>
+                <ToggleButton text="Normal" toggleGroup="$toggleGroupSpeed" selected="true">
+                </ToggleButton>
+                <ToggleButton text="Fast" toggleGroup="$toggleGroupSpeed">
+                </ToggleButton>
+            </HBox>
+        </VBox>
+    </HBox>
 
-			<Button onAction="#clickSubmit">Submit</Button>
-			<Button onAction="#clickSkip">(skip)</Button>
+    <!-- Body -->
+    <VBox styleClass="central" VBox.vgrow="ALWAYS">
+        <Label fx:id="labelGuessesRemaining"/>
+        <TextField fx:id="inputGuess" promptText="Enter guess here" alignment="CENTER"/>
+        <HBox styleClass="macron-button-box" alignment="CENTER">
+            <Button styleClass="macron-button" onAction="#clickMacronButton">ā</Button>
+            <Button styleClass="macron-button" onAction="#clickMacronButton">ē</Button>
+            <Button styleClass="macron-button" onAction="#clickMacronButton">ī</Button>
+            <Button styleClass="macron-button" onAction="#clickMacronButton">ō</Button>
+            <Button styleClass="macron-button" onAction="#clickMacronButton">ū</Button>
+        </HBox>
 
-		</VBox>
-	</VBox>
-</Pane>
+        <Button styleClass="raised-button,submit-button" onAction="#clickSubmit">Submit</Button>
+        <Button styleClass="skip-button" onAction="#clickSkip">(skip)</Button>
+    </VBox>
+</VBox>

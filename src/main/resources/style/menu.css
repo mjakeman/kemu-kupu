@@ -6,6 +6,11 @@
     -fx-padding: 20px 40px;
 }
 
+Button {
+    -fx-padding: 5px 30px;
+    -fx-text-fill: black;
+}
+
 Button.menu-btn {
     -fx-font-weight: bold;
     -fx-padding: 10px 15px;

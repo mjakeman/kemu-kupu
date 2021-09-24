@@ -1,0 +1,102 @@
+.root {
+    -fx-background-color: white;
+}
+
+.header {
+    -fx-padding: 24px 40px;
+    -fx-spacing: 10px;
+}
+
+.topic {
+    -fx-font-size: 40px;
+    -fx-padding: 0 0 5px 0;
+}
+
+.title {
+    -fx-font-size: 20px;
+}
+
+.central {
+    -fx-spacing: 10px;
+    -fx-padding: 0 200px;
+    -fx-alignment: center;
+}
+
+.macron-button-box {
+    -fx-spacing: 10px;
+}
+
+.raised-button {
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+
+    -fx-padding: 10px 15px;
+    -fx-alignment: center;
+    -fx-background-insets: 5px 0;
+    -fx-border-insets: 5px 0;
+    -fx-cursor: hand;
+
+
+    -fx-border-width: 0 0 3px 0;
+    -fx-border-style: solid;
+    -fx-border-radius: 4px;
+}
+
+.raised-button:hover {
+    -fx-cursor: hand;
+}
+
+.raised-button:pressed {
+    -fx-border-width: 0;
+}
+
+/* Submit Button Variation */
+.submit-button {
+    -fx-background-color: #33d17a;
+    -fx-border-color: #26a269;
+}
+
+.submit-button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #2ec27e;
+}
+
+.submit-button:pressed {
+    -fx-background-color: #26a269;
+}
+
+/* Play Button Variation */
+.play-button {
+    -fx-background-color: #3584e4;
+    -fx-border-color: #1a5fb4;
+}
+
+.play-button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #1c71d8;
+}
+
+.play-button:pressed {
+    -fx-background-color: #1a5fb4;
+}
+
+.macron-button {
+    -fx-font-size: 12pt;
+    -fx-text-fill: black;
+
+    -fx-padding: 8px;
+    -fx-alignment: center;
+    -fx-background-insets: 5px 0;
+    -fx-border-insets: 5px 0;
+    -fx-cursor: hand;
+
+    -fx-background-color: transparent;
+    -fx-border-color: #deddda;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-radius: 4px;
+}
+
+.skip-button {
+}

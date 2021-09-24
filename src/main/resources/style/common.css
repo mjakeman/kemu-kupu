@@ -2,11 +2,6 @@
     -fx-font: 11pt "Inter";
 }
 
-Button {
-    -fx-padding: 5px 30px;
-    -fx-text-fill: black;
-}
-
 .spacer {
     /*-fx-min-width: 50%;*/
 }
