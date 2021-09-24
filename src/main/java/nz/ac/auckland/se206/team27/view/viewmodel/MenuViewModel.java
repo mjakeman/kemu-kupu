@@ -35,7 +35,8 @@ public class MenuViewModel implements ViewModel {
         return _instance;
     }
 
-    public MenuViewModel(WordListRepository repo) {
+    // TODO: Change to repo singleton with a wordList cache
+    private MenuViewModel(WordListRepository repo) {
         this.wordLists = repo.getWordLists();
     }
 
