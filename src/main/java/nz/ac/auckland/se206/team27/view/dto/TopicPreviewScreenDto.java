@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27.view;
+package nz.ac.auckland.se206.team27.view.dto;
 
 /**
  * Data object for populating the topic preview screen.

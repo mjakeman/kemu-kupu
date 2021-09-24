@@ -23,7 +23,7 @@ public class ChooseTopicController extends MenuController {
 
     public void clickBack() {
         // Reset the topic selection to null then go back home
-        wordListViewModel.selectTopic(null);
+        menuViewModel.selectTopic(null);
         sceneLoader.loadScreen(ScreenResource.HOME);
     }
 
@@ -33,7 +33,7 @@ public class ChooseTopicController extends MenuController {
         // Do nothing if no topic is selected
         if (selected == null) return;
 
-        wordListViewModel.selectTopic(selected);
+        menuViewModel.selectTopic(selected);
         sceneLoader.loadScreen(ScreenResource.PREVIEW_TOPIC);
     }
 
@@ -44,7 +44,7 @@ public class ChooseTopicController extends MenuController {
 
     @Override
     protected void populateViewData() {
-        ObservableList<String> topicList = FXCollections.observableArrayList(wordListViewModel.getTopics());
+        ObservableList<String> topicList = FXCollections.observableArrayList(menuViewModel.getTopics());
         listview.setItems(topicList);
     }
 

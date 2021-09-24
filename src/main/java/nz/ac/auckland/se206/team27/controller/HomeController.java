@@ -46,7 +46,7 @@ public class HomeController extends BaseController {
      */
     public void clickPractice() {
         System.out.println("Practice!");
-        sceneLoader.loadScreen(ScreenResource.GAME);
+        sceneLoader.loadScreen(ScreenResource.GUESS);
     }
 
     /**

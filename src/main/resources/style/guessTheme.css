@@ -5,7 +5,6 @@
 
 .root {
     -fx-background-color: #1e2b36;
-    -fx-text-fill: white;
 }
 
 .container {
@@ -46,10 +45,6 @@ Slider {
     -fx-scale-x: 0.9px;
 }
 
-* {
-    -fx-text-fill: white;
-}
-
 ToggleButton {
     -fx-padding: 5px 30px;
     -fx-text-fill: black;
@@ -68,6 +63,10 @@ Button {
     -fx-font: 12px Inter;
     -fx-font-weight: bold;
     -fx-alignment: center;
+}
+
+Label {
+    -fx-text-fill: white;
 }
 
 .spacer {
