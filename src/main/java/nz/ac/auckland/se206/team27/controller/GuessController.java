@@ -1,5 +1,8 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.animation.ParallelTransition;
+import javafx.animation.Timeline;
+import javafx.animation.Transition;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -10,8 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
+import nz.ac.auckland.se206.team27.view.TransitionBuilder;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
@@ -40,6 +47,8 @@ public class GuessController extends GameController {
     @FXML
     public Label labelTopic;
 
+    @FXML
+    public VBox body;
 
     /**
      * Action executed when the "Play Word" button is clicked.
@@ -81,6 +90,11 @@ public class GuessController extends GameController {
         gameViewModel.skipCurrentWord();
         SpeechManager.getInstance().silence();
         sceneLoader.loadScreen(RESULT);
+    }
+
+    @Override
+    public void transitionOnEnter() {
+        TransitionBuilder.buildSlideAndFadeTransition(body).play();
     }
 
     @Override

@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.game.RoundResult;
+import nz.ac.auckland.se206.team27.view.TransitionBuilder;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.END_GAME;
@@ -37,6 +38,9 @@ public class ResultController extends GameController {
     @FXML
     public Label encouragement;
 
+    @FXML
+    public VBox container;
+
     /**
      * Action executed when the "Skip" button is clicked.
      */
@@ -47,6 +51,11 @@ public class ResultController extends GameController {
         } else {
             sceneLoader.loadScreen(END_GAME);
         }
+    }
+
+    @Override
+    public void transitionOnEnter() {
+        TransitionBuilder.buildSlideAndFadeTransition(container).play();
     }
 
     @Override

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      stylesheets="@../style/common.css,@../style/game.css"
+      stylesheets="@../style/common.css,@../style/guess.css"
       fx:controller="nz.ac.auckland.se206.team27.controller.GuessController">
     <!-- Header -->
     <HBox styleClass="header">
@@ -45,7 +45,7 @@
     </HBox>
 
     <!-- Body -->
-    <VBox styleClass="central" VBox.vgrow="ALWAYS">
+    <VBox fx:id="body" styleClass="central" VBox.vgrow="ALWAYS">
         <Label fx:id="labelGuessesRemaining"/>
         <TextField fx:id="inputGuess" styleClass="text-field" onAction="#clickSubmit" promptText="Enter guess here" alignment="CENTER"/>
         <HBox styleClass="macron-button-box" alignment="CENTER">

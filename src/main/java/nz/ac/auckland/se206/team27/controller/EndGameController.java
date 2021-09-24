@@ -2,8 +2,10 @@ package nz.ac.auckland.se206.team27.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.view.TransitionBuilder;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
 
 public class EndGameController extends GameController {
@@ -11,6 +13,8 @@ public class EndGameController extends GameController {
     @FXML
     public Label labelTotalScore;
 
+    @FXML
+    public VBox container;
 
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
@@ -19,6 +23,11 @@ public class EndGameController extends GameController {
     public void clickPlayAgain() {
         gameViewModel.playAgain();
         sceneLoader.loadScreen(ScreenResource.GUESS);
+    }
+
+    @Override
+    public void transitionOnEnter() {
+        TransitionBuilder.buildSlideAndFadeTransition(container).play();
     }
 
     @Override

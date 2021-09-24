@@ -18,7 +18,7 @@ public class TransitionBuilder {
     public static Transition buildSlideAndFadeTransition(Node container) {
 
         // Fade In
-        Transition fade = buildFadeTransition(container, Duration.seconds(0.6));
+        Transition fade = buildFadeTransition(container, Duration.seconds(0.4));
 
         // Slide Up
         TranslateTransition translate = new TranslateTransition(Duration.seconds(0.2), container);
