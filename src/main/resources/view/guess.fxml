@@ -61,7 +61,7 @@
             Submit
         </Button>
         <Button styleClass="outline-button,skip-button" fx:id="buttonSkip" onAction="#clickSkip" disable="true">
-            (skip)
+            Don't know
         </Button>
     </VBox>
 </VBox>
