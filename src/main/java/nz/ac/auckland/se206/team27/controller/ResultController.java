@@ -114,7 +114,7 @@ public class ResultController extends GameController {
         labelPlusScore.setText(String.format("(+%d points from this round)", data.scoreAddedFromLastRound));
         answer.setText(data.word);
 
-        String btnText = (data.hasNextWord) ? "Next Word" : "See Results";
+        String btnText = (data.hasNextWord) ? "Next Word" : "Results";
 
         nextRoundTimerTask = new TimerTask() {
 
