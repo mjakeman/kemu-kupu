@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.BaseController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
-import nz.ac.auckland.se206.team27.view.TransitionBuilder;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
 
 /**
@@ -30,7 +30,7 @@ public class HomeController extends BaseController {
 
     @Override
     public void transitionOnEnter() {
-        TransitionBuilder.buildSlideAndFadeTransition(container).play();
+        AnimationBuilder.buildSlideAndFadeTransition(container).play();
     }
 
     /**

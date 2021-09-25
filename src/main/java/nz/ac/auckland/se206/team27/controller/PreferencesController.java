@@ -3,7 +3,7 @@ package nz.ac.auckland.se206.team27.controller;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.BaseController;
-import nz.ac.auckland.se206.team27.view.TransitionBuilder;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.HOME;
 
@@ -18,7 +18,7 @@ public class PreferencesController extends BaseController {
 
     @Override
     public void transitionOnEnter() {
-        TransitionBuilder.buildSlideAndFadeTransition(container).play();
+        AnimationBuilder.buildSlideAndFadeTransition(container).play();
     }
 
     /**

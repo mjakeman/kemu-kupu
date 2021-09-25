@@ -1,8 +1,6 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import javafx.animation.ParallelTransition;
-import javafx.animation.Timeline;
-import javafx.animation.Transition;
+import javafx.animation.*;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -13,12 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
-import nz.ac.auckland.se206.team27.view.TransitionBuilder;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
@@ -57,6 +54,13 @@ public class GuessController extends GameController {
     public Button buttonSkip;
 
     /**
+     * When true, this signifies the user should not be able to press enter in the text
+     * field and have it submit their guess. This should be turned on when text to speech
+     * is running.
+     */
+    boolean inhibitAction = true;
+
+    /**
      * Action executed when the "Play Word" button is clicked.
      */
     public void clickPlayWord() {
@@ -68,6 +72,11 @@ public class GuessController extends GameController {
      * Action executed when "Submit" button is clicked.
      */
     public void clickSubmit() {
+
+        if (inhibitAction) {
+            return;
+        }
+
         String guess = inputGuess.getText();
         boolean redo = gameViewModel.makeGuess(guess);
 
@@ -100,7 +109,7 @@ public class GuessController extends GameController {
 
     @Override
     public void transitionOnEnter() {
-        TransitionBuilder.buildSlideAndFadeTransition(body).play();
+        AnimationBuilder.buildSlideAndFadeTransition(body).play();
     }
 
     @Override
@@ -109,6 +118,11 @@ public class GuessController extends GameController {
         labelTopic.setText(data.topic);
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
+
+        if (!data.isFirstGuess) {
+            inputGuess.getStyleClass().add("text-field-incorrect");
+            AnimationBuilder.buildShakeTransition(inputGuess).play();
+        }
 
         // By default, toggle buttons can be deselected. We want them to behave
         // more like radio buttons. Thanks to:
@@ -133,6 +147,7 @@ public class GuessController extends GameController {
         buttonPlayWord.setDisable(true);
         buttonSubmit.setDisable(true);
         buttonSkip.setDisable(true);
+        inhibitAction = true;
 
         Task<Void> task = SpeechManager.getInstance().talk(word, currentSpeed);
         buttonPlayWord.setText("Playing...");
@@ -141,6 +156,8 @@ public class GuessController extends GameController {
             buttonPlayWord.setDisable(false);
             buttonSubmit.setDisable(false);
             buttonSkip.setDisable(false);
+            inhibitAction = false;
+
             buttonPlayWord.setText("Play word again");
         }, 200L);
         task.setOnSucceeded(setEnabled);

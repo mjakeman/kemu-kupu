@@ -99,6 +99,13 @@ public class Round {
     }
 
     /**
+     * @return Whether this is the user's first guess this round.
+     */
+    public boolean isFirstGuess() {
+        return (guessesMade == 0);
+    }
+
+    /**
      * @throws IllegalCallerException if {@link Round#result} is already set.
      */
     private void assertResultNotSet() {

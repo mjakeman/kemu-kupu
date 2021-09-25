@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.App;
 import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
-import nz.ac.auckland.se206.team27.view.TransitionBuilder;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.TopicPreviewScreenDto;
 
 /**
@@ -45,7 +45,7 @@ public class PreviewTopicController extends MenuController {
 
     @Override
     public void transitionOnEnter() {
-        TransitionBuilder.buildSlideAndFadeTransition(container).play();
+        AnimationBuilder.buildSlideAndFadeTransition(container).play();
     }
 
     @Override

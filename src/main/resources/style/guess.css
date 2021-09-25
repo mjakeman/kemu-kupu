@@ -55,9 +55,18 @@ Button {
 .text-field {
     -fx-font-size: 12pt;
 
-    -fx-border-color: #3d3846;
+    -fx-border-color: #5e5c64;
     -fx-border-width: 2px;
     -fx-border-radius: 4px;
+}
+
+.text-field:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.text-field-incorrect {
+    -fx-border-color: #e01b24;
 }
 
 /* Outline Button Styling */
