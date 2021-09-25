@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.team27.wordlist;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,8 +17,18 @@ import java.util.stream.Collectors;
  */
 public class WordListRepository {
 
-    private static final String WORDS_DIRECTORY = "words";
-
+    /**
+     * @return The {@link File} associated with the {@code words} directory.
+     */
+    public static File getWordListDir() throws URISyntaxException {
+        File wordsDir = new File("words");
+        if (wordsDir.isDirectory()) {
+            return wordsDir;
+        }
+        wordsDir = new File(WordList.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath(), "words");
+        System.out.println(wordsDir);
+        return wordsDir;
+    }
 
     /**
      * Returns a map of {@link WordList}s with the key as the list's title.
@@ -42,17 +53,21 @@ public class WordListRepository {
     }
 
     /**
-     * Returns a list of all topics.
+     * @return a list of all topics.
      */
     private List<String> getAllWordListFileNames() {
-        File[] wordListFiles = new File(WORDS_DIRECTORY).listFiles();
+        try {
+            File[] wordListFiles = getWordListDir().listFiles();
 
-        // Is null when the directory does not exist or is not a directory
-        if (wordListFiles == null) {
+            // Is null when the directory does not exist or is not a directory
+            if (wordListFiles == null) {
+                return new ArrayList<>();
+            }
+
+            return Arrays.stream(wordListFiles).map(File::getName).collect(Collectors.toList());
+        } catch (URISyntaxException e) {
             return new ArrayList<>();
         }
-
-        return Arrays.stream(wordListFiles).map(File::getName).collect(Collectors.toList());
     }
 
 }

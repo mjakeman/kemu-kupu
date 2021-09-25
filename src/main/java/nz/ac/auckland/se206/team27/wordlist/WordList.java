@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 /**
@@ -18,8 +19,13 @@ public class WordList {
 
 
     public WordList(String fileName) throws IOException {
-        //Locate file of topic
-        File topicFile = new File("words", fileName);
+        // Locate file of topic
+        File topicFile;
+        try {
+            topicFile = new File(WordListRepository.getWordListDir(), fileName);
+        } catch (URISyntaxException e) {
+            throw new IOException();
+        }
 
         //Create new reader to start reading the file
         BufferedReader fileScanner = new BufferedReader(new FileReader(topicFile));
