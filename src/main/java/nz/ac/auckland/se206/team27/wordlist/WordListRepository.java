@@ -19,7 +19,7 @@ public class WordListRepository {
     /**
      * The directory containing all the word lists.
      */
-    public static File WORDS_DIRECTORY;
+    final public static File WORDS_DIRECTORY;
     static {
         File wordsDir = new File("words");
         if (wordsDir.isDirectory()) {
