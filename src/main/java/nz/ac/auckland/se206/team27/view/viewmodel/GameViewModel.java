@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.team27.view.viewmodel;
 import java.util.LinkedHashMap;
 
 import nz.ac.auckland.se206.team27.game.Game;
+import nz.ac.auckland.se206.team27.game.Round;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
@@ -30,11 +31,13 @@ public class GameViewModel implements ViewModel {
      */
 
     public GuessScreenDto getGuessScreenData() {
+        Round round = currentGame.getCurrentRound();
         return new GuessScreenDto(currentGame.getTopic(),
-                                  currentGame.getCurrentWord(),
-                                  currentGame.getWordCount(),
-                                  currentGame.getCurrentWordIndex(),
-                                  currentGame.getGuessesRemaining());
+                                  round.getWord(),
+                                  currentGame.getNumberOfRounds(),
+                                  currentGame.getCurrentRoundIndex(),
+                                  round.getGuessesRemaining(),
+                                  round.isFirstGuess());
     }
 
     /**
@@ -43,11 +46,11 @@ public class GameViewModel implements ViewModel {
      * @return If another chance for guess is available.
      */
     public boolean makeGuess(String word) {
-        return currentGame.makeGuess(word);
+        return currentGame.getCurrentRound().makeGuess(word);
     }
 
     public void skipCurrentWord() {
-        currentGame.markCurrentWordSkipped();
+        currentGame.getCurrentRound().markSkipped();
     }
 
     /*
@@ -55,15 +58,15 @@ public class GameViewModel implements ViewModel {
      */
 
     public ResultScreenDto getResultScreenData() {
+        Round round = currentGame.getCurrentRound();
         return new ResultScreenDto(currentGame.hasNextWord(),
-                                   currentGame.getTopic(),
-                                   currentGame.getCurrentWord(),
-                                   currentGame.getLastRoundResult(),
-                                   0,
-                                   0,
-                                   "Good work!",
-                                   null,
-                                   null);
+                currentGame.getTopic(),
+                round.getWord(),
+                round.getResult(),
+                currentGame.getCumulativeScore(),
+                round.getScoreContribution(),
+                null,
+                null);
     }
 
     public void loadNextWord() {
@@ -75,7 +78,8 @@ public class GameViewModel implements ViewModel {
      */
 
     public EndGameScreenDto getEndGameScreenData() {
-        return new EndGameScreenDto(currentGame.getTopic(), new LinkedHashMap<>());
+        return new EndGameScreenDto(currentGame.getTopic(),
+                currentGame.getCumulativeScore());
     }
 
     public void playAgain() {

@@ -30,9 +30,7 @@ Button.menu-btn:pressed {
 }
 
 .title {
-    -fx-font-size: 28pt;
     -fx-padding: 35px 0 5px 0;
-    -fx-text-fill: white;
 }
 
 .subtitle {

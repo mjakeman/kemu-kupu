@@ -7,8 +7,9 @@ Button {
     -fx-text-fill: black;
 }
 
-.spacer {
-    /*-fx-min-width: 50%;*/
+.title {
+    -fx-font-size: 28pt;
+    -fx-text-fill: white;
 }
 
 .shadow {

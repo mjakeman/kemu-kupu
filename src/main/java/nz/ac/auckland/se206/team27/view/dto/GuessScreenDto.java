@@ -12,15 +12,16 @@ public class GuessScreenDto implements ViewDto {
     public final int wordCount;
     public final int wordIndexStarting1;
     public final int guessesRemaining;
+    public final boolean isFirstGuess;
 
-
-    public GuessScreenDto(String topic, String word, int wordCount, int wordIndex, int guessesRemaining) {
+    public GuessScreenDto(String topic, String word, int wordCount, int wordIndex, int guessesRemaining, boolean isFirstGuess) {
         this.topic = topic;
         this.word = word;
         this.wordCount = wordCount;
         // Incrementing wordIndex by 1 to have this ready for display (1 indexed)
         this.wordIndexStarting1 = wordIndex + 1;
         this.guessesRemaining = guessesRemaining;
+        this.isFirstGuess = isFirstGuess;
     }
 
 }

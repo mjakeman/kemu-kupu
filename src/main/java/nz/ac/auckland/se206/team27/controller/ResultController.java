@@ -3,8 +3,9 @@ package nz.ac.auckland.se206.team27.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
-import nz.ac.auckland.se206.team27.game.RoundResult;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.END_GAME;
@@ -27,6 +28,17 @@ public class ResultController extends GameController {
     @FXML
     public Button btnNext;
 
+    @FXML
+    public Label answer;
+
+    @FXML
+    public VBox answerContainer;
+
+    @FXML
+    public Label labelEncouragement;
+
+    @FXML
+    public VBox container;
 
     /**
      * Action executed when the "Skip" button is clicked.
@@ -41,15 +53,55 @@ public class ResultController extends GameController {
     }
 
     @Override
+    public void transitionOnEnter() {
+        AnimationBuilder.buildSlideAndFadeTransition(container).play();
+    }
+
+    @Override
     protected void populateViewData() {
         ResultScreenDto data = gameViewModel.getResultScreenData();
 
-        String resultText = (data.resultFromLastRound == RoundResult.PASSED || data.resultFromLastRound == RoundResult.FAULTED) ?
-                "Correct!" : (data.resultFromLastRound == RoundResult.SKIPPED) ? "Skipped" : "Incorrect :(";
-        labelResult.setText(resultText);
+        String encouragingMsg;
+        String resultMsg;
+        String styleClass;
+
+        switch (data.resultFromLastRound)
+        {
+            case PASSED:
+                resultMsg = "Correct!";
+                encouragingMsg = "Ka pai! On the first try";
+                styleClass = "answer-correct";
+                break;
+
+            case FAULTED:
+                resultMsg = "Correct!";
+                encouragingMsg = "Not bad, keep it up!";
+                styleClass = "answer-correct";
+                break;
+
+            case SKIPPED:
+                resultMsg = "Skipped";
+                encouragingMsg = "Give it a go next time!";
+                styleClass = "answer-skipped";
+                break;
+
+            case FAILED:
+                resultMsg = "Incorrect :(";
+                encouragingMsg = "Keep putting in the mahi, you'll get it one day!";
+                styleClass = "answer-incorrect";
+                break;
+
+            default:
+                throw new IllegalArgumentException();
+        }
+
+        labelResult.setText(resultMsg);
+        labelEncouragement.setText(encouragingMsg);
+        answerContainer.getStyleClass().add(styleClass);
 
         labelTotalScore.setText("" + data.currentScore);
-        labelPlusScore.setText("" + data.scoreAddedFromLastRound);
+        labelPlusScore.setText(String.format("(+%d points from this round)", data.scoreAddedFromLastRound));
+        answer.setText(data.word);
 
         String btnText = (data.hasNextWord) ? "Next Word" : "See Results";
         btnNext.setText(btnText);

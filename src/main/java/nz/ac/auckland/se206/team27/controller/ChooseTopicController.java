@@ -7,7 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
-import nz.ac.auckland.se206.team27.view.TransitionBuilder;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
@@ -39,7 +39,7 @@ public class ChooseTopicController extends MenuController {
 
     @Override
     public void transitionOnEnter() {
-        TransitionBuilder.buildSlideAndFadeTransition(container).play();
+        AnimationBuilder.buildSlideAndFadeTransition(container).play();
     }
 
     @Override

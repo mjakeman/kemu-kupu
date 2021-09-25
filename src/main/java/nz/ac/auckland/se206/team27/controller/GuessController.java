@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.animation.*;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -10,8 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
@@ -40,6 +44,21 @@ public class GuessController extends GameController {
     @FXML
     public Label labelTopic;
 
+    @FXML
+    public VBox body;
+
+    @FXML
+    public Button buttonSubmit;
+
+    @FXML
+    public Button buttonSkip;
+
+    /**
+     * When true, this signifies the user should not be able to press enter in the text
+     * field and have it submit their guess. This should be turned on when text to speech
+     * is running.
+     */
+    boolean inhibitAction = true;
 
     /**
      * Action executed when the "Play Word" button is clicked.
@@ -53,6 +72,11 @@ public class GuessController extends GameController {
      * Action executed when "Submit" button is clicked.
      */
     public void clickSubmit() {
+
+        if (inhibitAction) {
+            return;
+        }
+
         String guess = inputGuess.getText();
         boolean redo = gameViewModel.makeGuess(guess);
 
@@ -62,6 +86,7 @@ public class GuessController extends GameController {
             return;
         }
 
+        SpeechManager.getInstance().silence();
         sceneLoader.loadScreen(RESULT);
     }
 
@@ -70,9 +95,7 @@ public class GuessController extends GameController {
      */
     public void clickMacronButton(ActionEvent event) {
         String macronisedChar = ((Button) event.getSource()).getText();
-
-        // TODO: Make macron input anywhere in text field based on current cursor location
-        inputGuess.setText(inputGuess.getText() + macronisedChar);
+        inputGuess.insertText(inputGuess.getCaretPosition(), macronisedChar);
     }
 
     /**
@@ -80,7 +103,13 @@ public class GuessController extends GameController {
      */
     public void clickSkip() {
         gameViewModel.skipCurrentWord();
+        SpeechManager.getInstance().silence();
         sceneLoader.loadScreen(RESULT);
+    }
+
+    @Override
+    public void transitionOnEnter() {
+        AnimationBuilder.buildSlideAndFadeTransition(body).play();
     }
 
     @Override
@@ -90,6 +119,21 @@ public class GuessController extends GameController {
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
 
+        if (!data.isFirstGuess) {
+            inputGuess.getStyleClass().add("text-field-incorrect");
+            AnimationBuilder.buildShakeTransition(inputGuess).play();
+        }
+
+        // By default, toggle buttons can be deselected. We want them to behave
+        // more like radio buttons. Thanks to:
+        // https://stackoverflow.com/questions/23629181/making-togglebuttons-behave-like-radiobuttons
+        toggleGroupSpeed.selectedToggleProperty().addListener((value, oldToggle, newToggle) -> {
+            if (newToggle == null) {
+                toggleGroupSpeed.selectToggle(oldToggle);
+            }
+        });
+
+        runAfterDelay(() -> inputGuess.requestFocus(), 50L);
         runAfterDelay(() -> sayWord(data.word), 1000L);
     }
 
@@ -101,10 +145,21 @@ public class GuessController extends GameController {
         float currentSpeed = getSpeedFromString(selectedToggle.getText());
 
         buttonPlayWord.setDisable(true);
+        buttonSubmit.setDisable(true);
+        buttonSkip.setDisable(true);
+        inhibitAction = true;
 
         Task<Void> task = SpeechManager.getInstance().talk(word, currentSpeed);
+        buttonPlayWord.setText("Playing...");
 
-        EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> buttonPlayWord.setDisable(false), 200L);
+        EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> {
+            buttonPlayWord.setDisable(false);
+            buttonSubmit.setDisable(false);
+            buttonSkip.setDisable(false);
+            inhibitAction = false;
+
+            buttonPlayWord.setText("Play word again");
+        }, 200L);
         task.setOnSucceeded(setEnabled);
         task.setOnFailed(setEnabled);
     }
