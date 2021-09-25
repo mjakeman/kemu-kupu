@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
+import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
@@ -39,6 +40,15 @@ public class GuessController extends GameController {
     public ToggleGroup toggleGroupSpeed;
 
     @FXML
+    public ToggleButton slowToggle;
+
+    @FXML
+    public ToggleButton normalToggle;
+
+    @FXML
+    public ToggleButton fastToggle;
+
+    @FXML
     public Button buttonPlayWord;
 
     @FXML
@@ -58,7 +68,12 @@ public class GuessController extends GameController {
      * field and have it submit their guess. This should be turned on when text to speech
      * is running.
      */
-    boolean inhibitAction = true;
+    private boolean inhibitAction = true;
+
+    /**
+     * Currently selected speed to use for text-to-speech
+     */
+    private SpeechSpeed currentSpeechSpeed;
 
     /**
      * Action executed when the "Play Word" button is clicked.
@@ -119,6 +134,9 @@ public class GuessController extends GameController {
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
 
+        updateToggleGroup(data.speechSpeed);
+        currentSpeechSpeed = data.speechSpeed;
+
         if (!data.isFirstGuess) {
             inputGuess.getStyleClass().add("text-field-incorrect");
             AnimationBuilder.buildShakeTransition(inputGuess).play();
@@ -128,9 +146,25 @@ public class GuessController extends GameController {
         // more like radio buttons. Thanks to:
         // https://stackoverflow.com/questions/23629181/making-togglebuttons-behave-like-radiobuttons
         toggleGroupSpeed.selectedToggleProperty().addListener((value, oldToggle, newToggle) -> {
+
+            // Ensure we always have a toggle selected
             if (newToggle == null) {
                 toggleGroupSpeed.selectToggle(oldToggle);
+                return;
             }
+
+            // Selection changed, determine new speed
+            SpeechSpeed speed;
+            if (newToggle.equals(slowToggle)) {
+                speed = SpeechSpeed.SLOW;
+            } else if (newToggle.equals(fastToggle)) {
+                speed = SpeechSpeed.FAST;
+            } else {
+                speed = SpeechSpeed.NORMAL;
+            }
+
+            gameViewModel.setSpeechSpeed(speed);
+            currentSpeechSpeed = speed;
         });
 
         runAfterDelay(() -> inputGuess.requestFocus(), 50L);
@@ -141,15 +175,13 @@ public class GuessController extends GameController {
      * Says a word while disabling the "Play again" button.
      */
     private void sayWord(String word) {
-        ToggleButton selectedToggle = (ToggleButton) toggleGroupSpeed.getSelectedToggle();
-        float currentSpeed = getSpeedFromString(selectedToggle.getText());
 
         buttonPlayWord.setDisable(true);
         buttonSubmit.setDisable(true);
         buttonSkip.setDisable(true);
         inhibitAction = true;
 
-        Task<Void> task = SpeechManager.getInstance().talk(word, currentSpeed);
+        Task<Void> task = SpeechManager.getInstance().talk(word, currentSpeechSpeed);
         buttonPlayWord.setText("Playing...");
 
         EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> {
@@ -165,15 +197,20 @@ public class GuessController extends GameController {
     }
 
     /**
-     * @return the corresponding numeric speed value based on its string value.
+     * Select the correct toggle for the preferred text-to-speech speed
+     * @param speed Preferred speed
      */
-    // TODO: Rethink this
-    private static float getSpeedFromString(String speed) {
-        switch (speed.toUpperCase()) {
-            case "SLOW": return 0.5f;
-            case "FAST": return 1.5f;
-            case "NORMAL":
-            default: return 1f;
+    private void updateToggleGroup(SpeechSpeed speed) {
+        switch (speed)
+        {
+            case SLOW:
+                toggleGroupSpeed.selectToggle(slowToggle);
+                break;
+            case FAST:
+                toggleGroupSpeed.selectToggle(fastToggle);
+                break;
+            default:
+                toggleGroupSpeed.selectToggle(normalToggle);
         }
     }
 

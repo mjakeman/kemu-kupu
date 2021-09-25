@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 
 import nz.ac.auckland.se206.team27.game.Game;
 import nz.ac.auckland.se206.team27.game.Round;
+import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
@@ -37,7 +38,8 @@ public class GameViewModel implements ViewModel {
                                   currentGame.getNumberOfRounds(),
                                   currentGame.getCurrentRoundIndex(),
                                   round.getGuessesRemaining(),
-                                  round.isFirstGuess());
+                                  round.isFirstGuess(),
+                                  currentGame.getSpeechSpeed());
     }
 
     /**
@@ -51,6 +53,14 @@ public class GameViewModel implements ViewModel {
 
     public void skipCurrentWord() {
         currentGame.getCurrentRound().markSkipped();
+    }
+
+    /**
+     * Set the user's preferred speed for text-to-speech
+     * @param speed Speed to use
+     */
+    public void setSpeechSpeed(SpeechSpeed speed) {
+        currentGame.setSpeechSpeed(speed);
     }
 
     /*
