@@ -14,6 +14,9 @@ public class EndGameController extends GameController {
     public Label labelTotalScore;
 
     @FXML
+    public Label labelTitle;
+
+    @FXML
     public VBox container;
 
     public void clickHome() {
@@ -33,6 +36,7 @@ public class EndGameController extends GameController {
     @Override
     protected void populateViewData() {
         EndGameScreenDto data = gameViewModel.getEndGameScreenData();
+        labelTitle.setText("Results for: " + data.topic);
         labelTotalScore.setText("" + data.totalScore);
     }
 

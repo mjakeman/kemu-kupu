@@ -1,0 +1,45 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #1A2980, #26D0CE);
+}
+
+.container {
+    -fx-padding: 20px 40px;
+}
+
+Button.menu-btn {
+    -fx-font-weight: bold;
+    -fx-padding: 10px 15px;
+    -fx-background-insets: 5px 0;
+    -fx-border-insets: 5px 0;
+
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-radius: 2px;
+}
+
+Button.menu-btn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: rgba(0,0,0,0.05);
+}
+
+Button.menu-btn:pressed {
+    -fx-background-color: rgba(0,0,0,0.15);
+}
+
+.title {
+    -fx-padding: 35px 0 5px 0;
+}
+
+.subtitle {
+    -fx-padding: 0 0 25px 0;
+    -fx-text-fill: rgba(255,255,255,0.9);
+    -fx-font-size: 10pt;
+}
+
+.blurb {
+    -fx-font-size: 14pt;
+    -fx-text-fill: rgba(255,255,255,0.9);
+}

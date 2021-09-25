@@ -36,7 +36,7 @@ public class ResultController extends GameController {
     public VBox answerContainer;
 
     @FXML
-    public Label encouragement;
+    public Label labelEncouragement;
 
     @FXML
     public VBox container;
@@ -62,32 +62,43 @@ public class ResultController extends GameController {
     protected void populateViewData() {
         ResultScreenDto data = gameViewModel.getResultScreenData();
 
+        String encouragingMsg;
+        String resultMsg;
+        String styleClass;
+
         switch (data.resultFromLastRound)
         {
-            case FAULTED:
             case PASSED:
-            {
-                labelResult.setText("Correct!");
-                answerContainer.getStyleClass().add("answer-correct");
-                encouragement.setText("Keep up the good work!");
+                resultMsg = "Correct!";
+                encouragingMsg = "Ka pai! On the first try";
+                styleClass = "answer-correct";
                 break;
-            }
+
+            case FAULTED:
+                resultMsg = "Correct!";
+                encouragingMsg = "Not bad, keep it up!";
+                styleClass = "answer-correct";
+                break;
 
             case SKIPPED:
-            {
-                labelResult.setText("Skipped");
-                answerContainer.getStyleClass().add("answer-skipped");
-                encouragement.setText("Give it a go next time!");
+                resultMsg = "Skipped";
+                encouragingMsg = "Give it a go next time!";
+                styleClass = "answer-skipped";
                 break;
-            }
 
             case FAILED:
-            {
-                labelResult.setText("Incorrect :(");
-                encouragement.setText("If at first you don't succeed... try, try, try again.");
-                answerContainer.getStyleClass().add("answer-incorrect");
-            }
+                resultMsg = "Incorrect :(";
+                encouragingMsg = "Keep putting in the mahi, you'll get it one day!";
+                styleClass = "answer-incorrect";
+                break;
+
+            default:
+                throw new IllegalArgumentException();
         }
+
+        labelResult.setText(resultMsg);
+        labelEncouragement.setText(encouragingMsg);
+        answerContainer.getStyleClass().add(styleClass);
 
         labelTotalScore.setText("" + data.currentScore);
         labelPlusScore.setText(String.format("(+%d points from this round)", data.scoreAddedFromLastRound));

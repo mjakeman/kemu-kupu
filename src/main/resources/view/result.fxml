@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.BorderPane?>
 <VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      stylesheets="@../style/common.css, @../style/result.css"
-      fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
-    <VBox fx:id="container" styleClass="container">
-        <Label fx:id="labelResult" styleClass="title">Correct</Label>
-        <Label fx:id="encouragement" wrapText="true" styleClass="encouragement"/>
-        <VBox fx:id="answerContainer" alignment="CENTER" styleClass="answer-label-container">
-            <Label styleClass="answer-title">Correct Answer:</Label>
-            <Label fx:id="answer" styleClass="answer-label"/>
-        </VBox>
-        <HBox alignment="CENTER">
-            <Label styleClass="score-label">Current Score:</Label>
-            <Label fx:id="labelTotalScore" styleClass="score-label-total">42</Label>
-        </HBox>
-        <Label fx:id="labelPlusScore" styleClass="score-label-current">(+5 from this word)</Label>
-        <Button fx:id="btnNext" onAction="#clickNext">(skip)</Button>
-    </VBox>
+	  xmlns:fx="http://javafx.com/fxml"
+	  stylesheets="@../style/common.css, @../style/result.css"
+	  fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
+	<VBox fx:id="container" styleClass="container">
+		<Label fx:id="labelResult" styleClass="title">Correct</Label>
+		<Label fx:id="labelEncouragement" wrapText="true" styleClass="encouragement"/>
+		<VBox fx:id="answerContainer" alignment="CENTER" styleClass="answer-label-container">
+			<Label styleClass="answer-title">Correct Answer:</Label>
+			<Label fx:id="answer" styleClass="answer-label"/>
+		</VBox>
+		<HBox alignment="CENTER">
+			<Label styleClass="score-label">Current Score:</Label>
+			<Label fx:id="labelTotalScore" styleClass="score-label-total">42</Label>
+		</HBox>
+		<Label fx:id="labelPlusScore" styleClass="score-label-current">(+5 from this word)</Label>
+		<Button fx:id="btnNext" onAction="#clickNext">(skip)</Button>
+	</VBox>
 </VBox>
