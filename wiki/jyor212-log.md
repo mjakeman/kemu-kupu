@@ -37,3 +37,8 @@ Jordan York (jyor212)
 
 - Sent code for other developers to review and have altered code to any changes they recommend.
 - Created wordlist text files for topics
+
+## 24 September
+
+- Held group meeting to check in on progess
+- Delegated final tasks for completion of A3
