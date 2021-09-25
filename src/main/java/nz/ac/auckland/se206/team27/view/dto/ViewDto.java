@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27.view;
+package nz.ac.auckland.se206.team27.view.dto;
 
 /**
  * DTO for populating all views. All data classes should inherit from this, and

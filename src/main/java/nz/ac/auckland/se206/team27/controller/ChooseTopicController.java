@@ -7,7 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
-import nz.ac.auckland.se206.team27.view.TransitionBuilder;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
@@ -23,7 +23,7 @@ public class ChooseTopicController extends MenuController {
 
     public void clickBack() {
         // Reset the topic selection to null then go back home
-        wordListViewModel.selectTopic(null);
+        menuViewModel.selectTopic(null);
         sceneLoader.loadScreen(ScreenResource.HOME);
     }
 
@@ -33,18 +33,18 @@ public class ChooseTopicController extends MenuController {
         // Do nothing if no topic is selected
         if (selected == null) return;
 
-        wordListViewModel.selectTopic(selected);
+        menuViewModel.selectTopic(selected);
         sceneLoader.loadScreen(ScreenResource.PREVIEW_TOPIC);
     }
 
     @Override
     public void transitionOnEnter() {
-        TransitionBuilder.buildSlideAndFadeTransition(container).play();
+        AnimationBuilder.buildSlideAndFadeTransition(container).play();
     }
 
     @Override
     protected void populateViewData() {
-        ObservableList<String> topicList = FXCollections.observableArrayList(wordListViewModel.getTopics());
+        ObservableList<String> topicList = FXCollections.observableArrayList(menuViewModel.getTopics());
         listview.setItems(topicList);
     }
 

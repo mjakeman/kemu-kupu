@@ -2,8 +2,8 @@ package nz.ac.auckland.se206.team27.controller.base;
 
 import javafx.fxml.FXML;
 import nz.ac.auckland.se206.team27.game.Game;
-import nz.ac.auckland.se206.team27.game.GameViewModel;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.view.viewmodel.GameViewModel;
 
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)

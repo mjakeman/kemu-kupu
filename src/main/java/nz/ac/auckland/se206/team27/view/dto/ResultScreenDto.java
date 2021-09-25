@@ -1,4 +1,6 @@
-package nz.ac.auckland.se206.team27.view;
+package nz.ac.auckland.se206.team27.view.dto;
+
+import nz.ac.auckland.se206.team27.game.RoundResult;
 
 /**
  * Data object for populating the result screen.
@@ -11,10 +13,11 @@ public class ResultScreenDto implements ViewDto {
     public final String topic;
     public final String word;
 
+    public final RoundResult resultFromLastRound;
+
     public final int currentScore;
     public final int scoreAddedFromLastRound;
 
-    public final String encouragingMsg;
     public final String definition;
     public final String imgUrl;
 
@@ -27,15 +30,15 @@ public class ResultScreenDto implements ViewDto {
     public ResultScreenDto(boolean hasNextWord,
                            String topic,
                            String word,
+                           RoundResult resultFromLastRound,
                            int currentScore,
                            int scoreAddedFromLastRound,
-                           String encouragingMsg,
                            String definition,
                            String imgUrl) {
         this.hasNextWord = hasNextWord;
         this.topic = topic;
         this.word = word;
-        this.encouragingMsg = encouragingMsg;
+        this.resultFromLastRound = resultFromLastRound;
         this.definition = definition;
         this.imgUrl = imgUrl;
         this.currentScore = currentScore;

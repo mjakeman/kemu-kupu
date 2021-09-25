@@ -2,18 +2,18 @@ package nz.ac.auckland.se206.team27;
 
 import java.util.Arrays;
 
-import javafx.animation.Transition;
+import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.HostServices;
-import javafx.application.Platform;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.team27.controller.HomeController;
 import nz.ac.auckland.se206.team27.resource.FontResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
-import nz.ac.auckland.se206.team27.view.TransitionBuilder;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 
+import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 import static nz.ac.auckland.se206.team27.view.ViewConfig.HEIGHT;
 import static nz.ac.auckland.se206.team27.view.ViewConfig.TITLE;
 import static nz.ac.auckland.se206.team27.view.ViewConfig.VERSION;
@@ -69,13 +69,13 @@ public class App extends Application {
             // Normally, home plays a slide and fade transition. On first load,
             // we want to instead play a 'Zoom and Fade' transition.
             HomeController controller = (HomeController)c;
-            Transition anim = TransitionBuilder.buildZoomAndFadeTransition(controller.root, controller.container);
+            Animation anim = AnimationBuilder.buildZoomAndFadeTransition(controller.root, controller.container);
             anim.play();
         });
 
         stage.show();
 
-        runAfter(() -> stage.setOpacity(1), 100);
+        runAfterDelay(() -> stage.setOpacity(1), 100);
     }
 
     /**
@@ -91,20 +91,6 @@ public class App extends Application {
      */
     public static void startApplication(String[] args) {
         launch(args);
-    }
-
-    /**
-     * Run the given {@link Runnable} after {@code delayMs} milliseconds.
-     */
-    private void runAfter(Runnable runnable, int delayMs) {
-        new Thread(() -> {
-            try {
-                Thread.sleep(delayMs);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Platform.runLater(runnable);
-        }).start();
     }
 
 }

@@ -34,3 +34,8 @@ Raymond Feng (rfen629)
 
 - Integrated topic selection with ViewModel and repository.
 - Created more ViewModel methods in preparation for integrating the game section.
+
+## 24 September
+
+- Merged Jordan's changes into a new branch and started work on integrating game logic and game views
+- Implemented a scoring feature and encouraging messages

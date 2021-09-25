@@ -1,8 +1,6 @@
-package nz.ac.auckland.se206.team27;
+package nz.ac.auckland.se206.team27.speech;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 import javafx.concurrent.Task;
@@ -42,7 +40,6 @@ public class FestivalTask extends Task<Void> {
      */
     @Override
     protected Void call() throws IOException {
-
         updateMessage("Running");
 
         float multiplier = 1 / speed;

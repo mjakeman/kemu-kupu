@@ -8,8 +8,8 @@ import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.App;
 import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
-import nz.ac.auckland.se206.team27.view.TopicPreviewScreenDto;
-import nz.ac.auckland.se206.team27.view.TransitionBuilder;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
+import nz.ac.auckland.se206.team27.view.dto.TopicPreviewScreenDto;
 
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
@@ -34,26 +34,26 @@ public class PreviewTopicController extends MenuController {
 
     public void clickBack() {
         // Reset topic selection
-        wordListViewModel.selectTopic(null);
+        menuViewModel.selectTopic(null);
         sceneLoader.loadScreen(ScreenResource.CHOOSE_TOPIC);
     }
 
     public void clickPlay() {
-        wordListViewModel.startGameWithCurrentTopic();
-        sceneLoader.loadScreen(ScreenResource.GAME);
+        menuViewModel.startGameWithCurrentTopic();
+        sceneLoader.loadScreen(ScreenResource.GUESS);
     }
 
     @Override
     public void transitionOnEnter() {
-        TransitionBuilder.buildSlideAndFadeTransition(container).play();
+        AnimationBuilder.buildSlideAndFadeTransition(container).play();
     }
 
     @Override
     protected void populateViewData() {
-        TopicPreviewScreenDto dto = wordListViewModel.getTopicPreviewData();
+        TopicPreviewScreenDto dto = menuViewModel.getTopicPreviewData();
 
-        title.textProperty().setValue(dto.name);
-        blurb.textProperty().setValue(dto.description);
+        title.setText(dto.name);
+        blurb.setText(dto.description);
 
         image.setStyle("-fx-background-image: url('" + dto.image.imgUrl + "');");
         credit.setText(String.format("%s (%s)", dto.image.creator, dto.image.copyright));
