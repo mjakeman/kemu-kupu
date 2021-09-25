@@ -1,12 +1,18 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
+import nz.ac.auckland.se206.team27.util.ConcurrencyUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
+
+import java.util.Currency;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.END_GAME;
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.GUESS;
@@ -40,10 +46,14 @@ public class ResultController extends GameController {
     @FXML
     public VBox container;
 
+    private TimerTask nextRoundTimerTask;
+
     /**
      * Action executed when the "Skip" button is clicked.
      */
     public void clickNext() {
+
+        nextRoundTimerTask.cancel();
         if (gameViewModel.getResultScreenData().hasNextWord) {
             gameViewModel.loadNextWord();
             sceneLoader.loadScreen(GUESS);
@@ -104,6 +114,28 @@ public class ResultController extends GameController {
         answer.setText(data.word);
 
         String btnText = (data.hasNextWord) ? "Next Word" : "See Results";
+
+        nextRoundTimerTask = new TimerTask() {
+
+            private int secondsPast = 10;
+
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    if (secondsPast-- == 0) {
+                        clickNext();
+                        cancel();
+                        return;
+                    }
+
+                    btnNext.setText(btnText + " (" + (secondsPast + 1) + "s)");
+                });
+            }
+        };
+
+        Timer nextScreenTimer = new Timer();
+        nextScreenTimer.schedule(nextRoundTimerTask, 0,1000L);
+
         btnNext.setText(btnText);
     }
 
