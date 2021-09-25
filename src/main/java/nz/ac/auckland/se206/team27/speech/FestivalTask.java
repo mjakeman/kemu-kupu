@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.team27.speech;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import javafx.concurrent.Task;
@@ -26,7 +27,15 @@ public class FestivalTask extends Task<Void> {
      * @param speed Speed multiplier (1.0 is normal speed)
      */
     public FestivalTask(String text, float speed) {
-        this.text = text;
+
+        // Preprocess Text for Festival
+        // - Festival cannot pronounce upper case macronised letters
+        // - Festival cannot handle strings with dashes
+
+        this.text = text
+            .toLowerCase(Locale.ROOT)
+            .replace('-', ' ');
+
         this.speed = speed;
     }
 
@@ -45,10 +54,10 @@ public class FestivalTask extends Task<Void> {
         float multiplier = 1 / speed;
 
         // Festival uses Scheme for commands. To say 'Boo!' at half the speed, we can write:
-        // > (begin (Parameter.set 'Duration_Stretch' 2) (SayText "Boo!"))
+        // > (begin (voice_akl_mi_pk06_cg) (Parameter.set 'Duration_Stretch' 2) (SayText "Boo!"))
 
         // Interpolate text and the duration multiplier into the command string
-        String command = String.format("(begin (Parameter.set 'Duration_Stretch' %f) (SayText \"%s\"))", multiplier, text);
+        String command = String.format("(begin (voice_akl_mi_pk06_cg) (Parameter.set 'Duration_Stretch' %f) (SayText \"%s\"))", multiplier, text);
 
         // Run with '-b' = batch mode (non-interactive)
         ProcessBuilder builder = new ProcessBuilder("festival", "-b", command);
