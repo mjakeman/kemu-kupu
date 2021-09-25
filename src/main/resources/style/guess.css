@@ -155,3 +155,21 @@ Button {
 .play-button:pressed {
     -fx-background-color: #1a5fb4;
 }
+
+/*
+ * Hints box
+ */
+
+.hint-container {
+    -fx-spacing: 1px;
+}
+
+.hint-container > Label {
+    -fx-font-weight: bold;
+    -fx-font-family: monospace;
+    -fx-pref-width: 13px;
+}
+
+.hint-container > Label.letter-not-match {
+    -fx-text-fill: #e01b24;
+}

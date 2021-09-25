@@ -6,14 +6,11 @@
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      stylesheets="@../style/common.css,@../style/guess.css"
-      fx:controller="nz.ac.auckland.se206.team27.controller.GuessController">
+	  xmlns:fx="http://javafx.com/fxml"
+	  stylesheets="@../style/common.css,@../style/guess.css"
+	  fx:controller="nz.ac.auckland.se206.team27.controller.GuessController">
     <!-- Header -->
     <HBox styleClass="header">
         <VBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
@@ -47,6 +44,7 @@
     <!-- Body -->
     <VBox fx:id="body" styleClass="central" VBox.vgrow="ALWAYS">
         <Label fx:id="labelGuessesRemaining"/>
+		<HBox styleClass="hint-container" fx:id="hintContainer" alignment="BOTTOM_CENTER" />
         <TextField fx:id="inputGuess" styleClass="text-field" onAction="#clickSubmit" promptText="Enter guess here"
                    alignment="CENTER"/>
         <HBox styleClass="macron-button-box" alignment="CENTER">

@@ -30,6 +30,9 @@ public abstract class BaseController {
     protected void closeApplication() {
         SpeechManager.getInstance().shutdown();
         Platform.exit();
+
+        // Temporary fix, bug with application not closing if game has been finished
+        System.exit(0);
     }
 
 }
