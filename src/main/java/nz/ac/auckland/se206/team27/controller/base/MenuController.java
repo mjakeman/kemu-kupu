@@ -2,14 +2,14 @@ package nz.ac.auckland.se206.team27.controller.base;
 
 import javafx.fxml.FXML;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
-import nz.ac.auckland.se206.team27.wordlist.WordListViewModel;
+import nz.ac.auckland.se206.team27.view.viewmodel.MenuViewModel;
 
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public abstract class MenuController extends BaseController {
 
-    protected WordListViewModel wordListViewModel = WordListViewModel.getInstance();
+    protected MenuViewModel menuViewModel = MenuViewModel.getInstance();
 
 
     /**

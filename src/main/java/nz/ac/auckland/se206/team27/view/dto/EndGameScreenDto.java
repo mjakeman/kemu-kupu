@@ -1,9 +1,9 @@
-package nz.ac.auckland.se206.team27.view;
+package nz.ac.auckland.se206.team27.view.dto;
 
 import java.util.Map;
 
 /**
- * Data object for populating the EndGame Screen.
+ * Data object for populating the end game screen.
  *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */

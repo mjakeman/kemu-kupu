@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<Pane xmlns="http://javafx.com/javafx"
+	  xmlns:fx="http://javafx.com/fxml"
+	  stylesheets="@../style/guessTheme.css"
+	  fx:controller="nz.ac.auckland.se206.team27.controller.GuessController">
+	<VBox styleClass="container">
+		<Label styleClass="topic" fx:id="labelTopic" />
+		<VBox styleClass="central">
+			<HBox alignment="CENTER_LEFT">
+				<Label fx:id="labelNumbering" styleClass="title" />
+				<VBox styleClass="central-padding">
+					<Button fx:id="buttonPlayWord"
+							alignment="CENTER_RIGHT"
+							onAction="#clickPlayWord"
+							disable="true">
+						Play word again
+					</Button>
+					<HBox styleClass="rightshift">
+						<fx:define>
+							<ToggleGroup fx:id="toggleGroupSpeed" />
+						</fx:define>
+
+						<ToggleButton text="Slow" toggleGroup="$toggleGroupSpeed">
+						</ToggleButton>
+						<ToggleButton text="Normal" toggleGroup="$toggleGroupSpeed" selected="true">
+						</ToggleButton>
+						<ToggleButton text="Fast" toggleGroup="$toggleGroupSpeed">
+						</ToggleButton>
+					</HBox>
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox styleClass="central-gap">
+			<Label fx:id="labelGuessesRemaining" />
+			<TextField fx:id="inputGuess" promptText="Enter guess here" alignment="CENTER" />
+			<HBox alignment="CENTER">
+				<Button onAction="#clickMacronButton">ā</Button>
+				<Button onAction="#clickMacronButton">ē</Button>
+				<Button onAction="#clickMacronButton">ī</Button>
+				<Button onAction="#clickMacronButton">ō</Button>
+				<Button onAction="#clickMacronButton">ū</Button>
+			</HBox>
+
+			<Button onAction="#clickSubmit">Submit</Button>
+			<Button onAction="#clickSkip">(skip)</Button>
+
+		</VBox>
+	</VBox>
+</Pane>

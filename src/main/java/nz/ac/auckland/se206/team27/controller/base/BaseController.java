@@ -2,7 +2,7 @@ package nz.ac.auckland.se206.team27.controller.base;
 
 import javafx.application.Platform;
 import nz.ac.auckland.se206.team27.App;
-import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 
 /**
@@ -15,6 +15,7 @@ public abstract class BaseController {
 
     public BaseController() {
         this.sceneLoader = new SceneLoader(App.getMainStage());
+        App.getMainStage().setOnCloseRequest((event) -> closeApplication());
     }
 
     /**
@@ -27,11 +28,8 @@ public abstract class BaseController {
      * Closes the application.
      */
     protected void closeApplication() {
+        SpeechManager.getInstance().shutdown();
         Platform.exit();
-    }
-
-    public void clickAgain() {
-        sceneLoader.loadScreen(ScreenResource.GAME);
     }
 
 }

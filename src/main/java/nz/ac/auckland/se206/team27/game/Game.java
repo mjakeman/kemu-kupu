@@ -1,11 +1,9 @@
 package nz.ac.auckland.se206.team27.game;
 
-import nz.ac.auckland.se206.team27.wordlist.WordList;
-
 import java.util.Collections;
 import java.util.List;
 
-import static nz.ac.auckland.se206.team27.game.Game.GuessResult.*;
+import nz.ac.auckland.se206.team27.wordlist.WordList;
 
 /**
  * A data model for managing the state of a game.
@@ -14,155 +12,164 @@ import static nz.ac.auckland.se206.team27.game.Game.GuessResult.*;
  */
 public class Game {
 
-	/**
-	 * The topic for the game.
-	 */
-	private final String topic;
+    /**
+     * The topic for the game.
+     */
+    private final String topic;
 
-	/**
-	 * List of words to be tested in this game.
-	 */
-	private final List<String> words;
+    /**
+     * List of words to be tested in this game.
+     */
+    private final List<String> words;
 
-	/**
-	 * The index value of the current word (if counter is -1, the game has not
-	 * started yet).
-	 */
-	private int wordIndex = 0;
+    /**
+     * Original wordlist used to start the game.
+     */
+    private final WordList wordList;
 
-	/**
-	 * The maximum number of guesses allowed per word, before the word is marked
-	 * as failed.
-	 */
-	private final int maxGuesses;
+    /**
+     * The index value of the current word (if counter is -1, the game has not
+     * started yet).
+     */
+    private int wordIndex = 0;
 
-	/**
-	 * The number of guesses that have currently been made.
-	 */
-	// TODO: Move this into the words map once scoring system is complete
-	private int guessCounter = 0;
+    /**
+     * The maximum number of guesses allowed per word, before the word is marked
+     * as failed.
+     */
+    private final int maxGuesses;
 
-	private static Game _instance = null;
+    /**
+     * The number of guesses that have currently been made.
+     */
+    // TODO: Move this into the words map once scoring system is complete
+    private int guessCounter = 0;
+
+    /**
+     * The result of the last round.
+     */
+    // TODO: Move this into the words map once scoring system is complete
+    private RoundResult lastRoundResult = null;
+
+    private static Game _instance = null;
 
 
-	/**
-	 * Returns the current active instance of the game class.
-	 */
-	public static Game getInstance() {
-		if (_instance != null) return _instance;
+    /**
+     * Returns the current active instance of the game class.
+     */
+    public static Game getInstance() {
+        if (_instance != null) return _instance;
 
-		throw new IllegalCallerException("No instance of \"game\" has been created yet!");
-	}
+        throw new IllegalCallerException("No instance of \"game\" has been created yet!");
+    }
 
-	public static void createInstance(WordList wordList) {
-		_instance = new Game(wordList, 5, 2);;
-	}
+    public static void createInstance(WordList wordList) {
+        _instance = new Game(wordList, 5, 2);
+    }
 
-	/**
-	 * Creates a new game with words selected from the topic list.
-	 *
-	 * NB: Causes side effect (re-orders {@link WordList} words). We can fix
-	 *  this copying the list of word strings, but I think we can live with
-	 *  this side effect rather than consuming more memory.
-	 */
-	private Game(WordList wordList, int wordCount, int maxGuesses) {
-		this.maxGuesses = maxGuesses;
-		topic = wordList.getTitle();
+    /**
+     * Creates a new game with words selected from the topic list.
+     * <p>
+     * NB: Causes side effect (re-orders {@link WordList} words). We can fix
+     * this copying the list of word strings, but I think we can live with
+     * this side effect rather than consuming more memory.
+     */
+    private Game(WordList wordList, int wordCount, int maxGuesses) {
+        this.maxGuesses = maxGuesses;
+        topic = wordList.getTitle();
 
-		// Shuffle the wordlist to randomise word selection
-		List<String> allWords = wordList.getWordList();
-		Collections.shuffle(allWords);
-		words = allWords.subList(0, Math.min(wordCount, allWords.size()));
+        this.wordList = wordList;
 
-		_instance = this;
-	}
+        // Shuffle the wordlist to randomise word selection
+        List<String> allWords = wordList.getWordList();
+        Collections.shuffle(allWords);
+        words = allWords.subList(0, Math.min(wordCount, allWords.size()));
 
-	/**
-	 * Returns the current word.
-	 */
-	public String getCurrentWord() {
-		if (wordIndex >= words.size()) return null;
+        _instance = this;
+    }
 
-		return words.get(wordIndex);
-	}
+    /**
+     * Returns the current word.
+     */
+    public String getCurrentWord() {
+        if (wordIndex >= words.size()) return null;
 
-	/**
-	 * Returns whether a word is the same as the previous word, and if there is
-	 * another turn remaining after the guess.
-	 */
-	public GuessResult makeGuess(String word) {
-		if (getCurrentWord().equalsIgnoreCase(word)) {
-			return CORRECT;
-		} else if (guessCounter > maxGuesses) {
-			return INCORRECT;
-		} else {
-			return REDO;
-		}
-	}
+        return words.get(wordIndex);
+    }
 
-	/**
-	 * Checks if there is another word after the current word.
-	 */
-	public Boolean hasNextWord() {
-		return wordIndex + 1 < words.size();
-	}
+    public int getWordCount() {
+        return words.size();
+    }
 
-	/**
-	 * Returns the next word or {@code null} if no more words exist.
-	 */
-	public String getNextWord() {
-		// Reset guess counter
-		guessCounter = 0;
-		if (hasNextWord()) {
-			wordIndex++;
-			return getCurrentWord();
-		}
+    public int getCurrentWordIndex() {
+        return wordIndex;
+    }
 
-		return null;
-	}
+    public String getTopic() {
+        return topic;
+    }
 
-	/**
-	 * @return The number of words available in this game.
-	 */
-	public int getWordCount() {
-		return words.size();
-	}
+    public RoundResult getLastRoundResult() {
+        return lastRoundResult;
+    }
 
-	/**
-	 *
-	 * @return The current index (1-indexed) of the word.
-	 */
-	public int getCurrentWordIndex() {
-		return wordIndex;
-	}
+    public WordList getWordList() {
+        return wordList;
+    }
 
-	/**
-	 * @return The topic of the game.
-	 */
-	public String getTopic() {
-		return topic;
-	}
+    /**
+     * @return The number of guesses remaining for the current word.
+     */
+    public int getGuessesRemaining() {
+        return maxGuesses - guessCounter;
+    }
 
-	/**
-	 * @return The number of guesses remaining for the current word.
-	 */
-	public int getGuessesRemaining() {
-		return maxGuesses - guessCounter;
-	}
+    /**
+     * Returns whether a word is the same as the previous word, and if there is
+     * another turn remaining after the guess.
+     *
+     * @return if there is another guess available.
+     */
+    public boolean makeGuess(String word) {
+        guessCounter++;
+        if (getCurrentWord().equalsIgnoreCase(word)) {
+            lastRoundResult = (guessCounter == 1) ? RoundResult.PASSED : RoundResult.FAULTED;
+            return false;
+        } else if (guessCounter >= maxGuesses) {
+            lastRoundResult = RoundResult.FAILED;
+            return false;
+        }
 
-	/*
-	 * Inner types
-	 */
+        return true;
+    }
 
-	/**
-	 * A list of results that can be returned at the end of a guess.
-	 */
-	public enum GuessResult {
+    /**
+     * Sets the current word to {@link RoundResult#SKIPPED}.
+     */
+    public void markCurrentWordSkipped() {
+        lastRoundResult = RoundResult.SKIPPED;
+    }
 
-		REDO,
-		CORRECT,
-		INCORRECT
+    /**
+     * Checks if there is another word after the current word.
+     */
+    public Boolean hasNextWord() {
+        return wordIndex + 1 < words.size();
+    }
 
-	}
+    /**
+     * Skips to the next word.
+     *
+     * @throws IllegalCallerException If no next word exists.
+     */
+    public void toNextWord() {
+        // Reset guess counter
+        guessCounter = 0;
+        if (hasNextWord()) {
+            wordIndex++;
+        } else {
+            throw new IllegalCallerException("Could not go to next word, no such word exists!");
+        }
+    }
 
 }
