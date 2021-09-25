@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.team27.wordlist;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,17 +17,20 @@ import java.util.stream.Collectors;
 public class WordListRepository {
 
     /**
-     * @return The {@link File} associated with the {@code words} directory.
+     * The directory containing all the word lists.
      */
-    public static File getWordListDir() throws URISyntaxException {
+    public static File WORDS_DIRECTORY;
+    static {
         File wordsDir = new File("words");
         if (wordsDir.isDirectory()) {
-            return wordsDir;
+            WORDS_DIRECTORY = wordsDir;
+        } else {
+            // Get the root directory by the current code source (JAR file)
+            File rootDir = new File(WordList.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile();
+            WORDS_DIRECTORY = new File(rootDir, "words");
         }
-        wordsDir = new File(WordList.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath(), "words");
-        System.out.println(wordsDir);
-        return wordsDir;
     }
+
 
     /**
      * Returns a map of {@link WordList}s with the key as the list's title.
@@ -56,18 +58,14 @@ public class WordListRepository {
      * @return a list of all topics.
      */
     private List<String> getAllWordListFileNames() {
-        try {
-            File[] wordListFiles = getWordListDir().listFiles();
+        File[] wordListFiles = WORDS_DIRECTORY.listFiles();
 
-            // Is null when the directory does not exist or is not a directory
-            if (wordListFiles == null) {
-                return new ArrayList<>();
-            }
-
-            return Arrays.stream(wordListFiles).map(File::getName).collect(Collectors.toList());
-        } catch (URISyntaxException e) {
+        // Is null when the directory does not exist or is not a directory
+        if (wordListFiles == null) {
             return new ArrayList<>();
         }
+
+        return Arrays.stream(wordListFiles).map(File::getName).collect(Collectors.toList());
     }
 
 }
