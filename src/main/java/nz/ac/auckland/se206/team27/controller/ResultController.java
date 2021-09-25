@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.team27.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -38,7 +39,7 @@ public class ResultController extends GameController {
     public Label labelEncouragement;
 
     @FXML
-    public VBox container;
+    public Node container;
 
     /**
      * Action executed when the "Skip" button is clicked.

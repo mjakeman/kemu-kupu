@@ -1,27 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.BorderPane?>
-<VBox xmlns="http://javafx.com/javafx"
-	  xmlns:fx="http://javafx.com/fxml"
-	  stylesheets="@../style/common.css, @../style/result.css"
-	  fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
-	<VBox fx:id="container" styleClass="container">
-		<Label fx:id="labelResult" styleClass="title">Correct</Label>
-		<Label fx:id="labelEncouragement" wrapText="true" styleClass="encouragement"/>
-		<VBox fx:id="answerContainer" alignment="CENTER" styleClass="answer-label-container">
-			<Label styleClass="answer-title">Correct Answer:</Label>
-			<Label fx:id="answer" styleClass="answer-label"/>
-		</VBox>
-		<HBox alignment="CENTER">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<StackPane stylesheets="@../style/common.css,@../style/game.css,@../style/result.css"
+		   xmlns="http://javafx.com/javafx/11.0.2"
+		   xmlns:fx="http://javafx.com/fxml/1"
+		   fx:controller="nz.ac.auckland.se206.team27.controller.ResultController">
+	<AnchorPane>
+		<VBox alignment="CENTER_RIGHT" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="50">
 			<Label styleClass="score-label">Current Score:</Label>
-			<Label fx:id="labelTotalScore" styleClass="score-label-total">42</Label>
-		</HBox>
-		<Label fx:id="labelPlusScore" styleClass="score-label-current">(+5 from this word)</Label>
-		<Button fx:id="btnNext" onAction="#clickNext">(skip)</Button>
-	</VBox>
-</VBox>
+
+			<HBox alignment="BOTTOM_RIGHT">
+				<Label fx:id="labelTotalScore" styleClass="score-label-total" />
+				<Label styleClass="score-label-total-prefix">pts</Label>
+			</HBox>
+		</VBox>
+	</AnchorPane>
+
+	<StackPane fx:id="container">
+		<VBox styleClass="container">
+			<Label fx:id="labelResult" styleClass="result-text" />
+			<Label fx:id="labelEncouragement" styleClass="encouragement" wrapText="true" />
+
+			<VBox styleClass="answer-container-spacing">
+				<VBox fx:id="answerContainer" alignment="CENTER" styleClass="answer-label-container">
+					<Label styleClass="answer-title">Correct Answer:</Label>
+					<Label fx:id="answer" styleClass="answer-label" />
+				</VBox>
+			</VBox>
+			<Label fx:id="labelPlusScore" styleClass="score-label-current" />
+		</VBox>
+
+		<AnchorPane>
+			<Button fx:id="btnNext"
+					contentDisplay="CENTER"
+					onAction="#clickNext"
+					styleClass="raised-button,next-button"
+					AnchorPane.leftAnchor="400"
+					AnchorPane.rightAnchor="400"
+					AnchorPane.bottomAnchor="35"
+			/>
+		</AnchorPane>
+	</StackPane>
+
+</StackPane>
