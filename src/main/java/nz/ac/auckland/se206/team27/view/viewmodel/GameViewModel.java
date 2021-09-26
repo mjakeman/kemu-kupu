@@ -37,7 +37,7 @@ public class GameViewModel implements ViewModel {
                                   currentGame.getCurrentRoundIndex(),
                                   round.getGuessesRemaining(),
                                   round.isFirstGuess(),
-                                  currentGame.getSpeechSpeed());
+                                  currentGame.getSpeechSpeed(),
                                   // Show hint when it is not the first guess
                                   !round.isFirstGuess());
     }
