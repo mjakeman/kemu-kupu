@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.team27.view.dto;
 
+import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
+
 /**
  * Data object for populating the guess screen.
  *
@@ -13,6 +15,7 @@ public class GuessScreenDto implements ViewDto {
     public final int wordIndexStarting1;
     public final int guessesRemaining;
     public final boolean isFirstGuess;
+    public final SpeechSpeed speechSpeed;
     public final boolean showHint;
 
     public GuessScreenDto(String topic,
@@ -21,6 +24,7 @@ public class GuessScreenDto implements ViewDto {
                           int wordIndex,
                           int guessesRemaining,
                           boolean isFirstGuess,
+                          SpeechSpeed speechSpeed,
                           boolean showHint) {
         this.topic = topic;
         this.word = word;
@@ -29,6 +33,7 @@ public class GuessScreenDto implements ViewDto {
         this.wordIndexStarting1 = wordIndex + 1;
         this.guessesRemaining = guessesRemaining;
         this.isFirstGuess = isFirstGuess;
+        this.speechSpeed = speechSpeed;
         this.showHint = showHint;
     }
 

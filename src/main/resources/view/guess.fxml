@@ -33,11 +33,11 @@
                     <ToggleGroup fx:id="toggleGroupSpeed" />
                 </fx:define>
 
-                <ToggleButton text="Slow" toggleGroup="$toggleGroupSpeed">
+                <ToggleButton fx:id="slowToggle" text="Slow" toggleGroup="$toggleGroupSpeed">
                 </ToggleButton>
-                <ToggleButton text="Normal" toggleGroup="$toggleGroupSpeed" selected="true">
+                <ToggleButton fx:id="normalToggle" text="Normal" toggleGroup="$toggleGroupSpeed" selected="true">
                 </ToggleButton>
-                <ToggleButton text="Fast" toggleGroup="$toggleGroupSpeed">
+                <ToggleButton fx:id="fastToggle" text="Fast" toggleGroup="$toggleGroupSpeed">
                 </ToggleButton>
             </HBox>
         </VBox>

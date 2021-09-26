@@ -61,6 +61,10 @@ public class SpeechManager {
         return festivalTask;
     }
 
+    public Task<Void> talk(String text, SpeechSpeed speed) {
+        return talk(text, getSpeedMultiplier(speed));
+    }
+
     /**
      * Speak text out loud
      * @param text The text to speak
@@ -76,5 +80,19 @@ public class SpeechManager {
      */
     public void silence() {
         queue.clear();
+    }
+
+
+    /**
+     * Calculates a speed multiplier for a given speed preset
+     * @param speed Preset speed (either slow, normal, or fast)
+     * @return The speed multiplier
+     */
+    private static float getSpeedMultiplier(SpeechSpeed speed) {
+        switch (speed) {
+            case SLOW: return 0.5f;
+            case FAST: return 1.5f;
+            default: return 1f;
+        }
     }
 }
