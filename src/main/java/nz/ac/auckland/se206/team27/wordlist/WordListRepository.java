@@ -16,7 +16,20 @@ import java.util.stream.Collectors;
  */
 public class WordListRepository {
 
-    private static final String WORDS_DIRECTORY = "words";
+    /**
+     * The directory containing all the word lists.
+     */
+    final public static File WORDS_DIRECTORY;
+    static {
+        File wordsDir = new File("words");
+        if (wordsDir.isDirectory()) {
+            WORDS_DIRECTORY = wordsDir;
+        } else {
+            // Get the root directory by the current code source (JAR file)
+            File rootDir = new File(WordList.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile();
+            WORDS_DIRECTORY = new File(rootDir, "words");
+        }
+    }
 
 
     /**
@@ -42,10 +55,10 @@ public class WordListRepository {
     }
 
     /**
-     * Returns a list of all topics.
+     * @return a list of all topics.
      */
     private List<String> getAllWordListFileNames() {
-        File[] wordListFiles = new File(WORDS_DIRECTORY).listFiles();
+        File[] wordListFiles = WORDS_DIRECTORY.listFiles();
 
         // Is null when the directory does not exist or is not a directory
         if (wordListFiles == null) {
