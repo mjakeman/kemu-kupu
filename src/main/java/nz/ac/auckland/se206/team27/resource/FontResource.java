@@ -11,7 +11,8 @@ public enum FontResource implements Resource {
      * Inter font family.
      */
     INTER_REGULAR("Inter-Regular.otf"),
-    INTER_BOLD("Inter-Bold.otf");
+    INTER_BOLD("Inter-Bold.otf"),
+    INTER_ITALIC("Inter-Italic.otf");
 
     private final URL resourceUrl;
 

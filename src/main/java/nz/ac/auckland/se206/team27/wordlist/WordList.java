@@ -18,8 +18,8 @@ public class WordList {
 
 
     public WordList(String fileName) throws IOException {
-        //Locate file of topic
-        File topicFile = new File("words", fileName);
+        // Locate file of topic
+        File topicFile = new File(WordListRepository.WORDS_DIRECTORY, fileName);
 
         //Create new reader to start reading the file
         BufferedReader fileScanner = new BufferedReader(new FileReader(topicFile));

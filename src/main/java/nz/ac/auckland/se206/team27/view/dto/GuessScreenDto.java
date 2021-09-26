@@ -16,8 +16,16 @@ public class GuessScreenDto implements ViewDto {
     public final int guessesRemaining;
     public final boolean isFirstGuess;
     public final SpeechSpeed speechSpeed;
+    public final boolean showHint;
 
-    public GuessScreenDto(String topic, String word, int wordCount, int wordIndex, int guessesRemaining, boolean isFirstGuess, SpeechSpeed speechSpeed) {
+    public GuessScreenDto(String topic,
+                          String word,
+                          int wordCount,
+                          int wordIndex,
+                          int guessesRemaining,
+                          boolean isFirstGuess,
+                          SpeechSpeed speechSpeed,
+                          boolean showHint) {
         this.topic = topic;
         this.word = word;
         this.wordCount = wordCount;
@@ -26,6 +34,7 @@ public class GuessScreenDto implements ViewDto {
         this.guessesRemaining = guessesRemaining;
         this.isFirstGuess = isFirstGuess;
         this.speechSpeed = speechSpeed;
+        this.showHint = showHint;
     }
 
 }

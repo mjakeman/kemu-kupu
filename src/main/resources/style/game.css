@@ -1,0 +1,102 @@
+.root {
+    -fx-background-color: #fafafa;
+}
+
+Button {
+    /* Override styling from common */
+    -fx-padding: 0px;
+}
+
+
+/* Outline Button Styling */
+.outline-button {
+    -fx-font-size: 12pt;
+    -fx-text-fill: black;
+
+    -fx-padding: 8px;
+    -fx-alignment: center;
+    -fx-background-insets: 5px 0;
+    -fx-border-insets: 5px 0;
+
+    -fx-background-color: none;
+    -fx-border-color: #deddda;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-radius: 4px;
+}
+
+.outline-button:hover {
+    -fx-border-color: #77767b;
+    -fx-cursor: hand;
+}
+
+.outline-button:pressed {
+    -fx-background-color: #deddda;
+}
+
+
+/* Raised Button Styling */
+.raised-button {
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+
+    -fx-padding: 10px 15px;
+    -fx-alignment: center;
+    -fx-background-insets: 5px 0;
+    -fx-border-insets: 5px 0;
+    -fx-cursor: hand;
+
+    -fx-border-width: 0 0 3px 0;
+    -fx-border-style: solid;
+    -fx-border-radius: 4px;
+}
+
+.raised-button:hover {
+    -fx-cursor: hand;
+}
+
+.raised-button:pressed {
+    -fx-border-color: transparent;
+}
+
+/* Used for "Play sound again" and "Play again button" (end screen) */
+
+.play-button {
+    -fx-background-color: #3584e4;
+    -fx-border-color: #1a5fb4;
+}
+
+.play-button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #1c71d8;
+}
+
+.play-button:pressed {
+    -fx-background-color: #1a5fb4;
+}
+
+/* Score label */
+
+
+.score-label-total {
+    -fx-font-size: 40pt;
+}
+
+.score-label-total-prefix {
+    -fx-font-size: 1.5em;
+    -fx-padding: 0 0 10px 5px;
+}
+
+.next-button {
+    -fx-background-color: #737b8d;
+    -fx-border-color: #505460;
+}
+
+.next-button:hover {
+    -fx-background-color: #646977;
+}
+
+.next-button:pressed {
+    -fx-background-color: #505460;
+}

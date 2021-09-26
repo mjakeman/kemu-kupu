@@ -36,7 +36,7 @@ public class EndGameController extends GameController {
     @Override
     protected void populateViewData() {
         EndGameScreenDto data = gameViewModel.getEndGameScreenData();
-        labelTitle.setText("Results for: " + data.topic);
+        labelTitle.setText(data.topic);
         labelTotalScore.setText("" + data.totalScore);
     }
 

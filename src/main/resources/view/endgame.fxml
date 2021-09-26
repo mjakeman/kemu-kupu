@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<VBox xmlns="http://javafx.com/javafx"
-	  xmlns:fx="http://javafx.com/fxml"
-	  stylesheets="@../style/common.css,@../style/endgame.css"
-	  fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<StackPane xmlns="http://javafx.com/javafx"
+		   xmlns:fx="http://javafx.com/fxml"
+		   stylesheets="@../style/common.css,@../style/game.css,@../style/endgame.css"
+		   fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
 	<VBox fx:id="container" styleClass="container">
-		<Label fx:id="labelTitle" styleClass="title" />
-		<HBox styleClass="hbox-spacing">
+		<Label styleClass="endgame-title" fx:id="labelTitle" />
+		<VBox styleClass="score-label-container">
 			<Label styleClass="score-label">Total Score: </Label>
-			<Label styleClass="score-label" fx:id="labelTotalScore" />
-		</HBox>
-		<HBox styleClass="hbox-spacing">
-			<Button onAction="#clickPlayAgain">Play Again</Button>
-			<Button onAction="#clickHome">Back to Home</Button>
-		</HBox>
+			<HBox alignment="BOTTOM_CENTER">
+				<Label styleClass="score-label-total" fx:id="labelTotalScore" />
+				<Label styleClass="score-label-total-prefix">pts</Label>
+			</HBox>
+		</VBox>
+		<VBox styleClass="spacing">
+			<Button onAction="#clickPlayAgain" styleClass="raised-button,play-button">Play again</Button>
+			<Button onAction="#clickHome" styleClass="raised-button,next-button">Back to home</Button>
+		</VBox>
 	</VBox>
-</VBox>
+</StackPane>

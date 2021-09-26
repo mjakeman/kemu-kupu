@@ -1,7 +1,5 @@
 package nz.ac.auckland.se206.team27.view.viewmodel;
 
-import java.util.LinkedHashMap;
-
 import nz.ac.auckland.se206.team27.game.Game;
 import nz.ac.auckland.se206.team27.game.Round;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
@@ -40,6 +38,8 @@ public class GameViewModel implements ViewModel {
                                   round.getGuessesRemaining(),
                                   round.isFirstGuess(),
                                   currentGame.getSpeechSpeed());
+                                  // Show hint when it is not the first guess
+                                  !round.isFirstGuess());
     }
 
     /**
@@ -70,13 +70,13 @@ public class GameViewModel implements ViewModel {
     public ResultScreenDto getResultScreenData() {
         Round round = currentGame.getCurrentRound();
         return new ResultScreenDto(currentGame.hasNextWord(),
-                currentGame.getTopic(),
-                round.getWord(),
-                round.getResult(),
-                currentGame.getCumulativeScore(),
-                round.getScoreContribution(),
-                null,
-                null);
+                                   currentGame.getTopic(),
+                                   round.getWord(),
+                                   round.getResult(),
+                                   currentGame.getCumulativeScore(),
+                                   round.getScoreContribution(),
+                                   null,
+                                   null);
     }
 
     public void loadNextWord() {
@@ -89,7 +89,7 @@ public class GameViewModel implements ViewModel {
 
     public EndGameScreenDto getEndGameScreenData() {
         return new EndGameScreenDto(currentGame.getTopic(),
-                currentGame.getCumulativeScore());
+                                    currentGame.getCumulativeScore());
     }
 
     public void playAgain() {

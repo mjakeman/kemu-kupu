@@ -1,22 +1,24 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import javafx.animation.*;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
+import nz.ac.auckland.se206.team27.view.HintNode;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
@@ -63,6 +65,9 @@ public class GuessController extends GameController {
     @FXML
     public Button buttonSkip;
 
+    @FXML
+    public HBox hintContainer;
+
     /**
      * When true, this signifies the user should not be able to press enter in the text
      * field and have it submit their guess. This should be turned on when text to speech
@@ -74,6 +79,7 @@ public class GuessController extends GameController {
      * Currently selected speed to use for text-to-speech
      */
     private SpeechSpeed currentSpeechSpeed;
+
 
     /**
      * Action executed when the "Play Word" button is clicked.
@@ -87,7 +93,6 @@ public class GuessController extends GameController {
      * Action executed when "Submit" button is clicked.
      */
     public void clickSubmit() {
-
         if (inhibitAction) {
             return;
         }
@@ -95,8 +100,10 @@ public class GuessController extends GameController {
         String guess = inputGuess.getText();
         boolean redo = gameViewModel.makeGuess(guess);
 
+        // Clear the text input field
+        inputGuess.setText("");
+
         if (redo) {
-            clickPlayWord();
             populateViewData();
             return;
         }
@@ -134,9 +141,23 @@ public class GuessController extends GameController {
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
 
+        // Speech Speed
         updateToggleGroup(data.speechSpeed);
         currentSpeechSpeed = data.speechSpeed;
 
+        // Hints
+        ObservableList<Node> children = hintContainer.getChildren();
+        children.clear();
+
+        HintNode hint = new HintNode(data.word, "", data.showHint);
+        children.addAll(hint.getNodes());
+
+        inputGuess.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Replace the word inside the hint display with updated values when the input changes
+            hint.setWord(data.word, newValue, data.showHint);
+        });
+
+        // Incorrect Guess
         if (!data.isFirstGuess) {
             inputGuess.getStyleClass().add("text-field-incorrect");
             AnimationBuilder.buildShakeTransition(inputGuess).play();
@@ -168,7 +189,7 @@ public class GuessController extends GameController {
         });
 
         runAfterDelay(() -> inputGuess.requestFocus(), 50L);
-        runAfterDelay(() -> sayWord(data.word), 1000L);
+        runAfterDelay(() -> sayWord(data.word), 500L);
     }
 
     /**
