@@ -116,3 +116,65 @@ transitions with limited configurability.
 ### Meeting
 Second team meeting [(minutes)](minutes-22-09-21.md). We made a list of oustanding tasks and action points, as well as some design decisions after
 Tuesday's design lecture. I was able to get my transitions PR reviewed and merged it after a few changes.
+
+## 23 September
+I implemented many of the tasks assigned to me at the last meeting. Namely, I disabled the preferences button
+as this is not needed for A3 (and we have no preferences to modify). I also made the quit button work correctly.
+
+I added our group information to the title screen (course + team number) and replaced the temporary images with
+a photo of the UoA Clock Tower obtained from wikimedia and licensed under the CC-BY 1.0 license. Attribution
+was given in the form of a credits label.
+
+Ray managed to implement view models and data objects for the topic screens, building on what I had implemented
+previously. Topic randomisation is not currently done, and we are no longer planning on implementing it for
+Assignment 3 (this is instead moved to our task list for the Final Project).
+
+I added a milestone on GitHub to keep track of Assignment 3 tasks.
+
+## 24 September
+Third team meeting [(minutes)](minutes-24-09-21.md). We did a team standup before determining the outstanding
+tasks before we could submit the project.
+
+## 25 September
+I made various quality of life improvements to the game views, such as making the macron buttons insert at the
+user's cursor (text caret) position, rather than simply at the end of the string. When the user presses enter
+inside the guess text field, it now performs the submit action. I further decided to lock guess entry while
+festival was playing to avoid creating a backlog of text-to-speech phrases.
+
+The correct spelling of a word is now displayed on the results screen after the user exhausts all their
+attempts (or gets it right). This was a design decision we made a few meetings ago. I colour coded the
+answer box depending on whether the user got the answer correct, incorrect, or skipped it ("Don't Know").
+
+I started working on changing the view styling to make it more consistent with the menu view. I added two
+new "classes" of buttons - raised and outline buttons, and used these to signify different levels of
+importance to the view. I made the game views light coloured (where they were dark before) and overhauled
+and simplified the game view layouts to better match the design.
+
+I designed a "button box" to hold the speed controls, inspired by car radios in which the relevant button
+is "depressed" to signal it is selected. Coincidentally, this is the origin of the term "Radio Button":
+
+![Car Radio Buttons](https://www.knowahead.in/wp-content/uploads/2012/05/car-radio-buttons.jpg)
+
+As we use `ToggleButton` controls, which do not enforce that one button is always pressed, I enforced that
+one is always selected in an event handler for the selectedToggle property.
+
+Finally, I added various transitions to the views. I renamed `TransitionBuilder` to `AnimationBuilder` and
+added a few more complex effects, like a shake animation to be played when the user gets a guess wrong.
+
+### Meeting
+Fourth team meeting [(minutes)](minutes-25-09-21.md). We did a brief team standup and allocated the final
+remaining tasks.
+
+Afterwards, I changed Festival to use the Maori language rather than English, however I was unable to test
+this feature as I could not get the virtual machine running (and thus did not have access to the maori voice
+files). Jordan tested this on my behalf, and we ensured that all corner cases were met.
+
+## 26 September
+I made the speed selection persist across multiple rounds (where before, it would reset after each round within
+a single game). This behaviour is not ideal, as it should really persist across multiple games or even sessions
+but it was deemed sufficient for Assignment 3. Further changes would require a deeper architectural reworking -
+some kind of preferences system - which we are planning to implement for the final project.
+
+### Meeting
+Fifth team meeting [(minutes)](minutes-26-09-21.md). We did a final team standup, built a "final" jar file with
+a version number of 0.2.0, validated this jar against the assignment brief, and submitted.
