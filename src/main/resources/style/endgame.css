@@ -1,20 +1,28 @@
-.root {
-    -fx-background-color: #1e2b36;
-}
-
 .container {
-    -fx-padding: 140px 175px;
+    -fx-padding: 40px 0px;
     -fx-alignment: center;
     -fx-spacing: 20px;
 }
 
+.endgame-title {
+    -fx-font-size: 40pt;
+}
+
 .score-label {
-    -fx-font: 18px Inter;
-    -fx-text-fill: white;
+    -fx-font-size: 20pt;
     -fx-font-weight: bold;
 }
 
-.hbox-spacing {
-    -fx-spacing: 10px;
+.score-label-container {
     -fx-alignment: center;
+    -fx-padding: 30px 0;
+}
+
+.spacing {
+    -fx-spacing: 5px;
+    -fx-alignment: center;
+}
+
+.raised-button {
+    -fx-pref-width: 200px;
 }

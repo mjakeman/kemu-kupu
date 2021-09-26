@@ -1,12 +1,3 @@
-/*
- * TODO: Change this file
- * TEMPORARY STYLING
- */
-
-.root {
-    -fx-background-color: #1e2b36;
-}
-
 .container {
     -fx-padding: 100px 200px;
     -fx-alignment: center;
@@ -14,38 +5,42 @@
 }
 
 .encouragement {
-    -fx-text-fill: white;
     -fx-font-size: 16pt;
+    -fx-font-style: italic;
 }
 
 .score-label {
     -fx-font-size: 12pt;
-    -fx-text-fill: white;
-    -fx-padding: 0 5px 0 0;
 }
 
-.score-label-total {
-    -fx-font-size: 12pt;
-    -fx-text-fill: white;
-    -fx-padding: 0 10px 0 0;
-    -fx-alignment: baseline-center;
-}
 
 .score-label-current {
     -fx-font-size: 14px;
-    -fx-text-fill: rgba(255,255,255,0.8);
-    -fx-font-weight: bold;
-    -fx-alignment: baseline-center;
 }
 
 .answer-label {
-    -fx-text-fill: white;
     -fx-font-size: 12pt;
 }
 
 .answer-title {
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+}
+
+.next-button {
+    -fx-spacing: 10px;
+}
+
+.result-text {
+    -fx-font-weight: bold;
+    -fx-font-size: 30pt;
+}
+
+/*
+ * Answer box section
+ */
+
+.answer-container-spacing {
+    -fx-padding: 20px 0 0 0;
 }
 
 .answer-label-container {
@@ -53,6 +48,10 @@
     -fx-background-color: #3d3846;
     -fx-background-radius: 15px;
     -fx-background-insets: 5px;
+}
+
+.answer-label-container > * {
+    -fx-text-fill: white;
 }
 
 .answer-skipped {

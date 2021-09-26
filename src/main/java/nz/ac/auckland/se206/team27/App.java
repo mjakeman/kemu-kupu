@@ -1,7 +1,5 @@
 package nz.ac.auckland.se206.team27;
 
-import java.util.Arrays;
-
 import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.HostServices;
@@ -10,14 +8,13 @@ import javafx.stage.Stage;
 import nz.ac.auckland.se206.team27.controller.HomeController;
 import nz.ac.auckland.se206.team27.resource.FontResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
-import nz.ac.auckland.se206.team27.view.SceneLoader;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
+import nz.ac.auckland.se206.team27.view.SceneLoader;
+
+import java.util.Arrays;
 
 import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
-import static nz.ac.auckland.se206.team27.view.ViewConfig.HEIGHT;
-import static nz.ac.auckland.se206.team27.view.ViewConfig.TITLE;
-import static nz.ac.auckland.se206.team27.view.ViewConfig.VERSION;
-import static nz.ac.auckland.se206.team27.view.ViewConfig.WIDTH;
+import static nz.ac.auckland.se206.team27.view.ViewConfig.*;
 
 /**
  * Main class.
@@ -82,7 +79,7 @@ public class App extends Application {
      * Loads fonts that are used throughout the application.
      */
     private void loadFonts() {
-        FontResource[] fonts = { FontResource.INTER_REGULAR, FontResource.INTER_BOLD };
+        FontResource[] fonts = FontResource.values();
         Arrays.stream(fonts).forEach((font) -> Font.loadFont(font.getResourceUrl().toExternalForm(), 10));
     }
 

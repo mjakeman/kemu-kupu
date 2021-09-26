@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.team27.controller;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -44,7 +45,7 @@ public class ResultController extends GameController {
     public Label labelEncouragement;
 
     @FXML
-    public VBox container;
+    public Node container;
 
     private TimerTask nextRoundTimerTask;
 
@@ -113,7 +114,7 @@ public class ResultController extends GameController {
         labelPlusScore.setText(String.format("(+%d points from this round)", data.scoreAddedFromLastRound));
         answer.setText(data.word);
 
-        String btnText = (data.hasNextWord) ? "Next Word" : "See Results";
+        String btnText = (data.hasNextWord) ? "Next Word" : "Results";
 
         nextRoundTimerTask = new TimerTask() {
 
