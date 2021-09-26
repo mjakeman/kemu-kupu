@@ -60,13 +60,13 @@ public class GameViewModel implements ViewModel {
     public ResultScreenDto getResultScreenData() {
         Round round = currentGame.getCurrentRound();
         return new ResultScreenDto(currentGame.hasNextWord(),
-                currentGame.getTopic(),
-                round.getWord(),
-                round.getResult(),
-                currentGame.getCumulativeScore(),
-                round.getScoreContribution(),
-                null,
-                null);
+                                   currentGame.getTopic(),
+                                   round.getWord(),
+                                   round.getResult(),
+                                   currentGame.getCumulativeScore(),
+                                   round.getScoreContribution(),
+                                   null,
+                                   null);
     }
 
     public void loadNextWord() {
