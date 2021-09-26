@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <VBox xmlns="http://javafx.com/javafx"
@@ -9,8 +16,8 @@
     <!-- Header -->
     <HBox styleClass="header">
         <VBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
-            <Label styleClass="topic" fx:id="labelTopic"/>
-            <Label fx:id="labelNumbering" styleClass="question"/>
+            <Label styleClass="topic" fx:id="labelTopic" />
+            <Label fx:id="labelNumbering" styleClass="question" />
         </VBox>
         <VBox alignment="CENTER_RIGHT">
             <Button fx:id="buttonPlayWord"
@@ -23,7 +30,7 @@
             </Button>
             <HBox styleClass="speed-button-box">
                 <fx:define>
-                    <ToggleGroup fx:id="toggleGroupSpeed"/>
+                    <ToggleGroup fx:id="toggleGroupSpeed" />
                 </fx:define>
 
                 <ToggleButton text="Slow" toggleGroup="$toggleGroupSpeed">
@@ -38,9 +45,10 @@
 
     <!-- Body -->
     <VBox fx:id="body" styleClass="central" VBox.vgrow="ALWAYS">
-        <Label fx:id="labelGuessesRemaining"/>
+        <Label fx:id="labelGuessesRemaining" />
+        <HBox styleClass="hint-container" fx:id="hintContainer" alignment="BOTTOM_CENTER" />
         <TextField fx:id="inputGuess" styleClass="text-field" onAction="#clickSubmit" promptText="Enter guess here"
-                   alignment="CENTER"/>
+                   alignment="CENTER" />
         <HBox styleClass="macron-button-box" alignment="CENTER">
             <Button styleClass="outline-button,macron-button" focusTraversable="false" onAction="#clickMacronButton">ā</Button>
             <Button styleClass="outline-button,macron-button" focusTraversable="false" onAction="#clickMacronButton">ē</Button>

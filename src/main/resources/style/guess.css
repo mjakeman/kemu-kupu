@@ -81,6 +81,39 @@
     -fx-background-color: #26a269;
 }
 
+/* Play Button Variation */
+.play-button {
+    -fx-background-color: #3584e4;
+    -fx-border-color: #1a5fb4;
+}
+
+.play-button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #1c71d8;
+}
+
+.play-button:pressed {
+    -fx-background-color: #1a5fb4;
+}
+
+/*
+ * Hints box
+ */
+
+.hint-container {
+    -fx-spacing: 1px;
+}
+
+.hint-container > Label {
+    -fx-font-weight: bold;
+    -fx-font-family: monospace;
+    -fx-pref-width: 13px;
+}
+
+.hint-container > Label.letter-not-match {
+    -fx-text-fill: #e01b24;
+}
+
 .macron-button {
     -fx-pref-width: 40px;
     -fx-pref-height: 40px;
