@@ -23,7 +23,7 @@ import java.io.IOException;
 public class OnOffSwitcher extends HBox {
 
     @FXML
-    public ToggleGroup toggleGroup;
+    public ToggleGroup colourToggleGroup;
 
     @FXML
     public RadioButton onToggle;
@@ -43,6 +43,7 @@ public class OnOffSwitcher extends HBox {
         @Override
         public void set(boolean newState) {
             updateRadioButtons(newState);
+            System.out.println("State: " + newState);
             super.set(newState);
         }
     };
@@ -58,6 +59,14 @@ public class OnOffSwitcher extends HBox {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        colourToggleGroup.selectedToggleProperty().addListener((value, oldToggle, newToggle) -> {
+
+            // Selection changed, determine on/off state
+            if (newToggle != null) {
+                setState(newToggle.equals(onToggle));
+            }
+        });
     }
 
     /**
@@ -67,9 +76,9 @@ public class OnOffSwitcher extends HBox {
      */
     private void updateRadioButtons(boolean state) {
         if (state) {
-            toggleGroup.selectToggle(onToggle);
+            colourToggleGroup.selectToggle(onToggle);
         } else {
-            toggleGroup.selectToggle(offToggle);
+            colourToggleGroup.selectToggle(offToggle);
         }
     }
 

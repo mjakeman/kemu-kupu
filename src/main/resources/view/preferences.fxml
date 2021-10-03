@@ -31,7 +31,7 @@
                 any time.
             </Label>
             <Pane>
-                <SpeedSwitcher/>
+                <SpeedSwitcher fx:id="speedSwitcher" />
             </Pane>
         </VBox>
 
@@ -41,7 +41,7 @@
                 colours which may be helpful for users with colourblindness.
             </Label>
             <Pane>
-                <OnOffSwitcher />
+                <OnOffSwitcher fx:id="colourModeSwitcher" />
             </Pane>
         </VBox>
 
