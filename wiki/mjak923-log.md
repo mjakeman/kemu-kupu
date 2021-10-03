@@ -208,3 +208,6 @@ startup and saves to disk on termination. It uses a simple `key=value` file form
 and saves to a file named `.prefs`.
 
 Lastly, I moved the SpeedSwitcher control to a new `controls` module.
+
+I also decided to rename `PrefsManager` and `PrefsKeystore` to `PreferencesManager` and `PreferencesStorage`
+respectively as I felt these names better fit the concepts they were representing.

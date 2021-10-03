@@ -5,46 +5,46 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A file-backed keystore which can serialize and
+ * A file-backed hashmap storage which can serialize and
  * deserialize key-value pairs to JavaFX Beans Properties.
  *
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
-public class PrefsKeystore {
+public class PreferencesStorage {
 
     private final String FILE_NAME = ".prefs";
-    private final Map<String, String> keystore = new HashMap<>();
+    private final Map<String, String> store = new HashMap<>();
 
-    public PrefsKeystore() {
+    public PreferencesStorage() {
         loadFromFile();
     }
 
     /**
-     * Set a key-value pair in the keystore
+     * Set a key-value pair in the prefs store
      *
      * @param key   Key to set
      * @param value Associated value
      */
     public void setValue(String key, String value) {
-        keystore.put(key, value);
+        store.put(key, value);
         System.out.println("[SET] " + key + "=" + value);
         saveToFile();
     }
 
     /**
-     * Retrieve a value from the keystore
+     * Retrieve a value from the prefs store
      *
      * @param key Key to query
      * @return Associated value
      */
     public String getValue(String key) {
-        String value = keystore.get(key);
+        String value = store.get(key);
         System.out.println("[GET] " + key + "=" + value);
         return value;
     }
 
     /**
-     * Retrieve a boolean from the keystore or return
+     * Retrieve a boolean from the prefs store or return
      * default value if not found.
      *
      * @param key Key to query
@@ -60,7 +60,7 @@ public class PrefsKeystore {
     }
 
     /**
-     * Retrieve a boolean from the keystore or return
+     * Retrieve a boolean from the prefs store or return
      * default value if not found.
      *
      * @param key Key to query
@@ -76,21 +76,21 @@ public class PrefsKeystore {
     }
 
     /**
-     * Load all key-value pairs from the keystore file and enter them into a hashmap.
+     * Load all key-value pairs from the prefs file and enter them into a hashmap.
      */
     private void loadFromFile() {
 
         // Clear current contents before populating
-        keystore.clear();
+        store.clear();
 
         try {
-            // First check if the keystore file exists
+            // First check if the prefs file exists
             File file = new File(FILE_NAME);
             if (!file.exists()) {
                 return;
             }
 
-            // Read in all key-value pairs from the keystore file
+            // Read in all key-value pairs from the prefs file
             BufferedReader in = new BufferedReader(new FileReader(FILE_NAME));
 
             String line;
@@ -101,7 +101,7 @@ public class PrefsKeystore {
                     String key = components[0];
                     String value = components[1];
 
-                    keystore.put(key, value);
+                    store.put(key, value);
                 } catch (Exception ignored) {
                     // Do nothing
                 }
@@ -113,18 +113,18 @@ public class PrefsKeystore {
     }
 
     /**
-     * Write all key-value pairs from the hashmap to the keystore file.
+     * Write all key-value pairs from the hashmap to the prefs file.
      */
     private void saveToFile() {
         try {
-            // Ensure the keystore file exists
+            // Ensure the prefs file exists
             File file = new File(FILE_NAME);
             file.createNewFile();
 
             // Write each key-value pair to disk
             PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME));
 
-            for (Map.Entry<String, String> entry : keystore.entrySet()) {
+            for (Map.Entry<String, String> entry : store.entrySet()) {
                 String keyValuePair = String.format("%s=%s", entry.getKey(), entry.getValue());
                 writer.println(keyValuePair);
             }

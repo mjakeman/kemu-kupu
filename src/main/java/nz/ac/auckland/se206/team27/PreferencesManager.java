@@ -7,7 +7,7 @@ import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
-public class PrefsManager {
+public class PreferencesManager {
 
     /**
      * The colours should be changed to accommodate for colourblind
@@ -25,28 +25,28 @@ public class PrefsManager {
     /**
      * File-backed storage for arbitrary key-value pairs.
      */
-    private final PrefsKeystore keystore = new PrefsKeystore();
+    private final PreferencesStorage prefsStorage = new PreferencesStorage();
 
     /**
      * Returns a single instance of Prefs Manager to be used throughout the application.
      */
-    private static PrefsManager _instance;
-    public static PrefsManager getInstance() {
-        _instance = _instance == null ? new PrefsManager() : _instance;
+    private static PreferencesManager _instance;
+    public static PreferencesManager getInstance() {
+        _instance = _instance == null ? new PreferencesManager() : _instance;
         return _instance;
     }
 
-    private PrefsManager() {
+    private PreferencesManager() {
 
-        // For each property, attempt to load it from the file-backed preferences keystore. If
+        // For each property, attempt to load it from the file-backed preferences storage. If
         // a value was found then use it, otherwise proceed using a specified default value.
 
         // Colourblind Mode
-        boolean useColourblindMode = keystore.getBooleanOrDefault(colourblindModeKey, false);
+        boolean useColourblindMode = prefsStorage.getBooleanOrDefault(colourblindModeKey, false);
         this.colourblindModeProperty = new SimpleBooleanProperty(useColourblindMode);
 
         // Speech Speed
-        SpeechSpeed speechSpeed = keystore.getEnumOrDefault(speechSpeedKey, SpeechSpeed.class, SpeechSpeed.NORMAL);
+        SpeechSpeed speechSpeed = prefsStorage.getEnumOrDefault(speechSpeedKey, SpeechSpeed.class, SpeechSpeed.NORMAL);
         this.speechSpeedProperty = new SimpleObjectProperty<>(speechSpeed);
     }
 
@@ -54,8 +54,8 @@ public class PrefsManager {
      * Save all preferences to disk.
      */
     public void save() {
-        keystore.setValue(colourblindModeKey, colourblindModeProperty.getValue().toString());
-        keystore.setValue(speechSpeedKey, speechSpeedProperty.getValue().toString());
+        prefsStorage.setValue(colourblindModeKey, colourblindModeProperty.getValue().toString());
+        prefsStorage.setValue(speechSpeedKey, speechSpeedProperty.getValue().toString());
     }
 
     /**

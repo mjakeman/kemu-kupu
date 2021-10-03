@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import nz.ac.auckland.se206.team27.PrefsManager;
+import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
@@ -128,7 +128,7 @@ public class GuessController extends GameController {
 
         // Automatically update the global speech speed preference whenever
         // our speed switcher control is changed.
-        PrefsManager prefsManager = PrefsManager.getInstance();
+        PreferencesManager prefsManager = PreferencesManager.getInstance();
         speedSwitcher.setSpeechSpeed(prefsManager.getSpeechSpeed());
         prefsManager.speechSpeedProperty.bind(speedSwitcher.speechSpeedProperty);
 
@@ -164,7 +164,7 @@ public class GuessController extends GameController {
         buttonSkip.setDisable(true);
         inhibitAction = true;
 
-        SpeechSpeed speed = PrefsManager.getInstance().getSpeechSpeed();
+        SpeechSpeed speed = PreferencesManager.getInstance().getSpeechSpeed();
 
         Task<Void> task = SpeechManager.getInstance().talk(word, speed);
         buttonPlayWord.setText("Playing...");
