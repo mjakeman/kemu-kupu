@@ -7,6 +7,21 @@
 - Raymond Feng ([@ray-f](https://github.com/ray-f))
 
 
+### Quick Start:
+
+To run the precompiled application, run the following command in the root project directory:
+
+```
+bash run.sh
+```
+
+Alternatively, run the jar file directly:
+
+```
+java -jar kemu-kupu-0.2.0.jar
+```
+
+
 ### Tech Stack:
 
 ![img](https://img.shields.io/badge/language-java%2011-orange)
@@ -21,7 +36,7 @@
   _NB: You can check your java runtime version by running `java --version`. This should be between 11 and 16._
 
 
-### Usage:
+### Development:
 
 To run the application in development tool, run the command:
 - Windows: `gradlew.bat run`

@@ -42,3 +42,13 @@ Jordan York (jyor212)
 
 - Held group meeting to check in on progess
 - Delegated final tasks for completion of A3
+
+## 25 Septmber
+
+- Finished delegated tasks and met with team again to identify further steps
+- Test Maori Festival with Matthew's Code
+- Implemented Timer to switch between Result views
+
+## 26 September
+
+- Had final meeting with group to check all was in working order before submission

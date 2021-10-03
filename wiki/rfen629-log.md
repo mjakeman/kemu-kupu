@@ -39,3 +39,10 @@ Raymond Feng (rfen629)
 
 - Merged Jordan's changes into a new branch and started work on integrating game logic and game views
 - Implemented a scoring feature and encouraging messages
+
+## 25 September
+
+- Worked on incorporating a word hint selector, which is binded to a custom class housing a set of labels 
+  (so that each character is its own individual label).
+- Made the `words` directory findable regardless of where you executed the jar file from.
+- Made the result and end game screens consistent with the current game screen
