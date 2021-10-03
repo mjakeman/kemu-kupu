@@ -9,7 +9,15 @@ import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
  */
 public class PrefsManager {
 
+    /**
+     * The colours should be changed to accommodate for colourblind
+     * or otherwise visually impaired users.
+     */
     public final SimpleBooleanProperty colourblindModeProperty;
+
+    /**
+     * The user's preferred speed for text-to-speech playback.
+     */
     public final SimpleObjectProperty<SpeechSpeed> speechSpeedProperty;
 
     /**
@@ -25,6 +33,15 @@ public class PrefsManager {
         // TODO: These should be determined from disk
         this.colourblindModeProperty = new SimpleBooleanProperty(false);
         this.speechSpeedProperty = new SimpleObjectProperty<>(SpeechSpeed.NORMAL);
+    }
+
+    /**
+     * Save all preferences to disk.
+     */
+    public void save() {
+        // TODO: Save to disk
+        System.out.println(colourblindModeProperty.getValue());
+        System.out.println(speechSpeedProperty.getValue());
     }
 
     /**

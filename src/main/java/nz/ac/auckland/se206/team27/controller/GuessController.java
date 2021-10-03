@@ -14,6 +14,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import nz.ac.auckland.se206.team27.PrefsManager;
 import nz.ac.auckland.se206.team27.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
@@ -127,8 +128,11 @@ public class GuessController extends GameController {
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
 
-        // Speech Speed
-        speedSwitcher.setSpeechSpeed(data.speechSpeed);
+        // Automatically update the global speech speed preference whenever
+        // our speed switcher control is changed.
+        PrefsManager prefsManager = PrefsManager.getInstance();
+        speedSwitcher.setSpeechSpeed(prefsManager.getSpeechSpeed());
+        prefsManager.speechSpeedProperty.bind(speedSwitcher.speechSpeedProperty);
 
         // Hints
         ObservableList<Node> children = hintContainer.getChildren();
@@ -148,11 +152,6 @@ public class GuessController extends GameController {
             AnimationBuilder.buildShakeTransition(inputGuess).play();
         }
 
-        // TODO: Refactor to PrefsManager
-        speedSwitcher.speechSpeedProperty.addListener((observable, oldSpeed, newSpeed) -> {
-            gameViewModel.setSpeechSpeed(newSpeed);
-        });
-
         runAfterDelay(() -> inputGuess.requestFocus(), 50L);
         runAfterDelay(() -> sayWord(data.word), 500L);
     }
@@ -167,7 +166,9 @@ public class GuessController extends GameController {
         buttonSkip.setDisable(true);
         inhibitAction = true;
 
-        Task<Void> task = SpeechManager.getInstance().talk(word, speedSwitcher.getSpeechSpeed());
+        SpeechSpeed speed = PrefsManager.getInstance().getSpeechSpeed();
+
+        Task<Void> task = SpeechManager.getInstance().talk(word, speed);
         buttonPlayWord.setText("Playing...");
 
         EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> {

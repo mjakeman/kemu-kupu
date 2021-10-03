@@ -35,12 +35,6 @@ public class Game {
      */
     private int roundIndex = 0;
 
-    /**
-     * The user's preferred speed for text-to-speech playback.
-     * TODO: This should be a global preference.
-     */
-    private SpeechSpeed speechSpeed = SpeechSpeed.NORMAL;
-
     private static Game _instance = null;
 
 
@@ -106,20 +100,6 @@ public class Game {
      */
     public int getCumulativeScore() {
         return rounds.subList(0, roundIndex + 1).stream().mapToInt(Round::getScoreContribution).sum();
-    }
-
-    /**
-     * @return Return the user's preferred speed
-     */
-    public SpeechSpeed getSpeechSpeed() {
-        return speechSpeed;
-    }
-
-    /**
-     * @param speed The user's preferred playback speed
-     */
-    public void setSpeechSpeed(SpeechSpeed speed) {
-        speechSpeed = speed;
     }
 
     /**

@@ -33,24 +33,28 @@ public class SpeedSwitcher extends HBox {
     @FXML
     public ToggleButton fastToggle;
 
-    // SpeechSpeed Property
+    /**
+     * The currently selected {@link SpeechSpeed} of this control.
+     */
     public final SimpleObjectProperty<SpeechSpeed> speechSpeedProperty
             = new SimpleObjectProperty<>(SpeechSpeed.NORMAL) {
 
         /**
-         * Override set method to update toggle when the property
-         * value changes.
-         *
+         * Override set method to update toggle when the property value changes.
          * @param newSpeed New speed value
          */
         @Override
         public void set(SpeechSpeed newSpeed) {
-            System.out.println("Setting speech speed to: " + newSpeed.toString());
             updateToggleGroup(newSpeed);
             super.set(newSpeed);
         }
     };
 
+    /**
+     * A control which allows the user to select one of three speeds,
+     * represented by {@link SpeechSpeed}. Either {@link SpeechSpeed#SLOW},
+     * {@link SpeechSpeed#NORMAL}, or {@link SpeechSpeed#FAST} can be chosen.
+     */
     public SpeedSwitcher() {
 
         // Attempt to populate control using FXML
