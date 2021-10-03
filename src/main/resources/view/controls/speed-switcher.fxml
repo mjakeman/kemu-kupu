@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToggleButton?>
+
+<fx:root type="javafx.scene.layout.HBox"
+         xmlns:fx="http://javafx.com/fxml"
+         styleClass="speed-button-box"
+         stylesheets="@../../style/controls/speed-switcher.css">
+    <fx:define>
+        <ToggleGroup fx:id="toggleGroupSpeed" />
+    </fx:define>
+
+    <ToggleButton fx:id="slowToggle" text="Slow" toggleGroup="$toggleGroupSpeed">
+    </ToggleButton>
+    <ToggleButton fx:id="normalToggle" text="Normal" toggleGroup="$toggleGroupSpeed" selected="true">
+    </ToggleButton>
+    <ToggleButton fx:id="fastToggle" text="Fast" toggleGroup="$toggleGroupSpeed">
+    </ToggleButton>
+</fx:root>

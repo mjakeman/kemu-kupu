@@ -22,27 +22,6 @@
     -fx-spacing: 10px;
 }
 
-.speed-button-box {
-    -fx-border-color: #deddda;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
-    -fx-border-radius: 4px;
-}
-
-.speed-button-box ToggleButton {
-    -fx-border-width: 0;
-    -fx-background-radius: 0;
-    -fx-background-color: transparent;
-}
-
-.speed-button-box ToggleButton:hover {
-    -fx-cursor: hand;
-}
-
-.speed-button-box ToggleButton:selected {
-    -fx-background-color: #deddda;
-}
-
 .text-field {
     -fx-font-size: 12pt;
     -fx-padding: 10px 0;
