@@ -178,3 +178,33 @@ some kind of preferences system - which we are planning to implement for the fin
 ### Meeting
 Fifth team meeting [(minutes)](minutes-26-09-21.md). We did a final team standup, built a "final" jar file with
 a version number of 0.2.0, validated this jar against the assignment brief, and submitted.
+
+## 3 October (Post-Presentation)
+### Meeting
+First project team meeting [(minutes)](minutes-03-10-21.md). With the client presentation done, we moved on to
+the next stage of the project. Several important design decisions were made and the next round of tasks allocated.
+
+### Preferences
+My first task was to implement a preferences system and accompanying view. For now, I focused only on the
+preference system, with the view to be added later. I wanted to make use of JavaFX's Beans API for property
+bindings in the preferences view. This would let me add bidirectional bindings between the preference's
+property and the control I am using to display it, allowing for significantly better code reuse.
+
+My first step was to extract the speed buttons box from the guess view and encapsulate it into a new
+`SpeedSwitcher` control. This is still an HBox at its core, but is treated as an opaque control by
+JavaFX. It exposes a JavaFX Beans property called `speechSpeedProperty`, which is an object property
+wrapping the `SpeechSpeed` enum.
+
+A secondary benefit of extracting out the control is it can be re-used in the preferences screen. I made
+a dedicated stylesheet for the control instead of using the `guess.css` stylesheet.
+
+Next, I created a new `PrefsManager` class which defines a global "SpeechSpeed" property. I bound the
+switcher control to this property so the backing property will update whenever the control is changed. The
+most up-to-date version of this is kept in program memory. It will be committed to disk when the program closes.
+
+Finally, I worked on File I/O. I created a new class called `PrefsKeystore`. This is a file-backed keystore
+which stores key-value pairs (as strings) and handles the appropriate file I/O. It reads from disk on program
+startup and saves to disk on termination. It uses a simple `key=value` file format (with one pair per line)
+and saves to a file named `.prefs`.
+
+Lastly, I moved the SpeedSwitcher control to a new `controls` module.
