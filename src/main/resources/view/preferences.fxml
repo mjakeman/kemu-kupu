@@ -6,6 +6,7 @@
 <?import nz.ac.auckland.se206.team27.controls.SpeedSwitcher?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import nz.ac.auckland.se206.team27.controls.OnOffSwitcher?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           stylesheets="@../style/common.css,@../style/preferences.css"
@@ -40,13 +41,7 @@
                 colours which may be helpful for users with colourblindness.
             </Label>
             <Pane>
-                <HBox>
-                    <fx:define>
-                        <ToggleGroup fx:id="colourToggleGroup"/>
-                    </fx:define>
-                    <RadioButton text="On" toggleGroup="$colourToggleGroup"/>
-                    <RadioButton text="Off" toggleGroup="$colourToggleGroup"/>
-                </HBox>
+                <OnOffSwitcher />
             </Pane>
         </VBox>
 

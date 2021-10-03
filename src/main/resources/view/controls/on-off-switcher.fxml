@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.RadioButton?>
+
+<fx:root type="javafx.scene.layout.HBox"
+         xmlns:fx="http://javafx.com/fxml"
+         styleClass="switcher"
+         stylesheets="@../../style/controls/on-off-switcher.css">
+    <fx:define>
+        <ToggleGroup fx:id="colourToggleGroup"/>
+    </fx:define>
+    <RadioButton text="On" toggleGroup="$colourToggleGroup"/>
+    <RadioButton text="Off" toggleGroup="$colourToggleGroup"/>
+</fx:root>
