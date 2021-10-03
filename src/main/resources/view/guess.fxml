@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import nz.ac.auckland.se206.team27.SpeedSwitcher?>
+<?import nz.ac.auckland.se206.team27.controls.SpeedSwitcher?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       stylesheets="@../style/common.css,@../style/game.css,@../style/guess.css"

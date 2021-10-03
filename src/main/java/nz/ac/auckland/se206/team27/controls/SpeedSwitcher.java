@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27;
+package nz.ac.auckland.se206.team27.controls;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
