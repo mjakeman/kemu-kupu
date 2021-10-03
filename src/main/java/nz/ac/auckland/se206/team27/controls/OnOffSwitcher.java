@@ -43,7 +43,6 @@ public class OnOffSwitcher extends HBox {
         @Override
         public void set(boolean newState) {
             updateRadioButtons(newState);
-            System.out.println("State: " + newState);
             super.set(newState);
         }
     };
