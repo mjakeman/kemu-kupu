@@ -3,9 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
+<?import nz.ac.auckland.se206.team27.controls.SpeedSwitcher?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          stylesheets="@../style/common.css"
+          stylesheets="@../style/common.css,@../style/preferences.css"
           fx:controller="nz.ac.auckland.se206.team27.controller.PreferencesController">
     <!-- Create a 2-column, 1-row layout to show two panes side by side-->
     <columnConstraints>
@@ -19,11 +22,39 @@
     <!-- Actual content -->
     <VBox fx:id="container" styleClass="container" HBox.hgrow="ALWAYS">
         <GridPane.columnIndex>0</GridPane.columnIndex>
-        <Label>Preferences</Label>
+        <Label styleClass="title">Preferences</Label>
+
+        <VBox>
+            <Label styleClass="pref-entry">Speech Playback Speed</Label>
+            <Label wrapText="true">The default speed at which words will be spoken to you. This can be changed in-game at
+                any time.
+            </Label>
+            <Pane>
+                <SpeedSwitcher/>
+            </Pane>
+        </VBox>
+
+        <VBox>
+            <Label styleClass="pref-entry">Colourblind Mode</Label>
+            <Label wrapText="true">Kēmu Kupu uses lots of colours! Turning this mode on will use easily-distinguishable
+                colours which may be helpful for users with colourblindness.
+            </Label>
+            <Pane>
+                <HBox>
+                    <fx:define>
+                        <ToggleGroup fx:id="colourToggleGroup"/>
+                    </fx:define>
+                    <RadioButton text="On" toggleGroup="$colourToggleGroup"/>
+                    <RadioButton text="Off" toggleGroup="$colourToggleGroup"/>
+                </HBox>
+            </Pane>
+        </VBox>
+
         <Button onAction="#clickBack">Back</Button>
     </VBox>
     <AnchorPane styleClass="aside">
         <GridPane.columnIndex>1</GridPane.columnIndex>
-        <Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit</Label>
+        <Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit
+        </Label>
     </AnchorPane>
 </GridPane>
