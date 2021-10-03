@@ -14,11 +14,18 @@ public class PrefsManager {
      * or otherwise visually impaired users.
      */
     public final SimpleBooleanProperty colourblindModeProperty;
+    private final String colourblindModeKey = "colourblind-mode";
 
     /**
      * The user's preferred speed for text-to-speech playback.
      */
     public final SimpleObjectProperty<SpeechSpeed> speechSpeedProperty;
+    private final String speechSpeedKey = "speech-speed";
+
+    /**
+     * File-backed storage for arbitrary key-value pairs.
+     */
+    private final PrefsKeystore keystore = new PrefsKeystore();
 
     /**
      * Returns a single instance of Prefs Manager to be used throughout the application.
@@ -30,18 +37,25 @@ public class PrefsManager {
     }
 
     private PrefsManager() {
-        // TODO: These should be determined from disk
-        this.colourblindModeProperty = new SimpleBooleanProperty(false);
-        this.speechSpeedProperty = new SimpleObjectProperty<>(SpeechSpeed.NORMAL);
+
+        // For each property, attempt to load it from the file-backed preferences keystore. If
+        // a value was found then use it, otherwise proceed using a specified default value.
+
+        // Colourblind Mode
+        boolean useColourblindMode = keystore.getBooleanOrDefault(colourblindModeKey, false);
+        this.colourblindModeProperty = new SimpleBooleanProperty(useColourblindMode);
+
+        // Speech Speed
+        SpeechSpeed speechSpeed = keystore.getEnumOrDefault(speechSpeedKey, SpeechSpeed.class, SpeechSpeed.NORMAL);
+        this.speechSpeedProperty = new SimpleObjectProperty<>(speechSpeed);
     }
 
     /**
      * Save all preferences to disk.
      */
     public void save() {
-        // TODO: Save to disk
-        System.out.println(colourblindModeProperty.getValue());
-        System.out.println(speechSpeedProperty.getValue());
+        keystore.setValue(colourblindModeKey, colourblindModeProperty.getValue().toString());
+        keystore.setValue(speechSpeedKey, speechSpeedProperty.getValue().toString());
     }
 
     /**
