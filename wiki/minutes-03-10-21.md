@@ -35,8 +35,8 @@
 ![score curve](https://github.com/SOFTENG206-2021/assignment-3-and-project-team-27/blob/main/wiki/03-10-21%20desmos_score_modelling.png?raw=true)
 
  2. Preferences menu with the following options
-      - Colourblindness toggle (switches all colours)
-      - Text to speech default speed (stick to 3 button box)
+      - Colourblindness toggle (switches all colours) INTEGRATED
+      - Text to speech default speed (stick to 3 button box) INTEGRATED
       - TTS speed should be globally applied
       - Credits and our names ;)
 
@@ -60,9 +60,34 @@ File should look like:
  5. Help screen TBC - *NB: This could wait beyond the A4 deadline*
 
 #### Extra
- - Improve word hints to a) display mistakes with punctuation input errors (highlight red) and b) handle input more robustly
+ 1. Randomise encouraging messages +1
+ 2. Improve word hints to a) display mistakes with punctuation input errors (highlight red) and b) handle input more robustly +1
+ 3. Sort topic list alphabetically
+ 4. Add application icon
+ 5. Topic randomisation selection
+ 6. Sound Theme (Alter sound depending on outcome) - extend `SpeechManager` with audio playback tasks to avoid overlapping
+
+ - Dynamic background to main menu screen
  - Global scoreboard on rewards screen
  - More Te Reo Maori in feedback provided (potentially game wide toggle which switches between Maori and English)
- - Definitions
- - Randomise encouraging messages
- - Sound Theme (Alter sound depending on outcome)
+ - Definitions for words
+
+
+## Action Items
+
+1. REQ scoring (**@Ray**)
+2. REQ preferences / preference option integration (**@Matt**)
+3. REQ practice mode (**@Ray**)
+4. REQ rewards screen (**@Matt**)
+5. EXT randomise encouraging messages (**@Jordan**)
+6. EXT improve word hints (**@Jordan**)
+7. EXT alphabetical list sort (**@Jordan**)
+8. EXT add application icon (**@Jordan**)
+9. EXT topic randomisation (**@Jordan**)
+10. EXT sound theme (**@Jordan/@Matt**)
+
+**Meet at Friday 11AM**
+
+
+
+
