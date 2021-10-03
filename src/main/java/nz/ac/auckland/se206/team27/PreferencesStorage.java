@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * A file-backed hashmap storage which can serialize and
- * deserialize key-value pairs to JavaFX Beans Properties.
+ * deserialize string key-value pairs.
  *
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
