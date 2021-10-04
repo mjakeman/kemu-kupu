@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import nz.ac.auckland.se206.team27.controls.SpeedSwitcher?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       stylesheets="@../style/common.css,@../style/game.css,@../style/guess.css"
@@ -28,18 +29,7 @@
                     disable="true">
                 Playing...
             </Button>
-            <HBox styleClass="speed-button-box">
-                <fx:define>
-                    <ToggleGroup fx:id="toggleGroupSpeed" />
-                </fx:define>
-
-                <ToggleButton fx:id="slowToggle" text="Slow" toggleGroup="$toggleGroupSpeed">
-                </ToggleButton>
-                <ToggleButton fx:id="normalToggle" text="Normal" toggleGroup="$toggleGroupSpeed" selected="true">
-                </ToggleButton>
-                <ToggleButton fx:id="fastToggle" text="Fast" toggleGroup="$toggleGroupSpeed">
-                </ToggleButton>
-            </HBox>
+            <SpeedSwitcher fx:id="speedSwitcher" />
         </VBox>
     </HBox>
 

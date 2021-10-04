@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.team27.controller.base;
 
 import javafx.application.Platform;
 import nz.ac.auckland.se206.team27.App;
+import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 
@@ -29,6 +30,7 @@ public abstract class BaseController {
      */
     protected void closeApplication() {
         SpeechManager.getInstance().shutdown();
+        PreferencesManager.getInstance().save();
         Platform.exit();
 
         // Temporary fix, bug with application not closing if game has been finished

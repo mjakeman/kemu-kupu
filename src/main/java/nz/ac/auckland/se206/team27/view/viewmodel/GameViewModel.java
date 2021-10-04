@@ -37,7 +37,6 @@ public class GameViewModel implements ViewModel {
                                   currentGame.getCurrentRoundIndex(),
                                   round.getGuessesRemaining(),
                                   round.isFirstGuess(),
-                                  currentGame.getSpeechSpeed(),
                                   // Show hint when it is not the first guess
                                   !round.isFirstGuess());
     }
@@ -53,14 +52,6 @@ public class GameViewModel implements ViewModel {
 
     public void skipCurrentWord() {
         currentGame.getCurrentRound().markSkipped();
-    }
-
-    /**
-     * Set the user's preferred speed for text-to-speech
-     * @param speed Speed to use
-     */
-    public void setSpeechSpeed(SpeechSpeed speed) {
-        currentGame.setSpeechSpeed(speed);
     }
 
     /*
