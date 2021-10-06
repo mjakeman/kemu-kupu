@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.team27;
 import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.HostServices;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.team27.controller.HomeController;
@@ -12,6 +13,7 @@ import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 import static nz.ac.auckland.se206.team27.view.ViewConfig.*;
@@ -69,6 +71,8 @@ public class App extends Application {
             Animation anim = AnimationBuilder.buildZoomAndFadeTransition(controller.root, controller.container);
             anim.play();
         });
+
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.PNG")));
 
         stage.show();
 
