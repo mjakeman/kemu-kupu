@@ -42,7 +42,6 @@ public class MenuViewModel implements ViewModel {
         this.wordLists = repo.getWordLists();
     }
 
-
     /*
      * The following are used for the main menu screen.
      */
