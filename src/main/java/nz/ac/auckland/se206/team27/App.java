@@ -12,6 +12,7 @@ import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -72,7 +73,7 @@ public class App extends Application {
             anim.play();
         });
 
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.PNG")));
+        stage.getIcons().add(new Image(new File("\\src\\resources\\media\\icon.PNG").toURI().toString()));
 
         stage.show();
 
