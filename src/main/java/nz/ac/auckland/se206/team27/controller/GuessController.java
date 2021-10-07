@@ -17,6 +17,7 @@ import nz.ac.auckland.se206.team27.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
+import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.HintNode;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
@@ -58,6 +59,9 @@ public class GuessController extends GameController {
 
     @FXML
     public SpeedSwitcher speedSwitcher;
+
+    @FXML
+    public Label labelPractice;
 
     /**
      * When true, this signifies the user should not be able to press enter in the text
@@ -125,6 +129,10 @@ public class GuessController extends GameController {
         labelTopic.setText(data.topic);
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
+
+        if (data.isPracticeMode) {
+            JavaFXUtil.toggleNodeVisibility(labelPractice, true);
+        }
 
         // Automatically update the global speech speed preference whenever
         // our speed switcher control is changed.
