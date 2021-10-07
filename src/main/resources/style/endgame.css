@@ -26,3 +26,21 @@
 .raised-button {
     -fx-pref-width: 200px;
 }
+
+/* Table Row Styling */
+/* TODO: PORT TO NEW COLOUR SCHEMES SYSTEM */
+.table-row-failed {
+    -fx-background-color: #f66151;
+}
+
+.table-row-faulted {
+    -fx-background-color: #ffbe6f;
+}
+
+.table-row-passed {
+    -fx-background-color: #8ff0a4;
+}
+
+.table-row-skipped {
+    -fx-background-color: #99c1f1;
+}

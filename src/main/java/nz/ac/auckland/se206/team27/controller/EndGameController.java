@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
@@ -100,6 +101,38 @@ public class EndGameController extends GameController {
         scoreCol.setCellValueFactory(cellData -> {
             Round round = cellData.getValue();
             return new ReadOnlyObjectWrapper<>(round.getScoreContribution());
+        });
+
+        // Thanks to: https://www.mmbyte.com/article/8864.html for the rough outline
+        // on how to style table rows according to the properties of the bound item.
+        tableView.setRowFactory(messageTable -> new TableRow<>() {
+            @Override
+            protected void updateItem(Round round, boolean empty) {
+                super.updateItem(round, empty);
+
+                if (round == null || empty) {
+                    getStyleClass().clear();
+                    return;
+                }
+
+                String styleClass;
+                switch (round.getResult()) {
+                    case FAILED:
+                        styleClass = "table-row-failed";
+                        break;
+                    case PASSED:
+                        styleClass = "table-row-passed";
+                        break;
+                    case FAULTED:
+                        styleClass = "table-row-faulted";
+                        break;
+                    case SKIPPED:
+                    default:
+                        styleClass = "table-row-skipped";
+                }
+
+                getStyleClass().add(styleClass);
+            }
         });
 
         tableView.setItems(items);
