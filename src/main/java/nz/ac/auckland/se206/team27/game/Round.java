@@ -80,15 +80,17 @@ public class Round {
         if (word.equalsIgnoreCase(guess.trim())) {
             result = guessesMade == 1 ? PASSED : FAULTED;
             endRoundTimer();
+            return false;
         }
 
         // Check if there are any more guesses left
         if (guessesMade >= maxGuesses) {
             result = FAILED;
             endRoundTimer();
+            return false;
         }
 
-        return result == null;
+        return true;
     }
 
     /**
