@@ -1,5 +1,11 @@
 package nz.ac.auckland.se206.team27.game;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Pattern;
+
+import nz.ac.auckland.se206.team27.view.HintNode;
+
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAILED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAULTED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.PASSED;
@@ -42,10 +48,16 @@ public class Round {
      */
     private long endTimestamp;
 
+    /**
+     * Map of hints (character at an index) to display after the first guess.
+     */
+    private final Map<Integer, Character> hints;
 
-    public Round(String word, int maxGuesses) {
+
+    public Round(String word, int maxGuesses, boolean isPracticeMode) {
         this.maxGuesses = maxGuesses;
         this.word = word.trim();
+        this.hints = getHints(isPracticeMode);
     }
 
     /**
@@ -129,6 +141,13 @@ public class Round {
     }
 
     /**
+     * @return The map of hints.
+     */
+    public Map<Integer, Character> getHints() {
+        return hints;
+    }
+
+    /**
      * @return the corresponding score for this round.
      *
      * @throws IllegalCallerException when the result has not ended.
@@ -170,6 +189,36 @@ public class Round {
         if (result != null) {
             throw new IllegalCallerException("Cannot make a guess! Round result has already been determined");
         }
+    }
+
+    /**
+     * @return a map of all hints for this round.
+     */
+    private Map<Integer, Character> getHints(boolean isPractice) {
+        Map<Integer, Character> hints = new HashMap<>();
+        hints.put(1, word.charAt(1));
+
+        if (isPractice) {
+            int wordLength = word.length();
+
+            // The distance between any two consecutive hints (excluding punctuation)
+            // TODO: Extract spacing to somewhere else related to practice game options
+            int spacing = 4;
+
+            int currentIndex = 1 + spacing;
+            while (currentIndex < wordLength) {
+                char currentLetter = word.charAt(currentIndex);
+                if (Pattern.matches(HintNode.ALPHABET_REGEX, String.valueOf(currentLetter))) {
+                    // Does this work?
+                    hints.put(currentIndex, currentLetter);
+                    currentIndex += spacing;
+                } else {
+                    currentIndex++;
+                }
+            }
+        }
+
+        return hints;
     }
 
 }
