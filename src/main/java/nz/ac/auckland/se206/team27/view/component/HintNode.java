@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27.view;
+package nz.ac.auckland.se206.team27.view.component;
 
 import java.util.ArrayList;
 import java.util.List;

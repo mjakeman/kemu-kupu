@@ -13,12 +13,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.PreferencesManager;
-import nz.ac.auckland.se206.team27.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
-import nz.ac.auckland.se206.team27.view.HintNode;
+import nz.ac.auckland.se206.team27.view.component.HintNode;
+import nz.ac.auckland.se206.team27.view.component.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
