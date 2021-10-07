@@ -2,7 +2,6 @@ package nz.ac.auckland.se206.team27.view.viewmodel;
 
 import nz.ac.auckland.se206.team27.game.Game;
 import nz.ac.auckland.se206.team27.game.Round;
-import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
@@ -31,6 +30,11 @@ public class GameViewModel implements ViewModel {
 
     public GuessScreenDto getGuessScreenData() {
         Round round = currentGame.getCurrentRound();
+
+        // Starts the round timer when the next game is active
+        // TODO: Move this to a better place to execute such that it will only run once when the round starts instead of on data load (model?)
+        round.startRoundTimer();
+
         return new GuessScreenDto(currentGame.getTopic(),
                                   round.getWord(),
                                   currentGame.getNumberOfRounds(),
