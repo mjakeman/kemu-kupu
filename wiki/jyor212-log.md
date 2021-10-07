@@ -62,3 +62,8 @@ Jordan York (jyor212)
 - Continued on app icon implementation
 - Sorted topic list by alphabetical order
 - Added 'RANDOM TOPIC' selection feature also
+
+## 8 October
+
+- Started implementing sound feature to differ between correct and incorrect words
+- Had a group call to check in on everyone's progress
