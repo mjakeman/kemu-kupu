@@ -10,6 +10,7 @@ import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 
 import java.util.Random;
+import java.util.Collections;
 
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
@@ -54,6 +55,8 @@ public class ChooseTopicController extends MenuController {
 
     @Override
     protected void populateViewData() {
+        ObservableList<String> topicList = FXCollections.observableArrayList(menuViewModel.getTopics());
+        Collections.sort(topicList);
         topicList.add("RANDOM TOPIC");
         listview.setItems(topicList);
     }

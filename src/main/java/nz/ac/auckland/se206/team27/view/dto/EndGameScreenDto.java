@@ -9,11 +9,13 @@ public class EndGameScreenDto implements ViewDto {
 
     public final String topic;
     public final int totalScore;
+    public final boolean isPracticeMode;
 
 
-    public EndGameScreenDto(String topic, int totalScore) {
+    public EndGameScreenDto(String topic, int totalScore, boolean isPracticeMode) {
         this.topic = topic;
         this.totalScore = totalScore;
+        this.isPracticeMode = isPracticeMode;
     }
 
 }

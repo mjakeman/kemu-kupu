@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.team27.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -31,6 +32,9 @@ public class PreviewTopicController extends MenuController {
     @FXML
     public Hyperlink credit;
 
+    @FXML
+    public Button playBtn;
+
 
     public void clickBack() {
         // Reset topic selection
@@ -54,6 +58,7 @@ public class PreviewTopicController extends MenuController {
 
         title.setText(dto.name);
         blurb.setText(dto.description);
+        playBtn.setText(dto.isPractice ? "Start Practice" : "Play");
 
         image.setStyle("-fx-background-image: url('" + dto.image.imgUrl + "');");
         credit.setText(String.format("%s (%s)", dto.image.creator, dto.image.copyright));
