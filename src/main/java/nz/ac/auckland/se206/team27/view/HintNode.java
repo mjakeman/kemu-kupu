@@ -17,6 +17,12 @@ import javafx.scene.control.Label;
 public class HintNode {
 
     /**
+     * The characters allowed in a valid word, excluding all punctuation.
+     */
+    // TODO: Move this somewhere else since it is used in Round to determine hints
+    public static final String ALPHABET_REGEX = "[a-zA-ZāēīōūĀĒĪŌŪ]";
+
+    /**
      * List of {@link Label} nodes to be displayed on the JavaFX pane.
      */
     private final List<Label> labels = new ArrayList<>();
@@ -70,7 +76,7 @@ public class HintNode {
      */
     private void setLabelContents(String input) {
         // Replace all letters from the te reo alphabet with underscores
-        String base = word.replaceAll("[a-zA-ZāēīōūĀĒĪŌŪ]", "_");
+        String base = word.replaceAll(ALPHABET_REGEX, "_");
 
         for (int i = 0; i < word.length(); i++) {
             Label currentLabel = labels.get(i);

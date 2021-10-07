@@ -2,6 +2,9 @@ package nz.ac.auckland.se206.team27.game;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
+
+import nz.ac.auckland.se206.team27.view.HintNode;
 
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAILED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAULTED;
@@ -140,13 +143,28 @@ public class Round {
     /**
      * @return a map of all hints for this round.
      */
-    // TODO: Complete this for multiple hints depending on practice mode
     private Map<Integer, Character> getHints(boolean isPractice) {
         Map<Integer, Character> hints = new HashMap<>();
         hints.put(1, word.charAt(1));
 
         if (isPractice) {
             int wordLength = word.length();
+
+            // The distance between any two consecutive hints (excluding punctuation)
+            // TODO: Extract spacing to somewhere else related to practice game options
+            int spacing = 4;
+
+            int currentIndex = 1 + spacing;
+            while (currentIndex < wordLength) {
+                char currentLetter = word.charAt(currentIndex);
+                if (Pattern.matches(HintNode.ALPHABET_REGEX, String.valueOf(currentLetter))) {
+                    // Does this work?
+                    hints.put(currentIndex, currentLetter);
+                    currentIndex += spacing;
+                } else {
+                    currentIndex++;
+                }
+            }
         }
 
         return hints;
