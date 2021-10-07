@@ -86,9 +86,9 @@ public class HintNode {
             // If there are input characters, prioritise these and flag if they are different from the hints
             if (input.length() > i) {
                 letter = input.charAt(i);
-                flagged = showHint && letterHint != letter;
+                flagged = showHint && letterHint != null && letterHint != letter;
             } else {
-                letter = letterHint != null && showHint ? letterHint : base.charAt(i);
+                letter = showHint && letterHint != null ? letterHint : base.charAt(i);
                 flagged = false;
             }
 
@@ -98,7 +98,7 @@ public class HintNode {
             if (flagged) {
                 labelStyles.add("letter-not-match");
             } else {
-                labels.clear();
+                labelStyles.clear();
             }
         }
     }

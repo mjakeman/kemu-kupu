@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.wordlist.WordList;
 
 /**
@@ -72,7 +71,7 @@ public class Game {
         List<String> allWords = wordList.getWordList();
         Collections.shuffle(allWords);
         rounds = allWords.subList(0, Math.min(wordCount, allWords.size())).stream()
-                .map((word) -> new Round(word, maxGuesses))
+                .map((word) -> new Round(word, maxGuesses, isPracticeMode))
                 .collect(Collectors.toList());
 
         _instance = this;
