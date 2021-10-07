@@ -14,7 +14,7 @@
 		<Label fx:id="title" styleClass="title,shadow" />
 		<Label styleClass="subtitle">SOFTENG 206 | Team 27</Label>
 		<Button styleClass="menu-btn" onAction="#clickNewGame">New Game</Button>
-		<Button styleClass="menu-btn" onAction="#clickPractice" disable="true">Practice Mode</Button>
+		<Button styleClass="menu-btn" onAction="#clickPractice">Practice Mode</Button>
 		<Button styleClass="menu-btn" onAction="#clickPreferences">Preferences</Button>
 		<Button styleClass="menu-btn" onAction="#clickQuit">Quit</Button>
 		<Label styleClass="spacer" />
