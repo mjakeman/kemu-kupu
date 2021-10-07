@@ -32,9 +32,11 @@ public class GameViewModel implements ViewModel {
     public GuessScreenDto getGuessScreenData() {
         Round round = currentGame.getCurrentRound();
         return new GuessScreenDto(currentGame.getTopic(),
+                                  currentGame.isPracticeMode(),
                                   round.getWord(),
                                   currentGame.getNumberOfRounds(),
-                                  currentGame.getCurrentRoundIndex(),
+                                  // Incrementing wordIndex by 1 to have this ready for display (1 indexed)
+                                  currentGame.getCurrentRoundIndex() + 1,
                                   round.getGuessesRemaining(),
                                   round.isFirstGuess(),
                                   // Show hint when it is not the first guess
@@ -66,6 +68,7 @@ public class GameViewModel implements ViewModel {
                                    round.getResult(),
                                    currentGame.getCumulativeScore(),
                                    round.getScoreContribution(),
+                                   currentGame.isPracticeMode(),
                                    null,
                                    null);
     }
@@ -80,7 +83,8 @@ public class GameViewModel implements ViewModel {
 
     public EndGameScreenDto getEndGameScreenData() {
         return new EndGameScreenDto(currentGame.getTopic(),
-                                    currentGame.getCumulativeScore());
+                                    currentGame.getCumulativeScore(),
+                                    currentGame.isPracticeMode());
     }
 
     public void playAgain() {
