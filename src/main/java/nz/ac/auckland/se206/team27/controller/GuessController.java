@@ -13,8 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.PreferencesManager;
-import nz.ac.auckland.se206.team27.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
+import nz.ac.auckland.se206.team27.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
@@ -144,12 +144,12 @@ public class GuessController extends GameController {
         ObservableList<Node> children = hintContainer.getChildren();
         children.clear();
 
-        HintNode hint = new HintNode(data.word, "", data.showHint);
+        HintNode hint = new HintNode(data.word, data.hints, data.showHint);
         children.addAll(hint.getNodes());
 
         inputGuess.textProperty().addListener((observable, oldValue, newValue) -> {
             // Replace the word inside the hint display with updated values when the input changes
-            hint.setWord(data.word, newValue, data.showHint);
+            hint.setWordInputChanges(newValue);
         });
 
         // Incorrect Guess

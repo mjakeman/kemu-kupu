@@ -1,5 +1,8 @@
 package nz.ac.auckland.se206.team27.game;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAILED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAULTED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.PASSED;
@@ -37,10 +40,16 @@ public class Round {
      */
     private int scoreContribution;
 
+    /**
+     * Map of hints (character at an index) to display after the first guess.
+     */
+    private final Map<Integer, Character> hints;
 
-    public Round(String word, int maxGuesses) {
+
+    public Round(String word, int maxGuesses, boolean isPracticeMode) {
         this.maxGuesses = maxGuesses;
         this.word = word.trim();
+        this.hints = getHints(isPracticeMode);
     }
 
     /**
@@ -106,6 +115,13 @@ public class Round {
     }
 
     /**
+     * @return The map of hints.
+     */
+    public Map<Integer, Character> getHints() {
+        return hints;
+    }
+
+    /**
      * @throws IllegalCallerException if {@link Round#result} is already set.
      */
     private void assertResultNotSet() {
@@ -119,6 +135,21 @@ public class Round {
      */
     public int getScoreContribution() {
         return scoreContribution;
+    }
+
+    /**
+     * @return a map of all hints for this round.
+     */
+    // TODO: Complete this for multiple hints depending on practice mode
+    private Map<Integer, Character> getHints(boolean isPractice) {
+        Map<Integer, Character> hints = new HashMap<>();
+        hints.put(1, word.charAt(1));
+
+        if (isPractice) {
+            int wordLength = word.length();
+        }
+
+        return hints;
     }
 
 }
