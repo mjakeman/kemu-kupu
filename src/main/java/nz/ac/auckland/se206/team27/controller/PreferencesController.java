@@ -44,6 +44,7 @@ public class PreferencesController extends BaseController {
      * Action executed when the "Back" button is clicked.
      */
     public void clickBack() {
+        PreferencesManager.getInstance().save();
         sceneLoader.loadScreen(HOME);
     }
 

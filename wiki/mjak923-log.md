@@ -225,3 +225,18 @@ The implementation of `OnOffSwitcher` is largely the same as `SpeedSwitcher`, ex
 Radio Buttons instead of Toggle Buttons and a `boolean` in place of `SpeechSpeed`.
 
 Finally, I bound the controls to properties from `PreferencesManager`.
+
+## 7 October
+With the preference toggles now working, I implemented the "colourblind" mode. I specifically
+targeted dichromacy, which is where only two colours are visible. The palette I chose was
+designed by IBM and specifically addressed deuteranopia and protanopia (red-green), as well
+as the rarer tritanopia (blue-yellow) forms of colour-blindness.
+
+To implement support for this, I came up with the idea of "colour schemes". These are CSS
+stylesheets which define colour variables and can be swapped during run time. I apply them
+to the scene, and these colour variables (called "looked-up colours") are propagated to child
+elements such as the various views. I created two colour profiles and bound them to the "on"
+and "off" states.
+
+I used the website [maketintsandshades.com](https://maketintsandshades.com/) to generate hover
+and pressed variants of the core colourblind-friendly palette.

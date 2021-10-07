@@ -3,9 +3,11 @@ package nz.ac.auckland.se206.team27;
 import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.HostServices;
+import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.team27.controller.HomeController;
+import nz.ac.auckland.se206.team27.resource.ColourProfileResource;
 import nz.ac.auckland.se206.team27.resource.FontResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
@@ -37,6 +39,18 @@ public class App extends Application {
      */
     public static void openWebPage(String url) {
         hostServices.showDocument(url);
+    }
+
+    /**
+     * Applies a colour scheme to the global scene.
+     * @param colourScheme The colour scheme to use
+     */
+    public static void applyColourScheme(ColourProfileResource colourScheme) {
+        String colourSchemeCSS = colourScheme.getResourceUrl().toExternalForm();
+
+        Scene scene = stage.getScene();
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(colourSchemeCSS);
     }
 
     /**
