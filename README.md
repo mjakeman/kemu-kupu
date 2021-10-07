@@ -18,7 +18,7 @@ bash run.sh
 Alternatively, run the jar file directly:
 
 ```
-java -jar kemu-kupu-0.2.0.jar
+java -jar kemu-kupu-0.3.0-alpha1.jar
 ```
 
 
