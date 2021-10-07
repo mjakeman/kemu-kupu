@@ -149,7 +149,7 @@ public class GuessController extends GameController {
 
         inputGuess.textProperty().addListener((observable, oldValue, newValue) -> {
             // Replace the word inside the hint display with updated values when the input changes
-            hint.setWordInputChanges(newValue);
+            hint.overrideWithUserInput(newValue);
         });
 
         // Incorrect Guess
