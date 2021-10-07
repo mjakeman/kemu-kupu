@@ -84,7 +84,7 @@ public class GameViewModel implements ViewModel {
     }
 
     public void playAgain() {
-        Game.createInstance(currentGame.getWordList());
+        Game.createInstance(currentGame.getWordList(), currentGame.isPracticeMode());
     }
 
 }

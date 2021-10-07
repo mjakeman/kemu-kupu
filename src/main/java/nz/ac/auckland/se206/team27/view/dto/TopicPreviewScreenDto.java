@@ -10,9 +10,11 @@ public class TopicPreviewScreenDto implements ViewDto {
     public final String name;
     public final String description;
     public final ImageDto image;
+    public final boolean isPractice;
 
 
-    public TopicPreviewScreenDto(String name, String description, ImageDto image) {
+    public TopicPreviewScreenDto(boolean isPractice, String name, String description, ImageDto image) {
+        this.isPractice = isPractice;
         this.name = name;
         this.description = description;
         this.image = image;
