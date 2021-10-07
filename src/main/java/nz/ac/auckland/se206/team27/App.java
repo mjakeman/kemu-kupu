@@ -3,8 +3,11 @@ package nz.ac.auckland.se206.team27;
 import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.application.HostServices;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.team27.confetti.ParticleView;
 import nz.ac.auckland.se206.team27.controller.HomeController;
 import nz.ac.auckland.se206.team27.resource.FontResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
@@ -61,14 +64,18 @@ public class App extends Application {
         loadFonts();
 
         stage.setOpacity(0);
-        SceneLoader loader = new SceneLoader(primaryStage);
+        /*SceneLoader loader = new SceneLoader(primaryStage);
         loader.loadScreen(ScreenResource.HOME, c -> {
             // Normally, home plays a slide and fade transition. On first load,
             // we want to instead play a 'Zoom and Fade' transition.
             HomeController controller = (HomeController)c;
             Animation anim = AnimationBuilder.buildZoomAndFadeTransition(controller.root, controller.container);
             anim.play();
-        });
+        });*/
+
+        VBox root = new VBox();
+        root.getChildren().add(new ParticleView(WIDTH, HEIGHT));
+        stage.setScene(new Scene(root, WIDTH, HEIGHT));
 
         stage.show();
 
