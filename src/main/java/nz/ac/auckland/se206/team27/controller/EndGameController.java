@@ -2,6 +2,8 @@ package nz.ac.auckland.se206.team27.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
@@ -18,6 +20,9 @@ public class EndGameController extends GameController {
 
     @FXML
     public VBox container;
+
+    @FXML
+    public TableView tableView;
 
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
@@ -38,6 +43,15 @@ public class EndGameController extends GameController {
         EndGameScreenDto data = gameViewModel.getEndGameScreenData();
         labelTitle.setText(data.topic);
         labelTotalScore.setText("" + data.totalScore);
+
+        // Clear table view
+        tableView.getColumns().clear();
+
+        TableColumn roundCol = new TableColumn("Round");
+        TableColumn wordCol = new TableColumn("Word");
+        TableColumn firstTry = new TableColumn("Correct");
+        TableColumn guessCol = new TableColumn("Your Spelling");
+        TableColumn timeTakenCol = new TableColumn("Time Taken");
     }
 
 }

@@ -10,10 +10,11 @@
 		<Label styleClass="endgame-title" fx:id="labelTitle" />
 		<VBox styleClass="score-label-container">
 			<Label styleClass="score-label">Total Score: </Label>
-			<HBox alignment="BOTTOM_CENTER">
+			<!--<HBox alignment="BOTTOM_CENTER">
 				<Label styleClass="score-label-total" fx:id="labelTotalScore" />
 				<Label styleClass="score-label-total-prefix">pts</Label>
-			</HBox>
+			</HBox>-->
+			<TableView fx:id="tableView"/>
 		</VBox>
 		<VBox styleClass="spacing">
 			<Button onAction="#clickPlayAgain" styleClass="raised-button,play-button">Play again</Button>
