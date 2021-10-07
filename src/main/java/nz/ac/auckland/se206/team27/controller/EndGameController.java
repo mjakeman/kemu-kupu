@@ -81,11 +81,12 @@ public class EndGameController extends GameController {
             return new ReadOnlyObjectWrapper<>(wordCase);
         });
 
-        TableColumn<Round, String> guessCol = new TableColumn<>("Your Spelling");
+        TableColumn<Round, String> guessCol = new TableColumn<>("Your Guess(es)");
+        guessCol.setMinWidth(200);
         guessCol.setCellValueFactory(cellData -> {
-            // TODO: Better way of displaying multiple attempts
-            // Maybe multiple rows?
-            return new ReadOnlyObjectWrapper<>("Guess 1, Guess 2, etc");
+            Round round = cellData.getValue();
+            String guessesDisplay = String.join("\n", round.getGuesses());
+            return new ReadOnlyObjectWrapper<>(guessesDisplay);
         });
 
         TableColumn<Round, Integer> timeTakenCol = new TableColumn<>("Time Taken");

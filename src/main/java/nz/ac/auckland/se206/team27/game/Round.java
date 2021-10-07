@@ -1,5 +1,8 @@
 package nz.ac.auckland.se206.team27.game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAILED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAULTED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.PASSED;
@@ -26,6 +29,11 @@ public class Round {
      * The number of guesses made in this round.
      */
     private int guessesMade = 0;
+
+    /**
+     * A list of all guesses the user has made.
+     */
+    private final List<String> guessList = new ArrayList<>();
 
     /**
      * The end result of this round.
@@ -58,6 +66,7 @@ public class Round {
     public boolean makeGuess(String guess) {
         assertResultNotSet();
         guessesMade++;
+        guessList.add(guess);
 
         // Check if the guess is equal to the word
         if (word.equalsIgnoreCase(guess.trim())) {
@@ -96,6 +105,13 @@ public class Round {
      */
     public int getGuessesRemaining() {
         return maxGuesses - guessesMade;
+    }
+
+    /**
+     * @return A list of all guesses made in this round.
+     */
+    public List<String> getGuesses() {
+        return guessList;
     }
 
     /**

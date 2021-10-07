@@ -14,7 +14,7 @@
 				<Label styleClass="score-label-total" fx:id="labelTotalScore" />
 				<Label styleClass="score-label-total-prefix">pts</Label>
 			</HBox>-->
-			<TableView fx:id="tableView"/>
+			<TableView fx:id="tableView" maxWidth="600"/>
 		</VBox>
 		<VBox styleClass="spacing">
 			<Button onAction="#clickPlayAgain" styleClass="raised-button,play-button">Play again</Button>
