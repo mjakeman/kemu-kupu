@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
-import nz.ac.auckland.se206.team27.util.ConcurrencyUtil;
+import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
 
@@ -47,6 +47,9 @@ public class ResultController extends GameController {
 
     @FXML
     public Node container;
+
+    @FXML
+    public VBox scoreContainer;
 
     private TimerTask nextRoundTimerTask;
 
@@ -134,6 +137,11 @@ public class ResultController extends GameController {
 
             default:
                 throw new IllegalArgumentException();
+        }
+
+        if (data.isPracticeMode) {
+            JavaFXUtil.toggleNodeVisibility(scoreContainer, false);
+            JavaFXUtil.toggleNodeVisibility(labelPlusScore, false);
         }
 
         labelResult.setText(resultMsg);

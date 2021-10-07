@@ -1,5 +1,11 @@
 package nz.ac.auckland.se206.team27.game;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Pattern;
+
+import nz.ac.auckland.se206.team27.view.HintNode;
+
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAILED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAULTED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.PASSED;
@@ -33,14 +39,25 @@ public class Round {
     private RoundResult result;
 
     /**
-     * The total score contribution of this round.
+     * The starting time of the round in ms since epoch.
      */
-    private int scoreContribution;
+    private long startTimestamp;
+
+    /**
+     * The ending time of the round (when result is released) in ms since epoch.
+     */
+    private long endTimestamp;
+
+    /**
+     * Map of hints (character at an index) to display after the first guess.
+     */
+    private final Map<Integer, Character> hints;
 
 
-    public Round(String word, int maxGuesses) {
+    public Round(String word, int maxGuesses, boolean isPracticeMode) {
         this.maxGuesses = maxGuesses;
         this.word = word.trim();
+        this.hints = getHints(isPracticeMode);
     }
 
     /**
@@ -62,17 +79,16 @@ public class Round {
         // Check if the guess is equal to the word
         if (word.equalsIgnoreCase(guess.trim())) {
             result = guessesMade == 1 ? PASSED : FAULTED;
-            scoreContribution = guessesMade == 1 ? 10 : 5;
-            return false;
+            endRoundTimer();
         }
 
         // Check if there are any more guesses left
         if (guessesMade >= maxGuesses) {
             result = FAILED;
-            return false;
+            endRoundTimer();
         }
 
-        return true;
+        return result == null;
     }
 
     /**
@@ -81,6 +97,7 @@ public class Round {
     public void markSkipped() {
         assertResultNotSet();
         result = SKIPPED;
+        endRoundTimer();
     }
 
     /**
@@ -89,6 +106,24 @@ public class Round {
      */
     public RoundResult getResult() {
         return result;
+    }
+
+    /**
+     * Starts the round timer (for scoring purposes) if it has not already started.
+     */
+    public void startRoundTimer() {
+        if (startTimestamp == 0) {
+            startTimestamp = System.currentTimeMillis();
+        }
+    }
+
+    /**
+     * Ends the round timer (for scoring purposes).
+     *
+     * Called when a result is returned.
+     */
+    private void endRoundTimer() {
+        endTimestamp = System.currentTimeMillis();
     }
 
     /**
@@ -106,6 +141,48 @@ public class Round {
     }
 
     /**
+     * @return The map of hints.
+     */
+    public Map<Integer, Character> getHints() {
+        return hints;
+    }
+
+    /**
+     * @return the corresponding score for this round.
+     *
+     * @throws IllegalCallerException when the result has not ended.
+     */
+    public int getScoreContribution() {
+        if (startTimestamp == 0 || endTimestamp == 0) throw new IllegalCallerException();
+
+        // The maximum score allowed for a perfect game (assuming 0 seconds taken for guess and first guess correct)
+        int maxScore = 1000;
+
+        // The reduction applied as a result of delay in answering (max 500 points)
+        // See 1: https://github.com/SOFTENG206-2021/assignment-3-and-project-team-27/blob/main/wiki/minutes-03-10-21.md
+        float duration = (float) (endTimestamp - startTimestamp) / 1000f;
+        int scoreReduction = Math.min(500, (int) (500 * (Math.log10(0.03 * duration + 0.1) + 1)));
+        int scoreAfterTimeReduction = maxScore - scoreReduction;
+
+        float guessMultiplier = getResultScoreMultiplier();
+
+        return Math.round(scoreAfterTimeReduction * guessMultiplier);
+    }
+
+    /**
+     * @return The multiplier based on the round's result.
+     */
+    private float getResultScoreMultiplier() {
+        switch (result) {
+            case PASSED: return 1f;
+            case FAULTED: return 0.66667f;
+            case FAILED:
+            case SKIPPED:
+            default: return 0f;
+        }
+    }
+
+    /**
      * @throws IllegalCallerException if {@link Round#result} is already set.
      */
     private void assertResultNotSet() {
@@ -115,10 +192,33 @@ public class Round {
     }
 
     /**
-     * @return The contribution to the overall score this round makes.
+     * @return a map of all hints for this round.
      */
-    public int getScoreContribution() {
-        return scoreContribution;
+    private Map<Integer, Character> getHints(boolean isPractice) {
+        Map<Integer, Character> hints = new HashMap<>();
+        hints.put(1, word.charAt(1));
+
+        if (isPractice) {
+            int wordLength = word.length();
+
+            // The distance between any two consecutive hints (excluding punctuation)
+            // TODO: Extract spacing to somewhere else related to practice game options
+            int spacing = 4;
+
+            int currentIndex = 1 + spacing;
+            while (currentIndex < wordLength) {
+                char currentLetter = word.charAt(currentIndex);
+                if (Pattern.matches(HintNode.ALPHABET_REGEX, String.valueOf(currentLetter))) {
+                    // Does this work?
+                    hints.put(currentIndex, currentLetter);
+                    currentIndex += spacing;
+                } else {
+                    currentIndex++;
+                }
+            }
+        }
+
+        return hints;
     }
 
 }

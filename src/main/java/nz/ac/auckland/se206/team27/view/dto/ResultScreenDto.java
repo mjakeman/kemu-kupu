@@ -20,6 +20,7 @@ public class ResultScreenDto implements ViewDto {
 
     public final String definition;
     public final String imgUrl;
+    public final boolean isPracticeMode;
 
 
     /**
@@ -33,12 +34,14 @@ public class ResultScreenDto implements ViewDto {
                            RoundResult resultFromLastRound,
                            int currentScore,
                            int scoreAddedFromLastRound,
+                           boolean isPracticeMode,
                            String definition,
                            String imgUrl) {
         this.hasNextWord = hasNextWord;
         this.topic = topic;
         this.word = word;
         this.resultFromLastRound = resultFromLastRound;
+        this.isPracticeMode = isPracticeMode;
         this.definition = definition;
         this.imgUrl = imgUrl;
         this.currentScore = currentScore;

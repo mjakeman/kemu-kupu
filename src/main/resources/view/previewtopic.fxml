@@ -31,7 +31,7 @@
         <Label styleClass="spacer"/>
         <HBox spacing="10">
             <Button onAction="#clickBack">Back</Button>
-            <Button onAction="#clickPlay">Play</Button>
+            <Button fx:id="playBtn" onAction="#clickPlay" />
         </HBox>
     </VBox>
     <AnchorPane fx:id="image" styleClass="aside">
