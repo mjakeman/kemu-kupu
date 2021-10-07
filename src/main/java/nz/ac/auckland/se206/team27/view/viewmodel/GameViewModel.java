@@ -2,7 +2,6 @@ package nz.ac.auckland.se206.team27.view.viewmodel;
 
 import nz.ac.auckland.se206.team27.game.Game;
 import nz.ac.auckland.se206.team27.game.Round;
-import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
@@ -80,7 +79,8 @@ public class GameViewModel implements ViewModel {
 
     public EndGameScreenDto getEndGameScreenData() {
         return new EndGameScreenDto(currentGame.getTopic(),
-                                    currentGame.getCumulativeScore());
+                                    currentGame.getCumulativeScore(),
+                                    currentGame.getAllRounds());
     }
 
     public void playAgain() {

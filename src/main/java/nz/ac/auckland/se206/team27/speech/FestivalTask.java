@@ -49,7 +49,8 @@ public class FestivalTask extends Task<Void> {
      */
     @Override
     protected Void call() throws IOException {
-        updateMessage("Running");
+        return null;
+        /*updateMessage("Running");
 
         float multiplier = 1 / speed;
 
@@ -79,6 +80,6 @@ public class FestivalTask extends Task<Void> {
             }
         }
 
-        return null;
+        return null;*/
     }
 }

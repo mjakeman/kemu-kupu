@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.wordlist.WordList;
 
@@ -77,6 +79,16 @@ public class Game {
      */
     public Round getCurrentRound() {
         return rounds.get(roundIndex);
+    }
+
+    /**
+     * Get all rounds in the game as an {@link ObservableList} for
+     * use with various list-displaying controls.
+     *
+     * @return A list of all rounds
+     */
+    public ObservableList<Round> getAllRounds() {
+        return FXCollections.observableList(rounds);
     }
 
     public int getNumberOfRounds() {
