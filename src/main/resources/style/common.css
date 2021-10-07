@@ -17,7 +17,7 @@ Button {
 }
 
 .aside {
-    -fx-background-color: #444d8d;
+    -fx-background-color: -colour-aside;
     -fx-background-size: cover;
 }
 

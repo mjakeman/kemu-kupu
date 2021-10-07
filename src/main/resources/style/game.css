@@ -63,7 +63,7 @@ Button {
 /* Used for "Play sound again" and "Play again button" (end screen) */
 
 .play-button {
-    -fx-background-color: #3584e4;
+    -fx-background-color: -colour-neutral;
     -fx-border-color: #1a5fb4;
 }
 

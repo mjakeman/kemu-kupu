@@ -47,32 +47,32 @@
 
 /* Submit Button Variation */
 .submit-button {
-    -fx-background-color: #33d17a;
-    -fx-border-color: #26a269;
+    -fx-background-color: -colour-success;
+    -fx-border-color: -colour-success-border;
     -fx-pref-width: 150px;
 }
 
 .submit-button:hover {
-    -fx-background-color: #2ec27e;
+    -fx-background-color: -colour-success-hover;
 }
 
 .submit-button:pressed {
-    -fx-background-color: #26a269;
+    -fx-background-color: -colour-success-pressed;
 }
 
 /* Play Button Variation */
 .play-button {
-    -fx-background-color: #3584e4;
-    -fx-border-color: #1a5fb4;
+    -fx-background-color: -colour-neutral;
+    -fx-border-color: -colour-neutral-border;
 }
 
 .play-button:hover {
     -fx-cursor: hand;
-    -fx-background-color: #1c71d8;
+    -fx-background-color: -colour-neutral-hover;
 }
 
 .play-button:pressed {
-    -fx-background-color: #1a5fb4;
+    -fx-background-color: -colour-neutral-pressed;
 }
 
 /*

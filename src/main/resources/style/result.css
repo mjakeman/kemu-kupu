@@ -55,13 +55,13 @@
 }
 
 .answer-skipped {
-    -fx-background-color: #3584e4;
+    -fx-background-color: -colour-neutral;
 }
 
 .answer-incorrect {
-    -fx-background-color: #e01b24;
+    -fx-background-color: -colour-failure;
 }
 
 .answer-correct {
-    -fx-background-color: #33d17a;
+    -fx-background-color: -colour-success;
 }
