@@ -39,9 +39,14 @@ public class Round {
     private RoundResult result;
 
     /**
-     * The total score contribution of this round.
+     * The starting time of the round in ms since epoch.
      */
-    private int scoreContribution;
+    private long startTimestamp;
+
+    /**
+     * The ending time of the round (when result is released) in ms since epoch.
+     */
+    private long endTimestamp;
 
     /**
      * Map of hints (character at an index) to display after the first guess.
@@ -74,17 +79,16 @@ public class Round {
         // Check if the guess is equal to the word
         if (word.equalsIgnoreCase(guess.trim())) {
             result = guessesMade == 1 ? PASSED : FAULTED;
-            scoreContribution = guessesMade == 1 ? 10 : 5;
-            return false;
+            endRoundTimer();
         }
 
         // Check if there are any more guesses left
         if (guessesMade >= maxGuesses) {
             result = FAILED;
-            return false;
+            endRoundTimer();
         }
 
-        return true;
+        return result == null;
     }
 
     /**
@@ -93,6 +97,7 @@ public class Round {
     public void markSkipped() {
         assertResultNotSet();
         result = SKIPPED;
+        endRoundTimer();
     }
 
     /**
@@ -101,6 +106,24 @@ public class Round {
      */
     public RoundResult getResult() {
         return result;
+    }
+
+    /**
+     * Starts the round timer (for scoring purposes) if it has not already started.
+     */
+    public void startRoundTimer() {
+        if (startTimestamp == 0) {
+            startTimestamp = System.currentTimeMillis();
+        }
+    }
+
+    /**
+     * Ends the round timer (for scoring purposes).
+     *
+     * Called when a result is returned.
+     */
+    private void endRoundTimer() {
+        endTimestamp = System.currentTimeMillis();
     }
 
     /**
@@ -125,19 +148,47 @@ public class Round {
     }
 
     /**
+     * @return the corresponding score for this round.
+     *
+     * @throws IllegalCallerException when the result has not ended.
+     */
+    public int getScoreContribution() {
+        if (startTimestamp == 0 || endTimestamp == 0) throw new IllegalCallerException();
+
+        // The maximum score allowed for a perfect game (assuming 0 seconds taken for guess and first guess correct)
+        int maxScore = 1000;
+
+        // The reduction applied as a result of delay in answering (max 500 points)
+        // See 1: https://github.com/SOFTENG206-2021/assignment-3-and-project-team-27/blob/main/wiki/minutes-03-10-21.md
+        float duration = (float) (endTimestamp - startTimestamp) / 1000f;
+        int scoreReduction = Math.min(500, (int) (500 * (Math.log10(0.03 * duration + 0.1) + 1)));
+        int scoreAfterTimeReduction = maxScore - scoreReduction;
+
+        float guessMultiplier = getResultScoreMultiplier();
+
+        return Math.round(scoreAfterTimeReduction * guessMultiplier);
+    }
+
+    /**
+     * @return The multiplier based on the round's result.
+     */
+    private float getResultScoreMultiplier() {
+        switch (result) {
+            case PASSED: return 1f;
+            case FAULTED: return 0.66667f;
+            case FAILED:
+            case SKIPPED:
+            default: return 0f;
+        }
+    }
+
+    /**
      * @throws IllegalCallerException if {@link Round#result} is already set.
      */
     private void assertResultNotSet() {
         if (result != null) {
             throw new IllegalCallerException("Cannot make a guess! Round result has already been determined");
         }
-    }
-
-    /**
-     * @return The contribution to the overall score this round makes.
-     */
-    public int getScoreContribution() {
-        return scoreContribution;
     }
 
     /**

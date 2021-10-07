@@ -52,3 +52,13 @@ Jordan York (jyor212)
 ## 26 September
 
 - Had final meeting with group to check all was in working order before submission
+
+## 6 October
+
+- Started on adding in an application icon
+
+## 7 October
+
+- Continued on app icon implementation
+- Sorted topic list by alphabetical order
+- Added 'RANDOM TOPIC' selection feature also

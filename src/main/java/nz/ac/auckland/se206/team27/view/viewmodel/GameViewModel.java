@@ -30,6 +30,11 @@ public class GameViewModel implements ViewModel {
 
     public GuessScreenDto getGuessScreenData() {
         Round round = currentGame.getCurrentRound();
+
+        // Starts the round timer when the next game is active
+        // TODO: Move this to a better place to execute such that it will only run once when the round starts instead of on data load (model?)
+        round.startRoundTimer();
+
         return new GuessScreenDto(currentGame.getTopic(),
                                   currentGame.isPracticeMode(),
                                   round.getWord(),
