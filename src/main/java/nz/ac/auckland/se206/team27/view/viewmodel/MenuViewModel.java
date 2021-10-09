@@ -80,8 +80,8 @@ public class MenuViewModel implements ViewModel {
 
     public TopicPreviewScreenDto getTopicPreviewData() {
         String imgUrl = ResourceUtil.getResourceUrl("media/topicimages/" + title + ".jpg").toString();
-        String externalLink = "https://commons.wikimedia.org/wiki/File:University_of_Auckland_Clock_Tower.jpg";
-        ImageDto image = new ImageDto("Colin Rose", "CC BY 2.0", imgUrl, externalLink);
+        String externalLink = "https://www.pixabay.com";
+        ImageDto image = new ImageDto("pixabay", "CC BY 2.0", imgUrl, externalLink);
         return new TopicPreviewScreenDto(isPracticeMode, selectedList.getTitle(), selectedList.getDescription(), image);
     }
 
