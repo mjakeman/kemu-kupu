@@ -26,6 +26,9 @@ public class EndGameController extends GameController {
     public Label labelTotalScore;
 
     @FXML
+    public Label labelTopic;
+
+    @FXML
     public Label labelTitle;
 
     @FXML
@@ -54,9 +57,9 @@ public class EndGameController extends GameController {
     @Override
     protected void populateViewData() {
         EndGameScreenDto data = gameViewModel.getEndGameScreenData();
-        labelTitle.setText(data.topic);
-
-        // labelTotalScore.setText("" + data.totalScore);
+        labelTitle.setText(data.isPracticeMode ? "Practice Summary" : "Game Summary");
+        labelTopic.setText(data.topic);
+        labelTotalScore.setText("" + data.totalScore);
 
         /*if (data.isPracticeMode) {
             JavaFXUtil.toggleNodeVisibility(scoreContainer, false);
