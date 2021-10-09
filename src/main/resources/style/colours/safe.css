@@ -7,16 +7,25 @@
     -colour-success-hover: #c62272;
     -colour-success-pressed: #9a1b59;
     -colour-success-border: #9a1b59;
+    -colour-success-tint: #ee93bf;
 
     -colour-failure: #fe6100;
     -colour-failure-hover: #e55700;
     -colour-failure-pressed: #b24400;
     -colour-failure-border: #b24400;
+    -colour-failure-tint: #fea066;
+
+    -colour-faulted: #ffb000;
+    -colour-faulted-hover: #e69e00;
+    -colour-faulted-pressed: #b37b00;
+    -colour-faulted-border: #b37b00;
+    -colour-faulted-tint: #ffe7b3;
 
     -colour-neutral: #648fff;
     -colour-neutral-hover: #5a81e6;
     -colour-neutral-pressed: #4664b3;
     -colour-neutral-border: #4664b3;
+    -colour-neutral-tint: #b2c7ff;
 
     -colour-aside: #785ef0;
 }
