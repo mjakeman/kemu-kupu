@@ -26,6 +26,8 @@ public class MenuViewModel implements ViewModel {
 
     private boolean isPracticeMode = false;
 
+    private String title;
+
 
     /**
      * @return a single instance of this class (to prevent having to read from disk multiple times).
@@ -69,6 +71,7 @@ public class MenuViewModel implements ViewModel {
      */
     public void selectTopic(String topic) {
         selectedList = this.wordLists.get(topic);
+        this.title = topic;
     }
 
     /*
@@ -76,9 +79,9 @@ public class MenuViewModel implements ViewModel {
      */
 
     public TopicPreviewScreenDto getTopicPreviewData() {
-        String imgUrl = ResourceUtil.getResourceUrl("media/University_of_Auckland_Clock_Tower.png").toString();
-        String externalLink = "https://commons.wikimedia.org/wiki/File:University_of_Auckland_Clock_Tower.jpg";
-        ImageDto image = new ImageDto("Colin Rose", "CC BY 2.0", imgUrl, externalLink);
+        String imgUrl = ResourceUtil.getResourceUrl("media/topicimages/" + title + ".jpg").toString();
+        String externalLink = "https://www.pixabay.com";
+        ImageDto image = new ImageDto("pixabay", "CC BY 2.0", imgUrl, externalLink);
         return new TopicPreviewScreenDto(isPracticeMode, selectedList.getTitle(), selectedList.getDescription(), image);
     }
 
