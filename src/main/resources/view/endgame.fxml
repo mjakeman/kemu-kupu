@@ -14,20 +14,12 @@
 
 		<TableView fx:id="tableView" maxWidth="600"/>
 
-		<HBox styleClass="mini-score-label-container" alignment="BOTTOM_CENTER">
+		<HBox fx:id="scoreContainer" styleClass="mini-score-label-container" alignment="BOTTOM_CENTER">
 			<Label>Total Score: </Label>
 			<Label styleClass="mini-score-label" fx:id="labelTotalScore" />
 			<Label>pts</Label>
 		</HBox>
 
-		<!--<VBox fx:id="scoreContainer" styleClass="score-label-container">
-			<Label styleClass="score-label">Total Score: </Label>
-			<HBox alignment="BOTTOM_CENTER">
-				<Label styleClass="score-label-total" fx:id="labelTotalScore" />
-				<Label styleClass="score-label-total-suffix">pts</Label>
-			</HBox>
-			<TableView fx:id="tableView" maxWidth="600"/>
-		</VBox>-->
 		<HBox styleClass="spacing">
 			<Button onAction="#clickHome" styleClass="raised-button,next-button">Back to home</Button>
 			<Button onAction="#clickPlayAgain" styleClass="raised-button,play-button">Play again</Button>

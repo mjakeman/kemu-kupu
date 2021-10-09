@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
@@ -38,7 +39,7 @@ public class EndGameController extends GameController {
     public TableView<Round> tableView;
 
     @FXML
-    public VBox scoreContainer;
+    public HBox scoreContainer;
 
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
@@ -61,9 +62,9 @@ public class EndGameController extends GameController {
         labelTopic.setText(data.topic);
         labelTotalScore.setText("" + data.totalScore);
 
-        /*if (data.isPracticeMode) {
+        if (data.isPracticeMode) {
             JavaFXUtil.toggleNodeVisibility(scoreContainer, false);
-        }*/
+        }
 
         // Clear table view
         tableView.getColumns().clear();
@@ -95,7 +96,7 @@ public class EndGameController extends GameController {
         });
 
         TableColumn<Round, String> guessCol = new TableColumn<>("Your Guess(es)");
-        guessCol.setMinWidth(200);
+        guessCol.setMinWidth(170);
         guessCol.setCellValueFactory(cellData -> {
             Round round = cellData.getValue();
             String guessesDisplay = String.join("\n", round.getGuesses());
@@ -105,8 +106,7 @@ public class EndGameController extends GameController {
         TableColumn<Round, Integer> timeTakenCol = new TableColumn<>("Time Taken");
         timeTakenCol.setCellValueFactory(cellData -> {
             Round round = cellData.getValue();
-            // TODO: Get time from here
-            return new ReadOnlyObjectWrapper<>(0);
+            return new ReadOnlyObjectWrapper<Integer>((int)round.getDurationSeconds());
         });
 
         TableColumn<Round, Integer> scoreCol = new TableColumn<>("Score");
@@ -149,6 +149,11 @@ public class EndGameController extends GameController {
 
         tableView.setItems(items);
         tableView.getColumns().addAll(roundCol, wordCol, resultCol, guessCol, timeTakenCol, scoreCol);
+
+        if (data.isPracticeMode) {
+            // Hide score column in practice mode
+            tableView.getColumns().remove(scoreCol);
+        }
     }
 
 }

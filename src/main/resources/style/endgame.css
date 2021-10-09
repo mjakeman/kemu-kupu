@@ -49,7 +49,7 @@
     -fx-pref-width: 150px;
 }
 
-/* Table Row Styling */
+/* Table Row Tints */
 .table-row-failed {
     -fx-background-color: -colour-failure-tint;
 }
@@ -64,4 +64,23 @@
 
 .table-row-skipped {
     -fx-background-color: -colour-neutral-tint;
+}
+
+/* Table Styling */
+/* See https://edencoding.com/style-tableview-javafx/ for CSS selectors */
+.table-view {
+    -fx-background-color: #fafafa;
+    -fx-text-fill: black;
+    -fx-border-style: solid;
+    -fx-border-color: rgba(0,0,0,0.5);
+    -fx-border-radius: 4px;
+}
+
+.table-view .table-cell {
+    -fx-border-color: transparent;
+}
+
+.table-row-cell .text,
+.table-row-cell:selected .text {
+    -fx-fill: rgba(0,0,0,0.9);
 }

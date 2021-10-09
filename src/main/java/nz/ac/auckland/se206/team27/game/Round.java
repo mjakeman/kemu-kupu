@@ -164,6 +164,14 @@ public class Round {
     }
 
     /**
+     * Gets the duration of the round in seconds.
+     * @return Seconds taken to complete the round (floating point).
+     */
+    public float getDurationSeconds() {
+        return (float) (endTimestamp - startTimestamp) / 1000f;
+    }
+
+    /**
      * @return the corresponding score for this round.
      *
      * @throws IllegalCallerException when the result has not ended.
@@ -176,7 +184,7 @@ public class Round {
 
         // The reduction applied as a result of delay in answering (max 500 points)
         // See 1: https://github.com/SOFTENG206-2021/assignment-3-and-project-team-27/blob/main/wiki/minutes-03-10-21.md
-        float duration = (float) (endTimestamp - startTimestamp) / 1000f;
+        float duration = getDurationSeconds();
         int scoreReduction = Math.min(500, (int) (500 * (Math.log10(0.03 * duration + 0.1) + 1)));
         int scoreAfterTimeReduction = maxScore - scoreReduction;
 
