@@ -211,3 +211,32 @@ Lastly, I moved the SpeedSwitcher control to a new `controls` module.
 
 I also decided to rename `PrefsManager` and `PrefsKeystore` to `PreferencesManager` and `PreferencesStorage`
 respectively as I felt these names better fit the concepts they were representing.
+
+### Preferences View
+I also decided to start working towards the preferences view. I created a simple layout based on
+the previously designed whiteboard sketches. This simply contains some controls. I reused the
+SpeedSwitcher control from before.
+
+Next, I created a new control called `OnOffSwitcher` which consists of two radio buttons and
+binds the selected toggle to a boolean value. This makes it easy to handle multiple boolean
+properties (as we are considering adding a Maori/English language toggle later in the project).
+
+The implementation of `OnOffSwitcher` is largely the same as `SpeedSwitcher`, except using
+Radio Buttons instead of Toggle Buttons and a `boolean` in place of `SpeechSpeed`.
+
+Finally, I bound the controls to properties from `PreferencesManager`.
+
+## 7 October
+With the preference toggles now working, I implemented the "colourblind" mode. I specifically
+targeted dichromacy, which is where only two colours are visible. The palette I chose was
+designed by IBM and specifically addressed deuteranopia and protanopia (red-green), as well
+as the rarer tritanopia (blue-yellow) forms of colour-blindness.
+
+To implement support for this, I came up with the idea of "colour schemes". These are CSS
+stylesheets which define colour variables and can be swapped during run time. I apply them
+to the scene, and these colour variables (called "looked-up colours") are propagated to child
+elements such as the various views. I created two colour profiles and bound them to the "on"
+and "off" states.
+
+I used the website [maketintsandshades.com](https://maketintsandshades.com/) to generate hover
+and pressed variants of the core colourblind-friendly palette.

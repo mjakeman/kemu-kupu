@@ -1,0 +1,22 @@
+/* Standard Colours */
+* {
+    -colour-gradient-a: #1a2980;
+    -colour-gradient-b: #26d0ce;
+
+    -colour-success: #33d17a;
+    -colour-success-hover: #2ec27e;
+    -colour-success-pressed: #26a269;
+    -colour-success-border: #26a269;
+
+    -colour-failure: #e01b24;
+    -colour-failure-hover: #c01c28;
+    -colour-failure-pressed: #a51d2d;
+    -colour-failure-border: #a51d2d;
+
+    -colour-neutral: #3584e4;
+    -colour-neutral-hover: #1c71d8;
+    -colour-neutral-pressed: #1a5fb4;
+    -colour-neutral-border: #1a5fb4;
+
+    -colour-aside: #444d8d;
+}

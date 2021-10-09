@@ -3,9 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
+<?import nz.ac.auckland.se206.team27.controls.SpeedSwitcher?>
+<?import nz.ac.auckland.se206.team27.controls.OnOffSwitcher?>
+
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          stylesheets="@../style/common.css"
+          stylesheets="@../style/common.css,@../style/preferences.css"
           fx:controller="nz.ac.auckland.se206.team27.controller.PreferencesController">
     <!-- Create a 2-column, 1-row layout to show two panes side by side-->
     <columnConstraints>
@@ -19,11 +22,33 @@
     <!-- Actual content -->
     <VBox fx:id="container" styleClass="container" HBox.hgrow="ALWAYS">
         <GridPane.columnIndex>0</GridPane.columnIndex>
-        <Label>Preferences</Label>
+        <Label styleClass="title">Preferences</Label>
+
+        <VBox>
+            <Label styleClass="pref-entry">Speech Playback Speed</Label>
+            <Label wrapText="true">The default speed at which words will be spoken to you. This can be changed in-game at
+                any time.
+            </Label>
+            <Pane>
+                <SpeedSwitcher fx:id="speedSwitcher" />
+            </Pane>
+        </VBox>
+
+        <VBox>
+            <Label styleClass="pref-entry">Colourblind Mode</Label>
+            <Label wrapText="true">Change the colour palette to cater for users with red-green (deuteranopia/protanopia)
+                or blue-yellow (tritanopia) colour-blindness.
+            </Label>
+            <Pane>
+                <OnOffSwitcher fx:id="colourModeSwitcher" />
+            </Pane>
+        </VBox>
+
         <Button onAction="#clickBack">Back</Button>
     </VBox>
     <AnchorPane styleClass="aside">
         <GridPane.columnIndex>1</GridPane.columnIndex>
-        <Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit</Label>
+        <Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit
+        </Label>
     </AnchorPane>
 </GridPane>

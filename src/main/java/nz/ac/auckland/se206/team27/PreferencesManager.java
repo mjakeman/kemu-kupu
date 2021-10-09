@@ -2,6 +2,9 @@ package nz.ac.auckland.se206.team27;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import nz.ac.auckland.se206.team27.resource.ColourProfileResource;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 
 /**
@@ -44,6 +47,14 @@ public class PreferencesManager {
         // Colourblind Mode
         boolean useColourblindMode = prefsStorage.getBooleanOrDefault(colourblindModeKey, false);
         this.colourblindModeProperty = new SimpleBooleanProperty(useColourblindMode);
+
+        colourblindModeProperty.addListener((p1, p2, isEnabled) -> {
+            ColourProfileResource profile = isEnabled
+                    ? ColourProfileResource.SAFE
+                    : ColourProfileResource.DEFAULT;
+
+            App.applyColourScheme(profile);
+        });
 
         // Speech Speed
         SpeechSpeed speechSpeed = prefsStorage.getEnumOrDefault(speechSpeedKey, SpeechSpeed.class, SpeechSpeed.NORMAL);

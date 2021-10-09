@@ -8,7 +8,7 @@
 		   fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
 	<VBox fx:id="container" styleClass="container">
 		<Label styleClass="endgame-title" fx:id="labelTitle" />
-		<VBox styleClass="score-label-container">
+		<VBox fx:id="scoreContainer" styleClass="score-label-container">
 			<Label styleClass="score-label">Total Score: </Label>
 			<!--<HBox alignment="BOTTOM_CENTER">
 				<Label styleClass="score-label-total" fx:id="labelTotalScore" />

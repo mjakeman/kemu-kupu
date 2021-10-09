@@ -32,6 +32,11 @@ public class Game {
     private final List<Round> rounds;
 
     /**
+     * Whether the game will be run in practice mode.
+     */
+    private final boolean isPracticeMode;
+
+    /**
      * The index value of the current word (if counter is -1, the game has not
      * started yet).
      */
@@ -49,8 +54,8 @@ public class Game {
         throw new IllegalCallerException("No instance of \"game\" has been created yet!");
     }
 
-    public static void createInstance(WordList wordList) {
-        _instance = new Game(wordList, 5, 2);
+    public static void createInstance(WordList wordList, boolean isPracticeMode) {
+        _instance = new Game(wordList, 5, 2, isPracticeMode);
     }
 
     /**
@@ -60,18 +65,23 @@ public class Game {
      * this copying the list of word strings, but I think we can live with
      * this side effect rather than consuming more memory.
      */
-    private Game(WordList wordList, int wordCount, int maxGuesses) {
+    private Game(WordList wordList, int wordCount, int maxGuesses, boolean isPracticeMode) {
         topic = wordList.getTitle();
         this.wordList = wordList;
+        this.isPracticeMode = isPracticeMode;
 
         // Shuffle the wordlist to randomise word selection
         List<String> allWords = wordList.getWordList();
         Collections.shuffle(allWords);
         rounds = allWords.subList(0, Math.min(wordCount, allWords.size())).stream()
-                .map((word) -> new Round(word, maxGuesses))
+                .map((word) -> new Round(word, maxGuesses, isPracticeMode))
                 .collect(Collectors.toList());
 
         _instance = this;
+    }
+
+    public boolean isPracticeMode() {
+        return isPracticeMode;
     }
 
     /**

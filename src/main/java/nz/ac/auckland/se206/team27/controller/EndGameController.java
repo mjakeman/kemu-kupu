@@ -14,6 +14,7 @@ import javafx.util.Callback;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.game.Round;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
 
@@ -33,6 +34,9 @@ public class EndGameController extends GameController {
     @FXML
     public TableView<Round> tableView;
 
+    @FXML
+    public VBox scoreContainer;
+
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
     }
@@ -51,7 +55,12 @@ public class EndGameController extends GameController {
     protected void populateViewData() {
         EndGameScreenDto data = gameViewModel.getEndGameScreenData();
         labelTitle.setText(data.topic);
+
         // labelTotalScore.setText("" + data.totalScore);
+
+        /*if (data.isPracticeMode) {
+            JavaFXUtil.toggleNodeVisibility(scoreContainer, false);
+        }*/
 
         // Clear table view
         tableView.getColumns().clear();

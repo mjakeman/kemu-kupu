@@ -1,5 +1,5 @@
 .root {
-    -fx-background-color: linear-gradient(to bottom right, #1A2980, #26D0CE);
+    -fx-background-color: linear-gradient(to bottom right, -colour-gradient-a, -colour-gradient-b);
 }
 
 .container {
