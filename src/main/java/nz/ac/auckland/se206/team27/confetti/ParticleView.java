@@ -45,23 +45,18 @@ public class ParticleView extends Canvas {
             }
         };
 
-        emit(1000);
-
-        gc.setFill(Color.BLUE);
-        gc.fillRect(75,75,100,100);
-
         timer.start();
     }
 
-    public void emit(int numParticles) {
+    public void emit(int numParticles, double x, double y) {
         particles.ensureCapacity(numParticles);
         double width = getWidth();
         double height = getHeight();
 
         for (int i = 0; i < numParticles; i++) {
             Particle particle = new Particle();
-            particle.x = width * Math.random();
-            particle.y = height * Math.random();
+            particle.x = x;
+            particle.y = y;
             particle.velX = 4 * Math.random() - 2;
             particle.velY = 4 * Math.random() - 2;
             particle.color = randomColor();

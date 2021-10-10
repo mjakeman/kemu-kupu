@@ -74,7 +74,11 @@ public class App extends Application {
         });*/
 
         VBox root = new VBox();
-        root.getChildren().add(new ParticleView(WIDTH, HEIGHT));
+        ParticleView particleView = new ParticleView(WIDTH, HEIGHT);
+        particleView.setOnMouseClicked(e -> {
+            particleView.emit(80, e.getX(), e.getY());
+        });
+        root.getChildren().add(particleView);
         stage.setScene(new Scene(root, WIDTH, HEIGHT));
 
         stage.show();
