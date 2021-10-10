@@ -17,7 +17,7 @@
 		</HBox>
 	</VBox>
 
-	<VBox fx:id="mainContainer" styleClass="container">
+	<VBox pickOnBounds="false" fx:id="mainContainer" styleClass="container">
 		<VBox mouseTransparent="true" styleClass="title-container">
 			<Label styleClass="endgame-title" fx:id="labelTitle" />
 			<Label styleClass="endgame-topic" fx:id="labelTopic" />
@@ -31,7 +31,7 @@
 			<Label>pts</Label>
 		</HBox>
 
-		<HBox styleClass="spacing">
+		<HBox pickOnBounds="false" styleClass="spacing">
 			<Button onAction="#clickHome" styleClass="raised-button,next-button">Back to home</Button>
 			<Button onAction="#clickPlayAgain" styleClass="raised-button,play-button">Play again</Button>
 		</HBox>

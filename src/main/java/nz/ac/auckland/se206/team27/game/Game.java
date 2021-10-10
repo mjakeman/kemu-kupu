@@ -92,13 +92,13 @@ public class Game {
     }
 
     /**
-     * Get all rounds in the game as an {@link ObservableList} for
+     * Get all rounds in the game as a {@link List} for
      * use with various list-displaying controls.
      *
      * @return A list of all rounds
      */
-    public ObservableList<Round> getAllRounds() {
-        return FXCollections.observableList(rounds);
+    public List<Round> getAllRounds() {
+        return rounds;
     }
 
     public int getNumberOfRounds() {

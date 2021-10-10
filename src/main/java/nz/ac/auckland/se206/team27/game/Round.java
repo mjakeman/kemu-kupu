@@ -31,11 +31,6 @@ public class Round {
     private final int maxGuesses;
 
     /**
-     * The number of guesses made in this round.
-     */
-    private int guessesMade = 0;
-
-    /**
      * A list of all guesses the user has made.
      */
     private final List<String> guessList = new ArrayList<>();
@@ -80,18 +75,17 @@ public class Round {
      */
     public boolean makeGuess(String guess) {
         assertResultNotSet();
-        guessesMade++;
         guessList.add(guess);
 
         // Check if the guess is equal to the word
         if (word.equalsIgnoreCase(guess.trim())) {
-            result = guessesMade == 1 ? PASSED : FAULTED;
+            result = getGuessesMade() == 1 ? PASSED : FAULTED;
             endRoundTimer();
             return false;
         }
 
         // Check if there are any more guesses left
-        if (guessesMade >= maxGuesses) {
+        if (getGuessesMade() >= maxGuesses) {
             result = FAILED;
             endRoundTimer();
             return false;
@@ -139,7 +133,14 @@ public class Round {
      * @return The number of guesses remaining for this round.
      */
     public int getGuessesRemaining() {
-        return maxGuesses - guessesMade;
+        return maxGuesses - getGuessesMade();
+    }
+
+    /**
+     * @return The number of guesses that have been made.
+     */
+    private int getGuessesMade() {
+        return guessList.size();
     }
 
     /**
@@ -153,7 +154,7 @@ public class Round {
      * @return Whether this is the user's first guess this round.
      */
     public boolean isFirstGuess() {
-        return (guessesMade == 0);
+        return (getGuessesMade() == 0);
     }
 
     /**

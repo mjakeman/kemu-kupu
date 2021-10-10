@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.team27.controller;
 
 import javafx.animation.*;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -146,7 +147,7 @@ public class EndGameController extends GameController {
         // Clear table view
         tableView.getColumns().clear();
 
-        ObservableList<Round> items = data.rounds;
+        ObservableList<Round> items = FXCollections.observableList(data.rounds);
         HashMap<Round, Integer> roundIdMap = new HashMap<Round, Integer>();
 
         int index = 1;

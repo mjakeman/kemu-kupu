@@ -37,16 +37,15 @@ public class GameViewModel implements ViewModel {
         round.startRoundTimer();
 
         return new GuessScreenDto(currentGame.getTopic(),
-                                  currentGame.isPracticeMode(),
-                                  round.getWord(),
-                                  currentGame.getNumberOfRounds(),
+                currentGame.isPracticeMode(), round.getWord(),
+                currentGame.getNumberOfRounds(),
                 // Incrementing wordIndex by 1 to have this ready for display (1 indexed)
                 currentGame.getCurrentRoundIndex() + 1,
-                                  round.getGuessesRemaining(),
-                                  round.getHints(),
-                                  round.isFirstGuess(),
-                                  // Show hint when it is not the first guess
-                                  !round.isFirstGuess());
+                round.getGuessesRemaining(),
+                round.getHints(),
+                round.isFirstGuess(),
+                // Show hint when it is not the first guess
+                !round.isFirstGuess());
     }
 
     /**

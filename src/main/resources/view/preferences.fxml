@@ -58,7 +58,7 @@
     </VBox>
     <AnchorPane styleClass="aside">
         <GridPane.columnIndex>1</GridPane.columnIndex>
-        <Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit
-        </Label>
+        <!--<Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit
+        </Label>-->
     </AnchorPane>
 </GridPane>
