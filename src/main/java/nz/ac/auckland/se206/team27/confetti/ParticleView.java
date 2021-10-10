@@ -6,6 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 // This is an ad-hoc particle system written for displaying confetti
 // The following resources were helpful in creating this:
@@ -19,9 +20,13 @@ public class ParticleView extends Canvas {
         public double velX;
         public double velY;
         public Color color;
+
+        public int lifetime;
+        public float drag;
+        public boolean isDead;
     }
 
-    private final ArrayList<Particle> particles = new ArrayList<>();
+    private final LinkedList<Particle> particles = new LinkedList<>();
     private final GraphicsContext gc;
 
     private final double width;
@@ -49,17 +54,17 @@ public class ParticleView extends Canvas {
     }
 
     public void emit(int numParticles, double x, double y) {
-        particles.ensureCapacity(numParticles);
-        double width = getWidth();
-        double height = getHeight();
+        // particles.ensureCapacity(numParticles);
 
         for (int i = 0; i < numParticles; i++) {
             Particle particle = new Particle();
             particle.x = x;
             particle.y = y;
-            particle.velX = 4 * Math.random() - 2;
-            particle.velY = 4 * Math.random() - 2;
+            particle.velX = 12 * (Math.random() - 0.5);
+            particle.velY = 12 * (Math.random() - 0.5);
             particle.color = randomColor();
+            particle.lifetime = 400;
+            particle.drag = 0.98f;
 
             particles.add(particle);
         }
@@ -79,18 +84,26 @@ public class ParticleView extends Canvas {
     }
 
     private void updateParticle(Particle particle) {
+        if (particle.isDead)
+            return;
+
         particle.x += particle.velX;
         particle.y += particle.velY;
 
-        if (particle.x < 0 || particle.x > width)
-            particle.velX = -particle.velX;
+        particle.velX *= particle.drag;
+        particle.velY *= particle.drag;
 
-        if (particle.y < 0 || particle.y > height)
-            particle.velY = -particle.velY;
+        particle.velY += 0.02f;
+
+        if (particle.lifetime-- <= 0)
+            particle.isDead = true;
     }
 
     private void drawParticle(Particle particle) {
+        if (particle.isDead)
+            return;
+
         gc.setFill(particle.color);
-        gc.fillOval(particle.x, particle.y, 5, 5);
+        gc.fillOval(particle.x, particle.y, 8, 8);
     }
 }
