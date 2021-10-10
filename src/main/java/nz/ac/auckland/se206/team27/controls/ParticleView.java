@@ -19,7 +19,7 @@ import java.util.LinkedList;
  */
 public class ParticleView extends Canvas {
 
-    private class Particle {
+    private static class Particle {
         // Position
         public double x;
         public double y;
