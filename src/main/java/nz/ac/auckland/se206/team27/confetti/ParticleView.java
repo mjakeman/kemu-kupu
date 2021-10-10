@@ -4,25 +4,40 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.transform.Rotate;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-// This is an ad-hoc particle system written for displaying confetti
-// The following resources were helpful in creating this:
+// This is a particle system written for displaying confetti. It is
+// loosely inspired by the following resource, but heavily modified
+// for this project:
 //  - https://www.howtosolutions.net/2016/09/javascript-canvas-simple-particle-system/
 
+/**
+ * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
+ */
 public class ParticleView extends Canvas {
 
     private class Particle {
+        // Position
         public double x;
         public double y;
+
+        // Velocity
         public double velX;
         public double velY;
-        public Color color;
+        public double drag;
 
+        // Rotation
+        public double rotation;
+        public double velRot;
+
+        // Display
+        public Color color;
         public int lifetime;
-        public float drag;
+        public double sizeFactor;
+
         public boolean isDead;
     }
 
@@ -60,11 +75,14 @@ public class ParticleView extends Canvas {
             Particle particle = new Particle();
             particle.x = x;
             particle.y = y;
-            particle.velX = 12 * (Math.random() - 0.5);
-            particle.velY = 12 * (Math.random() - 0.5);
+            particle.velX = 16 * (Math.random() - 0.5);
+            particle.velY = 16 * (Math.random() - 0.5);
             particle.color = randomColor();
             particle.lifetime = 400;
             particle.drag = 0.98f;
+            particle.rotation = Math.random() * 360;
+            particle.velRot = 4 * (Math.random() - 0.5);
+            particle.sizeFactor = 0.5 + (0.5 * Math.random());
 
             particles.add(particle);
         }
@@ -92,8 +110,15 @@ public class ParticleView extends Canvas {
 
         particle.velX *= particle.drag;
         particle.velY *= particle.drag;
+        // particle.velRot *= (particle.drag / 100);
 
-        particle.velY += 0.02f;
+        particle.rotation += particle.velRot;
+
+        // Gravity
+        particle.velY += 0.04f;
+
+        // Wind/Sway
+        particle.velX += 0.02f * (Math.random() - 0.5);
 
         if (particle.lifetime-- <= 0)
             particle.isDead = true;
@@ -103,7 +128,16 @@ public class ParticleView extends Canvas {
         if (particle.isDead)
             return;
 
+        gc.save();
+
+        // Thanks to: https://stackoverflow.com/questions/18260421/how-to-draw-image-rotated-on-javafx-canvas
+        Rotate r = new Rotate(particle.rotation, particle.x, particle.y);
+        gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
+
+        // Draw rectangle
         gc.setFill(particle.color);
-        gc.fillOval(particle.x, particle.y, 8, 8);
+        gc.fillRect(particle.x, particle.y, 8 * particle.sizeFactor, 4 * particle.sizeFactor);
+
+        gc.restore();
     }
 }
