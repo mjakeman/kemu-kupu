@@ -62,6 +62,9 @@ public class ParticleView extends Canvas {
                     updateParticle(particle);
                     drawParticle(particle);
                 }
+
+                // Cleanup Dead Particles
+                particles.removeIf(particle -> particle.isDead);
             }
         };
 
@@ -88,17 +91,25 @@ public class ParticleView extends Canvas {
         }
     }
 
-    // TODO: Change this
     private Color randomColor() {
-        double r = 0, g = 0, b = 0;
-        while (r < 100 && g < 100 && b < 100)
+
+        // Colour Generation method adapted from:
+        // https://www.howtosolutions.net/2016/09/javascript-canvas-simple-particle-system/
+        // This ensures that colours are fairly vibrant by excluding dark
+        // colours (e.g. black and grey).
+
+        double red = 0;
+        double green = 0;
+        double blue = 0;
+
+        while (red < 0.3 && green < 0.3 && blue < 0.3)
         {
-            r = Math.floor(Math.random() * 256);
-            g = Math.floor(Math.random() * 256);
-            b = Math.floor(Math.random() * 256);
+            red = Math.random();
+            green = Math.random();
+            blue = Math.random();
         }
 
-        return new Color(r / 256.0, g / 256.0, b / 256.0, 1.0f);
+        return new Color(red, green, blue, 1.0f);
     }
 
     private void updateParticle(Particle particle) {
@@ -136,7 +147,7 @@ public class ParticleView extends Canvas {
 
         // Draw rectangle
         gc.setFill(particle.color);
-        gc.fillRect(particle.x, particle.y, 8 * particle.sizeFactor, 4 * particle.sizeFactor);
+        gc.fillRect(particle.x, particle.y, 12 * particle.sizeFactor, 6 * particle.sizeFactor);
 
         gc.restore();
     }
