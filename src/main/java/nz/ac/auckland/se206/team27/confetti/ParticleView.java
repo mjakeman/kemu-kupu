@@ -76,16 +76,16 @@ public class ParticleView extends Canvas {
 
         for (int i = 0; i < numParticles; i++) {
             Particle particle = new Particle();
+            particle.sizeFactor = 0.5 + (0.5 * Math.random());
             particle.x = x;
             particle.y = y;
-            particle.velX = 16 * (Math.random() - 0.5);
-            particle.velY = 16 * (Math.random() - 0.5);
+            particle.velX = (16 * (Math.random() - 0.5)) * (2.0 - particle.sizeFactor);
+            particle.velY = (16 * (Math.random() - 0.5)) * (2.0 - particle.sizeFactor);
             particle.color = randomColor();
             particle.lifetime = 400;
             particle.drag = 0.98f;
             particle.rotation = Math.random() * 360;
             particle.velRot = 4 * (Math.random() - 0.5);
-            particle.sizeFactor = 0.5 + (0.5 * Math.random());
 
             particles.add(particle);
         }
