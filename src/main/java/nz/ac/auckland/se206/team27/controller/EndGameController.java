@@ -155,7 +155,7 @@ public class EndGameController extends GameController {
          */
 
         // NB: We can use indexOf here since these columns cannot be sorted now
-        TableColumn<Round, Integer> roundCol = createTableColumn("Round", items::indexOf);
+        TableColumn<Round, Integer> roundCol = createTableColumn("Round", (round) -> items.indexOf(round) + 1);
         TableColumn<Round, String> wordCol = createTableColumn("Word", Round::getWord);
         TableColumn<Round, String> resultCol = createTableColumn("Result", (round) -> round.getResult().toCapitalised());
         TableColumn<Round, String> guessCol = createTableColumn("Your Guess(es)", (round) -> String.join("\n", round.getGuesses()));
