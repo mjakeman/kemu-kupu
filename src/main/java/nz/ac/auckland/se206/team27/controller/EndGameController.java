@@ -1,23 +1,23 @@
 package nz.ac.auckland.se206.team27.controller;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
+import nz.ac.auckland.se206.team27.controls.ParticleView;
 import nz.ac.auckland.se206.team27.game.Round;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
+import nz.ac.auckland.se206.team27.view.ViewConfig;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
+import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
 import java.util.HashMap;
 
@@ -41,6 +41,9 @@ public class EndGameController extends GameController {
     @FXML
     public HBox scoreContainer;
 
+    @FXML
+    public ParticleView particleView;
+
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
     }
@@ -53,6 +56,37 @@ public class EndGameController extends GameController {
     @Override
     public void transitionOnEnter() {
         AnimationBuilder.buildSlideAndFadeTransition(container).play();
+    }
+
+    @FXML
+    public void initialize() {
+        // Need to call this manually as we override initialize()
+        // in GameController.
+        populateViewData();
+
+        // Setup Particle View
+        // TODO: Disable effects based on preference
+        double width = ViewConfig.WIDTH;
+        double height = ViewConfig.HEIGHT;
+        particleView.setWidth(width);
+        particleView.setHeight(height);
+
+        // Emit confetti on mouse click
+        particleView.setOnMouseClicked(event -> {
+            particleView.emit(80, event.getX(), event.getY());
+        });
+
+        // This is so mouse clicks pass through to the particle view
+        container.setPickOnBounds(false);
+
+        // Initial confetti bursts
+        runAfterDelay(() -> {
+            particleView.emit(80, width * 1/6, height/3);
+            particleView.emit(80, width * 2/6, height/3);
+            particleView.emit(80, width * 3/6, height/3);
+            particleView.emit(80, width * 4/6, height/3);
+            particleView.emit(80, width * 5/6, height/3);
+        }, 500L);
     }
 
     @Override

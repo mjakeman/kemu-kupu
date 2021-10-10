@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27.confetti;
+package nz.ac.auckland.se206.team27.controls;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
@@ -44,20 +44,12 @@ public class ParticleView extends Canvas {
     private final LinkedList<Particle> particles = new LinkedList<>();
     private final GraphicsContext gc;
 
-    private final double width;
-    private final double height;
-
-    public ParticleView(double width, double height) {
-        super(width, height);
-
-        this.width = width;
-        this.height = height;
-
+    public ParticleView() {
         gc = getGraphicsContext2D();
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                gc.clearRect(0, 0, width, height);
+                gc.clearRect(0, 0, getWidth(), getHeight());
                 for (Particle particle : particles) {
                     updateParticle(particle);
                     drawParticle(particle);
