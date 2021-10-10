@@ -20,7 +20,7 @@ public class HintDisplay {
      * The characters allowed in a valid word, excluding all punctuation.
      */
     // TODO: Move this somewhere else since it is used in Round to determine hints
-    public static final String ALPHABET_REGEX = "[a-zA-Z]";
+    public static final String ALPHABET_REGEX = "[a-zA-ZāēīōūĀĒĪŌŪ]";
 
     /**
      * List of {@link Label} nodes to be displayed on the JavaFX pane.
