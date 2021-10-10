@@ -7,18 +7,22 @@
 		   stylesheets="@../style/common.css,@../style/game.css,@../style/endgame.css"
 		   fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
 	<VBox fx:id="container" styleClass="container">
-		<Label styleClass="endgame-title" fx:id="labelTitle" />
-		<VBox styleClass="score-label-container">
-			<Label styleClass="score-label">Total Score: </Label>
-			<!--<HBox alignment="BOTTOM_CENTER">
-				<Label styleClass="score-label-total" fx:id="labelTotalScore" />
-				<Label styleClass="score-label-total-prefix">pts</Label>
-			</HBox>-->
-			<TableView fx:id="tableView" maxWidth="600"/>
+		<VBox styleClass="title-container">
+			<Label styleClass="endgame-title" fx:id="labelTitle" />
+			<Label styleClass="endgame-topic" fx:id="labelTopic" />
 		</VBox>
-		<VBox styleClass="spacing">
-			<Button onAction="#clickPlayAgain" styleClass="raised-button,play-button">Play again</Button>
+
+		<TableView fx:id="tableView" maxWidth="600"/>
+
+		<HBox fx:id="scoreContainer" styleClass="mini-score-label-container" alignment="BOTTOM_CENTER">
+			<Label>Total Score: </Label>
+			<Label styleClass="mini-score-label" fx:id="labelTotalScore" />
+			<Label>pts</Label>
+		</HBox>
+
+		<HBox styleClass="spacing">
 			<Button onAction="#clickHome" styleClass="raised-button,next-button">Back to home</Button>
-		</VBox>
+			<Button onAction="#clickPlayAgain" styleClass="raised-button,play-button">Play again</Button>
+		</HBox>
 	</VBox>
 </StackPane>

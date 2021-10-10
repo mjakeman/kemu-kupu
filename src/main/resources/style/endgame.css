@@ -4,8 +4,30 @@
     -fx-spacing: 20px;
 }
 
+.title-container {
+    -fx-alignment: center;
+    -fx-spacing: 5px;
+}
+
 .endgame-title {
-    -fx-font-size: 40pt;
+    -fx-font-size: 32pt;
+}
+
+.endgame-topic {
+    -fx-font-size: 20pt;
+}
+
+.mini-score-label-container Label {
+    -fx-font-size: 18pt;
+}
+
+.mini-score-label {
+    -fx-font-weight: bold;
+    -fx-padding: 0 5px 0 10px;
+}
+
+.mini-score-label-suffix {
+
 }
 
 .score-label {
@@ -19,28 +41,46 @@
 }
 
 .spacing {
-    -fx-spacing: 5px;
+    -fx-spacing: 15px;
     -fx-alignment: center;
 }
 
 .raised-button {
-    -fx-pref-width: 200px;
+    -fx-pref-width: 150px;
 }
 
-/* Table Row Styling */
-/* TODO: PORT TO NEW COLOUR SCHEMES SYSTEM */
+/* Table Row Tints */
 .table-row-failed {
-    -fx-background-color: #f66151;
+    -fx-background-color: -colour-failure-tint;
 }
 
 .table-row-faulted {
-    -fx-background-color: #ffbe6f;
+    -fx-background-color: -colour-faulted-tint;
 }
 
 .table-row-passed {
-    -fx-background-color: #8ff0a4;
+    -fx-background-color: -colour-success-tint;
 }
 
 .table-row-skipped {
-    -fx-background-color: #99c1f1;
+    -fx-background-color: -colour-neutral-tint;
+}
+
+/* Table Styling */
+/* See https://edencoding.com/style-tableview-javafx/ for CSS selectors */
+.table-view {
+    -fx-background-color: #fafafa;
+    -fx-text-fill: black;
+    -fx-border-style: solid;
+    -fx-border-color: rgba(0,0,0,0.5);
+    -fx-border-radius: 4px;
+}
+
+.table-view .table-cell {
+    -fx-border-color: transparent;
+}
+
+.table-row-cell .text,
+.table-row-cell:selected .text {
+    -fx-fill: rgba(0,0,0,0.9);
 }

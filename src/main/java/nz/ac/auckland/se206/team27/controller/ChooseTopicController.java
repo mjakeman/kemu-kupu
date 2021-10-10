@@ -9,6 +9,9 @@ import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 
+import java.util.Random;
+import java.util.Collections;
+
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
@@ -19,6 +22,8 @@ public class ChooseTopicController extends MenuController {
 
     @FXML
     public VBox container;
+
+    private ObservableList<String> topicList = FXCollections.observableArrayList(menuViewModel.getTopics());
 
 
     public void clickBack() {
@@ -33,6 +38,12 @@ public class ChooseTopicController extends MenuController {
         // Do nothing if no topic is selected
         if (selected == null) return;
 
+        while (selected.equals("RANDOM TOPIC")) {
+            Random selectRand = new Random();
+            int a = selectRand.nextInt(topicList.size());
+            selected = topicList.get(a);
+        }
+
         menuViewModel.selectTopic(selected);
         sceneLoader.loadScreen(ScreenResource.PREVIEW_TOPIC);
     }
@@ -45,6 +56,8 @@ public class ChooseTopicController extends MenuController {
     @Override
     protected void populateViewData() {
         ObservableList<String> topicList = FXCollections.observableArrayList(menuViewModel.getTopics());
+        Collections.sort(topicList);
+        topicList.add("RANDOM TOPIC");
         listview.setItems(topicList);
     }
 

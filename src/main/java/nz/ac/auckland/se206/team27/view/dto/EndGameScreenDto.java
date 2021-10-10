@@ -13,12 +13,16 @@ public class EndGameScreenDto implements ViewDto {
     public final String topic;
     public final int totalScore;
     public final ObservableList<Round> rounds;
+    public final boolean isPracticeMode;
 
-
-    public EndGameScreenDto(String topic, int totalScore, ObservableList<Round> rounds) {
+    public EndGameScreenDto(String topic,
+                            int totalScore,
+                            ObservableList<Round> rounds,
+                            boolean isPracticeMode) {
         this.topic = topic;
         this.totalScore = totalScore;
         this.rounds = rounds;
+        this.isPracticeMode = isPracticeMode;
     }
 
 }

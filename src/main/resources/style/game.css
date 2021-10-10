@@ -63,7 +63,7 @@ Button {
 /* Used for "Play sound again" and "Play again button" (end screen) */
 
 .play-button {
-    -fx-background-color: #3584e4;
+    -fx-background-color: -colour-neutral;
     -fx-border-color: #1a5fb4;
 }
 
@@ -83,7 +83,7 @@ Button {
     -fx-font-size: 40pt;
 }
 
-.score-label-total-prefix {
+.score-label-total-suffix {
     -fx-font-size: 1.5em;
     -fx-padding: 0 0 10px 5px;
 }

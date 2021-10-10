@@ -211,3 +211,57 @@ Lastly, I moved the SpeedSwitcher control to a new `controls` module.
 
 I also decided to rename `PrefsManager` and `PrefsKeystore` to `PreferencesManager` and `PreferencesStorage`
 respectively as I felt these names better fit the concepts they were representing.
+
+### Preferences View
+I also decided to start working towards the preferences view. I created a simple layout based on
+the previously designed whiteboard sketches. This simply contains some controls. I reused the
+SpeedSwitcher control from before.
+
+Next, I created a new control called `OnOffSwitcher` which consists of two radio buttons and
+binds the selected toggle to a boolean value. This makes it easy to handle multiple boolean
+properties (as we are considering adding a Maori/English language toggle later in the project).
+
+The implementation of `OnOffSwitcher` is largely the same as `SpeedSwitcher`, except using
+Radio Buttons instead of Toggle Buttons and a `boolean` in place of `SpeechSpeed`.
+
+Finally, I bound the controls to properties from `PreferencesManager`.
+
+## 7 October
+With the preference toggles now working, I implemented the "colourblind" mode. I specifically
+targeted dichromacy, which is where only two colours are visible. The palette I chose was
+designed by IBM and specifically addressed deuteranopia and protanopia (red-green), as well
+as the rarer tritanopia (blue-yellow) forms of colour-blindness.
+
+To implement support for this, I came up with the idea of "colour schemes". These are CSS
+stylesheets which define colour variables and can be swapped during run time. I apply them
+to the scene, and these colour variables (called "looked-up colours") are propagated to child
+elements such as the various views. I created two colour profiles and bound them to the "on"
+and "off" states.
+
+I used the website [maketintsandshades.com](https://maketintsandshades.com/) to generate hover
+and pressed variants of the core colourblind-friendly palette.
+
+Finally, I made a start on implementing a "results table" on the end game screen, which was
+my second main assigned task.
+
+## 8 October
+### Meeting
+First project team meeting [(minutes)](minutes-08-10-21.md). The last remaining tasks were assigned
+and we discussed some "nice to haves".
+
+### Results Table
+I continued working on the results table, introducing sorting. I associated each round with an
+"ID" so the user can sort by whichever criteria they wish, then return the default sort
+afterwards. I also improved how guesses were displayed, now showing one guess per line inside
+a multiline label cell.
+
+I decided to style each row according to the type of result. For this, I created a new "tint"
+variant for each colour (a lighter shade) and coloured the cell with that. This helps visually
+distinguish all the user's colours at a glance.
+
+## 9 October
+I worked on changing the layout of the end game screen to match the whiteboard sketches we
+produced at the beginning of the project. I performed some miscellaneous styling and cleanup,
+as well as ported the colours above to "colour profiles" which had been introduced on my
+other branch. I added tint colours for the colourblind mode profile to make it work
+again. Finally, I styled the table, giving it rounded corners.

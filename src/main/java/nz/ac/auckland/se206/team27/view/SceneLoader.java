@@ -6,7 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.team27.App;
+import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.BaseController;
+import nz.ac.auckland.se206.team27.resource.ColourProfileResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 
 import static nz.ac.auckland.se206.team27.view.ViewConfig.HEIGHT;
@@ -42,6 +45,14 @@ public class SceneLoader {
             Scene scene = new Scene(new AnchorPane(), WIDTH, HEIGHT);
             scene.setFill(Color.BLACK);
             stage.setScene(scene);
+
+            // Now that the scene is set, we can apply a colour scheme
+            PreferencesManager prefsManager = PreferencesManager.getInstance();
+            ColourProfileResource profile = prefsManager.getColourblindMode()
+                    ? ColourProfileResource.SAFE
+                    : ColourProfileResource.DEFAULT;
+
+            App.applyColourScheme(profile);
         }
     }
 

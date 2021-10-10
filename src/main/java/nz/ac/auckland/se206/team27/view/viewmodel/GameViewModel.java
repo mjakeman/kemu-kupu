@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.team27.view.viewmodel;
 
 import nz.ac.auckland.se206.team27.game.Game;
 import nz.ac.auckland.se206.team27.game.Round;
+import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
@@ -30,11 +31,19 @@ public class GameViewModel implements ViewModel {
 
     public GuessScreenDto getGuessScreenData() {
         Round round = currentGame.getCurrentRound();
+
+        // Starts the round timer when the next game is active
+        // TODO: Move this to a better place to execute such that it will only run once when the round starts instead of on data load (model?)
+        round.startRoundTimer();
+
         return new GuessScreenDto(currentGame.getTopic(),
+                                  currentGame.isPracticeMode(),
                                   round.getWord(),
                                   currentGame.getNumberOfRounds(),
-                                  currentGame.getCurrentRoundIndex(),
+                // Incrementing wordIndex by 1 to have this ready for display (1 indexed)
+                currentGame.getCurrentRoundIndex() + 1,
                                   round.getGuessesRemaining(),
+                                  round.getHints(),
                                   round.isFirstGuess(),
                                   // Show hint when it is not the first guess
                                   !round.isFirstGuess());
@@ -65,6 +74,7 @@ public class GameViewModel implements ViewModel {
                                    round.getResult(),
                                    currentGame.getCumulativeScore(),
                                    round.getScoreContribution(),
+                                   currentGame.isPracticeMode(),
                                    null,
                                    null);
     }
@@ -80,11 +90,12 @@ public class GameViewModel implements ViewModel {
     public EndGameScreenDto getEndGameScreenData() {
         return new EndGameScreenDto(currentGame.getTopic(),
                                     currentGame.getCumulativeScore(),
-                                    currentGame.getAllRounds());
+                                    currentGame.getAllRounds(),
+                                    currentGame.isPracticeMode());
     }
 
     public void playAgain() {
-        Game.createInstance(currentGame.getWordList());
+        Game.createInstance(currentGame.getWordList(), currentGame.isPracticeMode());
     }
 
 }
