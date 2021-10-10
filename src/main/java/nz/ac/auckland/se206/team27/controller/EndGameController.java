@@ -156,15 +156,18 @@ public class EndGameController extends GameController {
         }
 
         TableColumn<Round, Integer> roundCol = new TableColumn<>("Round");
+        roundCol.setSortable(false);
         roundCol.setCellValueFactory(cellData -> {
             Round round = cellData.getValue();
             return new ReadOnlyObjectWrapper<>(roundIdMap.get(round));
         });
 
         TableColumn<Round, String> wordCol = new TableColumn<>("Word");
+        wordCol.setSortable(false);
         wordCol.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getWord()));
 
         TableColumn<Round, String> resultCol = new TableColumn<>("Result");
+        resultCol.setSortable(false);
         resultCol.setCellValueFactory(cellData -> {
             String result = cellData.getValue().getResult().name();
 
@@ -174,6 +177,7 @@ public class EndGameController extends GameController {
         });
 
         TableColumn<Round, String> guessCol = new TableColumn<>("Your Guess(es)");
+        guessCol.setSortable(false);
         guessCol.setMinWidth(170);
         guessCol.setCellValueFactory(cellData -> {
             Round round = cellData.getValue();
@@ -182,12 +186,14 @@ public class EndGameController extends GameController {
         });
 
         TableColumn<Round, Integer> timeTakenCol = new TableColumn<>("Time Taken");
+        timeTakenCol.setSortable(false);
         timeTakenCol.setCellValueFactory(cellData -> {
             Round round = cellData.getValue();
             return new ReadOnlyObjectWrapper<Integer>((int)round.getDurationSeconds());
         });
 
         TableColumn<Round, Integer> scoreCol = new TableColumn<>("Score");
+        scoreCol.setSortable(false);
         scoreCol.setCellValueFactory(cellData -> {
             Round round = cellData.getValue();
             return new ReadOnlyObjectWrapper<>(round.getScoreContribution());
