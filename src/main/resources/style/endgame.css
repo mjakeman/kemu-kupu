@@ -84,3 +84,8 @@
 .table-row-cell:selected .text {
     -fx-fill: rgba(0,0,0,0.9);
 }
+
+/* A hint to click on the background to generate confetti */
+.fun-hint {
+    -fx-text-fill: rgba(0,0,0,0.4);
+}

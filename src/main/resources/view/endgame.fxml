@@ -2,27 +2,46 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import nz.ac.auckland.se206.team27.controls.ParticleView?>
 <StackPane xmlns="http://javafx.com/javafx"
 		   xmlns:fx="http://javafx.com/fxml"
 		   stylesheets="@../style/common.css,@../style/game.css,@../style/endgame.css"
 		   fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
-	<VBox fx:id="container" styleClass="container">
-		<VBox styleClass="title-container">
+	<ParticleView fx:id="particleView" />
+
+	<VBox fx:id="bigScoreContainer" styleClass="score-label-container">
+		<Label styleClass="score-label">Total Score: </Label>
+		<HBox alignment="BOTTOM_CENTER">
+			<Label styleClass="score-label-total" fx:id="bigScoreLabel" />
+			<Label>pts</Label>
+		</HBox>
+	</VBox>
+
+	<VBox pickOnBounds="false" fx:id="mainContainer" styleClass="container">
+		<VBox mouseTransparent="true" styleClass="title-container">
 			<Label styleClass="endgame-title" fx:id="labelTitle" />
 			<Label styleClass="endgame-topic" fx:id="labelTopic" />
 		</VBox>
 
 		<TableView fx:id="tableView" maxWidth="600"/>
 
-		<HBox fx:id="scoreContainer" styleClass="mini-score-label-container" alignment="BOTTOM_CENTER">
+		<HBox mouseTransparent="true" fx:id="scoreContainer" styleClass="mini-score-label-container" alignment="BOTTOM_CENTER">
 			<Label>Total Score: </Label>
-			<Label styleClass="mini-score-label" fx:id="labelTotalScore" />
+			<Label styleClass="mini-score-label" fx:id="miniScoreLabel"/>
 			<Label>pts</Label>
 		</HBox>
 
-		<HBox styleClass="spacing">
+		<HBox pickOnBounds="false" styleClass="spacing">
 			<Button onAction="#clickHome" styleClass="raised-button,next-button">Back to home</Button>
 			<Button onAction="#clickPlayAgain" styleClass="raised-button,play-button">Play again</Button>
 		</HBox>
 	</VBox>
+
+	<AnchorPane mouseTransparent="true">
+		<Label styleClass="fun-hint">
+			<AnchorPane.rightAnchor>20</AnchorPane.rightAnchor>
+			<AnchorPane.topAnchor>20</AnchorPane.topAnchor>
+			Click for More Confetti!
+		</Label>
+	</AnchorPane>
 </StackPane>
