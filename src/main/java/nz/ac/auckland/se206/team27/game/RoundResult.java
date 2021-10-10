@@ -10,6 +10,15 @@ public enum RoundResult {
     SKIPPED,
     PASSED,
     FAULTED,
-    FAILED
+    FAILED;
+
+
+    /**
+     * @return a capitalised version of the {@link RoundResult}'s name.
+     */
+    public String toCapitalised() {
+        String enumName = this.name();
+        return enumName.substring(0, 1).toUpperCase() + enumName.substring(1).toLowerCase();
+    }
 
 }

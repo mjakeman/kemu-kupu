@@ -21,9 +21,10 @@ import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
-import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
-import java.util.HashMap;
+import java.util.function.Function;
+
+import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
 public class EndGameController extends GameController {
 
@@ -148,56 +149,18 @@ public class EndGameController extends GameController {
         tableView.getColumns().clear();
 
         ObservableList<Round> items = FXCollections.observableList(data.rounds);
-        HashMap<Round, Integer> roundIdMap = new HashMap<Round, Integer>();
 
-        int index = 1;
-        for (Round round : items) {
-            roundIdMap.put(round, index++);
-        }
+        /*
+         * Add columns with relevant "value" display methods
+         */
 
-        TableColumn<Round, Integer> roundCol = new TableColumn<>("Round");
-        roundCol.setSortable(false);
-        roundCol.setCellValueFactory(cellData -> {
-            Round round = cellData.getValue();
-            return new ReadOnlyObjectWrapper<>(roundIdMap.get(round));
-        });
-
-        TableColumn<Round, String> wordCol = new TableColumn<>("Word");
-        wordCol.setSortable(false);
-        wordCol.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getWord()));
-
-        TableColumn<Round, String> resultCol = new TableColumn<>("Result");
-        resultCol.setSortable(false);
-        resultCol.setCellValueFactory(cellData -> {
-            String result = cellData.getValue().getResult().name();
-
-            // Convert enum case e.g. "FAULTED" to "Faulted":
-            String wordCase = result.substring(0, 1).toUpperCase() + result.substring(1).toLowerCase();
-            return new ReadOnlyObjectWrapper<>(wordCase);
-        });
-
-        TableColumn<Round, String> guessCol = new TableColumn<>("Your Guess(es)");
-        guessCol.setSortable(false);
-        guessCol.setMinWidth(170);
-        guessCol.setCellValueFactory(cellData -> {
-            Round round = cellData.getValue();
-            String guessesDisplay = String.join("\n", round.getGuesses());
-            return new ReadOnlyObjectWrapper<>(guessesDisplay);
-        });
-
-        TableColumn<Round, Integer> timeTakenCol = new TableColumn<>("Time Taken");
-        timeTakenCol.setSortable(false);
-        timeTakenCol.setCellValueFactory(cellData -> {
-            Round round = cellData.getValue();
-            return new ReadOnlyObjectWrapper<Integer>((int)round.getDurationSeconds());
-        });
-
-        TableColumn<Round, Integer> scoreCol = new TableColumn<>("Score");
-        scoreCol.setSortable(false);
-        scoreCol.setCellValueFactory(cellData -> {
-            Round round = cellData.getValue();
-            return new ReadOnlyObjectWrapper<>(round.getScoreContribution());
-        });
+        // NB: We can use indexOf here since these columns cannot be sorted now
+        TableColumn<Round, Integer> roundCol = createTableColumn("Round", items::indexOf);
+        TableColumn<Round, String> wordCol = createTableColumn("Word", Round::getWord);
+        TableColumn<Round, String> resultCol = createTableColumn("Result", (round) -> round.getResult().toCapitalised());
+        TableColumn<Round, String> guessCol = createTableColumn("Your Guess(es)", (round) -> String.join("\n", round.getGuesses()));
+        TableColumn<Round, Integer> timeTakenCol = createTableColumn("Time Taken", Round::getDurationSecondsTruncated);
+        TableColumn<Round, Integer> scoreCol = createTableColumn("Score", Round::getScoreContribution);
 
         // Thanks to: https://www.mmbyte.com/article/8864.html for the rough outline
         // on how to style table rows according to the properties of the bound item.
@@ -238,6 +201,21 @@ public class EndGameController extends GameController {
             // Hide score column in practice mode
             tableView.getColumns().remove(scoreCol);
         }
+    }
+
+    /**
+     * @return an unsortable table column with the given {@code title} header and uses
+     * {@code mapper} to generate the display value.
+     */
+    private <T> TableColumn<Round, T> createTableColumn(String title, Function<Round, T> mapper) {
+        TableColumn<Round, T> column = new TableColumn<>(title);
+        column.setCellValueFactory(cellData -> {
+            Round round = cellData.getValue();
+            return new ReadOnlyObjectWrapper<>(mapper.apply(round));
+        });
+        column.setSortable(false);
+
+        return column;
     }
 
 }
