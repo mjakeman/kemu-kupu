@@ -65,6 +65,15 @@ public class EndGameController extends GameController {
     @Override
     public void transitionOnEnter() {
 
+        EndGameScreenDto data = gameViewModel.getEndGameScreenData();
+        if (data.isPracticeMode)
+        {
+            // Slide and fade as normal in practice mode (since we don't want to show the score)
+            bigScoreContainer.setOpacity(0);
+            AnimationBuilder.buildSlideAndFadeTransition(mainContainer).play();
+            return;
+        }
+
         // This is a fairly elaborate transition. First we show the use their score
         // in the form of the "bigScoreContainer" element. This is shown for two seconds,
         // then faded out and replaced with the detailed "mainContainer" element, which
@@ -118,11 +127,7 @@ public class EndGameController extends GameController {
 
         // Initial confetti bursts
         runAfterDelay(() -> {
-            particleView.emit(80, width * 1/6, height/2);
-            particleView.emit(80, width * 2/6, height/2);
-            particleView.emit(80, width * 3/6, height/2);
-            particleView.emit(80, width * 4/6, height/2);
-            particleView.emit(80, width * 5/6, height/2);
+            particleView.emit(200, width * 1/2, height/2);
         }, 500L);
     }
 

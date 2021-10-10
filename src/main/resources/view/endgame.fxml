@@ -36,4 +36,12 @@
 			<Button onAction="#clickPlayAgain" styleClass="raised-button,play-button">Play again</Button>
 		</HBox>
 	</VBox>
+
+	<AnchorPane mouseTransparent="true">
+		<Label styleClass="fun-hint">
+			<AnchorPane.rightAnchor>20</AnchorPane.rightAnchor>
+			<AnchorPane.topAnchor>20</AnchorPane.topAnchor>
+			Click for More Confetti!
+		</Label>
+	</AnchorPane>
 </StackPane>
