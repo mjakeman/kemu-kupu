@@ -1,10 +1,12 @@
 package nz.ac.auckland.se206.team27.game;
 
+import nz.ac.auckland.se206.team27.view.HintNode;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-
-import nz.ac.auckland.se206.team27.view.HintNode;
 
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAILED;
 import static nz.ac.auckland.se206.team27.game.RoundResult.FAULTED;
@@ -29,9 +31,9 @@ public class Round {
     private final int maxGuesses;
 
     /**
-     * The number of guesses made in this round.
+     * A list of all guesses the user has made.
      */
-    private int guessesMade = 0;
+    private final List<String> guessList = new ArrayList<>();
 
     /**
      * The end result of this round.
@@ -53,7 +55,6 @@ public class Round {
      */
     private final Map<Integer, Character> hints;
 
-
     public Round(String word, int maxGuesses, boolean isPracticeMode) {
         this.maxGuesses = maxGuesses;
         this.word = word.trim();
@@ -74,17 +75,17 @@ public class Round {
      */
     public boolean makeGuess(String guess) {
         assertResultNotSet();
-        guessesMade++;
+        guessList.add(guess);
 
         // Check if the guess is equal to the word
         if (word.equalsIgnoreCase(guess.trim())) {
-            result = guessesMade == 1 ? PASSED : FAULTED;
+            result = getGuessesMade() == 1 ? PASSED : FAULTED;
             endRoundTimer();
             return false;
         }
 
         // Check if there are any more guesses left
-        if (guessesMade >= maxGuesses) {
+        if (getGuessesMade() >= maxGuesses) {
             result = FAILED;
             endRoundTimer();
             return false;
@@ -132,14 +133,28 @@ public class Round {
      * @return The number of guesses remaining for this round.
      */
     public int getGuessesRemaining() {
-        return maxGuesses - guessesMade;
+        return maxGuesses - getGuessesMade();
+    }
+
+    /**
+     * @return The number of guesses that have been made.
+     */
+    private int getGuessesMade() {
+        return guessList.size();
+    }
+
+    /**
+     * @return A list of all guesses made in this round.
+     */
+    public List<String> getGuesses() {
+        return guessList;
     }
 
     /**
      * @return Whether this is the user's first guess this round.
      */
     public boolean isFirstGuess() {
-        return (guessesMade == 0);
+        return (getGuessesMade() == 0);
     }
 
     /**
@@ -147,6 +162,14 @@ public class Round {
      */
     public Map<Integer, Character> getHints() {
         return hints;
+    }
+
+    /**
+     * Gets the duration of the round in seconds.
+     * @return Seconds taken to complete the round (floating point).
+     */
+    public float getDurationSeconds() {
+        return (float) (endTimestamp - startTimestamp) / 1000f;
     }
 
     /**
@@ -162,7 +185,7 @@ public class Round {
 
         // The reduction applied as a result of delay in answering (max 500 points)
         // See 1: https://github.com/SOFTENG206-2021/assignment-3-and-project-team-27/blob/main/wiki/minutes-03-10-21.md
-        float duration = (float) (endTimestamp - startTimestamp) / 1000f;
+        float duration = getDurationSeconds();
         int scoreReduction = Math.min(500, (int) (500 * (Math.log10(0.03 * duration + 0.1) + 1)));
         int scoreAfterTimeReduction = maxScore - scoreReduction;
 

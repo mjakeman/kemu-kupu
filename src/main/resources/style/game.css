@@ -83,7 +83,7 @@ Button {
     -fx-font-size: 40pt;
 }
 
-.score-label-total-prefix {
+.score-label-total-suffix {
     -fx-font-size: 1.5em;
     -fx-padding: 0 0 10px 5px;
 }

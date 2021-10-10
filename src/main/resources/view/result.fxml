@@ -12,7 +12,7 @@
 
 			<HBox alignment="BOTTOM_RIGHT">
 				<Label fx:id="labelTotalScore" styleClass="score-label-total" />
-				<Label styleClass="score-label-total-prefix">pts</Label>
+				<Label styleClass="score-label-total-suffix">pts</Label>
 			</HBox>
 		</VBox>
 	</AnchorPane>

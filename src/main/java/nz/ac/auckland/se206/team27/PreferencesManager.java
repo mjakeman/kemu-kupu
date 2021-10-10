@@ -26,6 +26,13 @@ public class PreferencesManager {
     private final String speechSpeedKey = "speech-speed";
 
     /**
+     * Whether visually intensive effects should be used. May not perform
+     * well on less capable machines (i.e. non accelerated virtual machines).
+     */
+    public final SimpleBooleanProperty useEffectsProperty;
+    private final String useEffectsKey = "use-effects";
+
+    /**
      * File-backed storage for arbitrary key-value pairs.
      */
     private final PreferencesStorage prefsStorage = new PreferencesStorage();
@@ -59,6 +66,10 @@ public class PreferencesManager {
         // Speech Speed
         SpeechSpeed speechSpeed = prefsStorage.getEnumOrDefault(speechSpeedKey, SpeechSpeed.class, SpeechSpeed.NORMAL);
         this.speechSpeedProperty = new SimpleObjectProperty<>(speechSpeed);
+
+        // Effects
+        boolean useEffects = prefsStorage.getBooleanOrDefault(useEffectsKey, true);
+        this.useEffectsProperty = new SimpleBooleanProperty(useEffects);
     }
 
     /**
@@ -67,6 +78,7 @@ public class PreferencesManager {
     public void save() {
         prefsStorage.setValue(colourblindModeKey, colourblindModeProperty.getValue().toString());
         prefsStorage.setValue(speechSpeedKey, speechSpeedProperty.getValue().toString());
+        prefsStorage.setValue(useEffectsKey, useEffectsProperty.getValue().toString());
     }
 
     /**
@@ -99,5 +111,21 @@ public class PreferencesManager {
      */
     public SpeechSpeed getSpeechSpeed() {
         return speechSpeedProperty.get();
+    }
+
+    /**
+     * Setter for {@link #useEffectsProperty}
+     * @param value Whether effects should be used
+     */
+    public void setUseEffects(boolean value) {
+        useEffectsProperty.set(value);
+    }
+
+    /**
+     * Getter for {@link #useEffectsProperty}
+     * @return Whether effects are being used
+     */
+    public boolean getUseEffects() {
+        return useEffectsProperty.get();
     }
 }

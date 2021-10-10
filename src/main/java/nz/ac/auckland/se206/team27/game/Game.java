@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.wordlist.WordList;
 
 /**
@@ -81,8 +84,21 @@ public class Game {
         return isPracticeMode;
     }
 
+    /**
+     * @return The currently active round.
+     */
     public Round getCurrentRound() {
         return rounds.get(roundIndex);
+    }
+
+    /**
+     * Get all rounds in the game as a {@link List} for
+     * use with various list-displaying controls.
+     *
+     * @return A list of all rounds
+     */
+    public List<Round> getAllRounds() {
+        return rounds;
     }
 
     public int getNumberOfRounds() {

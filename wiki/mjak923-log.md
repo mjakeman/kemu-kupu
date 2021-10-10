@@ -240,3 +240,28 @@ and "off" states.
 
 I used the website [maketintsandshades.com](https://maketintsandshades.com/) to generate hover
 and pressed variants of the core colourblind-friendly palette.
+
+Finally, I made a start on implementing a "results table" on the end game screen, which was
+my second main assigned task.
+
+## 8 October
+### Meeting
+First project team meeting [(minutes)](minutes-08-10-21.md). The last remaining tasks were assigned
+and we discussed some "nice to haves".
+
+### Results Table
+I continued working on the results table, introducing sorting. I associated each round with an
+"ID" so the user can sort by whichever criteria they wish, then return the default sort
+afterwards. I also improved how guesses were displayed, now showing one guess per line inside
+a multiline label cell.
+
+I decided to style each row according to the type of result. For this, I created a new "tint"
+variant for each colour (a lighter shade) and coloured the cell with that. This helps visually
+distinguish all the user's colours at a glance.
+
+## 9 October
+I worked on changing the layout of the end game screen to match the whiteboard sketches we
+produced at the beginning of the project. I performed some miscellaneous styling and cleanup,
+as well as ported the colours above to "colour profiles" which had been introduced on my
+other branch. I added tint colours for the colourblind mode profile to make it work
+again. Finally, I styled the table, giving it rounded corners.
