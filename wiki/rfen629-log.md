@@ -53,3 +53,9 @@ Raymond Feng (rfen629)
 - Added practice mode menu option without scoring
 - Completed feature with multiple hints in practice mode
 - Started work on refactoring the folder structure
+
+## 10 October
+
+- Simplified some of the code inside `EndGameController` to reduce code duplication. 
+  This was accomplished by using passing lambda functions and generics, which was a good learning experience.
+- Refactored some of the directories so that all view related content was inside the `view` directory
