@@ -211,7 +211,7 @@ public class EndGameController extends GameController {
         TableColumn<Round, T> column = new TableColumn<>(title);
 
         // This ensures that the title column is always visible
-        column.setMinWidth(title.length() * 12 + 10);
+        column.setMinWidth(title.length() * 10 + 10);
 
         column.setSortable(false);
         column.setCellValueFactory(cellData -> {
