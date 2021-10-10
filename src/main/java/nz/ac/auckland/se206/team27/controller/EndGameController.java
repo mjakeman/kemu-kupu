@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.animation.*;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.controls.ParticleView;
@@ -25,7 +27,7 @@ import java.util.HashMap;
 public class EndGameController extends GameController {
 
     @FXML
-    public Label labelTotalScore;
+    public Label miniScoreLabel;
 
     @FXML
     public Label labelTopic;
@@ -34,7 +36,7 @@ public class EndGameController extends GameController {
     public Label labelTitle;
 
     @FXML
-    public VBox container;
+    public VBox mainContainer;
 
     @FXML
     public TableView<Round> tableView;
@@ -44,6 +46,12 @@ public class EndGameController extends GameController {
 
     @FXML
     public ParticleView particleView;
+
+    @FXML
+    public Label bigScoreLabel;
+
+    @FXML
+    public VBox bigScoreContainer;
 
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
@@ -56,7 +64,30 @@ public class EndGameController extends GameController {
 
     @Override
     public void transitionOnEnter() {
-        AnimationBuilder.buildSlideAndFadeTransition(container).play();
+
+        // This is a fairly elaborate transition. First we show the use their score
+        // in the form of the "bigScoreContainer" element. This is shown for two seconds,
+        // then faded out and replaced with the detailed "mainContainer" element, which
+        // occurs simultaneously.
+
+        mainContainer.setOpacity(0);
+
+        // 1. Slide and Fade the big score into view
+        Animation bigScoreTransition = AnimationBuilder.buildSlideAndFadeTransition(bigScoreContainer);
+
+        // 2. Pause on the score while confetti plays
+        PauseTransition pauseOnScore = new PauseTransition(Duration.seconds(2));
+
+        // 3. (simultaneous) Fade out the score
+        FadeTransition bigScoreFadeOut = new FadeTransition(Duration.millis(250), bigScoreContainer);
+        bigScoreFadeOut.setFromValue(1.0);
+        bigScoreFadeOut.setToValue(0);
+
+        // 3. (simultaneous) Slide and fade in the main content
+        Animation mainContainerTransition = AnimationBuilder.buildSlideAndFadeTransition(mainContainer);
+
+        new SequentialTransition(bigScoreTransition, pauseOnScore,
+                new ParallelTransition(bigScoreFadeOut, mainContainerTransition)).play();
     }
 
     @FXML
@@ -82,15 +113,16 @@ public class EndGameController extends GameController {
         });
 
         // This is so mouse clicks pass through to the particle view
-        container.setPickOnBounds(false);
+        mainContainer.setPickOnBounds(false);
+        bigScoreContainer.setPickOnBounds(false);
 
         // Initial confetti bursts
         runAfterDelay(() -> {
-            particleView.emit(80, width * 1/6, height/3);
-            particleView.emit(80, width * 2/6, height/3);
-            particleView.emit(80, width * 3/6, height/3);
-            particleView.emit(80, width * 4/6, height/3);
-            particleView.emit(80, width * 5/6, height/3);
+            particleView.emit(80, width * 1/6, height/2);
+            particleView.emit(80, width * 2/6, height/2);
+            particleView.emit(80, width * 3/6, height/2);
+            particleView.emit(80, width * 4/6, height/2);
+            particleView.emit(80, width * 5/6, height/2);
         }, 500L);
     }
 
@@ -99,7 +131,8 @@ public class EndGameController extends GameController {
         EndGameScreenDto data = gameViewModel.getEndGameScreenData();
         labelTitle.setText(data.isPracticeMode ? "Practice Summary" : "Game Summary");
         labelTopic.setText(data.topic);
-        labelTotalScore.setText("" + data.totalScore);
+        miniScoreLabel.setText(String.valueOf(data.totalScore));
+        bigScoreLabel.setText(String.valueOf(data.totalScore));
 
         if (data.isPracticeMode) {
             JavaFXUtil.toggleNodeVisibility(scoreContainer, false);

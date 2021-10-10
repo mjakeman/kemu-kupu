@@ -8,7 +8,16 @@
 		   stylesheets="@../style/common.css,@../style/game.css,@../style/endgame.css"
 		   fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
 	<ParticleView fx:id="particleView" />
-	<VBox fx:id="container" styleClass="container">
+
+	<VBox fx:id="bigScoreContainer" styleClass="score-label-container">
+		<Label styleClass="score-label">Total Score: </Label>
+		<HBox alignment="BOTTOM_CENTER">
+			<Label styleClass="score-label-total" fx:id="bigScoreLabel" />
+			<Label>pts</Label>
+		</HBox>
+	</VBox>
+
+	<VBox fx:id="mainContainer" styleClass="container">
 		<VBox mouseTransparent="true" styleClass="title-container">
 			<Label styleClass="endgame-title" fx:id="labelTitle" />
 			<Label styleClass="endgame-topic" fx:id="labelTopic" />
@@ -18,7 +27,7 @@
 
 		<HBox mouseTransparent="true" fx:id="scoreContainer" styleClass="mini-score-label-container" alignment="BOTTOM_CENTER">
 			<Label>Total Score: </Label>
-			<Label styleClass="mini-score-label" fx:id="labelTotalScore" />
+			<Label styleClass="mini-score-label" fx:id="miniScoreLabel"/>
 			<Label>pts</Label>
 		</HBox>
 
