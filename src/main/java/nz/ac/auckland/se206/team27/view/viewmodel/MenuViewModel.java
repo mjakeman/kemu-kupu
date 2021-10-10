@@ -2,7 +2,6 @@ package nz.ac.auckland.se206.team27.view.viewmodel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import nz.ac.auckland.se206.team27.game.Game;
