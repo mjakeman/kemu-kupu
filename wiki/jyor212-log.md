@@ -62,3 +62,17 @@ Jordan York (jyor212)
 - Continued on app icon implementation
 - Sorted topic list by alphabetical order
 - Added 'RANDOM TOPIC' selection feature also
+
+## 8 October
+
+- Started implementing sound feature to differ between correct and incorrect words
+- Had a group call to check in on everyone's progress
+
+## 9 October
+
+- Added in topic related images to the topic preview screen rather than only displaying the UOA clocktower for all topics
+
+## 10 October
+
+- Merged relevant changes for A4
+- Had meeting to check in before final submission for A4

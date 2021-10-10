@@ -46,3 +46,10 @@ Raymond Feng (rfen629)
   (so that each character is its own individual label).
 - Made the `words` directory findable regardless of where you executed the jar file from.
 - Made the result and end game screens consistent with the current game screen
+
+## 07 October
+
+- Completed feature with score being based on timing
+- Added practice mode menu option without scoring
+- Completed feature with multiple hints in practice mode
+- Started work on refactoring the folder structure

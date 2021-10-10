@@ -24,6 +24,10 @@ public class MenuViewModel implements ViewModel {
 
     private WordList selectedList = null;
 
+    private boolean isPracticeMode = false;
+
+    private String title;
+
 
     /**
      * @return a single instance of this class (to prevent having to read from disk multiple times).
@@ -38,6 +42,17 @@ public class MenuViewModel implements ViewModel {
     // TODO: Change to repo singleton with a wordList cache
     private MenuViewModel(WordListRepository repo) {
         this.wordLists = repo.getWordLists();
+    }
+
+    /*
+     * The following are used for the main menu screen.
+     */
+
+    /**
+     * Sets the practice mode.
+     */
+    public void setPracticeMode(boolean practiceMode) {
+        isPracticeMode = practiceMode;
     }
 
     /*
@@ -56,6 +71,7 @@ public class MenuViewModel implements ViewModel {
      */
     public void selectTopic(String topic) {
         selectedList = this.wordLists.get(topic);
+        this.title = topic;
     }
 
     /*
@@ -63,17 +79,17 @@ public class MenuViewModel implements ViewModel {
      */
 
     public TopicPreviewScreenDto getTopicPreviewData() {
-        String imgUrl = ResourceUtil.getResourceUrl("media/University_of_Auckland_Clock_Tower.png").toString();
-        String externalLink = "https://commons.wikimedia.org/wiki/File:University_of_Auckland_Clock_Tower.jpg";
-        ImageDto image = new ImageDto("Colin Rose", "CC BY 2.0", imgUrl, externalLink);
-        return new TopicPreviewScreenDto(selectedList.getTitle(), selectedList.getDescription(), image);
+        String imgUrl = ResourceUtil.getResourceUrl("media/topicimages/" + title.toLowerCase() + ".jpg").toString();
+        String externalLink = "https://www.pixabay.com";
+        ImageDto image = new ImageDto("pixabay", "CC BY 2.0", imgUrl, externalLink);
+        return new TopicPreviewScreenDto(isPracticeMode, selectedList.getTitle(), selectedList.getDescription(), image);
     }
 
     /**
      * Starts a game with the selected list.
      */
     public void startGameWithCurrentTopic() {
-        Game.createInstance(selectedList);
+        Game.createInstance(selectedList, isPracticeMode);
     }
 
 }

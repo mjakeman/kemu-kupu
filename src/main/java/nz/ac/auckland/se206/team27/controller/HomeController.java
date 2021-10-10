@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import nz.ac.auckland.se206.team27.controller.base.BaseController;
+import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
@@ -12,7 +12,7 @@ import nz.ac.auckland.se206.team27.view.ViewConfig;
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
-public class HomeController extends BaseController {
+public class HomeController extends MenuController {
 
     @FXML
     public Label title;
@@ -38,6 +38,7 @@ public class HomeController extends BaseController {
      * Action executed when the "New Game" button is clicked.
      */
     public void clickNewGame() {
+        menuViewModel.setPracticeMode(false);
         sceneLoader.loadScreen(ScreenResource.CHOOSE_TOPIC);
     }
 
@@ -45,7 +46,8 @@ public class HomeController extends BaseController {
      * Action executed when the "Practice" button is clicked.
      */
     public void clickPractice() {
-        sceneLoader.loadScreen(ScreenResource.GUESS);
+        menuViewModel.setPracticeMode(true);
+        sceneLoader.loadScreen(ScreenResource.CHOOSE_TOPIC);
     }
 
     /**
@@ -61,5 +63,8 @@ public class HomeController extends BaseController {
     public void clickQuit() {
         closeApplication();
     }
+
+    @Override
+    protected void populateViewData() {}
 
 }

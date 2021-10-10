@@ -1,0 +1,12 @@
+.container {
+    -fx-padding: 40px;
+    -fx-spacing: 20px;
+}
+
+.title {
+    -fx-text-fill: black;
+}
+
+.pref-entry {
+    -fx-font-weight: bold;
+}
