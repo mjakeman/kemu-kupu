@@ -158,7 +158,7 @@ public class EndGameController extends GameController {
         TableColumn<Round, Integer> roundCol = createTableColumn("Round", (round) -> items.indexOf(round) + 1);
         TableColumn<Round, String> wordCol = createTableColumn("Word", Round::getWord);
         TableColumn<Round, String> resultCol = createTableColumn("Result", (round) -> round.getResult().toCapitalised());
-        TableColumn<Round, String> guessCol = createTableColumn("You Guessed", (round) -> String.join("\n", round.getGuesses()));
+        TableColumn<Round, String> guessCol = createTableColumn("Your Guess(es)", (round) -> String.join("\n", round.getGuesses()));
         TableColumn<Round, Integer> timeTakenCol = createTableColumn("Time Taken", Round::getDurationSecondsTruncated);
         TableColumn<Round, Integer> scoreCol = createTableColumn("Score", Round::getScoreContribution);
 
