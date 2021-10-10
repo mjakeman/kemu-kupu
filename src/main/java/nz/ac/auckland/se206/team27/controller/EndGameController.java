@@ -9,6 +9,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.controls.ParticleView;
 import nz.ac.auckland.se206.team27.game.Round;
@@ -64,8 +65,12 @@ public class EndGameController extends GameController {
         // in GameController.
         populateViewData();
 
+        // Only proceed if effects are enabled
+        PreferencesManager prefsManager = PreferencesManager.getInstance();
+        if (!prefsManager.getUseEffects())
+            return;
+
         // Setup Particle View
-        // TODO: Disable effects based on preference
         double width = ViewConfig.WIDTH;
         double height = ViewConfig.HEIGHT;
         particleView.setWidth(width);

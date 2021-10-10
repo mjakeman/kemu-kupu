@@ -44,6 +44,16 @@
             </Pane>
         </VBox>
 
+        <VBox>
+            <Label styleClass="pref-entry">Special Effects</Label>
+            <Label wrapText="true">Whether special effects (like confetti) should be displayed. Disabling this may
+                improve performance on some machines.
+            </Label>
+            <Pane>
+                <OnOffSwitcher fx:id="useEffectsSwitcher" />
+            </Pane>
+        </VBox>
+
         <Button onAction="#clickBack">Back</Button>
     </VBox>
     <AnchorPane styleClass="aside">

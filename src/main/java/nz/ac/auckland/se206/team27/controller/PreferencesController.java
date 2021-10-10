@@ -24,6 +24,9 @@ public class PreferencesController extends BaseController {
     @FXML
     public OnOffSwitcher colourModeSwitcher;
 
+    @FXML
+    public OnOffSwitcher useEffectsSwitcher;
+
     public void initialize() {
         PreferencesManager prefsManager = PreferencesManager.getInstance();
 
@@ -32,6 +35,9 @@ public class PreferencesController extends BaseController {
 
         colourModeSwitcher.setState(prefsManager.getColourblindMode());
         prefsManager.colourblindModeProperty.bind(colourModeSwitcher.stateProperty);
+
+        useEffectsSwitcher.setState(prefsManager.getUseEffects());
+        prefsManager.useEffectsProperty.bind(useEffectsSwitcher.stateProperty);
     }
 
 
