@@ -209,11 +209,15 @@ public class EndGameController extends GameController {
      */
     private <T> TableColumn<Round, T> createTableColumn(String title, Function<Round, T> mapper) {
         TableColumn<Round, T> column = new TableColumn<>(title);
+
+        // This ensures that the title column is always visible
+        column.setMinWidth(title.length() * 12 + 10);
+
+        column.setSortable(false);
         column.setCellValueFactory(cellData -> {
             Round round = cellData.getValue();
             return new ReadOnlyObjectWrapper<>(mapper.apply(round));
         });
-        column.setSortable(false);
 
         return column;
     }
