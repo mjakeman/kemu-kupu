@@ -170,6 +170,13 @@ public class Round {
     }
 
     /**
+     * @return seconds taken to complete the round (truncated).
+     */
+    public int getDurationSecondsTruncated() {
+        return (int) getDurationSeconds();
+    }
+
+    /**
      * @return the corresponding score for this round.
      *
      * @throws IllegalCallerException when the result has not ended.
