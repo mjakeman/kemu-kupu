@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27.view;
+package nz.ac.auckland.se206.team27.view.controls;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,13 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 
 /**
- * Custom JavaFX element (Use {@link HintNode#getNodes()} for the JavaFX Node
+ * Custom JavaFX element (Use {@link HintDisplay#getNodes()} for the JavaFX Node
  * elements) to display a string as a monospaced label where each letter can be
  * customised.
  *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
-public class HintNode {
+public class HintDisplay {
 
     /**
      * The characters allowed in a valid word, excluding all punctuation.
@@ -43,7 +43,7 @@ public class HintNode {
     private final String word;
 
 
-    public HintNode(String word, Map<Integer, Character> hints, boolean showHint) {
+    public HintDisplay(String word, Map<Integer, Character> hints, boolean showHint) {
         this.word = word;
         this.hints = hints;
         this.showHint = showHint;

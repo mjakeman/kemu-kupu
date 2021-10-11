@@ -1,4 +1,4 @@
-package nz.ac.auckland.se206.team27.controls;
+package nz.ac.auckland.se206.team27.view.controls;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;

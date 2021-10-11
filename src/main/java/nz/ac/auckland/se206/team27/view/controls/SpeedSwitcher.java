@@ -1,4 +1,6 @@
-package nz.ac.auckland.se206.team27.controls;
+package nz.ac.auckland.se206.team27.view.controls;
+
+import java.io.IOException;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -6,11 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
 import nz.ac.auckland.se206.team27.resource.ResourceUtil;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
-
-import java.io.IOException;
 
 // Creates a custom control via composition
 // Uses some code from JavaFX Documentation

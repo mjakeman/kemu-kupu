@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
-import nz.ac.auckland.se206.team27.controls.ParticleView;
+import nz.ac.auckland.se206.team27.view.controls.ParticleView;
 import nz.ac.auckland.se206.team27.game.Round;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;

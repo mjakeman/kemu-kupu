@@ -1,6 +1,6 @@
 package nz.ac.auckland.se206.team27.game;
 
-import nz.ac.auckland.se206.team27.view.HintNode;
+import nz.ac.auckland.se206.team27.view.controls.HintDisplay;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,10 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import static nz.ac.auckland.se206.team27.game.RoundResult.FAILED;
-import static nz.ac.auckland.se206.team27.game.RoundResult.FAULTED;
-import static nz.ac.auckland.se206.team27.game.RoundResult.PASSED;
-import static nz.ac.auckland.se206.team27.game.RoundResult.SKIPPED;
+import static nz.ac.auckland.se206.team27.game.RoundResult.*;
 
 /**
  * A round encapsulates each of the turns inside a game.
@@ -233,7 +230,7 @@ public class Round {
             int currentIndex = 1 + spacing;
             while (currentIndex < wordLength) {
                 char currentLetter = word.charAt(currentIndex);
-                if (Pattern.matches(HintNode.ALPHABET_REGEX, String.valueOf(currentLetter))) {
+                if (Pattern.matches(HintDisplay.ALPHABET_REGEX, String.valueOf(currentLetter))) {
                     // Does this work?
                     hints.put(currentIndex, currentLetter);
                     currentIndex += spacing;
