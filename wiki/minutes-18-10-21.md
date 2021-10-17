@@ -48,6 +48,29 @@ Discussed feedback from peer reviews:
 * Poor variable name in ChooseTopicController
 
 ### Competition Demo
+ * We all want to talk
+ * Six and a half minutes
+ * No slides (that's boring)
+ * Features to show
+   * Topic selection with images for each topic  @JORDAN
+   * One run through of a game (colours) @JORDAN
+     * Demonstrate Speech Speed
+     * Textbox shake
+     * Scoring (vary time to answer)
+     * Results table colouring
+     * Auto-continue button
+     * Buttons become insensitive while festival is playing
+     * Confetti!
+   * Turn on colourblind mode/Turn off confetti @MATT
+   * Second run through with some prepopulated data @MATT
+     * Show how colourblind mode affects the results table at the end
+   * Final run practice mode @RAYMOND
+     * Practice mode doesn't have any scoring
+     * Quit halfway
+   * End off demo with button in bottom of menu that brings up a "Vote for Team 27" screen with confetti @RAYMOND
+ * Raymond will run demo
+ * One third of the presentation each
+ * **Meet tomorrow at 11am for practice run**
 
 ## Action Items
  * Commenting - **Thursday**
@@ -55,11 +78,15 @@ Discussed feedback from peer reviews:
    * `controller` @RAY (sorry!)
    * `view`/`resource` @MATT
    * other directories @JORDAN
- * Quit Button @JORDAN - **Tuesday**
  * Data-clumps/big-methods @unassigned - **Thursday Night**
- * Confetti label @MATT - **Monday**
  * Buttons are sensitive @MATT - **Monday**
- * Preferences screen image @JORDAN - **Wednesday**
  * Poor variable name @MATT - **Monday**
- * Hook up help button with sample PDF @MATT - **Tuesday**
+ 
+### Competition Action Items
+ * Make "Vote for Team 27" screen @MATT - **Monday**
+ * Hook up help button with sample PDF @RAYMOND - **Monday**
+    * Use platform/host/whatever services to open a file with the default handler? 
+ * Confetti label @MATT - **Monday**
+ * Preferences screen image @JORDAN - **Monday**
  * Zoom transition for results screen @MATT - **Monday**
+ * Quit Button @JORDAN - **Monday**
