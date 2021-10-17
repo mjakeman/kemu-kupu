@@ -14,12 +14,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
-import nz.ac.auckland.se206.team27.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
-import nz.ac.auckland.se206.team27.view.HintNode;
+import nz.ac.auckland.se206.team27.view.controls.HintDisplay;
+import nz.ac.auckland.se206.team27.view.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
@@ -144,7 +144,7 @@ public class GuessController extends GameController {
         ObservableList<Node> children = hintContainer.getChildren();
         children.clear();
 
-        HintNode hint = new HintNode(data.word, data.hints, data.showHint);
+        HintDisplay hint = new HintDisplay(data.word, data.hints, data.showHint);
         children.addAll(hint.getNodes());
 
         inputGuess.textProperty().addListener((observable, oldValue, newValue) -> {

@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import nz.ac.auckland.se206.team27.controls.ParticleView?>
+<?import nz.ac.auckland.se206.team27.view.controls.ParticleView?>
 <StackPane xmlns="http://javafx.com/javafx"
 		   xmlns:fx="http://javafx.com/fxml"
 		   stylesheets="@../style/common.css,@../style/game.css,@../style/endgame.css"
