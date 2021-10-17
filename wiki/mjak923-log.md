@@ -265,3 +265,31 @@ produced at the beginning of the project. I performed some miscellaneous styling
 as well as ported the colours above to "colour profiles" which had been introduced on my
 other branch. I added tint colours for the colourblind mode profile to make it work
 again. Finally, I styled the table, giving it rounded corners.
+
+## 10 October
+Next, I began working on "confetti". I wanted to add a fun, interactive element to the project
+and thus decided to create a confetti particle system using JavaFX's canvas API. This was intentionally
+designed to be reminiscent of Canvas's particle effects that are shown when a project is submitted
+(such as this one).
+
+I started by following a tutorial on implementing a simple particle system in JavaScript, which I reworked
+to be in Java (see [here](https://www.howtosolutions.net/2016/09/javascript-canvas-simple-particle-system/)).
+This gave me the framework for handling large numbers of particles. I first changed it so the particles were
+emitted at the user's cursor inside a new `ParticleView` control.
+
+The next step was to add physics to the particles, as they currently just bounce around the screen. I made
+the confetti particles feel lighter and "more airy". I played around with randomising particle velocity and
+added aerodynamic drag to slow down the particles as they move. Then, I added a gravitational effect to the
+vertical velocity.
+
+Next, I added some variation in particle rotation and size. I made the particles rectangular to look more like
+confetti and rotated the particles randomly. I reworked the random colour generation method to give brighter
+colours only (constraining the red green and blue channels to values above 30% only).
+
+I also adjusted the confetti velocity with respect to the size factor of each particle, so large particles feel
+heavy and small particles "go flying".
+
+This was integrated into the end game screen, and I made clicking on the background emit more particles. A fairly
+complex transition allows the score to come up first, and then fade away as the results table shows. I made most
+controls either "Pick on Bounds" or "Mouse Transparent" so as much of the background is clickable as possible.
+
