@@ -50,5 +50,16 @@ Discussed feedback from peer reviews:
 ### Competition Demo
 
 ## Action Items
-
-
+ * Commenting - **Thursday**
+   * Use style `// contents` (have a space between slashes and text)
+   * `controller` @RAY (sorry!)
+   * `view`/`resource` @MATT
+   * other directories @JORDAN
+ * Quit Button @JORDAN - **Tuesday**
+ * Data-clumps/big-methods @unassigned - **Thursday Night**
+ * Confetti label @MATT - **Monday**
+ * Buttons are sensitive @MATT - **Monday**
+ * Preferences screen image @JORDAN - **Wednesday**
+ * Poor variable name @MATT - **Monday**
+ * Hook up help button with sample PDF @MATT - **Tuesday**
+ * Zoom transition for results screen @MATT - **Monday**
