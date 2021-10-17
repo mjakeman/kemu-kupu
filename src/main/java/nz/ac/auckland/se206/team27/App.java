@@ -30,6 +30,7 @@ public class App extends Application {
     private static Stage stage;
     private static HostServices hostServices;
 
+
     /**
      * Returns the main stage.
      */
@@ -38,11 +39,12 @@ public class App extends Application {
     }
 
     /**
-     * Opens a web page in the system web browser
-     * @param url The website to open
+     * Opens a web page or document in the default application.
+     *
+     * @param uri The URL or path to the file to open.
      */
-    public static void openWebPage(String url) {
-        hostServices.showDocument(url);
+    public static void openDocument(String uri) {
+        hostServices.showDocument(uri);
     }
 
     /**

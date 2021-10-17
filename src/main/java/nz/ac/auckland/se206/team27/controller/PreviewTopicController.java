@@ -62,6 +62,6 @@ public class PreviewTopicController extends MenuController {
 
         image.setStyle("-fx-background-image: url('" + dto.image.imgUrl + "');");
         credit.setText(String.format("%s (%s)", dto.image.creator, dto.image.copyright));
-        credit.setOnAction(event -> App.openWebPage(dto.image.externalLink));
+        credit.setOnAction(event -> App.openDocument(dto.image.externalLink));
     }
 }
