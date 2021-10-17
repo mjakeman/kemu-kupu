@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import nz.ac.auckland.se206.team27.view.controls.ParticleView?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="nz.ac.auckland.se206.team27.controller.VoteController">
+    <ParticleView/>
+    <Label>Vote for Team 27!</Label>
+</StackPane>

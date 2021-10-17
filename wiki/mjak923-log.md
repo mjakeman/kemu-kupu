@@ -293,3 +293,12 @@ This was integrated into the end game screen, and I made clicking on the backgro
 complex transition allows the score to come up first, and then fade away as the results table shows. I made most
 controls either "Pick on Bounds" or "Mouse Transparent" so as much of the background is clickable as possible.
 
+## 18 October
+### Meeting
+Next project team meeting [(minutes)](minutes-18-10-21.md). Started preparation for project submission and our
+competition demo.
+
+### Tasks
+The first addition was a new view, intended for the competition. This view should say "Vote for Team 27" and
+have confetti particles in the background similar to fireworks.  I created a new hyperlink in the bottom right
+corner of the main menu and linked it to a new view called 'Vote'.
