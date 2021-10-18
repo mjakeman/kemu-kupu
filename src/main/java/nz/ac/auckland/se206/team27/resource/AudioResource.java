@@ -14,8 +14,34 @@ public enum AudioResource implements Resource {
 
     /**
      * Click sound effect
+     * TODO: Use consistently
      */
-    CLICK("click.wav");
+    CLICK("click.wav"),
+
+    /**
+     * Correct answer sound effect
+     */
+    CORRECT("correct.wav"),
+
+    /**
+     * Incorrect answer sound effect
+     */
+    INCORRECT("incorrect.wav"),
+
+    /**
+     * Try again/rejected entry sound effect
+     */
+    TRY_AGAIN("tryagain.wav"),
+
+    /**
+     * Skip word sound effect
+     */
+    SKIPPED("skipped.wav"),
+
+    /**
+     * Game ended sound effect
+     */
+    END_GAME("endgame.wav");
 
 
     private final URL resourceUrl;

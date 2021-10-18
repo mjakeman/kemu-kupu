@@ -144,6 +144,8 @@ public class EndGameController extends GameController {
         miniScoreLabel.setText(String.valueOf(data.totalScore));
         bigScoreLabel.setText(String.valueOf(data.totalScore));
 
+        SoundManager.getInstance().playClip(AudioResource.END_GAME);
+
         if (data.isPracticeMode) {
             JavaFXUtil.toggleNodeVisibility(scoreContainer, false);
         }
