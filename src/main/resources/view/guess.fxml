@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import nz.ac.auckland.se206.team27.view.controls.SpeedSwitcher?>
+<?import javafx.scene.layout.AnchorPane?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       stylesheets="@../style/common.css,@../style/game.css,@../style/guess.css"
@@ -50,5 +51,8 @@
         <Button styleClass="outline-button,skip-button" fx:id="buttonSkip" onAction="#clickSkip" disable="true">
             Don't know
         </Button>
+    </VBox>
+    <VBox styleClass="bottomcorner">
+        <Button styleClass="raised-button,quit-button" fx:id="buttonQuit" onAction="#clickQuit">Quit</Button>
     </VBox>
 </VBox>

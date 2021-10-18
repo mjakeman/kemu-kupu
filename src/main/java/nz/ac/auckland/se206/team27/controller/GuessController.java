@@ -22,6 +22,7 @@ import nz.ac.auckland.se206.team27.view.controls.HintDisplay;
 import nz.ac.auckland.se206.team27.view.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
+import static nz.ac.auckland.se206.team27.resource.ScreenResource.HOME;
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
 import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
@@ -55,6 +56,9 @@ public class GuessController extends GameController {
     public Button buttonSkip;
 
     @FXML
+    public Button buttonQuit;
+
+    @FXML
     public HBox hintContainer;
 
     @FXML
@@ -76,6 +80,13 @@ public class GuessController extends GameController {
     public void clickPlayWord() {
         String currentWord = gameViewModel.getGuessScreenData().word;
         sayWord(currentWord);
+    }
+
+    /**
+     * Action executed when the "Quit" button is clicked.
+     */
+    public void clickQuit() {
+        sceneLoader.loadScreen(HOME);
     }
 
     /**

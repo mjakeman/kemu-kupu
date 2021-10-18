@@ -60,6 +60,21 @@
     -fx-background-color: -colour-success-pressed;
 }
 
+/* Quit Button Variation */
+.quit-button {
+    -fx-background-color: -colour-failure;
+    -fx-border-color: -colour-failure-border;
+    -fx-pref-width: 80px;
+}
+
+.quit-button:hover {
+    -fx-background-color: -colour-failure-hover;
+}
+
+.quit-button:pressed {
+    -fx-background-color: -colour-failure-pressed;
+}
+
 /* Play Button Variation */
 .play-button {
     -fx-background-color: -colour-neutral;
@@ -96,4 +111,8 @@
 .macron-button {
     -fx-pref-width: 40px;
     -fx-pref-height: 40px;
+}
+
+.bottomcorner {
+    -fx-padding: 10px;
 }
