@@ -7,16 +7,35 @@
 <?import javafx.scene.layout.*?>
 
 <?import nz.ac.auckland.se206.team27.view.controls.ParticleView?>
-<StackPane xmlns="http://javafx.com/javafx"
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
+<StackPane fx:id="parallax"
+           xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            stylesheets="@../style/common.css,@../style/game.css,@../style/vote.css"
            fx:controller="nz.ac.auckland.se206.team27.controller.VoteController">
+    <ImageView mouseTransparent="true">
+        <Image url="@../media/parallax01/layer_05.png" />
+    </ImageView>
+    <ImageView mouseTransparent="true">
+        <Image url="@../media/parallax01/layer_04.png" />
+    </ImageView>
+    <ImageView mouseTransparent="true">
+        <Image url="@../media/parallax01/layer_03.png" />
+    </ImageView>
+    <ImageView mouseTransparent="true">
+        <Image url="@../media/parallax01/layer_02.png" />
+    </ImageView>
+    <ImageView mouseTransparent="true">
+        <Image url="@../media/parallax01/layer_01.png" />
+    </ImageView>
     <ParticleView fx:id="particleView" />
     <VBox styleClass="container" pickOnBounds="false">
-        <Label styleClass="hero-text" mouseTransparent="true">vote for team 27!</Label>
+        <Text styleClass="hero-text" mouseTransparent="true">vote for team 27!</Text>
         <Label fx:id="labelOne">Matthew Jakeman</Label>
         <Label fx:id="labelTwo">Jordan York</Label>
         <Label fx:id="labelThree">Raymond Feng</Label>
     </VBox>
-    <Button StackPane.alignment="BOTTOM_CENTER" styleClass="outline-button" onAction="#clickBack">Back to Menu</Button>
+    <Button pickOnBounds="false" StackPane.alignment="BOTTOM_CENTER" styleClass="outline-button" onAction="#clickBack">Back to Menu</Button>
 </StackPane>

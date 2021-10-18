@@ -3,7 +3,9 @@ package nz.ac.auckland.se206.team27.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.BaseController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
@@ -32,6 +34,9 @@ public class VoteController extends BaseController {
     @FXML
     public Label labelThree;
 
+    @FXML
+    public StackPane parallax;
+
     /**
      * Initialise particle system and randomly emit in the background.
      */
@@ -43,6 +48,20 @@ public class VoteController extends BaseController {
         labelOne.setText(names.get(0));
         labelTwo.setText(names.get(1));
         labelThree.setText(names.get(2));
+
+        // Simple parallax effect
+        parallax.setOnMouseMoved(event -> {
+            double xOffset = event.getX() - (parallax.getWidth() / 2);
+            double yOffset = event.getY() - (parallax.getHeight() / 2);
+
+            int index = 0;
+            double scaleFactor = 0.015f;
+            for (Node node : parallax.getChildren()) {
+                node.setTranslateX(xOffset * (10-index) * scaleFactor);
+                node.setTranslateY(yOffset * (10-index) * scaleFactor);
+                index++;
+            }
+        });
 
         // Only proceed if effects are enabled
         PreferencesManager prefsManager = PreferencesManager.getInstance();
