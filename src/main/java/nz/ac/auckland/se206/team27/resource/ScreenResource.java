@@ -42,7 +42,13 @@ public enum ScreenResource implements Resource {
     /**
      * Preferences menu.
      */
-    PREFERENCES("preferences.fxml");
+    PREFERENCES("preferences.fxml"),
+
+    /**
+     * Vote for Team 27 screen.
+     * Special addition for Project Competition Demo.
+     */
+    VOTE("vote.fxml");
 
 
     private final URL resourceUrl;

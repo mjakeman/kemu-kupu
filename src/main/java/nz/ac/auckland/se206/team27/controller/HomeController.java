@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.team27.controller;
 import java.io.File;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -27,7 +28,6 @@ public class HomeController extends MenuController {
 
     @FXML
     public VBox container;
-
 
     @FXML
     public void initialize() {
@@ -54,6 +54,14 @@ public class HomeController extends MenuController {
     public void clickPractice() {
         menuViewModel.setPracticeMode(true);
         sceneLoader.loadScreen(ScreenResource.CHOOSE_TOPIC);
+    }
+
+    /**
+     * Action executed when "Vote for Team 27" is clicked
+     * Special addition for Project Competition Demo
+     */
+    public void clickVote() {
+        sceneLoader.loadScreen(ScreenResource.VOTE);
     }
 
     /**

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import nz.ac.auckland.se206.team27.view.controls.ParticleView?>
+<?import javafx.scene.text.Text?>
+<StackPane fx:id="parallax"
+           xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           stylesheets="@../style/common.css,@../style/game.css,@../style/vote.css"
+           fx:controller="nz.ac.auckland.se206.team27.controller.VoteController">
+
+    <ParticleView fx:id="particleView" />
+    <VBox fx:id="container" styleClass="container" pickOnBounds="false">
+        <Text styleClass="hero-text" mouseTransparent="true">vote for team 27!</Text>
+        <Label fx:id="labelOne" mouseTransparent="true">Matthew Jakeman</Label>
+        <Label fx:id="labelTwo" mouseTransparent="true">Jordan York</Label>
+        <Label fx:id="labelThree" mouseTransparent="true">Raymond Feng</Label>
+    </VBox>
+    <Button pickOnBounds="false" StackPane.alignment="BOTTOM_CENTER" styleClass="outline-button" onAction="#clickBack">Back to Menu</Button>
+</StackPane>

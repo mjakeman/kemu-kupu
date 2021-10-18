@@ -293,3 +293,30 @@ This was integrated into the end game screen, and I made clicking on the backgro
 complex transition allows the score to come up first, and then fade away as the results table shows. I made most
 controls either "Pick on Bounds" or "Mouse Transparent" so as much of the background is clickable as possible.
 
+## 18 October
+### Meeting
+Next project team meeting [(minutes)](minutes-18-10-21.md). Started preparation for project submission and our
+competition demo.
+
+### Tasks
+The first addition was a new view, intended for the competition. This view should say "Vote for Team 27" and
+have confetti particles in the background similar to fireworks.  I created a new hyperlink in the bottom right
+corner of the main menu and linked it to a new view called 'Vote'.
+
+I adapted code from the end game screen for the particle view. I decided to update the particle system code to
+create a more "circular" explosion of confetti, clamping the velocity magnitude to a circle (where it was previously
+"square").
+
+For the vote screen, I added the three names of our team (Jordan, Raymond, and myself), and randomised the order
+in which they are displayed. Next, I wanted to improve how this screen looked, so I downloaded some free parallax
+backgrounds from the internet (see [here](https://mobilegamegraphics.com/product/free-parallax-backgrounds/)) and
+attempted to create a parallax effect in JavaFX depending on the position of the mouse cursor.
+
+I created five image panes stacked on top of each other inside a `StackPane`, then layered a particle view, and
+finally the vbox and button combination. This is then transformed by an offset calculated from the user's cursor
+position in relation to the centre of the window. This creates a fairly simple but nice looking offset effect.
+
+Ultimately, I was unable to achieve a reasonable level of performance within the virtual machine
+however and removed the parallax background. I kept the parallax effect for the controls
+however, as this worked well and looked quite nice. Lastly, I made the parallax effect respect
+the special effects setting.
