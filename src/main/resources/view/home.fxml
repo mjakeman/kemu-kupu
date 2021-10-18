@@ -7,22 +7,22 @@
 
 <?import javafx.scene.control.Hyperlink?>
 <AnchorPane xmlns="http://javafx.com/javafx"
-			xmlns:fx="http://javafx.com/fxml"
-			stylesheets="@../style/common.css,@../style/menu.css"
-			fx:controller="nz.ac.auckland.se206.team27.controller.HomeController"
-			fx:id="root">
-	<VBox fx:id="container" styleClass="container">
-		<Label fx:id="title" styleClass="title,shadow" />
-		<Label styleClass="subtitle">SOFTENG 206 | Team 27</Label>
-		<Button styleClass="menu-btn" onAction="#clickNewGame">New Game</Button>
-		<Button styleClass="menu-btn" onAction="#clickPractice">Practice Mode</Button>
-		<Button styleClass="menu-btn" onAction="#clickPreferences">Preferences</Button>
-		<Button styleClass="menu-btn" onAction="#clickQuit">Quit</Button>
-		<Label styleClass="spacer" />
-	</VBox>
-	<Hyperlink styleClass="vote-tag" onAction="#clickVote">
-		<AnchorPane.rightAnchor>20</AnchorPane.rightAnchor>
-		<AnchorPane.bottomAnchor>20</AnchorPane.bottomAnchor>
-		Vote for Team 27!
-	</Hyperlink>
+            xmlns:fx="http://javafx.com/fxml"
+            stylesheets="@../style/common.css,@../style/menu.css"
+            fx:controller="nz.ac.auckland.se206.team27.controller.HomeController"
+            fx:id="root">
+    <VBox fx:id="container" styleClass="container">
+        <Label fx:id="title" styleClass="title,shadow" />
+        <Label styleClass="subtitle">SOFTENG 206 | Team 27</Label>
+        <Button styleClass="menu-btn" onAction="#clickNewGame">New Game</Button>
+        <Button styleClass="menu-btn" onAction="#clickPractice">Practice Mode</Button>
+        <Button styleClass="menu-btn" onAction="#clickPreferences">Preferences</Button>
+        <Button styleClass="menu-btn" onAction="#clickQuit">Quit</Button>
+        <Label styleClass="spacer" />
+    </VBox>
+    <Hyperlink styleClass="vote-tag" onAction="#clickVote">
+        <AnchorPane.rightAnchor>20</AnchorPane.rightAnchor>
+        <AnchorPane.bottomAnchor>20</AnchorPane.bottomAnchor>
+        Vote for Team 27!
+    </Hyperlink>
 </AnchorPane>
