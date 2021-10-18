@@ -13,7 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.PreferencesManager;
+import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
@@ -93,6 +95,7 @@ public class GuessController extends GameController {
         inputGuess.setText("");
 
         if (redo) {
+            SoundManager.getInstance().playClip(AudioResource.TRY_AGAIN);
             populateViewData();
             return;
         }
