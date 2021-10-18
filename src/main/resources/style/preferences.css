@@ -10,3 +10,10 @@
 .pref-entry {
     -fx-font-weight: bold;
 }
+
+/* Styling for image box */
+.aside {
+    -fx-background-size: contain;
+    -fx-background-position: center;
+}
+
