@@ -1,13 +1,19 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.BaseController;
+import nz.ac.auckland.se206.team27.resource.ResourceUtil;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
@@ -51,14 +57,15 @@ public class VoteController extends BaseController {
 
         // Simple parallax effect
         parallax.setOnMouseMoved(event -> {
-            double xOffset = event.getX() - (parallax.getWidth() / 2);
-            double yOffset = event.getY() - (parallax.getHeight() / 2);
+            double offsetX = event.getX() - (parallax.getWidth() / 2);
+            double offsetY = event.getY() - (parallax.getHeight() / 2);
 
-            int index = 0;
             double scaleFactor = 0.015f;
+            int index = 0;
+
             for (Node node : parallax.getChildren()) {
-                node.setTranslateX(xOffset * (10-index) * scaleFactor);
-                node.setTranslateY(yOffset * (10-index) * scaleFactor);
+                node.setTranslateX(offsetX * (10-index) * scaleFactor);
+                node.setTranslateY(offsetY * (10-index) * scaleFactor);
                 index++;
             }
         });
