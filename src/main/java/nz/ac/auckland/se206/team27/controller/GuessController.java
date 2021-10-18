@@ -13,7 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.PreferencesManager;
+import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
@@ -22,6 +24,7 @@ import nz.ac.auckland.se206.team27.view.controls.HintDisplay;
 import nz.ac.auckland.se206.team27.view.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.view.dto.GuessScreenDto;
 
+import static nz.ac.auckland.se206.team27.resource.ScreenResource.HOME;
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
 import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
@@ -55,6 +58,9 @@ public class GuessController extends GameController {
     public Button buttonSkip;
 
     @FXML
+    public Button buttonQuit;
+
+    @FXML
     public HBox hintContainer;
 
     @FXML
@@ -79,6 +85,13 @@ public class GuessController extends GameController {
     }
 
     /**
+     * Action executed when the "Quit" button is clicked.
+     */
+    public void clickQuit() {
+        sceneLoader.loadScreen(HOME);
+    }
+
+    /**
      * Action executed when "Submit" button is clicked.
      */
     public void clickSubmit() {
@@ -93,6 +106,7 @@ public class GuessController extends GameController {
         inputGuess.setText("");
 
         if (redo) {
+            SoundManager.getInstance().playClip(AudioResource.TRY_AGAIN);
             populateViewData();
             return;
         }

@@ -17,6 +17,7 @@
         <Button styleClass="menu-btn" onAction="#clickNewGame">New Game</Button>
         <Button styleClass="menu-btn" onAction="#clickPractice">Practice Mode</Button>
         <Button styleClass="menu-btn" onAction="#clickPreferences">Preferences</Button>
+        <Button styleClass="menu-btn" onAction="#clickHelp">Help Manual</Button>
         <Button styleClass="menu-btn" onAction="#clickQuit">Quit</Button>
         <Label styleClass="spacer" />
     </VBox>

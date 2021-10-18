@@ -13,7 +13,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.PreferencesManager;
+import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.view.controls.ParticleView;
 import nz.ac.auckland.se206.team27.game.Round;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
@@ -54,6 +56,9 @@ public class EndGameController extends GameController {
 
     @FXML
     public VBox bigScoreContainer;
+
+    @FXML
+    public Label confettiHint;
 
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
@@ -106,6 +111,7 @@ public class EndGameController extends GameController {
         // Need to call this manually as we override initialize()
         // in GameController.
         populateViewData();
+        SoundManager.getInstance().setBackgroundTrack(null);
 
         // Only proceed if effects are enabled
         PreferencesManager prefsManager = PreferencesManager.getInstance();
@@ -122,6 +128,9 @@ public class EndGameController extends GameController {
         particleView.setOnMouseClicked(event -> {
             particleView.emit(80, event.getX(), event.getY());
         });
+
+        // Turn on fun hint visibility
+        confettiHint.setVisible(true);
 
         // This is so mouse clicks pass through to the particle view
         mainContainer.setPickOnBounds(false);
@@ -140,6 +149,8 @@ public class EndGameController extends GameController {
         labelTopic.setText(data.topic);
         miniScoreLabel.setText(String.valueOf(data.totalScore));
         bigScoreLabel.setText(String.valueOf(data.totalScore));
+
+        SoundManager.getInstance().playClip(AudioResource.END_GAME);
 
         if (data.isPracticeMode) {
             JavaFXUtil.toggleNodeVisibility(scoreContainer, false);

@@ -6,7 +6,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
@@ -84,6 +86,7 @@ public class ResultController extends GameController {
         String resultMsg;
         String styleClass;
         Random passedRand = new Random();
+        AudioResource soundClip;
 
         switch (data.resultFromLastRound)
         {
@@ -97,6 +100,7 @@ public class ResultController extends GameController {
                 }
                 encouragingMsg = encouragingMsgPassed[passedRand.nextInt(3)];
                 styleClass = "answer-correct";
+                soundClip = AudioResource.CORRECT;
                 break;
 
             case FAULTED:
@@ -109,6 +113,7 @@ public class ResultController extends GameController {
                 }
                 encouragingMsg = encouragingMsgFaulted[passedRand.nextInt(3)];
                 styleClass = "answer-correct";
+                soundClip = AudioResource.CORRECT;
                 break;
 
             case SKIPPED:
@@ -121,6 +126,7 @@ public class ResultController extends GameController {
                 }
                 encouragingMsg = encouragingMsgSkipped[passedRand.nextInt(3)];
                 styleClass = "answer-skipped";
+                soundClip = AudioResource.SKIPPED;
                 break;
 
             case FAILED:
@@ -133,6 +139,7 @@ public class ResultController extends GameController {
                 }
                 encouragingMsg = encouragingMsgFailed[passedRand.nextInt(3)];
                 styleClass = "answer-incorrect";
+                soundClip = AudioResource.INCORRECT;
                 break;
 
             default:
@@ -153,6 +160,8 @@ public class ResultController extends GameController {
         answer.setText(data.word);
 
         String btnText = (data.hasNextWord) ? "Next Word" : "Results";
+
+        SoundManager.getInstance().playClip(soundClip);
 
         nextRoundTimerTask = new TimerTask() {
 

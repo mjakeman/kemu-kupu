@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.team27.controller.base;
 
 import javafx.fxml.FXML;
+import nz.ac.auckland.se206.team27.SoundManager;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.viewmodel.MenuViewModel;
 
@@ -18,6 +20,8 @@ public abstract class MenuController extends BaseController {
     // TODO: Do something about this both `MenuController` and `GameController` having this duplicated code fragment
     @FXML
     public void initialize() {
+        SoundManager.getInstance().setBackgroundTrack(AudioResource.BG_TRACK);
+        SoundManager.getInstance().setBackgroundTrackVolume(1.0);
         populateViewData();
     }
 

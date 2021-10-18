@@ -38,7 +38,7 @@
 	</VBox>
 
 	<AnchorPane mouseTransparent="true">
-		<Label styleClass="fun-hint">
+		<Label fx:id="confettiHint" visible="false" styleClass="fun-hint">
 			<AnchorPane.rightAnchor>20</AnchorPane.rightAnchor>
 			<AnchorPane.topAnchor>20</AnchorPane.topAnchor>
 			Click for More Confetti!

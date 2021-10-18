@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.App;
+import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
@@ -55,6 +56,7 @@ public class PreviewTopicController extends MenuController {
     @Override
     protected void populateViewData() {
         TopicPreviewScreenDto dto = menuViewModel.getTopicPreviewData();
+        SoundManager.getInstance().setBackgroundTrackVolume(0);
 
         title.setText(dto.name);
         blurb.setText(dto.description);
@@ -62,6 +64,6 @@ public class PreviewTopicController extends MenuController {
 
         image.setStyle("-fx-background-image: url('" + dto.image.imgUrl + "');");
         credit.setText(String.format("%s (%s)", dto.image.creator, dto.image.copyright));
-        credit.setOnAction(event -> App.openWebPage(dto.image.externalLink));
+        credit.setOnAction(event -> App.openDocument(dto.image.externalLink));
     }
 }

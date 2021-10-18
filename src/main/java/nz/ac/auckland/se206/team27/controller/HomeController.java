@@ -1,11 +1,16 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import java.io.File;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import nz.ac.auckland.se206.team27.App;
+import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.MenuController;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
@@ -27,6 +32,7 @@ public class HomeController extends MenuController {
     @FXML
     public void initialize() {
         title.textProperty().set(ViewConfig.TITLE);
+        SoundManager.getInstance().setBackgroundTrack(AudioResource.BG_TRACK);
     }
 
     @Override
@@ -63,6 +69,14 @@ public class HomeController extends MenuController {
      */
     public void clickPreferences() {
         sceneLoader.loadScreen(ScreenResource.PREFERENCES);
+    }
+
+    /**
+     * Action executed when the "Help Manual" button is clicked.
+     */
+    public void clickHelp() {
+        String pathToHelpManual = new File("help_manual.pdf").getAbsolutePath();
+        App.openDocument(pathToHelpManual);
     }
 
     /**
