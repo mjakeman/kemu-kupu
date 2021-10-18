@@ -3,7 +3,9 @@ package nz.ac.auckland.se206.team27.controller;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import nz.ac.auckland.se206.team27.PreferencesManager;
+import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.BaseController;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.view.controls.OnOffSwitcher;
 import nz.ac.auckland.se206.team27.view.controls.SpeedSwitcher;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
@@ -38,6 +40,8 @@ public class PreferencesController extends BaseController {
 
         useEffectsSwitcher.setState(prefsManager.getUseEffects());
         prefsManager.useEffectsProperty.bind(useEffectsSwitcher.stateProperty);
+
+        SoundManager.getInstance().setBackgroundTrack(AudioResource.BG_TRACK);
     }
 
 

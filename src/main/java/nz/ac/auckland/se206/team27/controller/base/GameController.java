@@ -1,7 +1,9 @@
 package nz.ac.auckland.se206.team27.controller.base;
 
 import javafx.fxml.FXML;
+import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.game.Game;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.viewmodel.GameViewModel;
 
@@ -19,6 +21,7 @@ public abstract class GameController extends BaseController {
     @FXML
     public void initialize() {
         populateViewData();
+        SoundManager.getInstance().clearBackgroundTrack();
     }
 
     /**
