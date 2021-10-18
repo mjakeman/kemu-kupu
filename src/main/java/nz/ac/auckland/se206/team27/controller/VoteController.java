@@ -1,9 +1,12 @@
 package nz.ac.auckland.se206.team27.controller;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.BaseController;
+import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.view.SceneLoader;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
 import nz.ac.auckland.se206.team27.view.controls.ParticleView;
 
@@ -20,6 +23,9 @@ public class VoteController extends BaseController {
     @FXML
     public ParticleView particleView;
 
+    /**
+     * Initialise particle system and randomly emit in the background.
+     */
     public void initialize() {
         // Only proceed if effects are enabled
         PreferencesManager prefsManager = PreferencesManager.getInstance();
@@ -48,12 +54,19 @@ public class VoteController extends BaseController {
             @Override
             public void run() {
                 double x = 0.8 * Math.random() + 0.1;
-                double y = 0.4 * Math.random() + 0.2;
+                double y = 0.4 * Math.random();
                 particleView.emit(200, x * ViewConfig.WIDTH, y * ViewConfig.HEIGHT);
             }
         };
 
         Timer nextScreenTimer = new Timer();
         nextScreenTimer.schedule(confettiTask, 5000L,3000L);
+    }
+
+    /**
+     * Returns to home screen when button is clicked.
+     */
+    public void clickBack() {
+        sceneLoader.loadScreen(ScreenResource.HOME);
     }
 }

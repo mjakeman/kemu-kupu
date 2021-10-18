@@ -1,0 +1,13 @@
+.container {
+    -fx-alignment: CENTER;
+    -fx-padding: 40px;
+}
+
+.hero-text {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
+
+.outline-button {
+    -fx-background-color: #fafafa;
+}

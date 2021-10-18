@@ -9,7 +9,11 @@
 <?import nz.ac.auckland.se206.team27.view.controls.ParticleView?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
+           stylesheets="@../style/common.css,@../style/game.css,@../style/vote.css"
            fx:controller="nz.ac.auckland.se206.team27.controller.VoteController">
     <ParticleView fx:id="particleView" />
-    <Label>Vote for Team 27!</Label>
+    <VBox styleClass="container" pickOnBounds="false">
+        <Label styleClass="hero-text" mouseTransparent="true">vote for team 27!</Label>
+        <Button styleClass="outline-button" onAction="#clickBack">Back to Menu</Button>
+    </VBox>
 </StackPane>
