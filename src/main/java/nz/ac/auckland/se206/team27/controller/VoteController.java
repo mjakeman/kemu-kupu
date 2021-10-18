@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.team27.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.BaseController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
@@ -10,8 +11,7 @@ import nz.ac.auckland.se206.team27.view.SceneLoader;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
 import nz.ac.auckland.se206.team27.view.controls.ParticleView;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
@@ -23,10 +23,27 @@ public class VoteController extends BaseController {
     @FXML
     public ParticleView particleView;
 
+    @FXML
+    public Label labelOne;
+
+    @FXML
+    public Label labelTwo;
+
+    @FXML
+    public Label labelThree;
+
     /**
      * Initialise particle system and randomly emit in the background.
      */
     public void initialize() {
+        // Set team member names (randomly)
+        List<String> names = Arrays.asList("Matthew Jakeman", "Jordan York", "Raymond Feng");
+        Collections.shuffle(names);
+
+        labelOne.setText(names.get(0));
+        labelTwo.setText(names.get(1));
+        labelThree.setText(names.get(2));
+
         // Only proceed if effects are enabled
         PreferencesManager prefsManager = PreferencesManager.getInstance();
         if (!prefsManager.getUseEffects())

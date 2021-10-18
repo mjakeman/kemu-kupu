@@ -14,6 +14,9 @@
     <ParticleView fx:id="particleView" />
     <VBox styleClass="container" pickOnBounds="false">
         <Label styleClass="hero-text" mouseTransparent="true">vote for team 27!</Label>
-        <Button styleClass="outline-button" onAction="#clickBack">Back to Menu</Button>
+        <Label fx:id="labelOne">Matthew Jakeman</Label>
+        <Label fx:id="labelTwo">Jordan York</Label>
+        <Label fx:id="labelThree">Raymond Feng</Label>
     </VBox>
+    <Button StackPane.alignment="BOTTOM_CENTER" styleClass="outline-button" onAction="#clickBack">Back to Menu</Button>
 </StackPane>

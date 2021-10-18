@@ -1,6 +1,7 @@
 .container {
     -fx-alignment: CENTER;
     -fx-padding: 40px;
+    -fx-spacing: 5px;
 }
 
 .hero-text {
@@ -10,4 +11,6 @@
 
 .outline-button {
     -fx-background-color: #fafafa;
+    -fx-border-insets: 0 0 80px 0;
+    -fx-background-insets: 0 0 80px 0;
 }
