@@ -18,7 +18,7 @@ bash run.sh
 Alternatively, run the jar file directly:
 
 ```
-java -jar kemu-kupu-0.3.0.jar
+java -jar kemu-kupu-0.4.0.jar
 ```
 
 Please note, if you run into performance issues when running the application, turn off "special effects" in the preferences menu.
