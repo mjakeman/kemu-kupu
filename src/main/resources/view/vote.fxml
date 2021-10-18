@@ -10,6 +10,6 @@
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="nz.ac.auckland.se206.team27.controller.VoteController">
-    <ParticleView/>
+    <ParticleView fx:id="particleView" />
     <Label>Vote for Team 27!</Label>
 </StackPane>

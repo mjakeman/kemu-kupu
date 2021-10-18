@@ -302,3 +302,7 @@ competition demo.
 The first addition was a new view, intended for the competition. This view should say "Vote for Team 27" and
 have confetti particles in the background similar to fireworks.  I created a new hyperlink in the bottom right
 corner of the main menu and linked it to a new view called 'Vote'.
+
+I adapted code from the end game screen for the particle view. I decided to update the particle system code to
+create a more "circular" explosion of confetti, clamping the velocity magnitude to a circle (where it was previously
+"square").

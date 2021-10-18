@@ -43,6 +43,7 @@ public class ParticleView extends Canvas {
 
     private final LinkedList<Particle> particles = new LinkedList<>();
     private final GraphicsContext gc;
+    private final int maxParticles = 10000;
 
     public ParticleView() {
         gc = getGraphicsContext2D();
@@ -64,15 +65,28 @@ public class ParticleView extends Canvas {
     }
 
     public void emit(int numParticles, double x, double y) {
-        // particles.ensureCapacity(numParticles);
+
+        // Limit particles for performance reasons
+        if (particles.size() > maxParticles)
+            return;
 
         for (int i = 0; i < numParticles; i++) {
+
+            // Generate a velocity magnitude and angle
+            double velMagnitude = Math.random() * 12;
+            double velAngle = Math.random() * 360;
+
+            // Decompose into x/y velocity
+            double velX = velMagnitude * Math.cos(velAngle);
+            double velY = velMagnitude * Math.sin(velAngle);
+
+            // Create particles
             Particle particle = new Particle();
             particle.sizeFactor = 0.5 + (0.5 * Math.random());
             particle.x = x;
             particle.y = y;
-            particle.velX = (16 * (Math.random() - 0.5)) * (2.0 - particle.sizeFactor);
-            particle.velY = (16 * (Math.random() - 0.5)) * (2.0 - particle.sizeFactor);
+            particle.velX = velX * (2.0 - particle.sizeFactor); // adjust for size
+            particle.velY = velY * (2.0 - particle.sizeFactor);
             particle.color = randomColor();
             particle.lifetime = 400;
             particle.drag = 0.98f;
