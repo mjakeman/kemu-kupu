@@ -20,8 +20,9 @@ public abstract class MenuController extends BaseController {
     // TODO: Do something about this both `MenuController` and `GameController` having this duplicated code fragment
     @FXML
     public void initialize() {
-        populateViewData();
         SoundManager.getInstance().setBackgroundTrack(AudioResource.BG_TRACK);
+        SoundManager.getInstance().setBackgroundTrackVolume(1.0);
+        populateViewData();
     }
 
     /**

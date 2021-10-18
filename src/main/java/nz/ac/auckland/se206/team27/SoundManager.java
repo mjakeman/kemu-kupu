@@ -1,5 +1,8 @@
 package nz.ac.auckland.se206.team27;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -15,6 +18,8 @@ public class SoundManager {
     // The currently playing background track
     private MediaPlayer bgTrackPlayer;
     private AudioResource bgTrack;
+
+    private Timeline fadeEffect;
 
     /**
      * Returns a single instance of Prefs Manager to be used throughout the application.
@@ -65,9 +70,36 @@ public class SoundManager {
      * Stops playing background music
      */
     public void clearBackgroundTrack() {
+        if (fadeEffect != null) {
+            fadeEffect.stop();
+            fadeEffect = null;
+        }
+
         if (bgTrackPlayer != null) {
             bgTrackPlayer.stop();
+            bgTrackPlayer = null;
         }
+
         bgTrack = null;
+    }
+
+    /**
+     * Smoothly fades the volume of the background track to the desired level
+     * @param volume Target volume to be played
+     */
+    public void setBackgroundTrackVolume(double volume) {
+        if (volume < 0 || volume > 1) {
+            throw new IllegalArgumentException("Volume must be between 0 and 1");
+        }
+
+        if (fadeEffect != null) {
+            fadeEffect.stop();
+        }
+
+        KeyValue target = new KeyValue(bgTrackPlayer.volumeProperty(), volume);
+        KeyFrame frame = new KeyFrame(Duration.seconds(2), target);
+
+        fadeEffect = new Timeline(frame);
+        fadeEffect.play();
     }
 }
