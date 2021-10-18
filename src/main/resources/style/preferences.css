@@ -10,3 +10,8 @@
 .pref-entry {
     -fx-font-weight: bold;
 }
+
+.image {
+    -fx-background-image: url("media/default.jpg");
+    -fx-background-size: cover;
+}

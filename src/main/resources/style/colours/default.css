@@ -28,4 +28,6 @@
     -colour-neutral-tint: #99c1f1;
 
     -colour-aside: #444d8d;
+
+    -image-colourblind: url("media/default.jpg");
 }

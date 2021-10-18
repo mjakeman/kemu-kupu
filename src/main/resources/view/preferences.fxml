@@ -56,9 +56,9 @@
 
         <Button onAction="#clickBack">Back</Button>
     </VBox>
-    <AnchorPane styleClass="aside">
+    <AnchorPane styleClass="image">
         <GridPane.columnIndex>1</GridPane.columnIndex>
-        <!--<Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit
-        </Label>-->
+        <Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit
+        </Label>
     </AnchorPane>
 </GridPane>
