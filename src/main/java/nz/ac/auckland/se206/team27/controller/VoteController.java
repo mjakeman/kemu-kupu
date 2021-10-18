@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -10,11 +11,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.controller.base.BaseController;
 import nz.ac.auckland.se206.team27.resource.ResourceUtil;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
+import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
 import nz.ac.auckland.se206.team27.view.controls.ParticleView;
@@ -43,6 +46,14 @@ public class VoteController extends BaseController {
     @FXML
     public StackPane parallax;
 
+    @FXML
+    public VBox container;
+
+    @Override
+    public void transitionOnEnter() {
+        AnimationBuilder.buildZoomAndFadeTransition(parallax, container).play();
+    }
+
     /**
      * Initialise particle system and randomly emit in the background.
      */
@@ -54,6 +65,11 @@ public class VoteController extends BaseController {
         labelOne.setText(names.get(0));
         labelTwo.setText(names.get(1));
         labelThree.setText(names.get(2));
+
+        // Only proceed if effects are enabled
+        PreferencesManager prefsManager = PreferencesManager.getInstance();
+        if (!prefsManager.getUseEffects())
+            return;
 
         // Simple parallax effect
         parallax.setOnMouseMoved(event -> {
@@ -69,11 +85,6 @@ public class VoteController extends BaseController {
                 index++;
             }
         });
-
-        // Only proceed if effects are enabled
-        PreferencesManager prefsManager = PreferencesManager.getInstance();
-        if (!prefsManager.getUseEffects())
-            return;
 
         // Setup Particle View
         double width = ViewConfig.WIDTH;
@@ -110,6 +121,11 @@ public class VoteController extends BaseController {
      * Returns to home screen when button is clicked.
      */
     public void clickBack() {
-        sceneLoader.loadScreen(ScreenResource.HOME);
+        sceneLoader.loadScreen(ScreenResource.HOME, c -> {
+            // Play special zoom and fade transition
+            HomeController controller = (HomeController)c;
+            Animation anim = AnimationBuilder.buildZoomAndFadeTransition(controller.root, controller.container);
+            anim.play();
+        });
     }
 }

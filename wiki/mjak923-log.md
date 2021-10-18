@@ -315,3 +315,8 @@ attempted to create a parallax effect in JavaFX depending on the position of the
 I created five image panes stacked on top of each other inside a `StackPane`, then layered a particle view, and
 finally the vbox and button combination. This is then transformed by an offset calculated from the user's cursor
 position in relation to the centre of the window. This creates a fairly simple but nice looking offset effect.
+
+Ultimately, I was unable to achieve a reasonable level of performance within the virtual machine
+however and removed the parallax background. I kept the parallax effect for the controls
+however, as this worked well and looked quite nice. Lastly, I made the parallax effect respect
+the special effects setting.

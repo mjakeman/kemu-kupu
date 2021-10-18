@@ -15,7 +15,7 @@
            fx:controller="nz.ac.auckland.se206.team27.controller.VoteController">
 
     <ParticleView fx:id="particleView" />
-    <VBox styleClass="container" pickOnBounds="false">
+    <VBox fx:id="container" styleClass="container" pickOnBounds="false">
         <Text styleClass="hero-text" mouseTransparent="true">vote for team 27!</Text>
         <Label fx:id="labelOne" mouseTransparent="true">Matthew Jakeman</Label>
         <Label fx:id="labelTwo" mouseTransparent="true">Jordan York</Label>
