@@ -13,12 +13,6 @@ public enum AudioResource implements Resource {
     BG_TRACK("bg_loop.wav"),
 
     /**
-     * Click sound effect
-     * TODO: Use consistently
-     */
-    CLICK("click.wav"),
-
-    /**
      * Correct answer sound effect
      */
     CORRECT("correct.wav"),

@@ -1,20 +1,29 @@
 Background Loop (bg_loop.wav):
 https://freesound.org/people/FoolBoyMedia/sounds/264295/
+Music track created by FoolBoyMedia (FoolBoyMedia@gmail.com)
+Licence: CC-Attribution Non-Commercial
 
 Game Complete (endgame.wav):
 https://freesound.org/people/Bertrof/sounds/131659/
-
-Click (click.wav):
-https://freesound.org/people/NenadSimic/sounds/157539/
+Sound effect created by Bertrof (bertrof@hotmail.com)
+Licence: CC-Attribution
 
 Correct/Faulted (correct.wav):
 https://freesound.org/people/Bertrof/sounds/351566/
+Sound effect created by Bertrof (bertrof@hotmail.com)
+Licence: CC-Attribution
 
 Try Again (tryagain.wav):
 https://freesound.org/people/wobesound/sounds/488402/
+Sound effect created by wobesound (wobesound.com)
+Licence: CC-Zero
 
 Incorrect (incorrect.wav):
 https://freesound.org/people/Bertrof/sounds/351565/
+Sound effect created by Bertrof (bertrof@hotmail.com)
+Licence: CC-Attribution
 
 Skip (skipped.wav):
 https://freesound.org/people/Sheyvan/sounds/568290/
+Sound effect created by Sheyvan
+Licence: CC-Zero
