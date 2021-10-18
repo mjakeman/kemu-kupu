@@ -6,13 +6,13 @@ import javafx.scene.media.MediaPlayer;
 
 import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.resource.AudioResource;
-import nz.ac.auckland.se206.team27.resource.ResourceUtil;
 
 /**
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
 public class SoundManager {
 
+    // The currently playing background track
     private MediaPlayer bgTrackPlayer;
     private AudioResource bgTrack;
 
@@ -25,14 +25,20 @@ public class SoundManager {
         return _instance;
     }
 
-    public SoundManager() {
-    }
-
+    /**
+     * Play a sound clip. It is the caller's responsibility to ensure the clip is of
+     * a short duration as playback cannot be cancelled once started.
+     * @param soundClip The clip to be played
+     */
     public void playClip(AudioResource soundClip) {
         AudioClip sound = new AudioClip(soundClip.getResourceUrl().toExternalForm());
         sound.play();
     }
 
+    /**
+     * Play the given audio track in the background
+     * @param audio Track to be played
+     */
     public void setBackgroundTrack(AudioResource audio) {
 
         // Only clear the background audio if the track has changed,
@@ -55,6 +61,9 @@ public class SoundManager {
         bgTrackPlayer.play();
     }
 
+    /**
+     * Stops playing background music
+     */
     public void clearBackgroundTrack() {
         if (bgTrackPlayer != null) {
             bgTrackPlayer.stop();
