@@ -52,7 +52,7 @@
             Don't know
         </Button>
     </VBox>
-    <HBox alignment="BOTTOM_LEFT" style="-fx-padding: 0 10 10 40;">
+    <HBox alignment="BOTTOM_LEFT" style="-fx-padding: 0 10 25 40;">
         <Button styleClass="outline-button,quit-button" fx:id="buttonQuit" onAction="#clickQuit">Quit</Button>
     </HBox>
 </VBox>
