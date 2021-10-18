@@ -86,6 +86,6 @@ public class PreferencesController extends BaseController {
      * is required under the image licence).
      */
     public void clickImageCredit() {
-        App.openWebPage("https://www.vecteezy.com/vector-art/1265919-new-zealand-fantail-bird-set");
+        App.openDocument("https://www.vecteezy.com/vector-art/1265919-new-zealand-fantail-bird-set");
     }
 }
