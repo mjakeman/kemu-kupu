@@ -60,6 +60,17 @@
     -fx-background-color: -colour-success-pressed;
 }
 
+/* Quit Button Variation */
+.quit-button {
+    -fx-font-size: 11pt;
+    -fx-padding: 5px 10px;
+    -fx-border-color: -colour-failure;
+}
+
+.quit-button:hover {
+    -fx-border-color: -colour-failure-hover;
+}
+
 /* Play Button Variation */
 .play-button {
     -fx-background-color: -colour-neutral;
