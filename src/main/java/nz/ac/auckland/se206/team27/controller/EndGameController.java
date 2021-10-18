@@ -13,7 +13,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.PreferencesManager;
+import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.view.controls.ParticleView;
 import nz.ac.auckland.se206.team27.game.Round;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
@@ -106,6 +108,7 @@ public class EndGameController extends GameController {
         // Need to call this manually as we override initialize()
         // in GameController.
         populateViewData();
+        SoundManager.getInstance().setBackgroundTrack(null);
 
         // Only proceed if effects are enabled
         PreferencesManager prefsManager = PreferencesManager.getInstance();

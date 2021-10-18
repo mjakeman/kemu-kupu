@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.team27.controller.base;
 
 import javafx.fxml.FXML;
+import nz.ac.auckland.se206.team27.SoundManager;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.viewmodel.MenuViewModel;
 
@@ -19,6 +21,7 @@ public abstract class MenuController extends BaseController {
     @FXML
     public void initialize() {
         populateViewData();
+        SoundManager.getInstance().setBackgroundTrack(AudioResource.BG_TRACK);
     }
 
     /**
