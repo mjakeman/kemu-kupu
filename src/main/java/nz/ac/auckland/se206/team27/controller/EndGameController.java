@@ -57,6 +57,9 @@ public class EndGameController extends GameController {
     @FXML
     public VBox bigScoreContainer;
 
+    @FXML
+    public Label confettiHint;
+
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
     }
@@ -125,6 +128,9 @@ public class EndGameController extends GameController {
         particleView.setOnMouseClicked(event -> {
             particleView.emit(80, event.getX(), event.getY());
         });
+
+        // Turn on fun hint visibility
+        confettiHint.setVisible(true);
 
         // This is so mouse clicks pass through to the particle view
         mainContainer.setPickOnBounds(false);
