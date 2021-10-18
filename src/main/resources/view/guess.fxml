@@ -53,6 +53,6 @@
         </Button>
     </VBox>
     <VBox styleClass="bottomcorner">
-        <Button styleClass="raised-button,quit-button" fx:id="buttonQuit" onAction="#clickQuit">Quit</Button>
+        <Button styleClass="outline-button,quit-button" fx:id="buttonQuit" onAction="#clickQuit">Quit</Button>
     </VBox>
 </VBox>

@@ -62,17 +62,13 @@
 
 /* Quit Button Variation */
 .quit-button {
-    -fx-background-color: -colour-failure;
-    -fx-border-color: -colour-failure-border;
-    -fx-pref-width: 80px;
+    -fx-font-size: 11pt;
+    -fx-padding: 5px 10px;
+    -fx-border-color: -colour-failure;
 }
 
 .quit-button:hover {
-    -fx-background-color: -colour-failure-hover;
-}
-
-.quit-button:pressed {
-    -fx-background-color: -colour-failure-pressed;
+    -fx-border-color: -colour-failure-hover;
 }
 
 /* Play Button Variation */
@@ -114,5 +110,5 @@
 }
 
 .bottomcorner {
-    -fx-padding: 10px;
+    -fx-padding: 40px;
 }
