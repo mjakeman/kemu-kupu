@@ -6,6 +6,7 @@
 <?import nz.ac.auckland.se206.team27.view.controls.SpeedSwitcher?>
 <?import nz.ac.auckland.se206.team27.view.controls.OnOffSwitcher?>
 
+<?import javafx.scene.control.Hyperlink?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           stylesheets="@../style/common.css,@../style/preferences.css"
@@ -56,9 +57,12 @@
 
         <Button onAction="#clickBack">Back</Button>
     </VBox>
-    <AnchorPane styleClass="image">
+    <AnchorPane fx:id="image" styleClass="aside">
         <GridPane.columnIndex>1</GridPane.columnIndex>
-        <Label styleClass="image-credit" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">Credit: Image Credit
-        </Label>
+        <Hyperlink onAction="#clickImageCredit" styleClass="image-credit">
+            <AnchorPane.rightAnchor>20</AnchorPane.rightAnchor>
+            <AnchorPane.bottomAnchor>20</AnchorPane.bottomAnchor>
+            Fantail Graphic: Vecteezy.com
+        </Hyperlink>
     </AnchorPane>
 </GridPane>
