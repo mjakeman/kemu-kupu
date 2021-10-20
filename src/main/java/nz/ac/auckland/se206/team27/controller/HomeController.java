@@ -57,14 +57,6 @@ public class HomeController extends MenuController {
     }
 
     /**
-     * Action executed when "Vote for Team 27" is clicked
-     * Special addition for Project Competition Demo
-     */
-    public void clickVote() {
-        sceneLoader.loadScreen(ScreenResource.VOTE);
-    }
-
-    /**
      * Action executed when the "Preferences" button is clicked.
      */
     public void clickPreferences() {
