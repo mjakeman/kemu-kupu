@@ -90,6 +90,7 @@ public class App extends Application {
             anim.play();
         });
 
+        // Add the application icon
         try {
             stage.getIcons().add(new Image(ResourceUtil.getResourceUrl("media/icon.PNG").toURI().toString()));
         } catch (URISyntaxException e) {

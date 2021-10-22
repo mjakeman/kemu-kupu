@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
+ * Organises Wordlists from textfiles into splitting them into titles, descriptions
+ * and the words available to spell
+ *
  * @author Jordan York (jyor212@aucklanduni.ac.nz)
  */
 public class WordList {
@@ -43,10 +46,20 @@ public class WordList {
         return wordList;
     }
 
+    /**
+     * Gets title of Wordlist
+     *
+     * @return title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Gets Description of Wordlist
+     *
+     * @return description
+     */
     public String getDescription() {
         return description;
     }

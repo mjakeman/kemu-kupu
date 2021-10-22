@@ -22,7 +22,7 @@ public class SpeechTest extends Application {
     private final SpeechManager speechManager = SpeechManager.getInstance();
 
     /**
-     * Function that is run to star the application.
+     * Function that is run to start the application.
      */
     @Override
     public void start(Stage primaryStage) {
@@ -61,6 +61,9 @@ public class SpeechTest extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Stops the Speech Manager
+     */
     @Override
     public void stop() {
         speechManager.shutdown();
