@@ -76,3 +76,23 @@ Jordan York (jyor212)
 
 - Merged relevant changes for A4
 - Had meeting to check in before final submission for A4
+
+## 18 October
+
+- Had group meeting to access feedback from A4
+- Delegated further tasks to improve application
+
+## 19 October
+
+- Added 'Quit' button to Game View so users can quit the game at any point
+- Created Images for Preferences screen to credit us for game as well
+as show differences in colour when Colourblind mode is applied.
+  
+## 20 October
+
+- Created and almost completed User Manual together
+
+## 23 October
+
+- Added additional comments to those classes needing more (as requested in A4)
+
