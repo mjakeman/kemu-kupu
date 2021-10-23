@@ -10,7 +10,7 @@ import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
 /**
  * Class to manage displaying the {@link Game} model for different screens, as well as manipulating the model for
  * varying view inputs.
- * <p>
+ *
  * NB: Ideally this file would be split such that each view / screen has its own ViewModel, but since there is not much
  * content, we can merge these a bit. The specific functions used for each screen is labelled.
  *
@@ -20,7 +20,6 @@ public class GameViewModel implements ViewModel {
 
     private final Game currentGame;
 
-
     public GameViewModel(Game game) {
         this.currentGame = game;
     }
@@ -29,6 +28,11 @@ public class GameViewModel implements ViewModel {
      * The following are used in GUESS screen.
      */
 
+    /**
+     * Gets data to populate the GUESS screen.
+     *
+     * @return Data object
+     */
     public GuessScreenDto getGuessScreenData() {
         Round round = currentGame.getCurrentRound();
 
@@ -57,6 +61,9 @@ public class GameViewModel implements ViewModel {
         return currentGame.getCurrentRound().makeGuess(word);
     }
 
+    /**
+     * Marks the current word as skipped and moves to the next word.
+     */
     public void skipCurrentWord() {
         currentGame.getCurrentRound().markSkipped();
     }
@@ -65,6 +72,11 @@ public class GameViewModel implements ViewModel {
      * The following are used in the RESULT screen.
      */
 
+    /**
+     * Gets data to populate the RESULT screen.
+     *
+     * @return Data object
+     */
     public ResultScreenDto getResultScreenData() {
         Round round = currentGame.getCurrentRound();
         return new ResultScreenDto(currentGame.hasNextWord(),
@@ -86,6 +98,11 @@ public class GameViewModel implements ViewModel {
      * The following are used in the END_GAME screen.
      */
 
+    /**
+     * Gets data to populate the END_GAME screen.
+     *
+     * @return Data object
+     */
     public EndGameScreenDto getEndGameScreenData() {
         return new EndGameScreenDto(currentGame.getTopic(),
                                     currentGame.getCumulativeScore(),
@@ -93,6 +110,9 @@ public class GameViewModel implements ViewModel {
                                     currentGame.isPracticeMode());
     }
 
+    /**
+     * Play another game or practice session using the same topic list.
+     */
     public void playAgain() {
         Game.createInstance(currentGame.getWordList(), currentGame.isPracticeMode());
     }

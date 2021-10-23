@@ -39,7 +39,6 @@ public class MenuViewModel implements ViewModel {
         return _instance;
     }
 
-    // TODO: Change to repo singleton with a wordList cache
     private MenuViewModel(WordListRepository repo) {
         this.wordLists = repo.getWordLists();
     }
@@ -78,6 +77,11 @@ public class MenuViewModel implements ViewModel {
      * The following are used for the topic preview screen.
      */
 
+    /**
+     * Gets data to populate the PREVIEW_TOPIC screen.
+     *
+     * @return Data object
+     */
     public TopicPreviewScreenDto getTopicPreviewData() {
         String imgUrl = ResourceUtil.getResourceUrl("media/topicimages/" + title.toLowerCase() + ".jpg").toString();
         String externalLink = "https://www.pixabay.com";
