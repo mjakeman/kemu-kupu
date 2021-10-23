@@ -298,7 +298,7 @@ controls either "Pick on Bounds" or "Mouse Transparent" so as much of the backgr
 Next project team meeting [(minutes)](minutes-18-10-21.md). Started preparation for project submission and our
 competition demo.
 
-### Tasks
+### Vote View
 The first addition was a new view, intended for the competition. This view should say "Vote for Team 27" and
 have confetti particles in the background similar to fireworks.  I created a new hyperlink in the bottom right
 corner of the main menu and linked it to a new view called 'Vote'.
@@ -320,3 +320,20 @@ Ultimately, I was unable to achieve a reasonable level of performance within the
 however and removed the parallax background. I kept the parallax effect for the controls
 however, as this worked well and looked quite nice. Lastly, I made the parallax effect respect
 the special effects setting.
+
+### Misc Tasks
+Next, I worked on a few bugfixes and quality-of-life changes. One fix was that when special effects are
+turned off, the "click for confetti" hint in the top right corner of the screen should be hidden. I helped
+Jordan with the preferences screen image by making it display properly, as well as by adding the
+correct attribution.
+
+### Sound Effects & Music
+Lastly, I added sound to the game by creating a new `SoundManager` class inspired by `SpeechManager`.
+This had two modes: clip playback and track playback, where one background track may be set (and volume
+adjusted), as well as any number of short clips may be played in parallel. I created a new `AudioResource`
+enum and added various royalty-free sound effects from [freesound.org](https://freesound.org/).
+
+These sounds play when various in game actions are performed. I faded out the background music track on
+the topic preview screen so the transition to the game mode was less jarring.
+
+I normalised the volume of the tracks, and at Raymond's suggestion, changed the correct sound effect.
