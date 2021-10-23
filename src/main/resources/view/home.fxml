@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../style/common.css,@../style/menu.css"
@@ -21,9 +18,4 @@
         <Button styleClass="menu-btn" onAction="#clickQuit">Quit</Button>
         <Label styleClass="spacer" />
     </VBox>
-    <Hyperlink styleClass="vote-tag" onAction="#clickVote">
-        <AnchorPane.rightAnchor>20</AnchorPane.rightAnchor>
-        <AnchorPane.bottomAnchor>20</AnchorPane.bottomAnchor>
-        Vote for Team 27!
-    </Hyperlink>
 </AnchorPane>
