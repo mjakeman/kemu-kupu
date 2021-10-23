@@ -154,7 +154,7 @@ public class GuessController extends GameController {
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
 
-        // Disable the practice label if we're in practice mode
+        // Enable the practice label if we're in practice mode
         if (data.isPracticeMode) {
             JavaFXUtil.toggleNodeVisibility(labelPractice, true);
         }
