@@ -191,7 +191,7 @@ public class GuessController extends GameController {
     }
 
     /**
-     * Speaks a word while disabling the "Play again" button.
+     * Speaks a word while disabling unnecessary buttons (like play and submit).
      */
     private void sayWord(String word) {
         // Play the word once and disable inputs while the word is playing
