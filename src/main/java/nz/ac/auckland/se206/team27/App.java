@@ -23,7 +23,7 @@ import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 import static nz.ac.auckland.se206.team27.view.ViewConfig.*;
 
 /**
- * Main class.
+ * Root of the Kemu Kupu application.
  */
 public class App extends Application {
 

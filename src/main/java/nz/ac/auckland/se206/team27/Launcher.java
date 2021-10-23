@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.team27;
 
 /**
+ * The entrypoint to the application, as specified in {@code module-info.java}.
+ *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public class Launcher {

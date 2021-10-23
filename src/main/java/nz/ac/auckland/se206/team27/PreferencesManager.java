@@ -8,6 +8,8 @@ import nz.ac.auckland.se206.team27.resource.ColourProfileResource;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 
 /**
+ * Manager for saving and reading preferences.
+ *
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
 public class PreferencesManager {

@@ -11,6 +11,8 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.resource.AudioResource;
 
 /**
+ * Manager for sound related playback.
+ *
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
 public class SoundManager {
