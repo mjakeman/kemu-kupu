@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import nz.ac.auckland.se206.team27.view.controls.ParticleView?>
 <StackPane xmlns="http://javafx.com/javafx"
-		   xmlns:fx="http://javafx.com/fxml"
-		   stylesheets="@../style/common.css,@../style/game.css,@../style/endgame.css"
-		   fx:controller="nz.ac.auckland.se206.team27.controller.EndGameController">
+           xmlns:fx="http://javafx.com/fxml"
+           stylesheets="@../style/common.css,@../style/game.css,@../style/reward.css"
+           fx:controller="nz.ac.auckland.se206.team27.controller.RewardController">
 	<ParticleView fx:id="particleView" />
 
 	<VBox fx:id="bigScoreContainer" styleClass="score-label-container">

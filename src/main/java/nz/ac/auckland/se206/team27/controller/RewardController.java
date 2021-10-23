@@ -1,6 +1,12 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import javafx.animation.*;
+import java.util.function.Function;
+
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,20 +21,23 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
-import nz.ac.auckland.se206.team27.resource.AudioResource;
-import nz.ac.auckland.se206.team27.view.controls.ParticleView;
 import nz.ac.auckland.se206.team27.game.Round;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
+import nz.ac.auckland.se206.team27.view.controls.ParticleView;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
-
-import java.util.function.Function;
 
 import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
-public class EndGameController extends GameController {
+/**
+ * Controller associated with the {@link ScreenResource#REWARD} screen.
+ *
+ * NB: The {@code END_GAME} screen is also known as the summary/rewards screen.
+ */
+public class RewardController extends GameController {
 
     @FXML
     public Label miniScoreLabel;
@@ -60,21 +69,69 @@ public class EndGameController extends GameController {
     @FXML
     public Label confettiHint;
 
+
+    /**
+     * Action executed when the "Home" button is clicked.
+     */
     public void clickHome() {
         sceneLoader.loadScreen(ScreenResource.HOME);
     }
 
+    /**
+     * Action executed when the "Play again" button is clicked.
+     */
     public void clickPlayAgain() {
         gameViewModel.playAgain();
         sceneLoader.loadScreen(ScreenResource.GUESS);
     }
 
+    /**
+     * Method executed when this controller is first loaded.
+     */
+    @FXML
+    public void initialize() {
+        // Need to call this manually as we override initialize() in GameController.
+        populateViewData();
+        SoundManager.getInstance().setBackgroundTrack(null);
+
+        // Only proceed if effects are enabled
+        PreferencesManager prefsManager = PreferencesManager.getInstance();
+        if (prefsManager.getUseEffects()) {
+            setUpConfettiEffect();
+        }
+    }
+
+    /**
+     * Sets up the view for confetti effects.
+     */
+    private void setUpConfettiEffect() {
+        // Setup Particle View
+        double width = ViewConfig.WIDTH;
+        double height = ViewConfig.HEIGHT;
+        particleView.setWidth(width);
+        particleView.setHeight(height);
+
+        // Emit confetti on mouse click
+        particleView.setOnMouseClicked(event -> particleView.emit(80, event.getX(), event.getY()));
+
+        // Turn on fun hint visibility
+        confettiHint.setVisible(true);
+
+        // This is so mouse clicks pass through to the particle view
+        mainContainer.setPickOnBounds(false);
+        bigScoreContainer.setPickOnBounds(false);
+
+        // Initial confetti bursts
+        runAfterDelay(() -> particleView.emit(200, width * 1/2, height/2), 500L);
+    }
+
+    /**
+     * Transition that is played when this controller is loaded.
+     */
     @Override
     public void transitionOnEnter() {
-
         EndGameScreenDto data = gameViewModel.getEndGameScreenData();
-        if (data.isPracticeMode)
-        {
+        if (data.isPracticeMode) {
             // Slide and fade as normal in practice mode (since we don't want to show the score)
             bigScoreContainer.setOpacity(0);
             AnimationBuilder.buildSlideAndFadeTransition(mainContainer).play();
@@ -106,42 +163,9 @@ public class EndGameController extends GameController {
                 new ParallelTransition(bigScoreFadeOut, mainContainerTransition)).play();
     }
 
-    @FXML
-    public void initialize() {
-        // Need to call this manually as we override initialize()
-        // in GameController.
-        populateViewData();
-        SoundManager.getInstance().setBackgroundTrack(null);
-
-        // Only proceed if effects are enabled
-        PreferencesManager prefsManager = PreferencesManager.getInstance();
-        if (!prefsManager.getUseEffects())
-            return;
-
-        // Setup Particle View
-        double width = ViewConfig.WIDTH;
-        double height = ViewConfig.HEIGHT;
-        particleView.setWidth(width);
-        particleView.setHeight(height);
-
-        // Emit confetti on mouse click
-        particleView.setOnMouseClicked(event -> {
-            particleView.emit(80, event.getX(), event.getY());
-        });
-
-        // Turn on fun hint visibility
-        confettiHint.setVisible(true);
-
-        // This is so mouse clicks pass through to the particle view
-        mainContainer.setPickOnBounds(false);
-        bigScoreContainer.setPickOnBounds(false);
-
-        // Initial confetti bursts
-        runAfterDelay(() -> {
-            particleView.emit(200, width * 1/2, height/2);
-        }, 500L);
-    }
-
+    /**
+     * Data that is populated when this controller is loaded.
+     */
     @Override
     protected void populateViewData() {
         EndGameScreenDto data = gameViewModel.getEndGameScreenData();

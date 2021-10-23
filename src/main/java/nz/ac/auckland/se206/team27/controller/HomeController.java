@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.team27.controller;
 import java.io.File;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -16,6 +15,8 @@ import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
 
 /**
+ * Controller associated with the {@link ScreenResource#HOME} screen.
+ *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public class HomeController extends MenuController {
@@ -29,16 +30,6 @@ public class HomeController extends MenuController {
     @FXML
     public VBox container;
 
-    @FXML
-    public void initialize() {
-        title.textProperty().set(ViewConfig.TITLE);
-        SoundManager.getInstance().setBackgroundTrack(AudioResource.BG_TRACK);
-    }
-
-    @Override
-    public void transitionOnEnter() {
-        AnimationBuilder.buildSlideAndFadeTransition(container).play();
-    }
 
     /**
      * Action executed when the "New Game" button is clicked.
@@ -78,7 +69,22 @@ public class HomeController extends MenuController {
         closeApplication();
     }
 
+    /**
+     * Transition that is played when this controller is loaded.
+     */
     @Override
-    protected void populateViewData() {}
+    public void transitionOnEnter() {
+        AnimationBuilder.buildSlideAndFadeTransition(container).play();
+    }
+
+    /**
+     * Data that is populated when this controller is loaded.
+     */
+    @Override
+    protected void populateViewData() {
+        title.textProperty().set(ViewConfig.TITLE);
+
+        SoundManager.getInstance().setBackgroundTrack(AudioResource.BG_TRACK);
+    }
 
 }

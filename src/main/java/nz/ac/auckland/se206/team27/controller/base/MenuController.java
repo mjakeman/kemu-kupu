@@ -7,6 +7,8 @@ import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.viewmodel.MenuViewModel;
 
 /**
+ * Controller that is inherited by all menu-adjacent screens (e.g. home, preferences and topic selection).
+ *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public abstract class MenuController extends BaseController {
@@ -17,7 +19,6 @@ public abstract class MenuController extends BaseController {
     /**
      * Initialize the application with the dynamic view data.
      */
-    // TODO: Do something about this both `MenuController` and `GameController` having this duplicated code fragment
     @FXML
     public void initialize() {
         SoundManager.getInstance().setBackgroundTrack(AudioResource.BG_TRACK);

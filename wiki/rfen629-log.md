@@ -59,3 +59,16 @@ Raymond Feng (rfen629)
 - Simplified some of the code inside `EndGameController` to reduce code duplication. 
   This was accomplished by using passing lambda functions and generics, which was a good learning experience.
 - Refactored some of the directories so that all view related content was inside the `view` directory
+
+## 18 October
+
+- Added a button to the home screen to launch the help manual, in preparation for us completing the help manual.
+
+## 20 October
+
+- Worked with the team to write up our help manual.
+- Removed voting related components as the competition was over.
+
+## 23 October
+
+- Added lots of comments and refactoring inside the `controller` package.
