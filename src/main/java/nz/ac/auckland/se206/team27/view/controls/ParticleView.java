@@ -9,16 +9,20 @@ import javafx.scene.transform.Rotate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-// This is a particle system written for displaying confetti. It is
-// loosely inspired by the following resource, but heavily modified
-// for this project:
-//  - https://www.howtosolutions.net/2016/09/javascript-canvas-simple-particle-system/
-
 /**
+ * This is a particle system written for displaying confetti. It is
+ * loosely inspired by the following resource, but heavily modified
+ * for this project:
+ *  - https://www.howtosolutions.net/2016/09/javascript-canvas-simple-particle-system/
+ *
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
 public class ParticleView extends Canvas {
 
+    /**
+     * A collection of properties which define a single
+     * particle's behaviour and style.
+     */
     private static class Particle {
         // Position
         public double x;
@@ -41,12 +45,30 @@ public class ParticleView extends Canvas {
         public boolean isDead;
     }
 
+    /**
+     * List of all active particles.
+     */
     private final LinkedList<Particle> particles = new LinkedList<>();
+
+    /**
+     * Reference to the Canvas' graphics context for drawing.
+     */
     private final GraphicsContext gc;
+
+    /**
+     * Maximum number of particles which can be displayed on screen
+     * at one time.
+     */
     private final int maxParticles = 10000;
 
+    /**
+     * Create a new {@link ParticleView} control for displaying confetti.
+     */
     public ParticleView() {
         gc = getGraphicsContext2D();
+
+        // This will be called by JavaFX to update and
+        // draw the confetti at a consistent rate.
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -64,6 +86,13 @@ public class ParticleView extends Canvas {
         timer.start();
     }
 
+    /**
+     * Emit a burst of confetti at the given coordinates.
+     *
+     * @param numParticles The number of particles to emit (e.g. 80)
+     * @param x Emit particles at this x-coordinate.
+     * @param y Emit particles at this y-coordinate.
+     */
     public void emit(int numParticles, double x, double y) {
 
         // Limit particles for performance reasons
@@ -97,6 +126,11 @@ public class ParticleView extends Canvas {
         }
     }
 
+    /**
+     * Randomly generate a "bright" colour.
+     *
+     * @return The generated RGB value.
+     */
     private Color randomColor() {
 
         // Colour Generation method adapted from:
@@ -118,18 +152,23 @@ public class ParticleView extends Canvas {
         return new Color(red, green, blue, 1.0f);
     }
 
+    /**
+     * Update particle physics and flag dead particles.
+     *
+     * @param particle The particle to update.
+     */
     private void updateParticle(Particle particle) {
         if (particle.isDead)
             return;
 
+        // Position/Rotation
         particle.x += particle.velX;
         particle.y += particle.velY;
+        particle.rotation += particle.velRot;
 
+        // Velocity
         particle.velX *= particle.drag;
         particle.velY *= particle.drag;
-        // particle.velRot *= (particle.drag / 100);
-
-        particle.rotation += particle.velRot;
 
         // Gravity
         particle.velY += 0.04f;
@@ -137,10 +176,17 @@ public class ParticleView extends Canvas {
         // Wind/Sway
         particle.velX += 0.02f * (Math.random() - 0.5);
 
+        // Flag dead particles now, remove later
         if (particle.lifetime-- <= 0)
             particle.isDead = true;
     }
 
+    /**
+     * Draw a particular particle on screen, respecting its size,
+     * rotation, and colour attributes.
+     *
+     * @param particle The particle to draw.
+     */
     private void drawParticle(Particle particle) {
         if (particle.isDead)
             return;
