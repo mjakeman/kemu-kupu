@@ -1,5 +1,9 @@
 package nz.ac.auckland.se206.team27.controller;
 
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,13 +17,8 @@ import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
 
-import java.util.Currency;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static nz.ac.auckland.se206.team27.resource.ScreenResource.END_GAME;
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.GUESS;
+import static nz.ac.auckland.se206.team27.resource.ScreenResource.REWARD;
 
 /**
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
@@ -65,7 +64,7 @@ public class ResultController extends GameController {
             gameViewModel.loadNextWord();
             sceneLoader.loadScreen(GUESS);
         } else {
-            sceneLoader.loadScreen(END_GAME);
+            sceneLoader.loadScreen(REWARD);
         }
     }
 

@@ -1,6 +1,12 @@
 package nz.ac.auckland.se206.team27.controller;
 
-import javafx.animation.*;
+import java.util.function.Function;
+
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,20 +21,23 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
-import nz.ac.auckland.se206.team27.resource.AudioResource;
-import nz.ac.auckland.se206.team27.view.controls.ParticleView;
 import nz.ac.auckland.se206.team27.game.Round;
+import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.ViewConfig;
+import nz.ac.auckland.se206.team27.view.controls.ParticleView;
 import nz.ac.auckland.se206.team27.view.dto.EndGameScreenDto;
-
-import java.util.function.Function;
 
 import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
-public class EndGameController extends GameController {
+/**
+ * Controller associated with the {@link ScreenResource#REWARD} screen.
+ *
+ * NB: The {@code END_GAME} screen is also known as the summary/rewards screen.
+ */
+public class RewardController extends GameController {
 
     @FXML
     public Label miniScoreLabel;

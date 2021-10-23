@@ -37,7 +37,7 @@ public enum ScreenResource implements Resource {
     /**
      * Displayed at the end of a game.
      */
-    END_GAME("endgame.fxml"),
+    REWARD("reward.fxml"),
 
     /**
      * Preferences menu.
