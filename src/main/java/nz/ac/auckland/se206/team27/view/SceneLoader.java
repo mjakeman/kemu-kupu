@@ -36,7 +36,11 @@ public class SceneLoader {
         void onEnter(BaseController controller);
     }
 
-
+    /**
+     * Creates a new {@link SceneLoader} instance for a given {@link Stage}.
+     *
+     * @param stage The window to be used.
+     */
     public SceneLoader(Stage stage) {
         this.stage = stage;
 

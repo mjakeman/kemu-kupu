@@ -5,6 +5,9 @@ package nz.ac.auckland.se206.team27.view;
  */
 public class ViewConfig {
 
+    /**
+     * Application title (used throughout the program for various menus and labels).
+     */
     public static final String TITLE = "Kēmu Kupu";
 
     /**
@@ -16,8 +19,14 @@ public class ViewConfig {
         return version != null ? version : "DEV";
     }
 
+    /**
+     * Fixed width of the main window.
+     */
     public static final int WIDTH = 960;
 
+    /**
+     * Fixed height of the main window.
+     */
     public static final int HEIGHT = 540;
 
 }
