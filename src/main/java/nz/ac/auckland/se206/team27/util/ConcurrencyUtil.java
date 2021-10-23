@@ -3,6 +3,8 @@ package nz.ac.auckland.se206.team27.util;
 import javafx.application.Platform;
 
 /**
+ * Utils relating to concurrency and delay.
+ *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public class ConcurrencyUtil {
