@@ -8,6 +8,8 @@ import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.view.SceneLoader;
 
 /**
+ * Base controller inherited by all JavaFX controllers in this application.
+ *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public abstract class BaseController {
@@ -21,8 +23,11 @@ public abstract class BaseController {
     }
 
     /**
-     * Derived classes should override this to specify a default
-     * transition to be played when the view is loaded.
+     * Derived classes should override this to specify a default transition to
+     * be played when the view is loaded.
+     *
+     * NB: This is purposefully not abstract. If this is not overridden, then
+     * no transition is played.
      */
     public void transitionOnEnter() {}
 

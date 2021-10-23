@@ -14,6 +14,8 @@ import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.TopicPreviewScreenDto;
 
 /**
+ * Controller associated with the {@link ScreenResource#PREVIEW_TOPIC} screen.
+ *
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
 public class PreviewTopicController extends MenuController {
@@ -37,22 +39,34 @@ public class PreviewTopicController extends MenuController {
     public Button playBtn;
 
 
+    /**
+     * Action executed when the "Back" button is clicked.
+     */
     public void clickBack() {
         // Reset topic selection
         menuViewModel.selectTopic(null);
         sceneLoader.loadScreen(ScreenResource.CHOOSE_TOPIC);
     }
 
+    /**
+     * Action executed when the "Play" button is clicked.
+     */
     public void clickPlay() {
         menuViewModel.startGameWithCurrentTopic();
         sceneLoader.loadScreen(ScreenResource.GUESS);
     }
 
+    /**
+     * Transition that is played when this controller is loaded.
+     */
     @Override
     public void transitionOnEnter() {
         AnimationBuilder.buildSlideAndFadeTransition(container).play();
     }
 
+    /**
+     * Data that is populated when this controller is loaded.
+     */
     @Override
     protected void populateViewData() {
         TopicPreviewScreenDto dto = menuViewModel.getTopicPreviewData();
