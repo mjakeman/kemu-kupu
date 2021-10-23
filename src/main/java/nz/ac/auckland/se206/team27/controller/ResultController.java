@@ -132,7 +132,7 @@ public class ResultController extends GameController {
         }
 
         // Convert the round result to human form (i.e. result name, encouragement, audio and colour)
-        ResultDisplayDto resultDisplay = getRandomResult(data.resultFromLastRound);
+        ResultDisplayDto resultDisplay = getResultDisplay(data.resultFromLastRound);
         labelResult.setText(resultDisplay.resultMessage);
         labelEncouragement.setText(resultDisplay.encouragingMessage);
         answerContainer.getStyleClass().add(resultDisplay.styleClass);
@@ -177,9 +177,10 @@ public class ResultController extends GameController {
     }
 
     /**
-     * @return a randomly selected message based on the result.
+     * @return the corresponding display elements (audio, text etc) based on
+     * the result of the round.
      */
-    private static ResultDisplayDto getRandomResult(RoundResult result) {
+    private static ResultDisplayDto getResultDisplay(RoundResult result) {
         // List of possible messages given the round's result
         String[] possibleMsgs = encouragingMessages.get(result);
 
