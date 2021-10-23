@@ -146,7 +146,6 @@ public class ResultController extends GameController {
         // Automate the button countdown from 10 seconds and change the prefix depending
         // on whether there is another word left
         setButtonCountdown((data.hasNextWord) ? "Next Word" : "Results", 10);
-
     }
 
     /**
@@ -165,7 +164,6 @@ public class ResultController extends GameController {
                 Platform.runLater(() -> {
                     if (secondsPast-- == 0) {
                         clickNext();
-                        cancel();
                         return;
                     }
 

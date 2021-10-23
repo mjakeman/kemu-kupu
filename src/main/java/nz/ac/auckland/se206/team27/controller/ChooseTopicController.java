@@ -7,7 +7,9 @@ import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.controller.base.MenuController;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
@@ -25,6 +27,12 @@ public class ChooseTopicController extends MenuController {
 
     @FXML
     public VBox container;
+
+    @FXML
+    public Button buttonBack;
+
+    @FXML
+    public Button buttonContinue;
 
     /**
      * Text label for a random topic.
@@ -84,6 +92,16 @@ public class ChooseTopicController extends MenuController {
         topicList.add(randomTopicLabelText);
 
         listview.setItems(topicList);
+
+        // Bind enter and escape keys to continue and back buttons
+        listview.setOnKeyPressed((event) -> {
+            KeyCode keyPressed = event.getCode();
+            if (keyPressed == KeyCode.ENTER) {
+                clickContinue();
+            } else if (keyPressed == KeyCode.ESCAPE) {
+                clickBack();
+            }
+        });
     }
 
 }

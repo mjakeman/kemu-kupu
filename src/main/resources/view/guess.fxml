@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import nz.ac.auckland.se206.team27.view.controls.SpeedSwitcher?>
-<?import javafx.scene.layout.AnchorPane?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       stylesheets="@../style/common.css,@../style/game.css,@../style/guess.css"
