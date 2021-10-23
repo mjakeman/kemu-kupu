@@ -95,4 +95,5 @@ as show differences in colour when Colourblind mode is applied.
 ## 23 October
 
 - Added additional comments to those classes needing more (as requested in A4)
+- Met with group to add final touches before final submission
 
