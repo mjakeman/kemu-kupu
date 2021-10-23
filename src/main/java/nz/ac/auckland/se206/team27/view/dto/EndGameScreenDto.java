@@ -16,6 +16,14 @@ public class EndGameScreenDto implements ViewDto {
     public final List<Round> rounds;
     public final boolean isPracticeMode;
 
+    /**
+     * Creates a new {@link EndGameScreenDto}.
+     *
+     * @param topic Topic label
+     * @param totalScore Total user score
+     * @param rounds List of rounds to provide game history
+     * @param isPracticeMode Whether practice mode is enabled
+     */
     public EndGameScreenDto(String topic,
                             int totalScore,
                             List<Round> rounds,

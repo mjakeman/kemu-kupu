@@ -24,9 +24,17 @@ public class ResultScreenDto implements ViewDto {
 
 
     /**
-     * Constructor with all nice-to-have elements.
+     * Creates a new {@link ResultScreenDto}.
      *
-     * NB: Use this for final project.
+     * @param hasNextWord Whether there is another round after this
+     * @param topic Topic label
+     * @param word The word that was guessed
+     * @param resultFromLastRound The result of the previous round
+     * @param currentScore The user's current score
+     * @param scoreAddedFromLastRound The score contribution of the previous round
+     * @param isPracticeMode Whether practice mode is enabled
+     * @param definition The definition of the word (unused)
+     * @param imgUrl The image associated with the word (unused)
      */
     public ResultScreenDto(boolean hasNextWord,
                            String topic,
