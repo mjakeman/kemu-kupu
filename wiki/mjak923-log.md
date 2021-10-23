@@ -337,3 +337,11 @@ These sounds play when various in game actions are performed. I faded out the ba
 the topic preview screen so the transition to the game mode was less jarring.
 
 I normalised the volume of the tracks, and at Raymond's suggestion, changed the correct sound effect.
+
+## 20 October
+With the project effectively finished, we wrote the user manual which will be bundled
+with the executable jar.
+
+## 23 October
+I commented the entirety of the `view` and `resources` modules. With this, the project
+was complete and ready for submission.
