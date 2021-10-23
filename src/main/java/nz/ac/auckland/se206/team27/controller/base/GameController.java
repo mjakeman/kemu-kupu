@@ -3,11 +3,12 @@ package nz.ac.auckland.se206.team27.controller.base;
 import javafx.fxml.FXML;
 import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.game.Game;
-import nz.ac.auckland.se206.team27.resource.AudioResource;
 import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.view.viewmodel.GameViewModel;
 
 /**
+ * Controller that is inherited by all game-adjacent screens (e.g. guess, result and reward).
+ *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public abstract class GameController extends BaseController {

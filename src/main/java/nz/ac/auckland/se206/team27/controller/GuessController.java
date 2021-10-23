@@ -16,6 +16,7 @@ import nz.ac.auckland.se206.team27.PreferencesManager;
 import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.resource.AudioResource;
+import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.speech.SpeechManager;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
@@ -29,6 +30,8 @@ import static nz.ac.auckland.se206.team27.resource.ScreenResource.RESULT;
 import static nz.ac.auckland.se206.team27.util.ConcurrencyUtil.runAfterDelay;
 
 /**
+ * Controller associated with the {@link ScreenResource#GUESS} screen.
+ *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public class GuessController extends GameController {
@@ -75,6 +78,7 @@ public class GuessController extends GameController {
      * is running.
      */
     private boolean inhibitAction = true;
+
 
     /**
      * Action executed when the "Play Word" button is clicked.
@@ -132,11 +136,17 @@ public class GuessController extends GameController {
         sceneLoader.loadScreen(RESULT);
     }
 
+    /**
+     * Transition that is played when this controller is loaded.
+     */
     @Override
     public void transitionOnEnter() {
         AnimationBuilder.buildSlideAndFadeTransition(body).play();
     }
 
+    /**
+     * Data that is populated when this controller is loaded.
+     */
     @Override
     protected void populateViewData() {
         GuessScreenDto data = gameViewModel.getGuessScreenData();
@@ -144,6 +154,7 @@ public class GuessController extends GameController {
         labelNumbering.setText(String.format("Word %d of %d:", data.wordIndexStarting1, data.wordCount));
         labelGuessesRemaining.setText(String.format("%d guess%s remaining", data.guessesRemaining, data.guessesRemaining == 1 ? "" : "es"));
 
+        // Disable the practice label if we're in practice mode
         if (data.isPracticeMode) {
             JavaFXUtil.toggleNodeVisibility(labelPractice, true);
         }
@@ -172,35 +183,44 @@ public class GuessController extends GameController {
             AnimationBuilder.buildShakeTransition(inputGuess).play();
         }
 
+        // Set focus to the text box
         runAfterDelay(() -> inputGuess.requestFocus(), 50L);
-        runAfterDelay(() -> sayWord(data.word), 500L);
+
+        // Speak the word once on first visit of the screen
+        runAfterDelay(() -> sayWord(data.word), 250L);
     }
 
     /**
-     * Says a word while disabling the "Play again" button.
+     * Speaks a word while disabling the "Play again" button.
      */
     private void sayWord(String word) {
-
-        buttonPlayWord.setDisable(true);
-        buttonSubmit.setDisable(true);
-        buttonSkip.setDisable(true);
-        inhibitAction = true;
-
+        // Play the word once and disable inputs while the word is playing
         SpeechSpeed speed = PreferencesManager.getInstance().getSpeechSpeed();
-
         Task<Void> task = SpeechManager.getInstance().talk(word, speed);
-        buttonPlayWord.setText("Playing...");
+        toggleInput(true);
 
-        EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> {
-            buttonPlayWord.setDisable(false);
-            buttonSubmit.setDisable(false);
-            buttonSkip.setDisable(false);
-            inhibitAction = false;
-
-            buttonPlayWord.setText("Play word again");
-        }, 200L);
+        // Enable buttons regardless of whether the task succeeded or failed
+        EventHandler<WorkerStateEvent> setEnabled = (T) -> runAfterDelay(() -> toggleInput(false),
+                                                                         200L);
         task.setOnSucceeded(setEnabled);
         task.setOnFailed(setEnabled);
+    }
+
+    /**
+     * Toggles the input options.
+     */
+    private void toggleInput(boolean isCurrentlyPlaying) {
+        // Disable buttons
+        buttonPlayWord.setDisable(isCurrentlyPlaying);
+        buttonSubmit.setDisable(isCurrentlyPlaying);
+        buttonSkip.setDisable(isCurrentlyPlaying);
+
+        // Prevent enter button from being clicked
+        inhibitAction = isCurrentlyPlaying;
+
+        // Set "Play" button text
+        String buttonText = isCurrentlyPlaying ? "Playing..." : "Play word again";
+        buttonPlayWord.setText(buttonText);
     }
 
 }

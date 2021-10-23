@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import nz.ac.auckland.se206.team27.SoundManager;
 import nz.ac.auckland.se206.team27.controller.base.GameController;
 import nz.ac.auckland.se206.team27.resource.AudioResource;
+import nz.ac.auckland.se206.team27.resource.ScreenResource;
 import nz.ac.auckland.se206.team27.util.JavaFXUtil;
 import nz.ac.auckland.se206.team27.view.AnimationBuilder;
 import nz.ac.auckland.se206.team27.view.dto.ResultScreenDto;
@@ -21,6 +22,8 @@ import static nz.ac.auckland.se206.team27.resource.ScreenResource.GUESS;
 import static nz.ac.auckland.se206.team27.resource.ScreenResource.REWARD;
 
 /**
+ * Controller associated with the {@link ScreenResource#RESULT} screen.
+ *
  * @author Raymond Feng (rf.raymondfeng@gmail.com)
  */
 public class ResultController extends GameController {
@@ -58,8 +61,9 @@ public class ResultController extends GameController {
      * Action executed when the "Skip" button is clicked.
      */
     public void clickNext() {
-
         nextRoundTimerTask.cancel();
+
+        // Load the next guess screen if there is at least one more word remaining
         if (gameViewModel.getResultScreenData().hasNextWord) {
             gameViewModel.loadNextWord();
             sceneLoader.loadScreen(GUESS);
@@ -68,11 +72,18 @@ public class ResultController extends GameController {
         }
     }
 
+    /**
+     * Transition that is played when this controller is loaded.
+     */
     @Override
     public void transitionOnEnter() {
         AnimationBuilder.buildSlideAndFadeTransition(container).play();
     }
 
+    /**
+     * Data that is populated when this controller is loaded.
+     */
+    // TODO: Refactor this
     @Override
     protected void populateViewData() {
         ResultScreenDto data = gameViewModel.getResultScreenData();
