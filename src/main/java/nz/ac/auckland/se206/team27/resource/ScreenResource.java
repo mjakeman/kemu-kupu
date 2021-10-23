@@ -47,7 +47,11 @@ public enum ScreenResource implements Resource {
 
     private final URL resourceUrl;
 
-
+    /**
+     * For internal use by this enum. Associates the enum variant
+     * with a particular Screen (FXML) resource on disk.
+     * @param fileName file name/path of the resource
+     */
     ScreenResource(String fileName) {
         this.resourceUrl = ResourceUtil.getResourceUrl("view/" + fileName);
     }

@@ -11,11 +11,12 @@ import javafx.scene.layout.HBox;
 import nz.ac.auckland.se206.team27.resource.ResourceUtil;
 import nz.ac.auckland.se206.team27.speech.SpeechSpeed;
 
-// Creates a custom control via composition
-// Uses some code from JavaFX Documentation
-// See: https://docs.oracle.com/javafx/2/fxml_get_started/custom_control.htm
-
 /**
+ * A control for switching between the three different speed options.
+ *
+ * Creates a custom control via composition. Uses some code from JavaFX Documentation
+ * See: https://docs.oracle.com/javafx/2/fxml_get_started/custom_control.htm
+ *
  * @author Matthew Jakeman (mjakeman26@outlook.co.nz)
  */
 public class SpeedSwitcher extends HBox {

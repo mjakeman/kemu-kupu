@@ -19,7 +19,19 @@ public class GuessScreenDto implements ViewDto {
     public final boolean showHint;
     public final boolean isPracticeMode;
 
-
+    /**
+     * Creates a new {@link GuessScreenDto}.
+     *
+     * @param topic Topic label
+     * @param isPracticeMode Whether practice mode is enabled
+     * @param word The word to be guessed
+     * @param wordCount Number of words in game
+     * @param wordIndexStarting1 Current word in game (starting from 1)
+     * @param guessesRemaining Guesses remaining for the current word
+     * @param hints Map of hints for this word
+     * @param isFirstGuess Whether this is the user's first attempt
+     * @param showHint Whether the hint should be shown
+     */
     public GuessScreenDto(String topic,
                           boolean isPracticeMode,
                           String word,

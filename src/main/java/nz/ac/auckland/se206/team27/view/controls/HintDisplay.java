@@ -42,7 +42,13 @@ public class HintDisplay {
      */
     private final String word;
 
-
+    /**
+     * Creates a new {@link HintDisplay} control.
+     *
+     * @param word The complete word that is being hinted at.
+     * @param hints A map of hint characters.
+     * @param showHint Whether the hint(s) should be shown.
+     */
     public HintDisplay(String word, Map<Integer, Character> hints, boolean showHint) {
         this.word = word;
         this.hints = hints;
@@ -73,6 +79,8 @@ public class HintDisplay {
 
     /**
      * Sets a string to exist inside the label objects with priority on input.
+     * 
+     * @param input The user's current input.
      */
     private void setLabelContents(String input) {
         // Replace all letters from the te reo alphabet with underscores

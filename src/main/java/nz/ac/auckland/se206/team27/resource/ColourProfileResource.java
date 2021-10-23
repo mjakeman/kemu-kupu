@@ -20,7 +20,11 @@ public enum ColourProfileResource implements Resource {
 
     private final URL resourceUrl;
 
-
+    /**
+     * For internal use by this enum. Associates the enum variant
+     * with a particular CSS resource on disk.
+     * @param fileName file name/path of the resource
+     */
     ColourProfileResource(String fileName) {
         this.resourceUrl = ResourceUtil.getResourceUrl("style/colours/" + fileName);
     }
