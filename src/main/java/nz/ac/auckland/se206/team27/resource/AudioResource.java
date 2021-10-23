@@ -40,7 +40,11 @@ public enum AudioResource implements Resource {
 
     private final URL resourceUrl;
 
-
+    /**
+     * For internal use by this enum. Associates the enum variant
+     * with a particular audio resource on disk.
+     * @param fileName file name/path of the resource
+     */
     AudioResource(String fileName) {
         this.resourceUrl = ResourceUtil.getResourceUrl("media/sounds/" + fileName);
     }
